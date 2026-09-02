@@ -1,0 +1,38 @@
+profile_id: hmu-thesis-master-2020-current-2026
+institution: Hanoi Medical University
+document_type: master-thesis
+source_url: https://sdh.hmu.edu.vn/images/9_%20Yeu%20cau%20luan%20van_2020%281%29.docx
+source_version: Yêu cầu đối với luận văn 2020, linked from HMU 2026 defense page
+source_license: Official institutional document; redistribution permission not stated
+source_cutoff: '2026-08-31'
+last_verified: '2026-08-31'
+expires_after_days: 365
+verification_status: CURRENT
+source_path: sources/hmu/snapshots/9-Yeu-cau-luan-van-2020.docx
+source_sha256: 6FAFDBB41FD09AE6D506661D2F7D9C0AC02B6B7DE6A3FF9A147CD551C125054F
+scope: semantic-structure-only
+sections:
+  - {id: title-page, label: Trang tên đề tài, required: true, required_for_restructure: false, aliases: [trang tên đề tài]}
+  - {id: acknowledgements, label: Lời cảm ơn, required: true, required_for_restructure: false, aliases: [lời cảm ơn]}
+  - {id: declaration, label: Lời cam đoan, required: true, required_for_restructure: false, aliases: [lời cam đoan]}
+  - {id: table-of-contents, label: Mục lục, required: true, required_for_restructure: false, aliases: [mục lục]}
+  - {id: abbreviations, label: Danh mục chữ viết tắt, required: false, required_for_restructure: false, aliases: [danh mục chữ viết tắt]}
+  - {id: lists, label: Danh mục bảng biểu, required: true, required_for_restructure: false, aliases: [danh mục bảng, danh mục biểu đồ, danh mục hình]}
+  - {id: introduction, label: Đặt vấn đề, required: true, required_for_restructure: true, aliases: [đặt vấn đề, mở đầu, introduction]}
+  - {id: chapter-1-literature-review, label: Chương 1. Tổng quan, required: true, required_for_restructure: true, aliases: [chương 1 tổng quan, tổng quan tài liệu, literature review]}
+  - {id: chapter-2-methods, label: Chương 2. Đối tượng và phương pháp nghiên cứu, required: true, required_for_restructure: true, aliases: [chương 2 đối tượng và phương pháp nghiên cứu, đối tượng và phương pháp nghiên cứu, methods]}
+  - {id: chapter-3-results, label: Chương 3. Kết quả, required: true, required_for_restructure: true, aliases: [chương 3 kết quả, kết quả, results]}
+  - {id: chapter-4-discussion, label: Chương 4. Bàn luận, required: true, required_for_restructure: true, aliases: [chương 4 bàn luận, bàn luận, discussion]}
+  - {id: conclusion, label: Kết luận, required: true, required_for_restructure: true, aliases: [kết luận, conclusion]}
+  - {id: recommendations, label: Kiến nghị, required: false, required_for_restructure: false, aliases: [kiến nghị, recommendations]}
+  - {id: references, label: Tài liệu tham khảo, required: true, required_for_restructure: true, aliases: [tài liệu tham khảo, references]}
+  - {id: appendices, label: Phụ lục, required: false, required_for_restructure: false, aliases: [phụ lục, appendices]}
+semantic_rules:
+  - {id: total-length, source_locator: P8, summary: 20000–25000 words, approximately 60–80 pages, excluding figures, references and appendices}
+  - {id: introduction-purpose, source_locator: P9, summary: Introduction presents the problem and research objectives}
+  - {id: chapter-order, source_locator: P24, summary: Preliminary matter precedes Introduction, Chapters 1–4, Conclusion, References and Appendices}
+  - {id: arabic-numbering-transition, source_locator: P32, summary: Arabic page numbering starts at Introduction; mechanics delegated to dinh-dang-tai-lieu}
+  - {id: heading-depth, source_locator: P46, summary: Numeric heading hierarchy has no more than four levels}
+  - {id: caption-numbering, source_locator: P48, summary: Tables and figures use chapter-linked numbering and captions}
+  - {id: reference-style, source_locator: P52, summary: References follow the stated AMA-based requirements}
+  - {id: appendix-privacy, source_locator: P58, summary: Participant-identifying information must not appear in appendices}

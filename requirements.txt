@@ -1,0 +1,5 @@
+jsonschema==4.26.0
+PyYAML==6.0.3
+python-docx==1.2.0
+pytest==9.0.3
+

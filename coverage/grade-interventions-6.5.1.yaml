@@ -1,0 +1,17 @@
+instrument: GRADE certainty for intervention evidence
+version: Cochrane Handbook 6.5, Chapter 14 current online edition (accessed 2026-09-02)
+source_url: https://training.cochrane.org/handbook/current/chapter-14
+license: Cochrane/Wiley rights apply; independent operational summaries only
+last_verified: 2026-09-02
+caller: skills/danh-gia-chat-luong-bang-chung/SKILL.md
+expected_ids: [risk_of_bias, inconsistency, indirectness, imprecision, publication_bias, large_effect, dose_response, residual_confounding]
+implemented_ids: [risk_of_bias, inconsistency, indirectness, imprecision, publication_bias, large_effect, dose_response, residual_confounding]
+items:
+  - {id: risk_of_bias, operational_prompt: Judge outcome-level limitations using the appropriate study-level appraisal and contribution to the body of evidence., source_locator: chapter-14/14.2.2/domain-1}
+  - {id: inconsistency, operational_prompt: Judge unexplained variation in direction and magnitude across studies for this outcome., source_locator: chapter-14/14.2.2/domain-2}
+  - {id: indirectness, operational_prompt: Compare population intervention comparator outcome and study context with the review question., source_locator: chapter-14/14.2.2/domain-3}
+  - {id: imprecision, operational_prompt: Judge confidence interval boundaries events information size and decision thresholds., source_locator: chapter-14/14.2.2/domain-4}
+  - {id: publication_bias, operational_prompt: Judge whether missing studies or results could distort the body of evidence., source_locator: chapter-14/14.2.2/domain-5}
+  - {id: large_effect, operational_prompt: Consider upgrading only for unusually large credible effects under the official conditions., source_locator: chapter-14/14.2.3/item-1}
+  - {id: dose_response, operational_prompt: Consider upgrading only when a credible dose-response relation supports confidence., source_locator: chapter-14/14.2.3/item-2}
+  - {id: residual_confounding, operational_prompt: Consider whether plausible residual bias would reduce rather than create the observed effect., source_locator: chapter-14/14.2.3/item-3}

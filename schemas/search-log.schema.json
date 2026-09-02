@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SearchLog",
+  "type": "object",
+  "required": ["database", "platform", "query", "question_version", "filters", "coverage_dates", "searched_at", "export_format", "retriever", "errors", "request_id", "request_artifact_hash", "result_count", "status"],
+  "properties": {
+    "database": {"type": "string", "minLength": 1},
+    "platform": {"type": "string", "minLength": 1},
+    "query": {"type": "string", "minLength": 1},
+    "question_version": {"type": "string", "minLength": 1},
+    "filters": {"type": "array"},
+    "coverage_dates": {"type": "object"},
+    "searched_at": {"type": "string", "format": "date-time"},
+    "request_id": {"type": "string", "minLength": 1},
+    "request_artifact_hash": {"type": "string", "minLength": 1},
+    "export_format": {"type": "string", "minLength": 1},
+    "retriever": {"type": "string", "minLength": 1},
+    "errors": {"type": "array"},
+    "result_count": {"type": "integer", "minimum": 0},
+    "status": {"const": "EXECUTED_VERIFIED"}
+  },
+  "additionalProperties": false
+}

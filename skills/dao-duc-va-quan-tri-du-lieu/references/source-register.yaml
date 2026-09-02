@@ -1,0 +1,55 @@
+register_version: 1
+as_of: '2026-08-31'
+sources:
+  - id: vn-tt43-2024-byt
+    title: Thông tư 43/2024/TT-BYT
+    issuing_body: Bộ Y tế Việt Nam
+    source_type: PRIMARY
+    source_url: https://vbpl.vn/TW/Pages/vbpq-thuoctinh.aspx?ItemID=172919
+    source_version: 43/2024/TT-BYT, hiệu lực 2025-02-01
+    source_license: Official legal text; redistribution status not asserted
+    source_cutoff: '2025-02-01'
+    last_verified: '2026-08-31'
+    expires_after_days: 30
+    verification_status: CURRENT
+    retrieval_note: National legal database recorded the instrument as current on verification date.
+    coverage:
+      scope: Routing metadata and official approval-form identifiers; not a full legal-compliance checklist
+      expected_count: 7
+      implemented_count: 7
+      expected_identifiers: [metadata:document-number, metadata:effective-date, metadata:validity-status, appendix:I, appendix:II, appendix:III, appendix:IV]
+      implemented_identifiers: [metadata:document-number, metadata:effective-date, metadata:validity-status, appendix:I, appendix:II, appendix:III, appendix:IV]
+  - id: wma-helsinki-2024
+    title: WMA Declaration of Helsinki — 2024 revision
+    issuing_body: World Medical Association
+    source_type: PRIMARY
+    source_url: https://www.wma.net/policies-post/wma-declaration-of-helsinki/
+    source_version: 75th WMA General Assembly, 19 October 2024
+    source_license: Copyright 2024 WMA; all rights reserved
+    source_cutoff: '2024-10-19'
+    last_verified: '2026-08-31'
+    expires_after_days: 90
+    verification_status: CURRENT
+    coverage:
+      scope: All numbered paragraphs; operational summary only, no reproduction
+      expected_count: 37
+      implemented_count: 37
+      expected_identifiers: ['paragraph:1', 'paragraph:2', 'paragraph:3', 'paragraph:4', 'paragraph:5', 'paragraph:6', 'paragraph:7', 'paragraph:8', 'paragraph:9', 'paragraph:10', 'paragraph:11', 'paragraph:12', 'paragraph:13', 'paragraph:14', 'paragraph:15', 'paragraph:16', 'paragraph:17', 'paragraph:18', 'paragraph:19', 'paragraph:20', 'paragraph:21', 'paragraph:22', 'paragraph:23', 'paragraph:24', 'paragraph:25', 'paragraph:26', 'paragraph:27', 'paragraph:28', 'paragraph:29', 'paragraph:30', 'paragraph:31', 'paragraph:32', 'paragraph:33', 'paragraph:34', 'paragraph:35', 'paragraph:36', 'paragraph:37']
+      implemented_identifiers: ['paragraph:1', 'paragraph:2', 'paragraph:3', 'paragraph:4', 'paragraph:5', 'paragraph:6', 'paragraph:7', 'paragraph:8', 'paragraph:9', 'paragraph:10', 'paragraph:11', 'paragraph:12', 'paragraph:13', 'paragraph:14', 'paragraph:15', 'paragraph:16', 'paragraph:17', 'paragraph:18', 'paragraph:19', 'paragraph:20', 'paragraph:21', 'paragraph:22', 'paragraph:23', 'paragraph:24', 'paragraph:25', 'paragraph:26', 'paragraph:27', 'paragraph:28', 'paragraph:29', 'paragraph:30', 'paragraph:31', 'paragraph:32', 'paragraph:33', 'paragraph:34', 'paragraph:35', 'paragraph:36', 'paragraph:37']
+  - id: ich-e6-r3-2025
+    title: ICH E6(R3) Guideline for Good Clinical Practice
+    issuing_body: International Council for Harmonisation
+    source_type: PRIMARY
+    source_url: https://database.ich.org/sites/default/files/ICH_E6(R3)_Step4_FinalGuideline_2025_0106_ErrorCorrections_2025_1024.pdf
+    source_version: Step 4 final, adopted 2025-01-06; error corrections 2025-10-24
+    source_license: ICH reuse/adaptation permitted with acknowledgement and change labelling; third-party content excluded
+    source_cutoff: '2025-10-24'
+    last_verified: '2026-08-31'
+    expires_after_days: 90
+    verification_status: CURRENT
+    coverage:
+      scope: Routing subset only; not a complete E6(R3) compliance instrument
+      expected_count: 18
+      implemented_count: 18
+      expected_identifiers: ['principle:1', 'principle:2', 'principle:3', 'principle:4', 'principle:5', 'principle:6', 'principle:7', 'principle:8', 'principle:9', 'principle:10', 'principle:11', 'annex1:1.1', 'annex1:1.2', 'annex1:1.3', 'annex1:1.4', 'annex1:1.5', 'appendix:B.13', 'appendix:B.14']
+      implemented_identifiers: ['principle:1', 'principle:2', 'principle:3', 'principle:4', 'principle:5', 'principle:6', 'principle:7', 'principle:8', 'principle:9', 'principle:10', 'principle:11', 'annex1:1.1', 'annex1:1.2', 'annex1:1.3', 'annex1:1.4', 'annex1:1.5', 'appendix:B.13', 'appendix:B.14']

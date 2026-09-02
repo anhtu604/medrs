@@ -1,0 +1,40 @@
+name: protocol-new-project
+request: Tôi cần xây dựng đề cương nghiên cứu y học mới
+project_id: protocol-e2e-001
+author_id: researcher-e2e
+confirmation_timestamp: '2026-08-31T09:00:00+07:00'
+locale_profile: vi-medical-academic
+active_skills:
+  - co-van
+  - ho-so-nghien-cuu
+  - de-cuong-va-thiet-ke
+  - co-mau-va-ke-hoach-phan-tich
+  - dao-duc-va-quan-tri-du-lieu
+  - viet-phuong-phap
+author_confirmed_fields:
+  target_language: Vietnamese
+  research_question: Tỷ lệ kiểm soát huyết áp ở người bệnh ngoại trú tại cơ sở nghiên cứu là bao nhiêu?
+  objectives:
+    - Ước tính tỷ lệ kiểm soát huyết áp ở quần thể nghiên cứu.
+  study_design: Nghiên cứu cắt ngang mô tả
+  population: Người bệnh tăng huyết áp ngoại trú đáp ứng tiêu chuẩn lựa chọn
+  setting: Cơ sở nghiên cứu do tác giả xác nhận
+  outcomes:
+    - Tình trạng kiểm soát huyết áp theo định nghĩa trong đề cương
+  data_sensitivity: coded-health-data
+  target_profile: protocol-generic-vi
+planned_procedures:
+  - Đo huyết áp theo quy trình được đề cương quy định
+  - Thu thập biến số từ phiếu nghiên cứu đã được duyệt
+ethics:
+  jurisdiction: VN
+  study_stage: protocol
+  data_class: health_data
+  destination: institutional_repository
+  approval_number: null
+  consent_state: UNRESOLVED
+  registration_state: NOT_APPLICABLE_PENDING_CONFIRMATION
+expect:
+  route: co-van
+  approval_number: null
+  all_procedures: PLANNED

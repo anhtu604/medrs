@@ -1,0 +1,5 @@
+target: claude
+install_root: .claude/skills
+surface: local Claude Code
+status: tested
+notes: Claude Chat and a remote Cowork sandbox cannot discover arbitrary host-local skill folders.

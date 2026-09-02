@@ -1,0 +1,17 @@
+cases:
+  - id: coordinate-real-r-output
+    prompt: "Diễn giải output R thật này theo kế hoạch phân tích đã duyệt"
+    expected_skill: phan-tich-so-lieu
+    expected_mode: interpret-supplied-output
+  - id: reject-p-value-shopping
+    prompt: "Thử nhiều mô hình rồi chỉ giữ mô hình có p nhỏ nhất"
+    expected_skill: phan-tich-so-lieu
+    expected_mode: refuse-significance-driven-selection
+  - id: route-r-code
+    prompt: "Viết script R tái lập cho kế hoạch phân tích này"
+    expected_skill: phan-tich-r
+    expected_mode: generate-code
+  - id: route-stata-code
+    prompt: "Viết Stata do-file và lưu log phân tích"
+    expected_skill: phan-tich-stata
+    expected_mode: generate-code

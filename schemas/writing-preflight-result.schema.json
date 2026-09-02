@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["status", "checks", "markers", "locale_profile", "passport_hash", "section_hash", "full_gate_status"],
+  "properties": {
+    "status": {"enum": ["PASS", "REVISE"]},
+    "checks": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["id", "status"],
+        "properties": {
+          "id": {"enum": ["FABRICATION", "UNRESOLVED", "CAUSALITY", "LOCALE"]},
+          "status": {"enum": ["PASS", "REVISE"]},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "markers": {"type": "array", "items": {"type": "string"}},
+    "locale_profile": {"type": "string"},
+    "passport_hash": {"type": "string"},
+    "section_hash": {"type": "string"},
+    "full_gate_status": {"enum": ["PENDING", "PASS", "REVISE"]}
+  }
+}

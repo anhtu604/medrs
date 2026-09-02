@@ -1,0 +1,19 @@
+profile_id: hmu-word-format-master-2020-current-2026
+institution: Hanoi Medical University
+document_type: master-thesis
+source_url: https://sdh.hmu.edu.vn/images/9_%20Yeu%20cau%20luan%20van_2020%281%29.docx
+source_version: Yêu cầu đối với luận văn 2020, linked from HMU 2026 defense page
+source_license: Official institutional document; redistribution permission not stated
+source_cutoff: '2026-08-31'
+last_verified: '2026-08-31'
+expires_after_days: 365
+verification_status: CURRENT
+source_path: sources/hmu/snapshots/9-Yeu-cau-luan-van-2020.docx
+source_sha256: 6FAFDBB41FD09AE6D506661D2F7D9C0AC02B6B7DE6A3FF9A147CD551C125054F
+scope: word-mechanics
+page: {size: A4, top_cm: 3.5, bottom_cm: 3.0, left_cm: 3.5, right_cm: 2.0, source_locator: P44}
+body: {font: Times New Roman, size_pt: 13, allowed_size_pt: [13, 14], line_spacing: 1.5, source_locator: P44}
+numbering: {restart_section_heading: ĐẶT VẤN ĐỀ, format: decimal, start: 1, position: header-center, source_locator: P44}
+headings: {maximum_numeric_depth: 4, source_locator: P46}
+captions: {table_position: above, figure_position: below, chapter_linked: true, source_locator: P48}
+toc: {heading_levels: '1-4', update_requires_render_backend: true}

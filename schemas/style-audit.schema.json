@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["document_hash", "section_hashes", "locale_profile_version", "source_ledger_version", "reference_versions", "passes"],
+  "properties": {
+    "document_hash": {"type": "string", "minLength": 1},
+    "section_hashes": {"type": "object", "additionalProperties": {"type": "string"}},
+    "locale_profile_version": {"type": "string", "minLength": 1},
+    "source_ledger_version": {"type": "string", "minLength": 1},
+    "reference_versions": {"type": "object", "additionalProperties": {"type": "string"}},
+    "passes": {
+      "type": "object",
+      "required": ["scientific_integrity", "argument_quality", "composition", "formulaic_writing"],
+      "additionalProperties": {"enum": ["PASS", "REVISE", "PENDING"]}
+    }
+  },
+  "additionalProperties": false
+}

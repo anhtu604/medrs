@@ -1,0 +1,12 @@
+cases:
+  - {prompt: "Điều phối viết toàn bộ bài báo y học", expected_skill: viet-ban-thao-y-hoc}
+  - {prompt: "Write the Introduction", expected_skill: viet-dat-van-de}
+  - {prompt: "Viết tổng quan theo chủ đề", expected_skill: viet-tong-quan}
+  - {prompt: "Write Results from verified tables", expected_skill: viet-ket-qua}
+  - {prompt: "Viết Discussion", expected_skill: viet-ban-luan}
+  - {prompt: "Viết kết luận và khuyến nghị", expected_skill: viet-ket-luan-khuyen-nghi}
+  - {prompt: "Write the final abstract", expected_skill: viet-tom-tat}
+  - {prompt: "Kiểm chứng bản thảo", expected_skill: kiem-chung-ban-thao}
+negative_boundaries:
+  - {prompt: "Kiểm văn phong Discussion", not_skill: viet-ban-luan}
+  - {prompt: "Phân tích hồi quy bằng R", not_skill: viet-ket-qua}

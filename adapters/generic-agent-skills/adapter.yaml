@@ -1,0 +1,5 @@
+target: generic
+install_root: .agents/skills
+surface: local agents implementing the Agent Skills directory convention
+status: tested
+notes: Discovery remains dependent on the host reading the shared .agents directory.

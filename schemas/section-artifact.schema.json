@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SectionArtifact",
+  "type": "object",
+  "required": ["section", "draft", "claim_evidence", "markers", "dependencies", "author_approval_requests", "locale_profile", "target_profile", "word_budget", "section_hash", "preflight", "full_gate"],
+  "properties": {
+    "section": {"type": "string"},
+    "draft": {"type": "string"},
+    "claim_evidence": {"type": "array", "items": {"type": "object"}},
+    "markers": {"type": "array", "items": {"type": "string"}},
+    "dependencies": {"type": "array", "items": {"type": "string"}},
+    "author_approval_requests": {"type": "array", "items": {"type": "string"}},
+    "locale_profile": {"type": "string"},
+    "target_profile": {"type": "string"},
+    "word_budget": {"type": "integer", "minimum": 1},
+    "section_hash": {"type": "string", "minLength": 64, "maxLength": 64},
+    "preflight": {"type": "object", "required": ["status", "contract", "markers"]},
+    "full_gate": {"type": "object", "required": ["status", "skill"]},
+    "lifecycle_state": {"type": "string"},
+    "manuscript_hash": {"type": ["string", "null"]},
+    "manuscript_version": {"type": ["string", "null"]},
+    "generation_timestamp": {"type": ["string", "null"]},
+    "submission_verdict": {"type": "string"}
+  },
+  "additionalProperties": false
+}

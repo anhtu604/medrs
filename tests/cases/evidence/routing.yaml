@@ -1,0 +1,7 @@
+cases:
+  - {prompt: "Tìm y văn PubMed có query log", expected_skill: tim-y-van, expected_mode: database-search}
+  - {prompt: "Lập mạng trích dẫn từ bài seed", expected_skill: tim-y-van, expected_mode: citation-network}
+  - {prompt: "Tổng hợp bằng chứng và lập evidence map", expected_skill: tong-hop-bang-chung, expected_mode: synthesize}
+negative_boundaries:
+  - {prompt: "Viết tổng quan từ evidence map", not_skill: tim-y-van}
+  - {prompt: "Đánh giá nguy cơ sai lệch RoB 2", not_skill: tong-hop-bang-chung}

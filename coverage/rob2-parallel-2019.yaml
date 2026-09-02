@@ -1,0 +1,39 @@
+instrument: RoB 2 for individually randomized parallel-group trials
+version: 22 August 2019
+source_url: https://www.riskofbias.info/welcome/rob-2-0-tool/current-version-of-rob-2
+license: CC BY-NC-ND 4.0; official wording and algorithms are not redistributed or translated
+last_verified: 2026-09-02
+caller: skills/danh-gia-chat-luong-bang-chung/SKILL.md
+domains:
+  D1: bias from randomization
+  D2: bias from deviations from intended interventions
+  D3: bias from missing outcome data
+  D4: bias in outcome measurement
+  D5: bias in selection of the reported result
+response_options: [Y, PY, PN, N, NI, NA]
+expected_ids: ['1.1', '1.2', '1.3', '2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7', '3.1', '3.2', '3.3', '3.4', '4.1', '4.2', '4.3', '4.4', '4.5', '5.1', '5.2', '5.3']
+implemented_ids: ['1.1', '1.2', '1.3', '2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7', '3.1', '3.2', '3.3', '3.4', '4.1', '4.2', '4.3', '4.4', '4.5', '5.1', '5.2', '5.3']
+items:
+  - {id: '1.1', domain: D1, operational_prompt: Determine whether sequence generation used a genuine random mechanism., source_locator: official-template/table-1/row-1}
+  - {id: '1.2', domain: D1, operational_prompt: Determine whether upcoming allocations remained concealed until enrolment and assignment., source_locator: official-template/table-1/row-2}
+  - {id: '1.3', domain: D1, operational_prompt: Assess whether baseline imbalances indicate a randomization problem., source_locator: official-template/table-1/row-3}
+  - {id: '2.1', domain: D2, operational_prompt: Establish whether participants knew their assigned intervention., source_locator: official-template/table-2/row-1}
+  - {id: '2.2', domain: D2, operational_prompt: Establish whether carers or intervention deliverers knew assignments., source_locator: official-template/table-2/row-2}
+  - {id: '2.3', domain: D2, operational_prompt: When awareness existed or was unclear assess trial-context deviations from intended care., source_locator: official-template/table-2/row-3}
+  - {id: '2.4', domain: D2, operational_prompt: Assess whether identified deviations could have influenced the outcome., source_locator: official-template/table-2/row-4}
+  - {id: '2.5', domain: D2, operational_prompt: Assess whether influential deviations were balanced across groups., source_locator: official-template/table-2/row-5}
+  - {id: '2.6', domain: D2, operational_prompt: Assess whether the analysis appropriately estimated the assignment effect., source_locator: official-template/table-2/row-6}
+  - {id: '2.7', domain: D2, operational_prompt: Assess whether analysis departures could substantially affect the result., source_locator: official-template/table-2/row-7}
+  - {id: '3.1', domain: D3, operational_prompt: Determine whether outcome data were available for all or nearly all randomized participants., source_locator: official-template/table-4/row-1}
+  - {id: '3.2', domain: D3, operational_prompt: If data were missing assess evidence that missingness did not bias the result., source_locator: official-template/table-4/row-2}
+  - {id: '3.3', domain: D3, operational_prompt: Assess whether missingness could depend on the unobserved true outcome., source_locator: official-template/table-4/row-3}
+  - {id: '3.4', domain: D3, operational_prompt: Where dependence is possible assess whether it was likely., source_locator: official-template/table-4/row-4}
+  - {id: '4.1', domain: D4, operational_prompt: Assess whether the outcome measurement method was unsuitable., source_locator: official-template/table-5/row-1}
+  - {id: '4.2', domain: D4, operational_prompt: Assess whether outcome ascertainment could differ between intervention groups., source_locator: official-template/table-5/row-2}
+  - {id: '4.3', domain: D4, operational_prompt: Establish whether outcome assessors knew the intervention received., source_locator: official-template/table-5/row-3}
+  - {id: '4.4', domain: D4, operational_prompt: Assess whether such knowledge could influence outcome assessment., source_locator: official-template/table-5/row-4}
+  - {id: '4.5', domain: D4, operational_prompt: Assess whether influence on outcome assessment was likely., source_locator: official-template/table-5/row-5}
+  - {id: '5.1', domain: D5, operational_prompt: Compare the reported analysis with a plan finalized before unblinded outcome data., source_locator: official-template/table-6/row-1}
+  - {id: '5.2', domain: D5, operational_prompt: Assess selection among multiple eligible measurements within the outcome domain., source_locator: official-template/table-6/row-3}
+  - {id: '5.3', domain: D5, operational_prompt: Assess selection among multiple eligible analyses of the same data., source_locator: official-template/table-6/row-4}
+

@@ -1,0 +1,5 @@
+name: systematic-review
+workflow: systematic-empty
+request: Tổng hợp bằng chứng theo systematic review
+active_skills: [co-van, tong-hop-bang-chung]
+expect: {route: tong-hop-bang-chung, mode: synthesize, systematic_completeness: true}

@@ -1,0 +1,6 @@
+cases:
+  - {prompt: "Đánh giá nguy cơ sai lệch RCT bằng RoB 2", expected_skill: danh-gia-chat-luong-bang-chung, expected_mode: rob2}
+  - {prompt: "Assess GRADE certainty for each outcome", expected_skill: danh-gia-chat-luong-bang-chung, expected_mode: grade}
+  - {prompt: "Đánh giá CERQual cho từng phát hiện", expected_skill: danh-gia-chat-luong-bang-chung, expected_mode: cerqual}
+negative_boundaries:
+  - {prompt: "Kiểm checklist CONSORT", not_skill: danh-gia-chat-luong-bang-chung}

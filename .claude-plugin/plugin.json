@@ -1,0 +1,8 @@
+{
+  "name": "medical-research-skills-vn",
+  "version": "2.0.0-alpha.1",
+  "description": "Bộ 24 kỹ năng nghiên cứu y học Việt–Anh với R/Stata, viết học thuật, tổng hợp bằng chứng, Word và phản biện có kiểm chứng.",
+  "author": {"name": "Anh Tu"},
+  "license": "CC-BY-NC-4.0",
+  "keywords": ["medical-research", "vietnam", "protocol", "R", "Stata"]
+}

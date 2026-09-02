@@ -1,0 +1,9 @@
+cases:
+  - id: existing-docx
+    request: "Tôi có luận văn đang viết dở"
+    attachments: [draft.docx]
+    expected: {canonical: ho-so-nghien-cuu, mode: adopt-existing-project}
+  - id: unsupported-pdf
+    request: "Tiếp nhận dự án đang dở"
+    attachments: [draft.pdf]
+    expected_marker: HOST_CAPABILITY_UNAVAILABLE

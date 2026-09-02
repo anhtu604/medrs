@@ -1,0 +1,31 @@
+version: "1.3.0-to-2.0.0"
+legacy:
+  co-van: {canonical: co-van, mode: entry, note: Entry point retained}
+  dieu-phoi-de-cuong-vn: {canonical: viet-ban-thao-y-hoc, mode: protocol, note: Use co-van until slice 2}
+  dieu-phoi-luan-van: {canonical: viet-ban-thao-y-hoc, mode: thesis, note: Use co-van until slice 2}
+  dieu-phoi-luan-an: {canonical: viet-ban-thao-y-hoc, mode: dissertation, note: Use co-van until slice 2}
+  dieu-phoi-bai-bao-vn: {canonical: viet-ban-thao-y-hoc, mode: manuscript-vi, note: Available in slice 2}
+  dieu-phoi-bai-bao-en: {canonical: viet-ban-thao-y-hoc, mode: manuscript-en, note: Available in slice 2}
+  dieu-phoi-tong-quan-he-thong: {canonical: tong-hop-bang-chung, mode: systematic-review, note: Available in slice 3}
+  viet-phan-vn: {canonical: co-van, mode: section-vi, note: Route to the section-specific writer}
+  viet-phan-en: {canonical: co-van, mode: section-en, note: Route to the section-specific writer}
+  viet-dinh-tinh-vn: {canonical: co-van, mode: qualitative, note: Route by section and design profile}
+  viet-tom-tat: {canonical: viet-tom-tat, mode: abstract, note: Available in slice 2}
+  phan-tich-so-lieu: {canonical: phan-tich-so-lieu, mode: analysis, note: Available in slice 2}
+  phan-tich-r: {canonical: phan-tich-r, mode: r, note: Available in slice 2}
+  phan-tich-stata: {canonical: phan-tich-stata, mode: stata, note: Available in slice 2}
+  tim-tai-lieu: {canonical: tim-y-van, mode: literature, note: Available in slice 3}
+  kiem-van-phong: {canonical: kiem-van-phong, mode: style, note: Canonical name retained}
+  kiem-cau-van-en: {canonical: kiem-van-phong, mode: composition-en, note: English locale mode}
+  kiem-trich-dan: {canonical: kiem-chung-ban-thao, mode: citations, note: Available in slice 2}
+  kiem-liem-chinh: {canonical: kiem-chung-ban-thao, mode: integrity, note: Available in slice 2}
+  kiem-chuan-bao-cao: {canonical: kiem-chung-ban-thao, mode: reporting-guideline, note: Available in slice 2/3}
+  kiem-sai-lech: {canonical: danh-gia-chat-luong-bang-chung, mode: risk-of-bias, note: Available in slice 3}
+  kiem-dinh-dang: {canonical: bo-cuc-tai-lieu, mode: validate-structure, note: Available in slice 4}
+  dinh-dang-tai-lieu: {canonical: dinh-dang-tai-lieu, mode: word-format, note: Available in slice 4}
+  dao-duc-vn: {canonical: dao-duc-va-quan-tri-du-lieu, mode: vietnam, note: Jurisdiction profile}
+  dao-duc-en: {canonical: dao-duc-va-quan-tri-du-lieu, mode: international, note: Jurisdiction profile}
+  nhan-xet-luan-van-vn: {canonical: phan-bien-va-chinh-sua, mode: thesis-review, note: Available in slice 4}
+  nhan-xet-ban-thao-en: {canonical: phan-bien-va-chinh-sua, mode: peer-review, note: Available in slice 4}
+  tra-loi-phan-bien: {canonical: phan-bien-va-chinh-sua, mode: response, note: Available in slice 4}
+

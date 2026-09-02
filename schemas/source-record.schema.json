@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["source_url", "source_version", "source_license", "source_cutoff", "last_verified", "expires_after_days", "verification_status"],
+  "properties": {
+    "source_url": {"type": "string"},
+    "source_version": {"type": "string"},
+    "source_license": {"type": "string"},
+    "source_cutoff": {"type": "string", "format": "date"},
+    "last_verified": {"type": ["string", "null"], "format": "date"},
+    "expires_after_days": {"type": "integer", "minimum": 1},
+    "verification_status": {"enum": ["CURRENT", "STALE", "UNVERIFIED"]}
+  },
+  "additionalProperties": true
+}
+

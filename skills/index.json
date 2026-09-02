@@ -1,0 +1,469 @@
+{
+  "schema_version": "1.0.0",
+  "skills": [
+    {
+      "name": "bo-cuc-tai-lieu",
+      "purpose": "Lập và áp dụng bố cục ngữ nghĩa cho luận văn, luận án hoặc bài báo theo profile nguồn chính thức. Restructures approved sections in a new artifact. Không chỉnh font, lề, trường mục lục, phân trang hoặc tự viết phần còn thiếu.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/bo-cuc-tai-lieu/SKILL.md",
+      "reference_files": [
+        "skills/bo-cuc-tai-lieu/references/hmu-profile-use.md",
+        "skills/bo-cuc-tai-lieu/references/structure-contract.md"
+      ]
+    },
+    {
+      "name": "co-mau-va-ke-hoach-phan-tich",
+      "purpose": "Lập estimand, giả định, cỡ mẫu và kế hoạch phân tích định trước cho nghiên cứu y học. Plans estimands, power and analysis sets. Không dùng kết quả quan sát để chọn mô hình hay tối ưu ý nghĩa thống kê.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation"
+      ],
+      "skill_path": "skills/co-mau-va-ke-hoach-phan-tich/SKILL.md",
+      "reference_files": [
+        "skills/co-mau-va-ke-hoach-phan-tich/references/contract.yaml",
+        "skills/co-mau-va-ke-hoach-phan-tich/references/estimand-and-power.md"
+      ]
+    },
+    {
+      "name": "co-van",
+      "purpose": "Định tuyến yêu cầu nghiên cứu y học chưa rõ và tiếp nhận tên gọi cũ. Routes ambiguous medical-research work to the correct canonical skill. Không dùng cho tư vấn điều trị hoặc nhiệm vụ chuyên biệt đã gọi đúng skill.",
+      "role": "entry-point",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "manuscript",
+        "evidence-synthesis"
+      ],
+      "skill_path": "skills/co-van/SKILL.md",
+      "reference_files": [
+        "skills/co-van/references/legacy-skill-map.yaml"
+      ]
+    },
+    {
+      "name": "danh-gia-chat-luong-bang-chung",
+      "purpose": "Đánh giá nguy cơ sai lệch và độ chắc chắn bằng chứng y học bằng RoB 2, GRADE hoặc CERQual theo từng kết quả/phát hiện. Appraises evidence quality. Không kiểm checklist báo cáo, đoán signalling answer hay dùng nhãn chung cho toàn nghiên cứu.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "journal-article",
+        "review"
+      ],
+      "skill_path": "skills/danh-gia-chat-luong-bang-chung/SKILL.md",
+      "reference_files": [
+        "skills/danh-gia-chat-luong-bang-chung/references/appraisal-routing.md",
+        "skills/danh-gia-chat-luong-bang-chung/references/cerqual-confidence.md",
+        "skills/danh-gia-chat-luong-bang-chung/references/grade-certainty.md",
+        "skills/danh-gia-chat-luong-bang-chung/references/rob2-use-contract.md"
+      ]
+    },
+    {
+      "name": "dao-duc-va-quan-tri-du-lieu",
+      "purpose": "Use when a medical protocol needs ethics, consent, registration, privacy, data-governance, or approval-status planning. Dùng khi lập hồ sơ đạo đức và quản trị dữ liệu; không dùng để bịa số chấp thuận hoặc thay tư vấn pháp lý.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "manuscript"
+      ],
+      "skill_path": "skills/dao-duc-va-quan-tri-du-lieu/SKILL.md",
+      "reference_files": [
+        "skills/dao-duc-va-quan-tri-du-lieu/references/data-governance.md",
+        "skills/dao-duc-va-quan-tri-du-lieu/references/international-profile.md",
+        "skills/dao-duc-va-quan-tri-du-lieu/references/source-register.yaml",
+        "skills/dao-duc-va-quan-tri-du-lieu/references/vietnam-profile.md"
+      ]
+    },
+    {
+      "name": "de-cuong-va-thiet-ke",
+      "purpose": "Thiết kế câu hỏi, mục tiêu, quần thể, biến và chiến lược chọn mẫu cho nghiên cứu y học. Designs medical research protocols. Không tính cỡ mẫu, chọn mô hình theo kết quả quan sát hay viết Results.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation"
+      ],
+      "skill_path": "skills/de-cuong-va-thiet-ke/SKILL.md",
+      "reference_files": [
+        "skills/de-cuong-va-thiet-ke/references/contract.yaml",
+        "skills/de-cuong-va-thiet-ke/references/design-contract.md"
+      ]
+    },
+    {
+      "name": "dinh-dang-tai-lieu",
+      "purpose": "Use when a medical thesis, dissertation, or manuscript DOCX needs source-governed Word styles, margins, headings, TOC, captions, section breaks, page numbering, rendering, or pre-submission format validation. Không dùng để đổi nội dung hay bố cục ngữ nghĩa.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/dinh-dang-tai-lieu/SKILL.md",
+      "reference_files": [
+        "skills/dinh-dang-tai-lieu/references/backend-and-validation-contract.md",
+        "skills/dinh-dang-tai-lieu/references/hmu-word-mechanics.md"
+      ]
+    },
+    {
+      "name": "ho-so-nghien-cuu",
+      "purpose": "Tạo, kiểm tra hoặc tiếp nhận dự án nghiên cứu đang dở thành Research Passport. Creates, validates, confirms, or adopts an existing medical-research project. Không viết bài hay xác nhận dữ kiện thay tác giả.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "manuscript",
+        "evidence-synthesis"
+      ],
+      "skill_path": "skills/ho-so-nghien-cuu/SKILL.md",
+      "reference_files": [
+        "skills/ho-so-nghien-cuu/references/adopt-existing-project.md"
+      ]
+    },
+    {
+      "name": "kiem-chung-ban-thao",
+      "purpose": "Kiểm chứng bản thảo y học trước nộp: claim–citation, số liệu xuyên phần, reporting guideline, liêm chính, disclosure và target profile. Validates actual artifacts. Không sửa ngầm nội dung hoặc cho qua checklist chưa nạp đủ.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "journal-article",
+        "review"
+      ],
+      "skill_path": "skills/kiem-chung-ban-thao/SKILL.md",
+      "reference_files": [
+        "skills/kiem-chung-ban-thao/references/validation-contract.md"
+      ]
+    },
+    {
+      "name": "kiem-van-phong",
+      "purpose": "Use when auditing or revising Vietnamese or English medical academic prose before standalone delivery, document assembly, submission, or defense. Dùng để kiểm lập luận, bằng chứng, giọng tác giả và văn phong; không dùng để dự đoán văn bản có phải do AI viết.",
+      "role": "gate",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "manuscript",
+        "review"
+      ],
+      "skill_path": "skills/kiem-van-phong/SKILL.md",
+      "reference_files": [
+        "skills/kiem-van-phong/references/argument-quality.md",
+        "skills/kiem-van-phong/references/composition-en.md",
+        "skills/kiem-van-phong/references/composition-vi.md",
+        "skills/kiem-van-phong/references/formulaic-writing-audit.md",
+        "skills/kiem-van-phong/references/scientific-integrity.md"
+      ]
+    },
+    {
+      "name": "phan-bien-va-chinh-sua",
+      "purpose": "Use when reviewing a medical manuscript or thesis, answering reviewers point by point, revising after peer review, examining a thesis, or verifying revision commitments. Không dùng cho kiểm tra trước nộp khi chưa có nhận xét phản biện.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article",
+        "review"
+      ],
+      "skill_path": "skills/phan-bien-va-chinh-sua/SKILL.md",
+      "reference_files": [
+        "skills/phan-bien-va-chinh-sua/references/response-matrix.md",
+        "skills/phan-bien-va-chinh-sua/references/review-revision-contract.md",
+        "skills/phan-bien-va-chinh-sua/references/thesis-examination.md"
+      ]
+    },
+    {
+      "name": "phan-tich-r",
+      "purpose": "Sinh, kiểm tra và điều phối chạy script R tái lập cho nghiên cứu y học; reads real outputs and builds tables. Không bịa kết quả hoặc nhận đã chạy khi thiếu R runtime, dữ liệu và provenance.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "analysis",
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/phan-tich-r/SKILL.md",
+      "reference_files": [
+        "skills/phan-tich-r/references/reproducibility-contract.md"
+      ]
+    },
+    {
+      "name": "phan-tich-so-lieu",
+      "purpose": "Điều phối phân tích số liệu y học theo kế hoạch đã xác nhận và diễn giải output thật. Coordinates R/Stata execution and uncertainty. Không chọn mô hình theo p-value, sửa ngược cỡ mẫu hay nhận đã chạy khi thiếu runtime.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "analysis",
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/phan-tich-so-lieu/SKILL.md",
+      "reference_files": [
+        "skills/phan-tich-so-lieu/references/analysis-deviation-contract.md"
+      ]
+    },
+    {
+      "name": "phan-tich-stata",
+      "purpose": "Sinh, kiểm tra và điều phối chạy Stata do-file tái lập cho nghiên cứu y học; reads real logs and outputs. Không tạo log giả, chọn lệnh theo ý nghĩa thống kê hoặc nhận đã chạy khi thiếu runtime.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "analysis",
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/phan-tich-stata/SKILL.md",
+      "reference_files": [
+        "skills/phan-tich-stata/references/reproducibility-contract.md"
+      ]
+    },
+    {
+      "name": "tim-y-van",
+      "purpose": "Tìm y văn y học có query log, provenance, khử trùng lặp và chế độ mạng trích dẫn seed/backward/forward. Retrieves literature reproducibly. Không bịa citation, vượt quyền truy cập, phân loại từ title hay gọi citation graph là tìm kiếm toàn diện.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "journal-article",
+        "review"
+      ],
+      "skill_path": "skills/tim-y-van/SKILL.md",
+      "reference_files": [
+        "skills/tim-y-van/references/citation-network.md",
+        "skills/tim-y-van/references/retrieval-contract.md"
+      ]
+    },
+    {
+      "name": "tong-hop-bang-chung",
+      "purpose": "Tổng hợp bằng chứng y học từ record ledger đã xác minh theo narrative, systematic, scoping, evidence-map hoặc meta-analysis readiness. Không đổi nhãn review, bịa citation, bỏ nghiên cứu trái chiều hay gộp khi thiếu số liệu.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article",
+        "review"
+      ],
+      "skill_path": "skills/tong-hop-bang-chung/SKILL.md",
+      "reference_files": [
+        "skills/tong-hop-bang-chung/references/meta-analysis-readiness.md",
+        "skills/tong-hop-bang-chung/references/synthesis-modes.md"
+      ]
+    },
+    {
+      "name": "viet-ban-luan",
+      "purpose": "Viết Discussion từ kết quả thật qua bài đối chiếu hợp pháp, bản đồ chức năng đoạn và blueprint được duyệt. Interprets cautiously. Không suy cấu trúc từ abstract, sao câu nguồn, bịa citation hay vượt trần nhân quả.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/viet-ban-luan/SKILL.md",
+      "reference_files": [
+        "skills/viet-ban-luan/references/discussion-workflow.md"
+      ]
+    },
+    {
+      "name": "viet-ban-thao-y-hoc",
+      "purpose": "Điều phối viết và ráp bài báo, luận văn hoặc luận án y học từ Research Passport và target profile. Orchestrates section writers and gates. Không thay section writer, không tự quyết bố cục hay bịa phần còn thiếu.",
+      "role": "orchestrator",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "journal-article",
+        "thesis",
+        "dissertation"
+      ],
+      "skill_path": "skills/viet-ban-thao-y-hoc/SKILL.md",
+      "reference_files": [
+        "skills/viet-ban-thao-y-hoc/references/assembly-workflow.md"
+      ]
+    },
+    {
+      "name": "viet-dat-van-de",
+      "purpose": "Viết Đặt vấn đề/Introduction y học theo vấn đề, bằng chứng, khoảng trống, lý do và mục tiêu. Writes source-bounded introductions. Không dùng tuyên bố quan trọng chung chung, tính mới chưa xác minh hay kết quả của nghiên cứu.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/viet-dat-van-de/SKILL.md",
+      "reference_files": []
+    },
+    {
+      "name": "viet-ket-luan-khuyen-nghi",
+      "purpose": "Viết kết luận và khuyến nghị ánh xạ mục tiêu với kết quả đã xác minh và mức chắc chắn. Produces proportionate conclusions. Không thêm phát hiện mới, nâng quan sát thành nhân quả hoặc khuyến nghị vượt dữ liệu.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/viet-ket-luan-khuyen-nghi/SKILL.md",
+      "reference_files": []
+    },
+    {
+      "name": "viet-ket-qua",
+      "purpose": "Viết Results/Kết quả chỉ từ bảng, hình, dữ liệu hoặc output thống kê đã xác minh. Reports denominators, estimates and uncertainty. Không điền số thiếu, giải thích cơ chế, đánh giá hiệu quả hay đưa khuyến nghị.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/viet-ket-qua/SKILL.md",
+      "reference_files": []
+    },
+    {
+      "name": "viet-phuong-phap",
+      "purpose": "Use when drafting or revising a medical Methods section from a Research Passport, protocol, or confirmed study record. Dùng cho phần Phương pháp; không dùng để mô tả thủ thuật chưa thực hiện như đã hoàn tất hoặc để viết Kết quả.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "manuscript"
+      ],
+      "skill_path": "skills/viet-phuong-phap/SKILL.md",
+      "reference_files": [
+        "skills/viet-phuong-phap/references/protocol-vs-completed.md",
+        "skills/viet-phuong-phap/references/writing-preflight.md"
+      ]
+    },
+    {
+      "name": "viet-tom-tat",
+      "purpose": "Viết Tóm tắt/Abstract sau cùng từ snapshot toàn văn đã hoàn chỉnh và kiểm tra nhất quán từng số, phương pháp, kết luận. Không chọn số đẹp, che xung đột hay tuyên bố tính mới chưa xác minh.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article"
+      ],
+      "skill_path": "skills/viet-tom-tat/SKILL.md",
+      "reference_files": [
+        "skills/viet-tom-tat/references/abstract-lifecycle.md"
+      ]
+    },
+    {
+      "name": "viet-tong-quan",
+      "purpose": "Viết tổng quan y văn theo chủ đề, khái niệm hoặc câu hỏi từ evidence map đã xác minh. Produces synthesis, not a study catalogue. Không xếp bài theo tác giả, bịa citation hay gọi narrative review là systematic review.",
+      "role": "leaf",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article",
+        "review"
+      ],
+      "skill_path": "skills/viet-tong-quan/SKILL.md",
+      "reference_files": []
+    }
+  ]
+}

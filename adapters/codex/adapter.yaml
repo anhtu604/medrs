@@ -1,0 +1,5 @@
+target: codex
+install_root: .codex/skills
+surface: local Codex desktop or CLI
+status: tested
+notes: Restart the task/session after installation so the skill index is reloaded.

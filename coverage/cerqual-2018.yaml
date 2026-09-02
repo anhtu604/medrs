@@ -1,0 +1,13 @@
+instrument: GRADE-CERQual confidence in qualitative synthesis findings
+version: Implementation Science guidance series 2018
+source_url: https://www.cerqual.org/official-guidance-for-applying-grade-cerqual/
+license: GRADE-CERQual all rights reserved; independent operational summaries only
+last_verified: 2026-09-02
+caller: skills/danh-gia-chat-luong-bang-chung/SKILL.md
+expected_ids: [methodological_limitations, coherence, adequacy, relevance]
+implemented_ids: [methodological_limitations, coherence, adequacy, relevance]
+items:
+  - {id: methodological_limitations, operational_prompt: Judge problems in design or conduct of contributing primary qualitative studies., source_locator: official-guidance/component-methodological-limitations}
+  - {id: coherence, operational_prompt: Judge how clearly and consistently the review finding is grounded across contributing data., source_locator: official-guidance/component-coherence}
+  - {id: adequacy, operational_prompt: Judge richness and quantity of data supporting the specific review finding., source_locator: official-guidance/component-adequacy}
+  - {id: relevance, operational_prompt: Judge applicability of contributing evidence to the context of the review question., source_locator: official-guidance/component-relevance}

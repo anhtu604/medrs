@@ -1,0 +1,34 @@
+final_count: 24
+active_slice: 4
+description_limits:
+  target_words: 45
+  per_skill_words: 60
+  per_skill_bytes: 640
+  aggregate_words: 1200
+  aggregate_bytes: 12288
+  aggregate_frontmatter_bytes: 16384
+skills:
+  - {name: co-van, slice: 1, status: accepted, description_target_words: 45}
+  - {name: ho-so-nghien-cuu, slice: 1, status: accepted, description_target_words: 45}
+  - {name: de-cuong-va-thiet-ke, slice: 1, status: accepted, description_target_words: 45}
+  - {name: co-mau-va-ke-hoach-phan-tich, slice: 1, status: accepted, description_target_words: 45}
+  - {name: dao-duc-va-quan-tri-du-lieu, slice: 1, status: accepted, description_target_words: 45}
+  - {name: viet-phuong-phap, slice: 1, status: accepted, description_target_words: 45}
+  - {name: kiem-van-phong, slice: 2, status: accepted, description_target_words: 45}
+  - {name: tim-y-van, slice: 3, status: accepted, description_target_words: 45}
+  - {name: tong-hop-bang-chung, slice: 3, status: accepted, description_target_words: 45}
+  - {name: danh-gia-chat-luong-bang-chung, slice: 3, status: accepted, description_target_words: 45}
+  - {name: phan-tich-so-lieu, slice: 2, status: accepted, description_target_words: 45}
+  - {name: phan-tich-r, slice: 2, status: accepted, description_target_words: 45}
+  - {name: phan-tich-stata, slice: 2, status: accepted, description_target_words: 45}
+  - {name: viet-ban-thao-y-hoc, slice: 2, status: accepted, description_target_words: 45}
+  - {name: viet-dat-van-de, slice: 2, status: accepted, description_target_words: 45}
+  - {name: viet-tong-quan, slice: 2, status: accepted, description_target_words: 45}
+  - {name: viet-ket-qua, slice: 2, status: accepted, description_target_words: 45}
+  - {name: viet-ban-luan, slice: 2, status: accepted, description_target_words: 45}
+  - {name: viet-ket-luan-khuyen-nghi, slice: 2, status: accepted, description_target_words: 45}
+  - {name: viet-tom-tat, slice: 2, status: accepted, description_target_words: 45}
+  - {name: kiem-chung-ban-thao, slice: 2, status: accepted, description_target_words: 45}
+  - {name: bo-cuc-tai-lieu, slice: 4, status: accepted, description_target_words: 45}
+  - {name: dinh-dang-tai-lieu, slice: 4, status: accepted, description_target_words: 45}
+  - {name: phan-bien-va-chinh-sua, slice: 4, status: accepted, description_target_words: 45}

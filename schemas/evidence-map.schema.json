@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EvidenceMap",
+  "type": "object",
+  "required": ["mode", "records", "contradictions", "systematic_completeness", "meta_analysis_ready", "excluded_records", "unresolved_records"],
+  "properties": {
+    "mode": {"enum": ["narrative", "systematic", "scoping", "meta-analysis", "evidence-map-only"]},
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "screening_decision", "citation_verification", "source_text_trust"],
+        "properties": {
+          "screening_decision": {"const": "include"},
+          "source_text_trust": {"const": "UNTRUSTED_CONTENT"},
+          "citation_verification": {
+            "type": "object",
+            "required": ["status", "artifact_id", "artifact_hash"]
+          }
+        }
+      }
+    },
+    "contradictions": {"type": "array"},
+    "systematic_completeness": {"type": "boolean"},
+    "meta_analysis_ready": {"type": "boolean"},
+    "excluded_records": {"type": "array"},
+    "unresolved_records": {"type": "array"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"mode": {"enum": ["systematic", "scoping", "meta-analysis"]}}},
+      "then": {"properties": {"systematic_completeness": {"const": true}}},
+      "else": {"properties": {"systematic_completeness": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"mode": {"const": "meta-analysis"}}},
+      "then": {"properties": {"meta_analysis_ready": {"const": true}}},
+      "else": {"properties": {"meta_analysis_ready": {"const": false}}}
+    }
+  ],
+  "additionalProperties": false
+}

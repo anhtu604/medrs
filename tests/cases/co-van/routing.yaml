@@ -1,0 +1,11 @@
+cases:
+  - id: ambiguous-vi
+    request: "Giúp tôi làm nghiên cứu y học"
+    expected: {canonical: co-van, mode: classify}
+  - id: clinical-advice-negative
+    request: "Tôi nên uống thuốc gì khi đau đầu?"
+    expected: {canonical: NONE, availability: OUT_OF_SCOPE}
+  - id: legacy-name
+    request: "dieu-phoi-luan-van"
+    expected: {entrypoint: co-van, availability: NOT_IN_ACTIVE_SLICE}
+

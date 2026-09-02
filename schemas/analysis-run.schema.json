@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://medical-research-skills-vn.local/schemas/analysis-run.schema.json",
+  "title": "AnalysisRun",
+  "type": "object",
+  "required": [
+    "backend", "runtime_verified", "command", "code_hash", "input_hash",
+    "output_paths", "output_hashes", "deviations", "status", "exit_code", "notes"
+  ],
+  "properties": {
+    "backend": {"enum": ["r", "stata"]},
+    "runtime_verified": {"type": "boolean"},
+    "runtime_executable": {"type": ["string", "null"]},
+    "runtime_version": {"type": ["string", "null"]},
+    "command": {"type": "string"},
+    "code_hash": {"type": "string"},
+    "input_hash": {"type": ["string", "null"]},
+    "output_paths": {"type": "array", "items": {"type": "string"}},
+    "output_hashes": {"type": "object", "additionalProperties": {"type": "string"}},
+    "deviations": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["NOT_RUN", "RUN_FAILED", "RUN_VERIFIED", "USER_SUPPLIED_OUTPUT_UNVERIFIED"]},
+    "exit_code": {"type": ["integer", "null"]},
+    "notes": {"type": "string"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "RUN_VERIFIED"}}},
+      "then": {
+        "properties": {
+          "runtime_verified": {"const": true},
+          "runtime_executable": {"type": "string", "minLength": 1},
+          "runtime_version": {"type": "string", "minLength": 1},
+          "exit_code": {"const": 0}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

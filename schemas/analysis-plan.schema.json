@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["estimand", "assumptions", "sample_size", "analysis_sets", "planned_model_family", "missing_data_plan", "sensitivity_plan", "decision_log"],
+  "properties": {
+    "estimand": {"type": "object"},
+    "assumptions": {"type": "array", "items": {"type": "object", "required": ["name", "value", "provenance", "status"]}},
+    "sample_size": {"type": "object", "required": ["method", "calculation_trace", "target", "adjusted_target"]},
+    "analysis_sets": {"type": "array"},
+    "planned_model_family": {"type": "string"},
+    "missing_data_plan": {"type": "object"},
+    "sensitivity_plan": {"type": "array"},
+    "decision_log": {"type": "array"}
+  }
+}
+

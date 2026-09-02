@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://medical-research-skills-vn.local/schemas/research-passport.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version", "project_id", "document_type", "locale_profile",
+    "research_question", "objectives", "study_design", "population", "outcomes",
+    "data_sensitivity", "target_profile", "verified_results", "source_ledger",
+    "author_decisions", "unresolved_markers", "disclosure_record", "audit_log"
+  ],
+  "$defs": {
+    "field": {
+      "type": "object",
+      "required": ["value", "status", "confidence", "provenance", "confirmed_by", "marker"],
+      "properties": {
+        "value": {},
+        "status": {"enum": ["CONFIRMED", "DRAFT_INFERRED", "UNRESOLVED"]},
+        "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "provenance": {"type": "array", "items": {"type": "object"}},
+        "confirmed_by": {"type": ["string", "null"]},
+        "marker": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "properties": {
+    "schema_version": {"const": "2.0.0"},
+    "project_id": {"type": "string", "minLength": 1},
+    "document_type": {"type": "string", "minLength": 1},
+    "locale_profile": {"type": "string", "minLength": 1},
+    "target_language": {"$ref": "#/$defs/field"},
+    "research_question": {"$ref": "#/$defs/field"},
+    "objectives": {"$ref": "#/$defs/field"},
+    "hypotheses": {"$ref": "#/$defs/field"},
+    "study_design": {"$ref": "#/$defs/field"},
+    "population": {"$ref": "#/$defs/field"},
+    "setting": {"$ref": "#/$defs/field"},
+    "exposure_or_intervention": {"$ref": "#/$defs/field"},
+    "comparator": {"$ref": "#/$defs/field"},
+    "outcomes": {"$ref": "#/$defs/field"},
+    "data_sensitivity": {"$ref": "#/$defs/field"},
+    "target_profile": {"$ref": "#/$defs/field"},
+    "reporting_guideline": {"$ref": "#/$defs/field"},
+    "risk_of_bias_framework": {"$ref": "#/$defs/field"},
+    "verified_results": {"type": "array"},
+    "source_ledger": {"type": "array"},
+    "author_decisions": {"type": "array"},
+    "unresolved_markers": {"type": "array", "items": {"type": "string"}},
+    "disclosure_record": {"type": "array"},
+    "audit_log": {"type": "array"}
+  },
+  "additionalProperties": true
+}
+

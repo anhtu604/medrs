@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiscussionBlueprint",
+  "type": "object",
+  "required": ["comparators", "moves", "copying_policy", "approved"],
+  "properties": {
+    "comparators": {"type": "array", "minItems": 1},
+    "moves": {"const": ["finding", "meaning", "comparison", "explanation", "limitation", "implication"]},
+    "copying_policy": {"const": "RHETORICAL_MOVES_ONLY_NO_PHRASE_COPY"},
+    "approved": {"const": true}
+  },
+  "additionalProperties": false
+}

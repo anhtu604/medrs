@@ -1,0 +1,22 @@
+owns:
+  - estimand
+  - effect_size_assumptions
+  - alpha_and_power
+  - sample_size_calculation
+  - analysis_sets
+  - planned_model_family
+  - missing_data_plan
+  - sensitivity_plan
+  - planned_tables_and_figures
+forbids:
+  - observed_outcome_model_selection
+  - result_interpretation
+  - post_hoc_target_sample_change
+forbidden_actions:
+  - select_model_from_observed_p_values
+  - optimize_for_statistical_significance
+  - interpret_observed_outcomes
+handoff:
+  design_change: de-cuong-va-thiet-ke
+  model_execution: phan-tich-so-lieu
+

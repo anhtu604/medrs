@@ -1,0 +1,8 @@
+cases:
+  - id: sampling-strategy
+    requested_action: define_sampling_strategy
+    expected: ALLOW
+  - id: numeric-sample-size
+    requested_action: calculate_sample_size
+    expected: REFUSE_AND_EXPLAIN
+

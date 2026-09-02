@@ -1,0 +1,23 @@
+owns:
+  - research_question
+  - objectives
+  - hypotheses
+  - study_design
+  - target_population
+  - eligibility
+  - sampling_frame
+  - sampling_strategy
+  - variable_operationalization
+  - bias_controls
+forbids:
+  - sample_size_calculation
+  - fitted_model_selection
+  - result_interpretation
+forbidden_actions:
+  - calculate_sample_size
+  - select_model_from_observed_p_values
+  - interpret_observed_outcomes
+handoff:
+  sample_size_calculation: co-mau-va-ke-hoach-phan-tich
+  fitted_model_execution: phan-tich-so-lieu
+

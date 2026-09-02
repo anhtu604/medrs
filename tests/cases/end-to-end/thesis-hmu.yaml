@@ -1,0 +1,5 @@
+name: thesis-hmu
+workflow: hmu-profile
+request: Định dạng luận văn HMU đúng mẫu Word
+active_skills: [co-van, bo-cuc-tai-lieu, dinh-dang-tai-lieu]
+expect: {route: dinh-dang-tai-lieu, mode: word-mechanics, source_status: VERIFIED}

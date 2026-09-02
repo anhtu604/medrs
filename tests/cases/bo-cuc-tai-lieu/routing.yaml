@@ -1,0 +1,4 @@
+cases:
+  - {prompt: "Sắp xếp lại bố cục các chương luận văn HMU", expected_skill: bo-cuc-tai-lieu, expected_mode: semantic-restructure}
+negative_boundaries:
+  - {prompt: "Đổi font, lề, mục lục và số trang trong Word", not_skill: bo-cuc-tai-lieu}

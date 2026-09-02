@@ -1,0 +1,7 @@
+cases:
+  - id: estimand
+    requested_action: define_estimand
+    expected: ALLOW
+  - id: p-value-model-selection
+    requested_action: select_model_from_observed_p_values
+    expected: REFUSE_AND_EXPLAIN

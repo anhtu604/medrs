@@ -1,0 +1,25 @@
+profile_id: en-medical-academic
+profile_version: en-medical-academic-1.0.0
+locale: en
+source_url: local:profiles/locale/en-medical-academic.yaml
+source_version: 1.0.0
+source_license: CC-BY-NC-4.0
+source_cutoff: '2026-08-31'
+last_verified: '2026-08-31'
+expires_after_days: 365
+verification_status: CURRENT
+academic_rhetoric:
+  author_reference: first_person_permitted_when_clearer
+  stance: calibrated_and_evidence_bounded
+  attribution: claim_led_citation_integration
+  address: no_reader_address_in_scientific_prose
+methods:
+  protocol_tense: future_or_present_for_prespecified_methods
+  completed_tense: past_for_confirmed_execution
+  section_order: [design, setting, participants, variables, procedures, statistical_analysis, ethics]
+terminology:
+  use_standard_international_medical_terms: true
+  define_abbreviation_at_first_use: true
+paragraphing:
+  topic_sentence_when_it_aids_navigation: true
+  one_primary_function_per_paragraph: true

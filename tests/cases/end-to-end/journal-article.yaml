@@ -1,0 +1,5 @@
+name: journal-article
+workflow: route
+request: Assemble the medical manuscript from verified section artifacts
+active_skills: [co-van, viet-ban-thao-y-hoc, kiem-van-phong, kiem-chung-ban-thao]
+expect: {route: viet-ban-thao-y-hoc, mode: orchestrate}

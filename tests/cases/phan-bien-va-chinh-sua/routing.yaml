@@ -1,0 +1,6 @@
+cases:
+  - {prompt: "Trả lời phản biện point-by-point và sửa bài", expected_skill: phan-bien-va-chinh-sua, expected_mode: response-to-reviewers}
+  - {prompt: "Nhận xét phản biện luận văn thạc sĩ", expected_skill: phan-bien-va-chinh-sua, expected_mode: thesis-examination}
+  - {prompt: "Revise and resubmit this manuscript", expected_skill: phan-bien-va-chinh-sua, expected_mode: revision}
+negative_boundaries:
+  - {prompt: "Kiểm chứng bản thảo trước khi nộp", not_skill: phan-bien-va-chinh-sua}

@@ -1,0 +1,5 @@
+cases:
+  - {prompt: "Định dạng luận văn HMU đúng mẫu Word", expected_skill: dinh-dang-tai-lieu, expected_mode: word-mechanics}
+  - {prompt: "Đổi font, lề, mục lục và số trang", expected_skill: dinh-dang-tai-lieu, expected_mode: word-mechanics}
+negative_boundaries:
+  - {prompt: "Sắp xếp lại thứ tự các chương", not_skill: dinh-dang-tai-lieu}

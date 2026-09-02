@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["comment_id", "reviewer", "verbatim", "decision", "rationale", "changes", "evidence"],
+  "properties": {
+    "comment_id": {"type": "string", "minLength": 1},
+    "reviewer": {"type": "string", "minLength": 1},
+    "verbatim": {"type": "string", "minLength": 1},
+    "decision": {"enum": ["accept", "partial", "decline", "clarify"]},
+    "rationale": {"type": "string", "minLength": 1},
+    "changes": {"type": "array", "items": {"type": "object"}},
+    "evidence": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}

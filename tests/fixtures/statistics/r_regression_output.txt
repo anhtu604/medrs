@@ -1,0 +1,8 @@
+Call:
+lm(formula = outcome ~ exposure, data = analysis_data)
+
+Coefficients:
+(Intercept)  1.000
+exposure     0.250
+
+Fixture only. This file tests provenance handling and is not a research result.

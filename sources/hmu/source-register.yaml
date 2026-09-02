@@ -1,0 +1,51 @@
+register_version: 1
+institution: Hanoi Medical University
+acquisition_due: '2026-09-30'
+status: AUTHORITATIVE_PRESENTATION_SOURCE_ACQUIRED
+presentation_rule_status: AUTHORITATIVE_ACCESS_CONFIRMED
+encoding_status: DEFERRED_TO_SLICE_4
+encoding_acceptance_gate: slice-4
+last_checked: '2026-08-31'
+official_index: https://sdh.hmu.edu.vn/news/xc115_Van-ban-phap-quy.html
+sources:
+  - title: Yêu cầu đối với luận văn
+    issuing_body: Trường Đại học Y Hà Nội
+    document_number: null
+    effective_date: null
+    official_page: https://sdh.hmu.edu.vn/news/tID12202_quy-trinh-va-bieu-mau-dung-cho-bao-ve-luan-van-sau-dai-hoc-cap-nhat-nam-2026.html
+    source_url: https://sdh.hmu.edu.vn/images/9_%20Yeu%20cau%20luan%20van_2020%281%29.docx
+    retrieved_at: '2026-08-31'
+    snapshot_path: sources/hmu/snapshots/9-Yeu-cau-luan-van-2020.docx
+    sha256: 6FAFDBB41FD09AE6D506661D2F7D9C0AC02B6B7DE6A3FF9A147CD551C125054F
+    license: Official institutional document; redistribution permission not stated
+    redistribution: PROHIBITED_OR_UNKNOWN
+    scope: thesis-presentation-format
+    last_verified: '2026-08-31'
+    verification_status: CURRENT
+    verification_basis: Linked as "Yêu cầu đối với luận văn" from the official HMU page updated for 2026
+  - title: Quyết định 3589/QĐ-ĐHYHN về quy trình và biểu mẫu đánh giá luận văn sau đại học
+    issuing_body: Trường Đại học Y Hà Nội
+    document_number: 3589/QĐ-ĐHYHN
+    effective_date: '2020-09-10'
+    source_url: https://sdh.hmu.edu.vn/images/0_%20QD%20Ban%20hanh%20QT%20va%20bieu%20mau.pdf
+    retrieved_at: '2026-08-31'
+    snapshot_path: sources/hmu/snapshots/3589-QD-DHYHN-2020.pdf
+    sha256: B4424335845CE77508D65EAE02FC40F95EB55261258124D31F38E537E8882D0C
+    license: Official institutional document; redistribution permission not stated
+    redistribution: PROHIBITED_OR_UNKNOWN
+    scope: thesis-defense-process-and-forms
+    last_verified: '2026-08-31'
+    verification_status: CURRENT_AS_DISCOVERY_SOURCE
+  - title: Công văn thông báo lịch và hồ sơ bảo vệ luận văn sau đại học năm 2025
+    issuing_body: Trường Đại học Y Hà Nội
+    document_number: 3252/ĐHYHN-SĐH
+    effective_date: null
+    source_url: https://sdh.hmu.edu.vn/images/3252_%C4%90HYHN-S%C4%90H_Cong%20van%20thong%20bao%20lich%20bao%20ve.pdf
+    retrieved_at: '2026-08-31'
+    snapshot_path: sources/hmu/snapshots/3252-DHYHN-SDH-2025.pdf
+    sha256: 9FC136565DE9E732DB94A88B22456E84E41618563262B30D1B3343133DF2CC9D
+    license: Official institutional document; redistribution permission not stated
+    redistribution: PROHIBITED_OR_UNKNOWN
+    scope: thesis-defense-submission-process
+    last_verified: '2026-08-31'
+    verification_status: HISTORICAL_DISCOVERY_SOURCE

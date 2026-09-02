@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["mode", "locale_profile", "procedure_claims", "markers", "preflight", "full_gate"],
+  "properties": {
+    "mode": {"enum": ["protocol", "completed-study"]},
+    "locale_profile": {"type": "string"},
+    "procedure_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "execution_status"],
+        "properties": {
+          "text": {"type": "string"},
+          "execution_status": {"enum": ["PLANNED", "CONFIRMED_EXECUTED"]}
+        }
+      }
+    },
+    "markers": {"type": "array", "items": {"type": "string"}},
+    "preflight": {"type": "object"},
+    "full_gate": {"type": "object"}
+  }
+}
