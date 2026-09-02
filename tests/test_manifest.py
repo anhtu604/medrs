@@ -46,9 +46,10 @@ def test_claude_manifest_and_marketplace_are_repo_first():
     claude_manifest = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
     marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
     assert not (ROOT / "plugin.json").exists()
-    assert claude_manifest["name"] == "medical-research-skills-vn"
+    assert claude_manifest["name"] == "medrs"
     assert claude_manifest["version"] == "2.0.0-alpha.1"
     assert claude_manifest["license"] == "CC-BY-NC-4.0"
+    assert claude_manifest["repository"] == "https://github.com/anhtu604/medrs"
     assert marketplace["plugins"][0]["source"] == "./"
     assert marketplace["plugins"][0]["name"] == claude_manifest["name"]
 

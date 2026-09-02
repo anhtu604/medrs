@@ -1,10 +1,10 @@
 {
-  "name": "anhtu-medical",
+  "name": "medrs",
   "owner": {"name": "Anh Tu"},
   "description": "Portable, evidence-bounded medical research skills for Vietnamese and international workflows.",
   "plugins": [
     {
-      "name": "medical-research-skills-vn",
+      "name": "medrs",
       "source": "./",
       "description": "Medical research workflows with Vietnamese and English routing, Research Passports, protocol planning, R/Stata-first analysis boundaries, source provenance, and explicit anti-fabrication gates."
     }

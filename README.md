@@ -38,6 +38,8 @@ Inspect the downloaded script before piping it to `iex`. Override `MEDICAL_RESEA
 
 Targets `codex`, `claude`, and `generic` install into local `.codex/skills`, `.claude/skills`, and `.agents/skills`. This does not make local files discoverable to ChatGPT web, Claude Chat, or a remote Cowork sandbox; those surfaces require their own published plugin/app adapter.
 
+For Claude Cowork manual installation, build `dist/medrs-cowork-2.0.0-alpha.1.zip` with `python scripts/package_plugin.py`, then upload that ZIP from the Claude organization plugin settings. The upload contains only the Cowork manifest, 24 skills, shared coverage/profile/schema resources, and public documentation.
+
 Validation commands:
 
 ```text
