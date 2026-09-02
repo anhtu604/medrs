@@ -87,7 +87,9 @@ def test_doctor_detects_complete_and_tampered_install(tmp_path):
 
 def test_web_bootstrap_is_repo_parameterized_and_supports_checksum_pin():
     text = (ROOT / "install/web.ps1").read_text(encoding="utf-8")
+    assert "anhtu604/medrs" in text
     assert "MEDICAL_RESEARCH_SKILLS_REPO" in text
     assert "ArchiveSha256" in text
+    assert "-UserRoot $UserRoot" in text
     assert "Get-FileHash" in text
     assert "finally" in text

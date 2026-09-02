@@ -4,6 +4,7 @@ param(
   [string] $Repo = $(if ($env:MEDICAL_RESEARCH_SKILLS_REPO) { $env:MEDICAL_RESEARCH_SKILLS_REPO } else { 'anhtu604/medrs' }),
   [string] $Ref = 'main',
   [string] $ArchiveSha256,
+  [string] $UserRoot = [Environment]::GetFolderPath('UserProfile'),
   [switch] $Quiet
 )
 
@@ -30,7 +31,7 @@ try {
   if (-not $source) { throw 'Downloaded archive contains no repository directory.' }
   $installer = Join-Path $source.FullName 'install.ps1'
   if (-not (Test-Path -LiteralPath $installer -PathType Leaf)) { throw 'Downloaded repository has no install.ps1.' }
-  & $installer -SourceRoot $source.FullName -Targets $Targets -VersionRef $Ref -Quiet:$Quiet
+  & $installer -SourceRoot $source.FullName -Targets $Targets -VersionRef $Ref -UserRoot $UserRoot -Quiet:$Quiet
 } finally {
   if (Test-Path -LiteralPath $temp) { Remove-Item -LiteralPath $temp -Recurse -Force -ErrorAction SilentlyContinue }
 }
