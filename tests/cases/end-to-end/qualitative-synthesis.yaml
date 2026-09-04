@@ -1,5 +1,5 @@
 name: qualitative-synthesis
 workflow: cerqual
 request: Đánh giá CERQual cho từng phát hiện định tính
-active_skills: [co-van, danh-gia-chat-luong-bang-chung]
+active_skills: [medrs, danh-gia-chat-luong-bang-chung]
 expect: {route: danh-gia-chat-luong-bang-chung, mode: cerqual, confidence: HIGH}

@@ -1,6 +1,6 @@
 {
   "name": "medrs",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "MedRS: 24 kỹ năng nghiên cứu y học Việt–Anh với R/Stata, viết học thuật, tổng hợp bằng chứng, Word và phản biện có kiểm chứng.",
   "author": {"name": "Anh Tu"},
   "license": "CC-BY-NC-4.0",

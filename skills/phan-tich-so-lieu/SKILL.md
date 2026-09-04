@@ -2,7 +2,7 @@
 name: phan-tich-so-lieu
 description: Điều phối phân tích số liệu y học theo kế hoạch đã xác nhận và diễn giải output thật. Coordinates R/Stata execution and uncertainty. Không chọn mô hình theo p-value, sửa ngược cỡ mẫu hay nhận đã chạy khi thiếu runtime.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [analysis, thesis, dissertation, journal-article]

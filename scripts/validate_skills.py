@@ -17,7 +17,7 @@ from medical_research_skills_vn.structure import validate_shared_preflight  # no
 
 
 def main() -> int:
-    mapping = ROOT / "skills/co-van/references/legacy-skill-map.yaml"
+    mapping = ROOT / "skills/medrs/references/legacy-skill-map.yaml"
     legacy_names: set[str] = set()
     if mapping.exists():
         legacy_names = set((yaml.safe_load(mapping.read_text(encoding="utf-8")) or {}).get("legacy", {}))

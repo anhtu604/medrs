@@ -2,7 +2,7 @@
 name: dinh-dang-tai-lieu
 description: Use when a medical thesis, dissertation, or manuscript DOCX needs source-governed Word styles, margins, headings, TOC, captions, section breaks, page numbering, rendering, or pre-submission format validation. Không dùng để đổi nội dung hay bố cục ngữ nghĩa.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

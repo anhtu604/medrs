@@ -2,7 +2,7 @@
 name: viet-ket-qua
 description: Viết Results/Kết quả chỉ từ bảng, hình, dữ liệu hoặc output thống kê đã xác minh. Reports denominators, estimates and uncertainty. Không điền số thiếu, giải thích cơ chế, đánh giá hiệu quả hay đưa khuyến nghị.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

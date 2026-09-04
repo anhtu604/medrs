@@ -2,7 +2,7 @@
 name: kiem-chung-ban-thao
 description: "Kiểm chứng bản thảo y học trước nộp: claim–citation, số liệu xuyên phần, reporting guideline, liêm chính, disclosure và target profile. Validates actual artifacts. Không sửa ngầm nội dung hoặc cho qua checklist chưa nạp đủ."
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, journal-article, review]

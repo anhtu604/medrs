@@ -2,7 +2,7 @@
 name: tong-hop-bang-chung
 description: Tổng hợp bằng chứng y học từ record ledger đã xác minh theo narrative, systematic, scoping, evidence-map hoặc meta-analysis readiness. Không đổi nhãn review, bịa citation, bỏ nghiên cứu trái chiều hay gộp khi thiếu số liệu.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review]

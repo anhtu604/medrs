@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0-alpha.2 — MedRS single entrypoint
+
+- Renamed the canonical `co-van` router to `medrs`, exposed as `/medrs` on Claude-compatible hosts and `$medrs` on Codex.
+- Added manifest-scoped retirement of renamed skills during upgrades so the old entrypoint is removed without touching user-owned skills.
+- Renamed the Claude/Cowork plugin and regenerated the minimal Cowork upload package as MedRS.
+
 ## 2.0.0-alpha.1 — All 24 skills accepted
 
 - Added a four-pass scoped academic-style gate with explicit integrity and authorship boundaries.

@@ -54,7 +54,7 @@ def test_failed_source_validation_does_not_replace_existing_install(tmp_path):
     user_root = tmp_path / "user"
     first = _run("install.ps1", "-SourceRoot", ROOT, "-UserRoot", user_root, "-Targets", "codex", "-Quiet")
     assert first.returncode == 0
-    marker = user_root / ".codex/skills/co-van/user-marker.txt"
+    marker = user_root / ".codex/skills/medrs/user-marker.txt"
     marker.write_text("preserve", encoding="utf-8")
     broken = tmp_path / "broken"
     broken.mkdir()
@@ -72,7 +72,7 @@ def test_uninstaller_removes_only_manifest_owned_paths(tmp_path):
     removed = _run("uninstall.ps1", "-UserRoot", user_root, "-Targets", "codex", "-Quiet")
     assert removed.returncode == 0, removed.stderr + removed.stdout
     assert unrelated.is_file()
-    assert not (user_root / ".codex/skills/co-van").exists()
+    assert not (user_root / ".codex/skills/medrs").exists()
 
 
 def test_doctor_detects_complete_and_tampered_install(tmp_path):
@@ -80,7 +80,7 @@ def test_doctor_detects_complete_and_tampered_install(tmp_path):
     assert _run("install.ps1", "-SourceRoot", ROOT, "-UserRoot", user_root, "-Targets", "codex", "-Quiet").returncode == 0
     healthy = _run("doctor.ps1", "-UserRoot", user_root, "-Targets", "codex", "-Quiet")
     assert healthy.returncode == 0, healthy.stderr + healthy.stdout
-    (user_root / ".codex/skills/co-van/SKILL.md").unlink()
+    (user_root / ".codex/skills/medrs/SKILL.md").unlink()
     broken = _run("doctor.ps1", "-UserRoot", user_root, "-Targets", "codex", "-Quiet")
     assert broken.returncode != 0
 
@@ -93,3 +93,31 @@ def test_web_bootstrap_is_repo_parameterized_and_supports_checksum_pin():
     assert "-UserRoot $UserRoot" in text
     assert "Get-FileHash" in text
     assert "finally" in text
+
+
+def test_upgrade_removes_only_retired_skills_from_previous_managed_manifest(tmp_path):
+    user_root = tmp_path / "user"
+    host_root = user_root / ".codex"
+    old_skill = host_root / "skills/co-van/SKILL.md"
+    old_skill.parent.mkdir(parents=True)
+    old_skill.write_text("legacy managed entrypoint", encoding="utf-8")
+    unrelated = host_root / "skills/user-owned/SKILL.md"
+    unrelated.parent.mkdir(parents=True)
+    unrelated.write_text("mine", encoding="utf-8")
+    manifest = {
+        "package": "medical-research-skills-vn",
+        "skills": ["co-van"],
+        "support_path": str(host_root / "medical-research-skills-vn"),
+    }
+    (host_root / "medical-research-skills-vn.install.json").write_text(
+        json.dumps(manifest), encoding="utf-8"
+    )
+
+    upgraded = _run(
+        "install.ps1", "-SourceRoot", ROOT, "-UserRoot", user_root, "-Targets", "codex", "-Quiet"
+    )
+
+    assert upgraded.returncode == 0, upgraded.stderr + upgraded.stdout
+    assert not old_skill.exists()
+    assert (host_root / "skills/medrs/SKILL.md").is_file()
+    assert unrelated.is_file()

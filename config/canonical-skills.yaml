@@ -8,7 +8,7 @@ description_limits:
   aggregate_bytes: 12288
   aggregate_frontmatter_bytes: 16384
 skills:
-  - {name: co-van, slice: 1, status: accepted, description_target_words: 45}
+  - {name: medrs, slice: 1, status: accepted, description_target_words: 45}
   - {name: ho-so-nghien-cuu, slice: 1, status: accepted, description_target_words: 45}
   - {name: de-cuong-va-thiet-ke, slice: 1, status: accepted, description_target_words: 45}
   - {name: co-mau-va-ke-hoach-phan-tich, slice: 1, status: accepted, description_target_words: 45}

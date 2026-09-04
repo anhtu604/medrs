@@ -2,7 +2,7 @@
 name: dao-duc-va-quan-tri-du-lieu
 description: Use when a medical protocol needs ethics, consent, registration, privacy, data-governance, or approval-status planning. Dùng khi lập hồ sơ đạo đức và quản trị dữ liệu; không dùng để bịa số chấp thuận hoặc thay tư vấn pháp lý.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript]

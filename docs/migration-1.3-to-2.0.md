@@ -1,6 +1,6 @@
 # Migration from 1.3.0 to 2.0
 
-Version 2.0 does not install compatibility alias skills. Ask `co-van` about an old skill name; it reads `skills/co-van/references/legacy-skill-map.yaml` and reports the canonical destination and availability.
+Version 2.0 does not install compatibility alias skills. Ask `medrs` about an old skill name; it reads `skills/medrs/references/legacy-skill-map.yaml` and reports the canonical destination and availability.
 
 For an existing project, attach the current DOCX, Markdown, or text draft and request `ho-so-nghien-cuu` in `intake-existing-project` mode. The plugin creates a draft Research Passport, preserves provenance, marks uncertain fields, and asks for confirmation instead of requiring manual re-entry.
 

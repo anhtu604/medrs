@@ -2,7 +2,7 @@
 name: phan-bien-va-chinh-sua
 description: Use when reviewing a medical manuscript or thesis, answering reviewers point by point, revising after peer review, examining a thesis, or verifying revision commitments. Không dùng cho kiểm tra trước nộp khi chưa có nhận xét phản biện.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review]

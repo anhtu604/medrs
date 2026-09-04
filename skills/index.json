@@ -40,26 +40,6 @@
       ]
     },
     {
-      "name": "co-van",
-      "purpose": "Định tuyến yêu cầu nghiên cứu y học chưa rõ và tiếp nhận tên gọi cũ. Routes ambiguous medical-research work to the correct canonical skill. Không dùng cho tư vấn điều trị hoặc nhiệm vụ chuyên biệt đã gọi đúng skill.",
-      "role": "entry-point",
-      "locale": [
-        "vi",
-        "en"
-      ],
-      "document_types": [
-        "protocol",
-        "thesis",
-        "dissertation",
-        "manuscript",
-        "evidence-synthesis"
-      ],
-      "skill_path": "skills/co-van/SKILL.md",
-      "reference_files": [
-        "skills/co-van/references/legacy-skill-map.yaml"
-      ]
-    },
-    {
       "name": "danh-gia-chat-luong-bang-chung",
       "purpose": "Đánh giá nguy cơ sai lệch và độ chắc chắn bằng chứng y học bằng RoB 2, GRADE hoặc CERQual theo từng kết quả/phát hiện. Appraises evidence quality. Không kiểm checklist báo cáo, đoán signalling answer hay dùng nhãn chung cho toàn nghiên cứu.",
       "role": "leaf",
@@ -204,6 +184,26 @@
         "skills/kiem-van-phong/references/composition-vi.md",
         "skills/kiem-van-phong/references/formulaic-writing-audit.md",
         "skills/kiem-van-phong/references/scientific-integrity.md"
+      ]
+    },
+    {
+      "name": "medrs",
+      "purpose": "Điểm vào duy nhất `/medrs` cho dự án nghiên cứu y học; định tuyến yêu cầu Việt–Anh đến đúng skill chuyên môn. Không dùng cho tư vấn điều trị hoặc khi tác giả chỉ yêu cầu thao tác ngoài nghiên cứu.",
+      "role": "entry-point",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "manuscript",
+        "evidence-synthesis"
+      ],
+      "skill_path": "skills/medrs/SKILL.md",
+      "reference_files": [
+        "skills/medrs/references/legacy-skill-map.yaml"
       ]
     },
     {

@@ -23,7 +23,7 @@ def route_request(request, legacy_map, active_skills):
         if legacy_name.casefold() in text:
             canonical = target["canonical"]
             availability = "AVAILABLE" if canonical in active_skills else "NOT_IN_ACTIVE_SLICE"
-            return RoutingDecision("co-van", canonical, target["mode"], availability)
+            return RoutingDecision("medrs", canonical, target["mode"], availability)
 
     adoption_phrases = (
         "đang viết dở",
@@ -35,7 +35,7 @@ def route_request(request, legacy_map, active_skills):
     )
     supported_attachment = any(name.casefold().endswith((".docx", ".md", ".txt")) for name in request.attachments)
     if supported_attachment and any(phrase in text for phrase in adoption_phrases):
-        return RoutingDecision("co-van", "ho-so-nghien-cuu", "adopt-existing-project", "AVAILABLE")
+        return RoutingDecision("medrs", "ho-so-nghien-cuu", "adopt-existing-project", "AVAILABLE")
 
     style_audit_phrases = (
         "kiểm văn phong",
@@ -46,27 +46,27 @@ def route_request(request, legacy_map, active_skills):
     )
     if any(phrase in text for phrase in style_audit_phrases):
         availability = "AVAILABLE" if "kiem-van-phong" in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", "kiem-van-phong", "full-audit", availability)
+        return RoutingDecision("medrs", "kiem-van-phong", "full-audit", availability)
 
     if any(phrase in text for phrase in ("p nhỏ nhất", "smallest p", "p-value đẹp", "p value đẹp")):
         availability = "AVAILABLE" if "phan-tich-so-lieu" in active_skills else "NOT_IN_ACTIVE_SLICE"
         return RoutingDecision(
-            "co-van", "phan-tich-so-lieu", "refuse-significance-driven-selection", availability
+            "medrs", "phan-tich-so-lieu", "refuse-significance-driven-selection", availability
         )
 
     if any(phrase in text for phrase in ("diễn giải output", "interpret the output", "interpret regression output")):
         availability = "AVAILABLE" if "phan-tich-so-lieu" in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", "phan-tich-so-lieu", "interpret-supplied-output", availability)
+        return RoutingDecision("medrs", "phan-tich-so-lieu", "interpret-supplied-output", availability)
 
     if any(phrase in text for phrase in ("đổi font", "căn lề", "số trang", "mục lục và số trang", "word formatting", "định dạng luận văn", "format thesis")):
         skill = "dinh-dang-tai-lieu"
         availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", skill, "word-mechanics", availability)
+        return RoutingDecision("medrs", skill, "word-mechanics", availability)
 
     if any(phrase in text for phrase in ("bố cục các chương", "sắp xếp lại bố cục", "reorder thesis sections", "semantic structure")):
         skill = "bo-cuc-tai-lieu"
         availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", skill, "semantic-restructure", availability)
+        return RoutingDecision("medrs", skill, "semantic-restructure", availability)
 
     review_routes = (
         (("trả lời phản biện", "response to reviewers", "point-by-point"), "response-to-reviewers"),
@@ -77,17 +77,17 @@ def route_request(request, legacy_map, active_skills):
         if any(phrase in text for phrase in phrases):
             skill = "phan-bien-va-chinh-sua"
             availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-            return RoutingDecision("co-van", skill, mode, availability)
+            return RoutingDecision("medrs", skill, mode, availability)
 
     r_code_phrases = ("script r", "r script", "mã r", "code r")
     if any(phrase in text for phrase in r_code_phrases):
         availability = "AVAILABLE" if "phan-tich-r" in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", "phan-tich-r", "generate-code", availability)
+        return RoutingDecision("medrs", "phan-tich-r", "generate-code", availability)
 
     stata_code_phrases = ("stata do-file", "stata do file", "do-file stata", "lệnh stata")
     if any(phrase in text for phrase in stata_code_phrases):
         availability = "AVAILABLE" if "phan-tich-stata" in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", "phan-tich-stata", "generate-code", availability)
+        return RoutingDecision("medrs", "phan-tich-stata", "generate-code", availability)
 
     article_routes = (
         (("kiểm chứng bản thảo", "validate the manuscript", "submission readiness"), "kiem-chung-ban-thao", "validate"),
@@ -102,11 +102,11 @@ def route_request(request, legacy_map, active_skills):
     for phrases, skill, mode in article_routes:
         if any(phrase in text for phrase in phrases):
             availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-            return RoutingDecision("co-van", skill, mode, availability)
+            return RoutingDecision("medrs", skill, mode, availability)
 
     if any(phrase in text for phrase in ("tổng hợp bằng chứng", "synthesize the evidence", "evidence synthesis")):
         availability = "AVAILABLE" if "tong-hop-bang-chung" in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", "tong-hop-bang-chung", "synthesize", availability)
+        return RoutingDecision("medrs", "tong-hop-bang-chung", "synthesize", availability)
 
     appraisal_routes = (
         (("rob 2", "rob2", "nguy cơ sai lệch rct"), "rob2"),
@@ -117,23 +117,23 @@ def route_request(request, legacy_map, active_skills):
         if any(phrase in text for phrase in phrases):
             skill = "danh-gia-chat-luong-bang-chung"
             availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-            return RoutingDecision("co-van", skill, mode, availability)
+            return RoutingDecision("medrs", skill, mode, availability)
 
     if any(phrase in text for phrase in ("checklist consort", "checklist strobe", "checklist prisma")):
         skill = "kiem-chung-ban-thao"
         availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", skill, "reporting-guideline", availability)
+        return RoutingDecision("medrs", skill, "reporting-guideline", availability)
 
     if any(phrase in text for phrase in ("mạng trích dẫn", "citation network", "citation graph")):
         availability = "AVAILABLE" if "tim-y-van" in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", "tim-y-van", "citation-network", availability)
+        return RoutingDecision("medrs", "tim-y-van", "citation-network", availability)
 
     if any(phrase in text for phrase in ("tìm y văn", "literature search", "search pubmed")):
         availability = "AVAILABLE" if "tim-y-van" in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("co-van", "tim-y-van", "database-search", availability)
+        return RoutingDecision("medrs", "tim-y-van", "database-search", availability)
 
     clinical_advice = ("uống thuốc", "điều trị cho tôi", "chẩn đoán cho tôi", "what medicine", "diagnose me")
     research_terms = ("nghiên cứu", "luận văn", "đề cương", "research", "thesis", "protocol")
     if any(phrase in text for phrase in clinical_advice) and not any(term in text for term in research_terms):
-        return RoutingDecision("co-van", "NONE", "out-of-scope-clinical-advice", "OUT_OF_SCOPE")
-    return RoutingDecision("co-van", "co-van", "classify", "AVAILABLE")
+        return RoutingDecision("medrs", "NONE", "out-of-scope-clinical-advice", "OUT_OF_SCOPE")
+    return RoutingDecision("medrs", "medrs", "classify", "AVAILABLE")

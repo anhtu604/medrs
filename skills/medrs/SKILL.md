@@ -1,16 +1,16 @@
 ---
-name: co-van
-description: Định tuyến yêu cầu nghiên cứu y học chưa rõ và tiếp nhận tên gọi cũ. Routes ambiguous medical-research work to the correct canonical skill. Không dùng cho tư vấn điều trị hoặc nhiệm vụ chuyên biệt đã gọi đúng skill.
+name: medrs
+description: Điểm vào duy nhất `/medrs` cho dự án nghiên cứu y học; định tuyến yêu cầu Việt–Anh đến đúng skill chuyên môn. Không dùng cho tư vấn điều trị hoặc khi tác giả chỉ yêu cầu thao tác ngoài nghiên cứu.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: entry-point
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript, evidence-synthesis]
 ---
 
-# Cố vấn nghiên cứu y học
+# MedRS
 
-Classify the request, preserve the Research Passport, and route to one canonical skill. Do not perform specialist work inside this entrypoint.
+Treat `/medrs` as the single user-facing entrypoint. Classify the request, preserve the Research Passport, and route to one canonical skill. Do not perform specialist work inside this entrypoint.
 
 ## Routing
 
@@ -30,4 +30,3 @@ If the user has an existing DOCX, Markdown, or text draft, route to `ho-so-nghie
 ## Output
 
 Return the routing decision, known Passport context, open questions, capability limitations, and the named handoff. A route to a future slice is reported as unavailable; it is not simulated.
-

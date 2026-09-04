@@ -2,7 +2,7 @@
 name: viet-ban-thao-y-hoc
 description: Điều phối viết và ráp bài báo, luận văn hoặc luận án y học từ Research Passport và target profile. Orchestrates section writers and gates. Không thay section writer, không tự quyết bố cục hay bịa phần còn thiếu.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: orchestrator
   locale: [vi, en]
   document_types: [journal-article, thesis, dissertation]

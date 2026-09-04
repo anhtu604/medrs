@@ -34,7 +34,7 @@ The plugin remains human-led. It may analyze, outline, draft, edit, validate, an
 
 | Layer | Responsibility |
 |---|---|
-| Entry and state | `co-van` classifies the request, checks privacy, opens the Research Passport, and selects a workflow. |
+| Entry and state | `medrs` classifies the request, checks privacy, opens the Research Passport, and selects a workflow. |
 | Medical workflows | Planning, evidence, analysis, section writing, document assembly, review, and revision. |
 | Target profiles | Study-design, language, institution, journal, reporting-guideline, and document-depth rules. |
 | Quality gates | Evidence, citation, consistency, causal-language, privacy, integrity, structure, and author approval checks. |
@@ -98,7 +98,7 @@ Version 2.0 contains 24 canonical skills.
 
 ### 5.1 Entry, planning, and governance
 
-1. `co-van` — single entrypoint and workflow router.
+1. `medrs` — single entrypoint and workflow router.
 2. `ho-so-nghien-cuu` — creates, validates, updates, and summarizes the Research Passport.
 3. `de-cuong-va-thiet-ke` — develops the research question, objectives, hypotheses, design, target population, eligibility, sampling frame and strategy, variables, bias controls, and protocol structure. It does not calculate sample size or choose a final fitted model.
 4. `co-mau-va-ke-hoach-phan-tich` — defines estimands, effect-size assumptions, alpha/power, sample-size calculations, planned model families, analysis sets, missing-data strategy, sensitivity analyses, and prespecified tables/figures. It does not inspect observed outcomes to select models or interpret results.
@@ -271,7 +271,7 @@ A later adapter is not listed as supported until its own manifest, installation 
 
 Raw identifiable, sensitive, controlled, unpublished, or institution-restricted data stay local by default. Chat services receive only redacted, de-identified, aggregated, synthetic, or placeholder content unless the user explicitly confirms authorization for a named destination and scope.
 
-Before any external call, `co-van` or the active skill records:
+Before any external call, `medrs` or the active skill records:
 
 - data class;
 - proposed destination;
@@ -322,11 +322,11 @@ The release records exact upstream commit identifiers, selected file paths, lice
 
 ## 11. Greenfield replacement of version 1.3.0
 
-Version 2.0 is a major greenfield rebuild, not a directory remap. Only the plugin name and `co-van` entrypoint remain stable. Approximately seven of the twenty-four canonical roles have close predecessors; the writing system expands into section-specific skills while six legacy coordinators collapse into one stateful orchestration path.
+Version 2.0 is a major greenfield rebuild, not a directory remap. Only the plugin name and `medrs` entrypoint remain stable. Approximately seven of the twenty-four canonical roles have close predecessors; the writing system expands into section-specific skills while six legacy coordinators collapse into one stateful orchestration path.
 
 | Version 1.3.0 area | Version 2.0 destination |
 |---|---|
-| Six `dieu-phoi-*` skills | `co-van`, document profiles, and `viet-ban-thao-y-hoc` |
+| Six `dieu-phoi-*` skills | `medrs`, document profiles, and `viet-ban-thao-y-hoc` |
 | `viet-phan-vn` / `viet-phan-en` | Section-specific writers with `locale` profiles |
 | `viet-dinh-tinh-vn` | Qualitative design profile plus section writers |
 | `dao-duc-vn` / `dao-duc-en` | `dao-duc-va-quan-tri-du-lieu` jurisdiction profiles |
@@ -336,7 +336,7 @@ Version 2.0 is a major greenfield rebuild, not a directory remap. Only the plugi
 | Thesis/manuscript reviewers and rebuttal | `phan-bien-va-chinh-sua` modes |
 | `kiem-dinh-dang` | Validation modes in `bo-cuc-tai-lieu` and `dinh-dang-tai-lieu` |
 
-No legacy alias skill directories are shipped. Claude loads skill descriptions for routing and does not provide a reliable “explicit-only alias” contract, so alias directories would consume context and create duplicate triggers. Legacy names appear only in the migration guide and the lookup reference owned by `co-van`; they are forbidden in canonical descriptions so the full description budget remains available for bilingual positive and negative routing triggers. Direct invocation of a removed legacy `$skill` name is an intentional major-version break and receives a documented lookup path through `co-van`.
+No legacy alias skill directories are shipped. Claude loads skill descriptions for routing and does not provide a reliable “explicit-only alias” contract, so alias directories would consume context and create duplicate triggers. Legacy names appear only in the migration guide and the lookup reference owned by `medrs`; they are forbidden in canonical descriptions so the full description budget remains available for bilingual positive and negative routing triggers. Direct invocation of a removed legacy `$skill` name is an intentional major-version break and receives a documented lookup path through `medrs`.
 
 Version 1.3.0 is retained only as a checksummed archival ZIP and migration fixture; it is not installed or discoverable while 2.0 is under test or active. Rollback is a two-step operation: uninstall 2.0, then reinstall the archived 1.3.0 package. Tests verify that only one version contributes skill descriptions to routing at a time.
 
@@ -344,7 +344,7 @@ Version 1.3.0 is retained only as a checksummed archival ZIP and migration fixtu
 
 Implementation proceeds as four independently runnable end-to-end slices. A slice is accepted before the next one opens; all twenty-four skills are never developed concurrently.
 
-1. **Foundation and protocol:** `co-van`, Research Passport, source freshness, ethics/data governance, design, sample size/analysis planning, protocol Methods, core integrity and routing validators.
+1. **Foundation and protocol:** `medrs`, Research Passport, source freshness, ethics/data governance, design, sample size/analysis planning, protocol Methods, core integrity and routing validators.
 2. **Analysis, Results, and journal article:** R/Stata execution, verified Results, section writers, Discussion reverse engineering, abstract, journal structure, style gate, manuscript validation.
 3. **Evidence synthesis:** literature retrieval, evidence maps, narrative/scoping/systematic review, meta-analysis, reporting-guideline coverage, design-matched risk of bias, GRADE/CERQual.
 4. **Thesis/dissertation, document execution, and revision:** thesis profiles, full document assembly, semantic restructuring, Word backends, rendered validation, examination/peer review, response and commitment tracking. HMU work has two milestones. First, the maintainer owns obtaining and archiving the authoritative current thesis/dissertation presentation rules of Hanoi Medical University by 2026-09-30, independently of the coding schedule, with source snapshot/checksum, `last_verified`, and license/redistribution note. Second, the document-profile workstream encodes rule-level profile fields, builds the golden DOCX fixture, and passes structure/format tests before slice-4 acceptance. If an authoritative source is unavailable, the maintainer must resolve the source or formally remove HMU from release scope rather than leave it indefinitely `PENDING LOCAL SOURCE`.
@@ -358,12 +358,12 @@ These limits are self-imposed engineering budgets, not documented platform limit
 - One plugin contains all callable skills; no runtime cross-plugin dependency is permitted.
 - Canonical `SKILL.md` files contain routing, essential constraints, inputs, outputs, and reference-selection rules only.
 - Each canonical frontmatter `description` is at most 60 words and 640 UTF-8 bytes. Across all 24 skills, descriptions are at most 1,200 words and 12 KiB, and complete YAML frontmatter is at most 16 KiB.
-- Each canonical `SKILL.md`, including frontmatter, is at most 1,200 words and 16 KiB; `co-van` has the tighter limit of 900 words and 12 KiB. A larger workflow must move conditional detail into named references rather than request an undocumented exception.
+- Each canonical `SKILL.md`, including frontmatter, is at most 1,200 words and 16 KiB; `medrs` has the tighter limit of 900 words and 12 KiB. A larger workflow must move conditional detail into named references rather than request an undocumented exception.
 - Detailed procedures, profiles, examples, and checklists live under `references/`. Placement alone is insufficient: every checklist-bearing or instrument-bearing skill must contain operational item-level content, not a list of framework names.
 - Scripts implement deterministic repeated operations rather than prose instructions.
 - Each reference has at least one explicit caller.
 - Tests reject duplicate canonical triggers, broken links, unused references, oversize entrypoints, and circular routing.
-- No alias skill directories are permitted. Legacy names may appear only in the migration guide and `co-van` lookup reference, never in canonical descriptions.
+- No alias skill directories are permitted. Legacy names may appear only in the migration guide and `medrs` lookup reference, never in canonical descriptions.
 
 Every checklist or appraisal instrument has a machine-readable coverage manifest containing framework name, adopted version, source, source license, retrieval date, `last_verified`, exact expected item/domain identifiers and counts, implemented identifiers, and the reference file that supplies each item. Operational coverage means:
 
@@ -469,7 +469,7 @@ The release is ready only when:
 
 - Versioned source tree for `medical-research-skills-vn` 2.0.
 - Git repository plus `.claude-plugin/marketplace.json` as the primary distribution channel, allowing ref/SHA pinning, update history, and repo-first installation; Codex and ChatGPT Chat/Work adapters remain separately accepted later deliverables.
-- Twenty-four canonical skill directories with routing-only descriptions, legacy lookup through `co-van`, and no alias directories.
+- Twenty-four canonical skill directories with routing-only descriptions, legacy lookup through `medrs`, and no alias directories.
 - Research Passport schema and templates.
 - Institution, journal, study-design, first-class locale, and reporting profiles with source freshness metadata.
 - Substantive checklist/instrument references, exact coverage manifests, source/version/license records, and stale-source banners.

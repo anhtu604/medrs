@@ -14,7 +14,7 @@ def main() -> int:
     validation = subprocess.run([sys.executable, "scripts/validate_skills.py"], cwd=ROOT, check=False)
     if validation.returncode:
         return validation.returncode
-    destination = ROOT / "dist/medrs-cowork-2.0.0-alpha.1.zip"
+    destination = ROOT / "dist/medrs-cowork-2.0.0-alpha.2.zip"
     build_cowork_package(ROOT, destination)
     digest = hashlib.sha256(destination.read_bytes()).hexdigest().upper()
     checksum = destination.with_suffix(destination.suffix + ".sha256")

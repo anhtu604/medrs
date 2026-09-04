@@ -2,7 +2,7 @@
 name: viet-dat-van-de
 description: Viết Đặt vấn đề/Introduction y học theo vấn đề, bằng chứng, khoảng trống, lý do và mục tiêu. Writes source-bounded introductions. Không dùng tuyên bố quan trọng chung chung, tính mới chưa xác minh hay kết quả của nghiên cứu.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, journal-article]

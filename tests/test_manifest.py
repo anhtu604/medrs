@@ -12,7 +12,7 @@ def test_inventory_lifecycle_matches_current_slice_four_progress():
     accepted = [skill["name"] for skill in inventory["skills"] if skill["status"] == "accepted"]
     active = [skill["name"] for skill in inventory["skills"] if skill["status"] == "active"]
     assert accepted == [
-        "co-van",
+        "medrs",
         "ho-so-nghien-cuu",
         "de-cuong-va-thiet-ke",
         "co-mau-va-ke-hoach-phan-tich",
@@ -47,7 +47,7 @@ def test_claude_manifest_and_marketplace_are_repo_first():
     marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
     assert not (ROOT / "plugin.json").exists()
     assert claude_manifest["name"] == "medrs"
-    assert claude_manifest["version"] == "2.0.0-alpha.1"
+    assert claude_manifest["version"] == "2.0.0-alpha.2"
     assert claude_manifest["license"] == "CC-BY-NC-4.0"
     assert claude_manifest["repository"] == "https://github.com/anhtu604/medrs"
     assert marketplace["plugins"][0]["source"] == "./"

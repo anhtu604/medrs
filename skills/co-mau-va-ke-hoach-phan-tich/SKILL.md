@@ -2,7 +2,7 @@
 name: co-mau-va-ke-hoach-phan-tich
 description: Lập estimand, giả định, cỡ mẫu và kế hoạch phân tích định trước cho nghiên cứu y học. Plans estimands, power and analysis sets. Không dùng kết quả quan sát để chọn mô hình hay tối ưu ý nghĩa thống kê.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation]

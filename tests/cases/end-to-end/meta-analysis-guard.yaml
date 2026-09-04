@@ -1,5 +1,5 @@
 name: meta-analysis-guard
 workflow: meta-analysis-guard
 request: Tổng hợp bằng chứng meta-analysis
-active_skills: [co-van, tong-hop-bang-chung]
+active_skills: [medrs, tong-hop-bang-chung]
 expect: {route: tong-hop-bang-chung, mode: synthesize, blocked_by: EXTRACTABLE_EFFECT_DATA_REQUIRED}

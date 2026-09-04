@@ -75,8 +75,8 @@ def validate_context_budget(root: Path, legacy_names: set[str] | None = None) ->
         skill_words = count_words(path.read_text(encoding="utf-8"))
         skill_bytes = path.stat().st_size
         name = path.parent.name
-        word_limit = 900 if name == "co-van" else 1200
-        byte_limit = 12288 if name == "co-van" else 16384
+        word_limit = 900 if name == "medrs" else 1200
+        byte_limit = 12288 if name == "medrs" else 16384
         if skill_words > word_limit:
             issues.append(ValidationIssue("SKILL_WORDS", str(path), f"{skill_words} > {word_limit}"))
         if skill_bytes > byte_limit:

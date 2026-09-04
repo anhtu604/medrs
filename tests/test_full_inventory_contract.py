@@ -8,7 +8,7 @@ from medical_research_skills_vn.budgets import issue_codes
 
 ROOT = Path(__file__).parents[1]
 EXPECTED_NAMES = {
-    "co-van",
+    "medrs",
     "ho-so-nghien-cuu",
     "de-cuong-va-thiet-ke",
     "co-mau-va-ke-hoach-phan-tich",

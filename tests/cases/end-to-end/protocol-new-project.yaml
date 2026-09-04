@@ -5,7 +5,7 @@ author_id: researcher-e2e
 confirmation_timestamp: '2026-08-31T09:00:00+07:00'
 locale_profile: vi-medical-academic
 active_skills:
-  - co-van
+  - medrs
   - ho-so-nghien-cuu
   - de-cuong-va-thiet-ke
   - co-mau-va-ke-hoach-phan-tich
@@ -35,6 +35,6 @@ ethics:
   consent_state: UNRESOLVED
   registration_state: NOT_APPLICABLE_PENDING_CONFIRMATION
 expect:
-  route: co-van
+  route: medrs
   approval_number: null
   all_procedures: PLANNED

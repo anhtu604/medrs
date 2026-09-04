@@ -1,6 +1,6 @@
 # Medical Research Skills VN 2.0
 
-This repository is the portable core and Claude package for a medical-research assistant. Start with `skills/co-van/SKILL.md`. Canonical content lives only under `skills/<name>/`; host adapters must remain thin.
+This repository is the portable core and Claude package for a medical-research assistant. Start with `skills/medrs/SKILL.md`. Canonical content lives only under `skills/<name>/`; host adapters must remain thin.
 
 Never reconstruct a reporting checklist, appraisal instrument, regulatory rule, citation, result, or institutional requirement from memory. Retrieve primary material, record source/version/license/retrieval/freshness metadata, and implement exact item coverage. If primary material is unavailable, create `BLOCKED.md`, leave the implemented item list empty, and let validation fail.
 

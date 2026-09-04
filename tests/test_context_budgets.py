@@ -36,11 +36,11 @@ def test_budget_fixture_detects_per_skill_and_aggregate_overflow(tmp_path):
 
 
 def test_legacy_names_are_forbidden_in_descriptions(tmp_path):
-    write_skill(tmp_path, "co-van", "Routes dieu-phoi-luan-van requests safely.")
+    write_skill(tmp_path, "medrs", "Routes dieu-phoi-luan-van requests safely.")
     issues = validate_context_budget(tmp_path, legacy_names={"dieu-phoi-luan-van"})
     assert "LEGACY_NAME_IN_DESCRIPTION" in issue_codes(issues)
 
 
 def test_clean_skill_passes_context_budget(tmp_path):
-    write_skill(tmp_path, "co-van", "Routes unclear medical research requests; not clinical advice.")
+    write_skill(tmp_path, "medrs", "Routes unclear medical research requests; not clinical advice.")
     assert validate_context_budget(tmp_path, legacy_names={"dieu-phoi-luan-van"}) == []

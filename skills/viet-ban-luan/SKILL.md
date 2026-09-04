@@ -2,7 +2,7 @@
 name: viet-ban-luan
 description: Viết Discussion từ kết quả thật qua bài đối chiếu hợp pháp, bản đồ chức năng đoạn và blueprint được duyệt. Interprets cautiously. Không suy cấu trúc từ abstract, sao câu nguồn, bịa citation hay vượt trần nhân quả.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

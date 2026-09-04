@@ -2,7 +2,7 @@
 name: tim-y-van
 description: Tìm y văn y học có query log, provenance, khử trùng lặp và chế độ mạng trích dẫn seed/backward/forward. Retrieves literature reproducibly. Không bịa citation, vượt quyền truy cập, phân loại từ title hay gọi citation graph là tìm kiếm toàn diện.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, journal-article, review]

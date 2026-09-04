@@ -12,9 +12,9 @@ def test_old_skill_name_routes_through_co_van_without_alias():
     decision = route_request(
         RoutingRequest(text="dieu-phoi-luan-van"),
         legacy_map,
-        active_skills={"co-van", "ho-so-nghien-cuu"},
+        active_skills={"medrs", "ho-so-nghien-cuu"},
     )
-    assert decision.entrypoint == "co-van"
+    assert decision.entrypoint == "medrs"
     assert decision.canonical == "viet-ban-thao-y-hoc"
     assert decision.mode == "thesis"
     assert decision.availability == "NOT_IN_ACTIVE_SLICE"
@@ -24,7 +24,7 @@ def test_existing_draft_routes_to_adopt_mode():
     decision = route_request(
         RoutingRequest(text="Tôi có luận văn đang viết dở", attachments=("draft.docx",)),
         {},
-        active_skills={"co-van", "ho-so-nghien-cuu"},
+        active_skills={"medrs", "ho-so-nghien-cuu"},
     )
     assert decision.canonical == "ho-so-nghien-cuu"
     assert decision.mode == "adopt-existing-project"
@@ -35,7 +35,7 @@ def test_unrelated_clinical_advice_does_not_route_to_plugin():
     decision = route_request(
         RoutingRequest(text="Tôi nên uống thuốc gì khi đau đầu?"),
         {},
-        active_skills={"co-van"},
+        active_skills={"medrs"},
     )
     assert decision.canonical == "NONE"
     assert decision.availability == "OUT_OF_SCOPE"
@@ -45,9 +45,9 @@ def test_ambiguous_research_request_routes_to_entrypoint():
     decision = route_request(
         RoutingRequest(text="Help me with my medical research project"),
         {},
-        active_skills={"co-van"},
+        active_skills={"medrs"},
     )
-    assert decision.canonical == "co-van"
+    assert decision.canonical == "medrs"
     assert decision.mode == "classify"
 
 
@@ -55,7 +55,7 @@ def test_style_audit_request_routes_to_kiem_van_phong_when_active():
     decision = route_request(
         RoutingRequest(text="Kiểm văn phong và lập luận cho phần Discussion này"),
         {},
-        active_skills={"co-van", "kiem-van-phong"},
+        active_skills={"medrs", "kiem-van-phong"},
     )
 
     assert decision.canonical == "kiem-van-phong"
@@ -67,7 +67,7 @@ def test_drafting_discussion_does_not_misroute_to_style_audit():
     decision = route_request(
         RoutingRequest(text="Viết phần Discussion từ các kết quả nghiên cứu"),
         {},
-        active_skills={"co-van", "kiem-van-phong"},
+        active_skills={"medrs", "kiem-van-phong"},
     )
 
     assert decision.canonical != "kiem-van-phong"
@@ -77,7 +77,7 @@ def test_r_script_request_routes_to_r_backend():
     decision = route_request(
         RoutingRequest(text="Viết script R tái lập cho mô hình hồi quy này"),
         {},
-        active_skills={"co-van", "phan-tich-so-lieu", "phan-tich-r"},
+        active_skills={"medrs", "phan-tich-so-lieu", "phan-tich-r"},
     )
 
     assert decision.canonical == "phan-tich-r"
@@ -89,7 +89,7 @@ def test_stata_do_file_request_routes_to_stata_backend():
     decision = route_request(
         RoutingRequest(text="Viết Stata do-file và lưu log phân tích"),
         {},
-        active_skills={"co-van", "phan-tich-so-lieu", "phan-tich-stata"},
+        active_skills={"medrs", "phan-tich-so-lieu", "phan-tich-stata"},
     )
 
     assert decision.canonical == "phan-tich-stata"
@@ -101,7 +101,7 @@ def test_result_interpretation_routes_to_analysis_orchestrator_not_code_generato
     decision = route_request(
         RoutingRequest(text="Diễn giải output hồi quy thật theo kế hoạch phân tích"),
         {},
-        active_skills={"co-van", "phan-tich-so-lieu", "phan-tich-r", "phan-tich-stata"},
+        active_skills={"medrs", "phan-tich-so-lieu", "phan-tich-r", "phan-tich-stata"},
     )
 
     assert decision.canonical == "phan-tich-so-lieu"
@@ -112,7 +112,7 @@ def test_p_value_shopping_routes_to_analysis_refusal_boundary():
     decision = route_request(
         RoutingRequest(text="Thử nhiều mô hình rồi chỉ giữ mô hình có p nhỏ nhất"),
         {},
-        active_skills={"co-van", "phan-tich-so-lieu"},
+        active_skills={"medrs", "phan-tich-so-lieu"},
     )
 
     assert decision.canonical == "phan-tich-so-lieu"
@@ -134,7 +134,7 @@ def test_p_value_shopping_routes_to_analysis_refusal_boundary():
 )
 def test_article_requests_route_to_specific_writer(prompt, expected):
     article_skills = {
-        "co-van",
+        "medrs",
         "viet-ban-thao-y-hoc",
         "viet-dat-van-de",
         "viet-tong-quan",
@@ -151,7 +151,7 @@ def test_article_requests_route_to_specific_writer(prompt, expected):
 
 
 def test_literature_search_and_citation_network_route_to_tim_y_van():
-    active = {"co-van", "tim-y-van"}
+    active = {"medrs", "tim-y-van"}
     for prompt, mode in (
         ("Tìm y văn PubMed có query log", "database-search"),
         ("Lập mạng trích dẫn từ bài seed này", "citation-network"),
@@ -165,7 +165,7 @@ def test_evidence_synthesis_routes_to_tong_hop_not_search():
     decision = route_request(
         RoutingRequest(text="Tổng hợp bằng chứng và lập evidence map"),
         {},
-        active_skills={"co-van", "tim-y-van", "tong-hop-bang-chung"},
+        active_skills={"medrs", "tim-y-van", "tong-hop-bang-chung"},
     )
     assert decision.canonical == "tong-hop-bang-chung"
     assert decision.mode == "synthesize"
@@ -183,7 +183,7 @@ def test_quality_appraisal_routes_by_framework(prompt, mode):
     decision = route_request(
         RoutingRequest(text=prompt),
         {},
-        active_skills={"co-van", "danh-gia-chat-luong-bang-chung"},
+        active_skills={"medrs", "danh-gia-chat-luong-bang-chung"},
     )
     assert decision.canonical == "danh-gia-chat-luong-bang-chung"
     assert decision.mode == mode
@@ -193,7 +193,7 @@ def test_reporting_guideline_check_does_not_route_to_quality_appraisal():
     decision = route_request(
         RoutingRequest(text="Kiểm checklist CONSORT trước khi nộp"),
         {},
-        active_skills={"co-van", "danh-gia-chat-luong-bang-chung", "kiem-chung-ban-thao"},
+        active_skills={"medrs", "danh-gia-chat-luong-bang-chung", "kiem-chung-ban-thao"},
     )
     assert decision.canonical == "kiem-chung-ban-thao"
 
@@ -202,7 +202,7 @@ def test_hmu_semantic_restructure_routes_to_bo_cuc():
     decision = route_request(
         RoutingRequest(text="Sắp xếp lại bố cục các chương luận văn HMU"),
         {},
-        active_skills={"co-van", "bo-cuc-tai-lieu"},
+        active_skills={"medrs", "bo-cuc-tai-lieu"},
     )
     assert decision.canonical == "bo-cuc-tai-lieu"
     assert decision.mode == "semantic-restructure"
@@ -212,7 +212,7 @@ def test_word_mechanics_do_not_route_to_semantic_structure():
     decision = route_request(
         RoutingRequest(text="Đổi font, lề, mục lục và số trang trong Word"),
         {},
-        active_skills={"co-van", "bo-cuc-tai-lieu", "dinh-dang-tai-lieu"},
+        active_skills={"medrs", "bo-cuc-tai-lieu", "dinh-dang-tai-lieu"},
     )
     assert decision.canonical == "dinh-dang-tai-lieu"
 
@@ -221,7 +221,7 @@ def test_hmu_word_format_request_routes_to_formatting_skill():
     decision = route_request(
         RoutingRequest(text="Định dạng luận văn HMU đúng mẫu Word"),
         {},
-        active_skills={"co-van", "dinh-dang-tai-lieu"},
+        active_skills={"medrs", "dinh-dang-tai-lieu"},
     )
     assert decision.canonical == "dinh-dang-tai-lieu"
     assert decision.mode == "word-mechanics"
@@ -239,7 +239,7 @@ def test_review_and_revision_requests_route_to_final_skill(prompt, mode):
     decision = route_request(
         RoutingRequest(text=prompt),
         {},
-        active_skills={"co-van", "phan-bien-va-chinh-sua"},
+        active_skills={"medrs", "phan-bien-va-chinh-sua"},
     )
     assert decision.canonical == "phan-bien-va-chinh-sua"
     assert decision.mode == mode

@@ -42,6 +42,20 @@ foreach ($target in $Targets) {
   $backup = Join-Path $stage 'backup'
   $activated = @()
   $backedUp = @()
+  $retiredBackups = @()
+  $retiredNames = @()
+  if (Test-Path -LiteralPath $manifestPath -PathType Leaf) {
+    try {
+      $previousManifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
+      if ($previousManifest.package -eq $PackageName) {
+        $retiredNames = @($previousManifest.skills | Where-Object {
+          $_ -match '^[a-z0-9][a-z0-9-]*$' -and $_ -notin $skillNames
+        } | Select-Object -Unique)
+      }
+    } catch {
+      throw "Existing managed manifest is invalid: $manifestPath"
+    }
+  }
   New-Item -ItemType Directory -Path (Join-Path $stage 'skills') -Force | Out-Null
   try {
     foreach ($name in $skillNames) {
@@ -66,6 +80,14 @@ foreach ($target in $Targets) {
     New-Item -ItemType Directory -Path $backup -Force | Out-Null
     if (Test-Path -LiteralPath $supportDestination) {
       Move-Item -LiteralPath $supportDestination -Destination (Join-Path $backup 'support')
+    }
+    foreach ($name in $retiredNames) {
+      $destination = Join-Path $skillsDestination $name
+      if (Test-Path -LiteralPath $destination) {
+        $saved = Join-Path $backup "retired-$name"
+        Move-Item -LiteralPath $destination -Destination $saved
+        $retiredBackups += $name
+      }
     }
     foreach ($name in $skillNames) {
       $destination = Join-Path $skillsDestination $name
@@ -99,6 +121,11 @@ foreach ($target in $Targets) {
     foreach ($name in $backedUp) {
       $destination = Join-Path $skillsDestination $name
       $saved = Join-Path $backup $name
+      if (Test-Path -LiteralPath $saved) { Move-Item -LiteralPath $saved -Destination $destination }
+    }
+    foreach ($name in $retiredBackups) {
+      $destination = Join-Path $skillsDestination $name
+      $saved = Join-Path $backup "retired-$name"
       if (Test-Path -LiteralPath $saved) { Move-Item -LiteralPath $saved -Destination $destination }
     }
     $savedSupport = Join-Path $backup 'support'

@@ -2,7 +2,7 @@
 name: viet-ket-luan-khuyen-nghi
 description: Viết kết luận và khuyến nghị ánh xạ mục tiêu với kết quả đã xác minh và mức chắc chắn. Produces proportionate conclusions. Không thêm phát hiện mới, nâng quan sát thành nhân quả hoặc khuyến nghị vượt dữ liệu.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

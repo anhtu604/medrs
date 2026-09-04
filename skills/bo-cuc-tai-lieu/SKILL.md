@@ -2,7 +2,7 @@
 name: bo-cuc-tai-lieu
 description: Lập và áp dụng bố cục ngữ nghĩa cho luận văn, luận án hoặc bài báo theo profile nguồn chính thức. Restructures approved sections in a new artifact. Không chỉnh font, lề, trường mục lục, phân trang hoặc tự viết phần còn thiếu.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

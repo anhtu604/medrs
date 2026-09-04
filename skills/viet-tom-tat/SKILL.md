@@ -2,7 +2,7 @@
 name: viet-tom-tat
 description: Viết Tóm tắt/Abstract sau cùng từ snapshot toàn văn đã hoàn chỉnh và kiểm tra nhất quán từng số, phương pháp, kết luận. Không chọn số đẹp, che xung đột hay tuyên bố tính mới chưa xác minh.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

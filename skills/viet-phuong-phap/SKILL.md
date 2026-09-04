@@ -2,7 +2,7 @@
 name: viet-phuong-phap
 description: Use when drafting or revising a medical Methods section from a Research Passport, protocol, or confirmed study record. Dùng cho phần Phương pháp; không dùng để mô tả thủ thuật chưa thực hiện như đã hoàn tất hoặc để viết Kết quả.
 metadata:
-  version: 2.0.0-alpha.1
+  version: 2.0.0-alpha.2
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript]
