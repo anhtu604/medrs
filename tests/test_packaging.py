@@ -42,5 +42,6 @@ def test_cowork_package_is_minimal_complete_and_reproducible(tmp_path):
     assert any(name.startswith("coverage/") for name in names)
     assert any(name.startswith("profiles/") for name in names)
     assert any(name.startswith("schemas/") for name in names)
+    assert "skills/dinh-dang-tai-lieu/assets/hmu-word-styles.docx" in names
     assert not any(name.startswith(("tests/", "src/", "scripts/", "archive/", "sources/")) for name in names)
     assert hashlib.sha256(first.read_bytes()).digest() == hashlib.sha256(second.read_bytes()).digest()

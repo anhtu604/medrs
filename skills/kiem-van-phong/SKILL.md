@@ -2,7 +2,7 @@
 name: kiem-van-phong
 description: Use when auditing or revising Vietnamese or English medical academic prose before standalone delivery, document assembly, submission, or defense. Dùng để kiểm lập luận, bằng chứng, giọng tác giả và văn phong; không dùng để dự đoán văn bản có phải do AI viết.
 metadata:
-  version: 2.0.0-alpha.2
+  version: 2.0.0-alpha.3
   role: gate
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript, review]

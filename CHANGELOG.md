@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0-alpha.3 — Refresh-safe Word formatting
+
+- Replaced direct run-level typography with an authoritative Word paragraph-style system covering body text, four heading levels, captions, tables, lists, TOC entries, lists of figures/tables, and bibliography output.
+- Added refresh-safe field settings and post-refresh mechanical validation so regenerated TOCs and lists retain profile typography and line spacing.
+- Added bounded content-weighted table column sizing, fixed OOXML table grids, and a dedicated table-text style.
+- Added deterministic three-level automatic bullet numbering with controlled tab stops and hanging indents.
+- Added an HMU style-carrier DOCX, a local Word COM field-refresh/PDF bridge, expanded QA guidance, idempotence checks, and Cowork packaging coverage.
+
 ## 2.0.0-alpha.2 — MedRS single entrypoint
 
 - Renamed the canonical `co-van` router to `medrs`, exposed as `/medrs` on Claude-compatible hosts and `$medrs` on Codex.

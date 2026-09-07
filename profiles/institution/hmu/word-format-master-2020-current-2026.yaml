@@ -17,3 +17,20 @@ numbering: {restart_section_heading: ĐẶT VẤN ĐỀ, format: decimal, start:
 headings: {maximum_numeric_depth: 4, source_locator: P46}
 captions: {table_position: above, figure_position: below, chapter_linked: true, source_locator: P48}
 toc: {heading_levels: '1-4', update_requires_render_backend: true}
+word_style_system:
+  policy: styles-are-authoritative
+  implementation_status: MedRS deterministic implementation policy; not an additional HMU rule
+  refresh_managed_styles: [TOC Heading, TOC 1, TOC 2, TOC 3, TOC 4, Table of Figures, Bibliography]
+  visible_authoring_styles: [Normal, Body Text, Heading 1, Heading 2, Heading 3, Heading 4, Caption, List Paragraph, MedRS Table Text]
+table:
+  width_mode: content-weighted-bounded
+  minimum_column_share: 0.08
+  maximum_column_share: 0.65
+  line_spacing: 1.0
+  implementation_status: MedRS layout default; author may override when content semantics require it
+lists:
+  bullet_levels: 3
+  base_left_twips: 720
+  level_increment_twips: 540
+  hanging_twips: 360
+  implementation_status: MedRS deterministic implementation policy

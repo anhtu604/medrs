@@ -2,7 +2,7 @@
 name: viet-tong-quan
 description: Viết tổng quan y văn theo chủ đề, khái niệm hoặc câu hỏi từ evidence map đã xác minh. Produces synthesis, not a study catalogue. Không xếp bài theo tác giả, bịa citation hay gọi narrative review là systematic review.
 metadata:
-  version: 2.0.0-alpha.2
+  version: 2.0.0-alpha.3
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review]

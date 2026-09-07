@@ -40,7 +40,9 @@ Inspect the downloaded script before piping it to `iex`. Override `MEDICAL_RESEA
 
 Targets `codex`, `claude`, and `generic` install into local `.codex/skills`, `.claude/skills`, and `.agents/skills`. This does not make local files discoverable to ChatGPT web, Claude Chat, or a remote Cowork sandbox; those surfaces require their own published plugin/app adapter.
 
-For Claude Cowork manual installation, build `dist/medrs-cowork-2.0.0-alpha.2.zip` with `python scripts/package_plugin.py`, then upload that ZIP from the Claude organization plugin settings. The upload contains only the Cowork manifest, 24 skills, shared coverage/profile/schema resources, and public documentation.
+For Claude Cowork manual installation, build `dist/medrs-cowork-2.0.0-alpha.3.zip` with `python scripts/package_plugin.py`, then upload that ZIP from the Claude organization plugin settings. The upload contains only the Cowork manifest, 24 skills, shared coverage/profile/schema resources, public documentation, and the HMU Word style carrier.
+
+Word formatting in alpha.3 is style-driven and refresh-safe: built-in TOC/list/bibliography styles are defined explicitly, tables use bounded content-weighted widths, and bullets use deterministic OOXML numbering. On local Windows with Microsoft Word, `scripts/refresh_word_fields.ps1` refreshes all fields into a new DOCX and can export a PDF; Cowork keeps field refresh and pagination marked for author review when no rendering backend is available.
 
 Validation commands:
 
