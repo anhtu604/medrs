@@ -36,6 +36,28 @@ def test_grade_and_cerqual_manifests_cover_every_adopted_component():
     assert validate_coverage_manifest(cerqual) == []
 
 
+def test_reporting_guideline_manifests_are_current_and_fully_covered():
+    expected_counts = {
+        "coverage/consort-2025.yaml": 42,
+        "coverage/strobe-2007.yaml": 34,
+        "coverage/prisma-2020.yaml": 42,
+        "coverage/tripod-ai-2024.yaml": 52,
+    }
+    for relative, count in expected_counts.items():
+        manifest = load_coverage_manifest(ROOT / relative)
+        assert validate_coverage_manifest(manifest) == [], relative
+        assert len(manifest["expected_ids"]) == count, relative
+        assert manifest["implemented_ids"] == manifest["expected_ids"], relative
+        assert manifest["caller"] == "skills/kiem-chuan-bao-cao/SKILL.md", relative
+        assert "CC BY" in manifest["license"], relative
+
+
+def test_superseded_reporting_guidelines_are_not_shipped():
+    shipped = {path.name for path in (ROOT / "coverage").glob("*.yaml")}
+    assert "consort-2010.yaml" not in shipped
+    assert "tripod-2015.yaml" not in shipped
+
+
 def test_manifest_rejects_named_only_or_missing_items():
     manifest = load_coverage_manifest(ROOT / "coverage/rob2-parallel-2019.yaml")
     manifest["items"][0]["operational_prompt"] = ""

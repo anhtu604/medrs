@@ -1,0 +1,59 @@
+instrument: CONSORT 2025 checklist for randomised trials
+version: 2025 statement, BMJ 2025;389:e081123; supersedes CONSORT 2010
+source_url: https://doi.org/10.1136/bmj-2024-081123
+license: CC BY 4.0 (Hopewell S and colleagues, BMJ 2025;389:e081123); item wording reproduced with attribution
+last_verified: 2026-09-19
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+sections:
+  - Title and abstract
+  - Open science
+  - Introduction
+  - Methods
+  - Randomisation:
+  - Results
+  - Discussion
+expected_ids: ['1a', '1b', '2', '3', '4', '5a', '5b', '6', '7', '8', '9', '10', '11', '12a', '12b', '13', '14', '15', '16a', '16b', '17a', '17b', '18', '19', '20a', '20b', '21a', '21b', '21c', '21d', '22a', '22b', '23a', '23b', '24a', '24b', '25', '26', '27', '28', '29', '30']
+implemented_ids: ['1a', '1b', '2', '3', '4', '5a', '5b', '6', '7', '8', '9', '10', '11', '12a', '12b', '13', '14', '15', '16a', '16b', '17a', '17b', '18', '19', '20a', '20b', '21a', '21b', '21c', '21d', '22a', '22b', '23a', '23b', '24a', '24b', '25', '26', '27', '28', '29', '30']
+items:
+  - {id: '1a', section: 'Title and abstract', topic: 'Title and structured abstract', operational_prompt: 'Identification as a randomised trial', source_locator: 'bmj-2024-081123/checklist/item-1a'}
+  - {id: '1b', section: 'Title and abstract', topic: 'Title and structured abstract', operational_prompt: 'Structured summary of the trial design, methods, results, and conclusions', source_locator: 'bmj-2024-081123/checklist/item-1b'}
+  - {id: '2', section: 'Open science', topic: 'Trial registration', operational_prompt: 'Name of trial registry, identifying number (with URL) and date of registration', source_locator: 'bmj-2024-081123/checklist/item-2'}
+  - {id: '3', section: 'Open science', topic: 'Protocol and statistical analysis plan', operational_prompt: 'Where the trial protocol and statistical analysis plan can be accessed', source_locator: 'bmj-2024-081123/checklist/item-3'}
+  - {id: '4', section: 'Open science', topic: 'Data sharing', operational_prompt: 'Where and how the individual de-identified participant data (including data dictionary), statistical code and any other materials can be accessed', source_locator: 'bmj-2024-081123/checklist/item-4'}
+  - {id: '5a', section: 'Open science', topic: 'Funding and conflicts of interest', operational_prompt: 'Sources of funding and other support (eg, supply of drugs), and role of funders in the design, conduct, analysis and reporting of the trial', source_locator: 'bmj-2024-081123/checklist/item-5a'}
+  - {id: '5b', section: 'Open science', topic: 'Funding and conflicts of interest', operational_prompt: 'Financial and other conflicts of interest of the manuscript authors', source_locator: 'bmj-2024-081123/checklist/item-5b'}
+  - {id: '6', section: 'Introduction', topic: 'Background and rationale', operational_prompt: 'Scientific background and rationale', source_locator: 'bmj-2024-081123/checklist/item-6'}
+  - {id: '7', section: 'Introduction', topic: 'Objectives', operational_prompt: 'Specific objectives related to benefits and harms', source_locator: 'bmj-2024-081123/checklist/item-7'}
+  - {id: '8', section: 'Methods', topic: 'Patient and public involvement', operational_prompt: 'Details of patient or public involvement in the design, conduct and reporting of the trial', source_locator: 'bmj-2024-081123/checklist/item-8'}
+  - {id: '9', section: 'Methods', topic: 'Trial design', operational_prompt: 'Description of trial design including type of trial (eg, parallel group, crossover), allocation ratio, and framework (eg, superiority, equivalence, non-inferiority, exploratory)', source_locator: 'bmj-2024-081123/checklist/item-9'}
+  - {id: '10', section: 'Methods', topic: 'Changes to trial protocol', operational_prompt: 'Important changes to the trial after it commenced including any outcomes or analyses that were not prespecified, with reason', source_locator: 'bmj-2024-081123/checklist/item-10'}
+  - {id: '11', section: 'Methods', topic: 'Trial setting', operational_prompt: 'Settings (eg, community, hospital) and locations (eg, countries, sites) where the trial was conducted', source_locator: 'bmj-2024-081123/checklist/item-11'}
+  - {id: '12a', section: 'Methods', topic: 'Eligibility criteria', operational_prompt: 'Eligibility criteria for participants', source_locator: 'bmj-2024-081123/checklist/item-12a'}
+  - {id: '12b', section: 'Methods', topic: 'Eligibility criteria', operational_prompt: 'If applicable, eligibility criteria for sites and for individuals delivering the interventions (eg, surgeons, physiotherapists)', source_locator: 'bmj-2024-081123/checklist/item-12b'}
+  - {id: '13', section: 'Methods', topic: 'Intervention and comparator', operational_prompt: 'Intervention and comparator with sufficient details to allow replication. If relevant, where additional materials describing the intervention and comparator (eg, intervention manual) can be accessed', source_locator: 'bmj-2024-081123/checklist/item-13'}
+  - {id: '14', section: 'Methods', topic: 'Outcomes', operational_prompt: 'Prespecified primary and secondary outcomes, including the specific measurement variable (eg, systolic blood pressure), analysis metric (eg, change from baseline, final value, time to event), method of aggregation (eg, median, proportion), and time point for each outcome', source_locator: 'bmj-2024-081123/checklist/item-14'}
+  - {id: '15', section: 'Methods', topic: 'Harms', operational_prompt: 'How harms were defined and assessed (eg, systematically, non-systematically)', source_locator: 'bmj-2024-081123/checklist/item-15'}
+  - {id: '16a', section: 'Methods', topic: 'Sample size', operational_prompt: 'How sample size was determined, including all assumptions supporting the sample size calculation', source_locator: 'bmj-2024-081123/checklist/item-16a'}
+  - {id: '16b', section: 'Methods', topic: 'Sample size', operational_prompt: 'Explanation of any interim analyses and stopping guidelines', source_locator: 'bmj-2024-081123/checklist/item-16b'}
+  - {id: '17a', section: 'Randomisation:', topic: 'Sequence generation', operational_prompt: 'Who generated the random allocation sequence and the method used', source_locator: 'bmj-2024-081123/checklist/item-17a'}
+  - {id: '17b', section: 'Randomisation:', topic: 'Sequence generation', operational_prompt: 'Type of randomisation and details of any restriction (eg, stratification, blocking and block size)', source_locator: 'bmj-2024-081123/checklist/item-17b'}
+  - {id: '18', section: 'Randomisation:', topic: 'Allocation concealment mechanism', operational_prompt: 'Mechanism used to implement the random allocation sequence (eg, central computer/telephone; sequentially numbered, opaque, sealed containers), describing any steps to conceal the sequence until interventions were assigned', source_locator: 'bmj-2024-081123/checklist/item-18'}
+  - {id: '19', section: 'Randomisation:', topic: 'Implementation', operational_prompt: 'Whether the personnel who enrolled and those who assigned participants to the interventions had access to the random allocation sequence', source_locator: 'bmj-2024-081123/checklist/item-19'}
+  - {id: '20a', section: 'Randomisation:', topic: 'Blinding', operational_prompt: 'Who was blinded after assignment to interventions (eg, participants, care providers, outcome assessors, data analysts)', source_locator: 'bmj-2024-081123/checklist/item-20a'}
+  - {id: '20b', section: 'Randomisation:', topic: 'Blinding', operational_prompt: 'If blinded, how blinding was achieved and description of the similarity of interventions', source_locator: 'bmj-2024-081123/checklist/item-20b'}
+  - {id: '21a', section: 'Randomisation:', topic: 'Statistical methods', operational_prompt: 'Statistical methods used to compare groups for primary and secondary outcomes, including harms', source_locator: 'bmj-2024-081123/checklist/item-21a'}
+  - {id: '21b', section: 'Randomisation:', topic: 'Statistical methods', operational_prompt: 'Definition of who is included in each analysis (eg, all randomised participants), and in which group', source_locator: 'bmj-2024-081123/checklist/item-21b'}
+  - {id: '21c', section: 'Randomisation:', topic: 'Statistical methods', operational_prompt: 'How missing data were handled in the analysis', source_locator: 'bmj-2024-081123/checklist/item-21c'}
+  - {id: '21d', section: 'Randomisation:', topic: 'Statistical methods', operational_prompt: 'Methods for any additional analyses (eg, subgroup and sensitivity analyses), distinguishing prespecified from post hoc', source_locator: 'bmj-2024-081123/checklist/item-21d'}
+  - {id: '22a', section: 'Results', topic: 'Participant flow, including flow diagram', operational_prompt: 'For each group, the numbers of participants who were randomly assigned, received intended intervention, and were analysed for the primary outcome', source_locator: 'bmj-2024-081123/checklist/item-22a'}
+  - {id: '22b', section: 'Results', topic: 'Participant flow, including flow diagram', operational_prompt: 'For each group, losses and exclusions after randomisation, together with reasons', source_locator: 'bmj-2024-081123/checklist/item-22b'}
+  - {id: '23a', section: 'Results', topic: 'Recruitment', operational_prompt: 'Dates defining the periods of recruitment and follow-up for outcomes of benefits and harms', source_locator: 'bmj-2024-081123/checklist/item-23a'}
+  - {id: '23b', section: 'Results', topic: 'Recruitment', operational_prompt: 'If relevant, why the trial ended or was stopped', source_locator: 'bmj-2024-081123/checklist/item-23b'}
+  - {id: '24a', section: 'Results', topic: 'Intervention and comparator delivery', operational_prompt: 'Intervention and comparator as they were actually administered (eg, where appropriate, who delivered the intervention/comparator, how participants adhered, whether they were delivered as intended (fidelity))', source_locator: 'bmj-2024-081123/checklist/item-24a'}
+  - {id: '24b', section: 'Results', topic: 'Intervention and comparator delivery', operational_prompt: 'Concomitant care received during the trial for each group', source_locator: 'bmj-2024-081123/checklist/item-24b'}
+  - {id: '25', section: 'Results', topic: 'Baseline data', operational_prompt: 'A table showing baseline demographic and clinical characteristics for each group', source_locator: 'bmj-2024-081123/checklist/item-25'}
+  - {id: '26', section: 'Results', topic: 'Numbers analysed,outcomes and estimation', operational_prompt: 'For each primary and secondary outcome, by group:● the number of participants included in the analysis● the number of participants with available data at the outcome time point● result for each group, and the estimated effect size and its precision (such as 95% confidence interval)● for binary outcomes, presentation of both absolute and relative effect size', source_locator: 'bmj-2024-081123/checklist/item-26'}
+  - {id: '27', section: 'Results', topic: 'Harms', operational_prompt: 'All harms or unintended events in each group', source_locator: 'bmj-2024-081123/checklist/item-27'}
+  - {id: '28', section: 'Results', topic: 'Ancillary analyses', operational_prompt: 'Any other analyses performed, including subgroup and sensitivity analyses, distinguishing pre-specified from post hoc', source_locator: 'bmj-2024-081123/checklist/item-28'}
+  - {id: '29', section: 'Discussion', topic: 'Interpretation', operational_prompt: 'Interpretation consistent with results, balancing benefits and harms, and considering other relevant evidence', source_locator: 'bmj-2024-081123/checklist/item-29'}
+  - {id: '30', section: 'Discussion', topic: 'Limitations', operational_prompt: 'Trial limitations, addressing sources of potential bias, imprecision, generalisability, and, if relevant, multiplicity of analyses', source_locator: 'bmj-2024-081123/checklist/item-30'}

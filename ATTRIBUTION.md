@@ -32,5 +32,9 @@ Operational summaries are independently written and bounded by the exact scope i
 | Cochrane RoB 2 tool for individually randomized parallel-group trials | 22 August 2019; checked 2026-09-02 | CC BY-NC-ND 4.0 | Exact 22-question identifier coverage and independently written operational summaries; official wording/algorithm not redistributed |
 | Cochrane Handbook Chapter 14 (GRADE) | Version 6.5.1, May 2025; checked 2026-09-02 | Cochrane rights apply | Outcome-specific five-domain certainty contract and three upgrading considerations |
 | GRADE-CERQual official guidance | 2018 guidance set; checked 2026-09-02 | Official site states all rights reserved | Finding-specific four-component operational contract; worksheets not redistributed |
+| CONSORT 2025 statement | BMJ 2025;389:e081123; retrieved 2026-09-19; supersedes CONSORT 2010 | CC BY 4.0 | Exact 42-identifier coverage with item wording reproduced under the licence and attributed in `coverage/consort-2025.yaml` |
+| STROBE statement | PLoS Med 2007;4(10):e296; retrieved 2026-09-19 | CC BY | Exact 34-identifier coverage with item wording reproduced under the licence and attributed in `coverage/strobe-2007.yaml` |
+| PRISMA 2020 statement | BMJ 2021;372:n71; retrieved 2026-09-19 | CC BY 4.0 | Exact 42-identifier coverage with item wording reproduced under the licence and attributed in `coverage/prisma-2020.yaml` |
+| TRIPOD+AI statement | BMJ 2024;385:e078378; retrieved 2026-09-19; supersedes TRIPOD 2015 | CC BY 4.0 | Exact 52-identifier coverage with item wording reproduced under the licence and attributed in `coverage/tripod-ai-2024.yaml` |
 
 This distribution is CC BY-NC 4.0. Commercial or for-profit use, including some hospital, institute, consultancy, or sponsored settings, may require permission and legal review.

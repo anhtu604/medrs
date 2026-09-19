@@ -68,6 +68,21 @@ def route_request(request, legacy_map, active_skills):
         availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
         return RoutingDecision("medrs", skill, "semantic-restructure", availability)
 
+    guideline_phrases = (
+        "chuẩn báo cáo",
+        "đối chiếu consort",
+        "consort",
+        "strobe",
+        "prisma checklist",
+        "tripod",
+        "reporting guideline",
+        "reporting checklist",
+    )
+    if any(phrase in text for phrase in guideline_phrases):
+        skill = "kiem-chuan-bao-cao"
+        availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
+        return RoutingDecision("medrs", skill, "guideline-compliance", availability)
+
     citation_routes = (
         (("kiểm tra trích dẫn", "check my citations", "citation faithfulness", "trích dẫn có trung thực"), "verify-faithfulness"),
         (("zotero", "thư viện trích dẫn", "bibtex", "csl-json"), "library-read"),

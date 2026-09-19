@@ -45,9 +45,29 @@ def load_frontmatter(path: Path) -> tuple[dict, str]:
     return data, body
 
 
+DEFAULT_LIMITS = {
+    "per_skill_words": 60,
+    "per_skill_bytes": 640,
+    "aggregate_words": 1200,
+    "aggregate_bytes": 12288,
+    "aggregate_frontmatter_bytes": 16384,
+}
+
+
+def context_limits(root: Path) -> dict[str, int]:
+    """Budget thresholds, declared once in config/canonical-skills.yaml."""
+    limits = dict(DEFAULT_LIMITS)
+    inventory_path = Path(root) / "config/canonical-skills.yaml"
+    if inventory_path.exists():
+        declared = (yaml.safe_load(inventory_path.read_text(encoding="utf-8")) or {}).get("description_limits", {})
+        limits.update({key: int(declared[key]) for key in DEFAULT_LIMITS if key in declared})
+    return limits
+
+
 def validate_context_budget(root: Path, legacy_names: set[str] | None = None) -> list[ValidationIssue]:
     root = Path(root)
     legacy_names = legacy_names or set()
+    limits = context_limits(root)
     issues: list[ValidationIssue] = []
     total_description_words = 0
     total_description_bytes = 0
@@ -65,10 +85,10 @@ def validate_context_budget(root: Path, legacy_names: set[str] | None = None) ->
         total_description_words += words
         total_description_bytes += size
         total_frontmatter_bytes += utf8_size(yaml.safe_dump(frontmatter, allow_unicode=True))
-        if words > 60:
-            issues.append(ValidationIssue("DESCRIPTION_WORDS", str(path), f"{words} > 60"))
-        if size > 640:
-            issues.append(ValidationIssue("DESCRIPTION_BYTES", str(path), f"{size} > 640"))
+        if words > limits["per_skill_words"]:
+            issues.append(ValidationIssue("DESCRIPTION_WORDS", str(path), f"{words} > {limits['per_skill_words']}"))
+        if size > limits["per_skill_bytes"]:
+            issues.append(ValidationIssue("DESCRIPTION_BYTES", str(path), f"{size} > {limits['per_skill_bytes']}"))
         for legacy_name in legacy_names:
             if legacy_name.casefold() in description.casefold():
                 issues.append(ValidationIssue("LEGACY_NAME_IN_DESCRIPTION", str(path), legacy_name))
@@ -82,17 +102,18 @@ def validate_context_budget(root: Path, legacy_names: set[str] | None = None) ->
         if skill_bytes > byte_limit:
             issues.append(ValidationIssue("SKILL_BYTES", str(path), f"{skill_bytes} > {byte_limit}"))
 
-    if total_description_words > 1200:
-        issues.append(ValidationIssue("DESCRIPTION_AGGREGATE_WORDS", "skills", f"{total_description_words} > 1200"))
-    if total_description_bytes > 12288:
-        issues.append(ValidationIssue("DESCRIPTION_AGGREGATE_BYTES", "skills", f"{total_description_bytes} > 12288"))
-    if total_frontmatter_bytes > 16384:
-        issues.append(ValidationIssue("FRONTMATTER_AGGREGATE_BYTES", "skills", f"{total_frontmatter_bytes} > 16384"))
+    for total, limit_key, code in (
+        (total_description_words, "aggregate_words", "DESCRIPTION_AGGREGATE_WORDS"),
+        (total_description_bytes, "aggregate_bytes", "DESCRIPTION_AGGREGATE_BYTES"),
+        (total_frontmatter_bytes, "aggregate_frontmatter_bytes", "FRONTMATTER_AGGREGATE_BYTES"),
+    ):
+        if total > limits[limit_key]:
+            issues.append(ValidationIssue(code, "skills", f"{total} > {limits[limit_key]}"))
 
     inventory_path = root / "config/canonical-skills.yaml"
     if inventory_path.exists():
         inventory = yaml.safe_load(inventory_path.read_text(encoding="utf-8"))
         reserved = sum(int(item["description_target_words"]) for item in inventory["skills"])
-        if reserved > int(inventory["description_limits"]["aggregate_words"]):
+        if reserved > limits["aggregate_words"]:
             issues.append(ValidationIssue("DESCRIPTION_RESERVED_WORDS", str(inventory_path), str(reserved)))
     return issues

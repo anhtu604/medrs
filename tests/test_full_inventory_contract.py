@@ -34,6 +34,7 @@ EXPECTED_NAMES = {
     "phan-bien-va-chinh-sua",
     "quan-ly-trich-dan",
     "bieu-do-cong-bo",
+    "kiem-chuan-bao-cao",
 }
 
 

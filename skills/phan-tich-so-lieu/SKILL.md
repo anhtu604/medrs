@@ -2,7 +2,7 @@
 name: phan-tich-so-lieu
 description: Điều phối phân tích số liệu y học theo kế hoạch đã xác nhận và diễn giải output thật. Coordinates R/Stata execution and uncertainty. Không chọn mô hình theo p-value, sửa ngược cỡ mẫu hay nhận đã chạy khi thiếu runtime.
 metadata:
-  version: 2.0.0-alpha.4
+  version: 2.0.0-alpha.5
   role: leaf
   locale: [vi, en]
   document_types: [analysis, thesis, dissertation, journal-article]
@@ -10,7 +10,7 @@ metadata:
 
 # Phân tích số liệu
 
-Coordinate execution through `phan-tich-r` or `phan-tich-stata`; do not impersonate either runtime. Before accepting any change to the confirmed analysis plan, read [references/analysis-deviation-contract.md](references/analysis-deviation-contract.md).
+Coordinate execution through `phan-tich-r` or `phan-tich-stata`; do not impersonate either runtime. Before accepting any change to the confirmed analysis plan, read [references/analysis-deviation-contract.md](references/analysis-deviation-contract.md). For time-to-event outcomes or a clinical prediction model, read [references/time-to-event-contract.md](references/time-to-event-contract.md) first.
 
 ## Required inputs
 

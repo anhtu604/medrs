@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0-alpha.5 — Reporting-guideline coverage and time-to-event analysis
+
+- Added `kiem-chuan-bao-cao`, which checks a manuscript against the reporting guideline matching its study design, item by item, and judges each item as reported, partially reported, not reported or not applicable with a required location in the manuscript.
+- Added four source-governed coverage manifests retrieved from the primary statements on 2026-09-19 and reproduced under their CC BY licences with attribution: CONSORT 2025 (42 identifiers), STROBE 2007 (34), PRISMA 2020 (42) and TRIPOD+AI 2024 (52). CONSORT 2025 and TRIPOD+AI replace the superseded 2010 and 2015 editions, and a test keeps the superseded editions out of the package.
+- Designs without an encoded manifest now return `GUIDELINE_UNAVAILABLE` and name the applicable statement, instead of being checked against a near-enough instrument.
+- Added a time-to-event and prediction-model contract to `phan-tich-so-lieu` covering index-date and censoring definitions, competing risks, immortal-time bias, proportional-hazards checking, events-per-variable limits, and the rule that discrimination and calibration are reported together.
+- Made context budgets read their thresholds from `config/canonical-skills.yaml` rather than duplicating them in code, and raised the aggregate description budget for the larger inventory.
+
 ## 2.0.0-alpha.4 — Citation management, publication figures, single-source releases
 
 - Added `quan-ly-trich-dan`: read-only access to Zotero, BibTeX, RIS and CSL-JSON libraries with a declared backend, runtime field resolution, trash exclusion, and a retraction check that runs before any other verdict.

@@ -20,6 +20,16 @@ def test_old_skill_name_routes_through_co_van_without_alias():
     assert decision.availability == "NOT_IN_ACTIVE_SLICE"
 
 
+def test_reporting_guideline_request_routes_to_guideline_skill():
+    decision = route_request(
+        RoutingRequest(text="Đối chiếu bản thảo với STROBE giúp tôi"),
+        {},
+        active_skills={"medrs", "kiem-chuan-bao-cao"},
+    )
+    assert decision.canonical == "kiem-chuan-bao-cao"
+    assert decision.mode == "guideline-compliance"
+
+
 def test_citation_check_routes_to_citation_management():
     decision = route_request(
         RoutingRequest(text="Nhờ kiểm tra trích dẫn trong chương tổng quan"),
@@ -214,9 +224,14 @@ def test_reporting_guideline_check_does_not_route_to_quality_appraisal():
     decision = route_request(
         RoutingRequest(text="Kiểm checklist CONSORT trước khi nộp"),
         {},
-        active_skills={"medrs", "danh-gia-chat-luong-bang-chung", "kiem-chung-ban-thao"},
+        active_skills={
+            "medrs",
+            "danh-gia-chat-luong-bang-chung",
+            "kiem-chung-ban-thao",
+            "kiem-chuan-bao-cao",
+        },
     )
-    assert decision.canonical == "kiem-chung-ban-thao"
+    assert decision.canonical == "kiem-chuan-bao-cao"
 
 
 def test_hmu_semantic_restructure_routes_to_bo_cuc():

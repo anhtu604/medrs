@@ -1,10 +1,10 @@
-final_count: 26
+final_count: 27
 active_slice: 4
 description_limits:
   target_words: 45
   per_skill_words: 60
   per_skill_bytes: 640
-  aggregate_words: 1200
+  aggregate_words: 1300
   aggregate_bytes: 12288
   aggregate_frontmatter_bytes: 16384
 skills:
@@ -34,3 +34,4 @@ skills:
   - {name: phan-bien-va-chinh-sua, slice: 4, status: accepted, description_target_words: 45}
   - {name: quan-ly-trich-dan, slice: 5, status: accepted, description_target_words: 45}
   - {name: bieu-do-cong-bo, slice: 5, status: accepted, description_target_words: 45}
+  - {name: kiem-chuan-bao-cao, slice: 5, status: accepted, description_target_words: 45}
