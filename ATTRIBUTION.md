@@ -8,6 +8,9 @@
 | `obra/the-elements-of-style` | commit `05fc4f0d2b97b7c042dd9949ad658568e4a1324e`; verified 2026-08-31 | Strunk 1918 text is public domain; repository identifies Project Gutenberg #37134 | Independently adapted composition principles in `composition-en.md`; no source prose copied |
 | Wikipedia “Signs of AI writing” | revision `1372013638`, 2026-08-29; verified 2026-08-31 | CC BY-SA for copied/adapted expression | Categories and caveats adapted in `formulaic-writing-audit.md`; no examples copied and no detector evasion |
 | `codelabr/easy-map` installer | `main` inspected 2026-09-02 | MIT, copyright Nguyen Tuan Anh (2026) | Web-bootstrap/local-installer separation, temporary-download cleanup and multi-target installation pattern adapted; medical plugin adds staging, manifests, rollback, shared resources and checksum pinning |
+| `dougwyu/claude-zotero-skills` | `main` inspected 2026-09-19 | Apache 2.0 | Read-only reference-library invariants, runtime field resolution, trash exclusion and the four-verdict citation-faithfulness taxonomy independently rewritten in `quan-ly-trich-dan`; no source prose, SQL or code copied |
+| `Galaxy-Dawn/claude-scholar` | `main` inspected 2026-09-19 | MIT | Pre-plot evidence contract and publication QA concepts independently rewritten and re-scoped to R/Stata medical figures in `bieu-do-cong-bo`; no source prose or code copied, and the upstream Python figure toolchain is not adopted |
+| `joshzyj/open-scholar-skill` | `main` inspected 2026-09-19 | No license file; rights reserved by default | Excluded. Nothing consulted for reuse and nothing derived from it |
 
 ## Per-file upstream audit
 

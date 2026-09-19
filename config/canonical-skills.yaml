@@ -1,4 +1,4 @@
-final_count: 24
+final_count: 26
 active_slice: 4
 description_limits:
   target_words: 45
@@ -32,3 +32,5 @@ skills:
   - {name: bo-cuc-tai-lieu, slice: 4, status: accepted, description_target_words: 45}
   - {name: dinh-dang-tai-lieu, slice: 4, status: accepted, description_target_words: 45}
   - {name: phan-bien-va-chinh-sua, slice: 4, status: accepted, description_target_words: 45}
+  - {name: quan-ly-trich-dan, slice: 5, status: accepted, description_target_words: 45}
+  - {name: bieu-do-cong-bo, slice: 5, status: accepted, description_target_words: 45}

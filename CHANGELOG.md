@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0-alpha.4 — Citation management, publication figures, single-source releases
+
+- Added `quan-ly-trich-dan`: read-only access to Zotero, BibTeX, RIS and CSL-JSON libraries with a declared backend, runtime field resolution, trash exclusion, and a retraction check that runs before any other verdict.
+- Added citation-faithfulness verification judged per citation × claim across faithful, overstated, misattributed and unsupported, with a separate unverifiable state, and a statistic-provenance rule that treats a figure relayed by a review as misattributed.
+- Added `bieu-do-cong-bo`: an evidence contract that must be settled before plotting, a claim-to-figure map covering survival, ROC, calibration, agreement, forest and funnel forms, and a publication QA pass covering grayscale, downscaling, colour accessibility and error-bar disclosure.
+- Routed both new skills from the `/medrs` entrypoint and raised the canonical inventory to 26 accepted skills.
+- Made releases single-source: the version is written only in `.claude-plugin/plugin.json` and propagated by `scripts/sync_version.py`, and the canonical skill count only in `config/canonical-skills.yaml`. The Cowork package name now follows the manifest version instead of a pinned filename, and packaging refuses to build while any carrier disagrees.
+- Shortened installer staging directories, which had pushed staged skill paths past the 260-character Windows limit and broken installation under deep user profiles.
+
 ## 2.0.0-alpha.3 — Refresh-safe Word formatting
 
 - Replaced direct run-level typography with an authoritative Word paragraph-style system covering body text, four heading levels, captions, tables, lists, TOC entries, lists of figures/tables, and bibliography output.

@@ -20,6 +20,27 @@ def test_old_skill_name_routes_through_co_van_without_alias():
     assert decision.availability == "NOT_IN_ACTIVE_SLICE"
 
 
+def test_citation_check_routes_to_citation_management():
+    decision = route_request(
+        RoutingRequest(text="Nhờ kiểm tra trích dẫn trong chương tổng quan"),
+        {},
+        active_skills={"medrs", "quan-ly-trich-dan"},
+    )
+    assert decision.canonical == "quan-ly-trich-dan"
+    assert decision.mode == "verify-faithfulness"
+    assert decision.availability == "AVAILABLE"
+
+
+def test_publication_figure_request_routes_to_figure_skill():
+    decision = route_request(
+        RoutingRequest(text="Tôi cần một forest plot cho phần kết quả"),
+        {},
+        active_skills={"medrs", "bieu-do-cong-bo"},
+    )
+    assert decision.canonical == "bieu-do-cong-bo"
+    assert decision.mode == "design-figure"
+
+
 def test_existing_draft_routes_to_adopt_mode():
     decision = route_request(
         RoutingRequest(text="Tôi có luận văn đang viết dở", attachments=("draft.docx",)),
