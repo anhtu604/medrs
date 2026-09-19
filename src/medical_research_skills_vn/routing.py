@@ -79,6 +79,11 @@ def route_request(request, legacy_map, active_skills):
         "stard",
         "coreq",
         "care checklist",
+        "cheers",
+        "arrive 2.0",
+        "arrive guideline",
+        "chuẩn arrive",
+        "prisma-p",
         "reporting guideline",
         "reporting checklist",
     )

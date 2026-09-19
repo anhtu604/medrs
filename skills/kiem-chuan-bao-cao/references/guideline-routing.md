@@ -14,14 +14,17 @@ Chuẩn báo cáo được chọn theo **thiết kế nghiên cứu**, không th
 | Nghiên cứu độ chính xác chẩn đoán | `../../coverage/stard-2015.yaml` | 34 | STARD 2015 |
 | Nghiên cứu định tính phỏng vấn hoặc nhóm trọng tâm | `../../coverage/coreq-2007.yaml` | 32 | COREQ 2007 |
 | Báo cáo ca bệnh | `../../coverage/care-2013.yaml` | 13 | CARE 2013 |
+| Đề cương tổng quan hệ thống | `../../coverage/prisma-p-2015.yaml` | 26 | PRISMA-P 2015 |
+| Đánh giá kinh tế y tế | `../../coverage/cheers-2022.yaml` | 28 | CHEERS 2022, thay thế CHEERS 2013 |
+| Nghiên cứu trên động vật | `../../coverage/arrive-2-0.yaml` | 21 | ARRIVE 2.0, thay thế ARRIVE 2010 |
 
 Số mục tính cả phụ mục chữ cái. Danh sách định danh chuẩn nằm ở `expected_ids` của từng manifest và là nguồn duy nhất; không tự thêm, bớt hay đổi tên mục.
 
-Ba manifest mang mức độ chi tiết khác nhau vì giấy phép nguồn khác nhau. CONSORT, SPIRIT, STROBE, PRISMA, TRIPOD+AI và STARD giữ nguyên văn mục theo giấy phép CC BY. COREQ và CARE chỉ mã hóa định danh cùng tên mục, với câu lệnh vận hành viết độc lập, vì bản gốc lần lượt là tài liệu đóng và cấm tạo bản phái sinh. Khi cần đối chiếu chính xác nguyên văn của hai chuẩn này, hướng tác giả tới bản chính thức.
+Các manifest mang mức độ chi tiết khác nhau vì giấy phép nguồn khác nhau. CONSORT, SPIRIT, STROBE, PRISMA, PRISMA-P, TRIPOD+AI, STARD, CHEERS giữ nguyên văn mục theo giấy phép CC BY, và ARRIVE theo miễn trừ CC0. Riêng COREQ và CARE chỉ mã hóa định danh cùng tên mục, với câu lệnh vận hành viết độc lập, vì bản gốc lần lượt là tài liệu đóng và cấm tạo bản phái sinh. Khi cần đối chiếu chính xác nguyên văn của hai chuẩn này, hướng tác giả tới bản chính thức.
 
 ## Khi không có manifest phù hợp
 
-Nhiều thiết kế vẫn chưa có manifest: nghiên cứu kinh tế y tế, thử nghiệm theo cụm, nghiên cứu không thua kém, nghiên cứu trên động vật, đề cương tổng quan hệ thống.
+Nhiều thiết kế vẫn chưa có manifest: thử nghiệm theo cụm, nghiên cứu không thua kém hoặc tương đương, nghiên cứu cải tiến chất lượng, nghiên cứu độ tin cậy và thỏa thuận đo lường, đánh giá công nghệ y tế mô phỏng.
 
 Trả `GUIDELINE_UNAVAILABLE` kèm tên chuẩn phù hợp và lý do chưa mã hóa. Nêu rằng tác giả vẫn nên đối chiếu bản chính thức. Không thay bằng chuẩn gần đúng và không tự liệt kê mục từ trí nhớ.
 

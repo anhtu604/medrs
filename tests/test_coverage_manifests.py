@@ -46,6 +46,9 @@ def test_reporting_guideline_manifests_are_current_and_fully_covered():
         "coverage/stard-2015.yaml": 34,
         "coverage/coreq-2007.yaml": 32,
         "coverage/care-2013.yaml": 13,
+        "coverage/prisma-p-2015.yaml": 26,
+        "coverage/cheers-2022.yaml": 28,
+        "coverage/arrive-2-0.yaml": 21,
     }
     for relative, count in expected_counts.items():
         manifest = load_coverage_manifest(ROOT / relative)
@@ -64,7 +67,13 @@ def test_restrictively_licensed_guidelines_state_that_no_wording_is_reproduced()
 
 def test_superseded_reporting_guidelines_are_not_shipped():
     shipped = {path.name for path in (ROOT / "coverage").glob("*.yaml")}
-    for superseded in ("consort-2010.yaml", "tripod-2015.yaml", "spirit-2013.yaml"):
+    for superseded in (
+        "consort-2010.yaml",
+        "tripod-2015.yaml",
+        "spirit-2013.yaml",
+        "cheers-2013.yaml",
+        "arrive-2010.yaml",
+    ):
         assert superseded not in shipped
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0-alpha.7 — Protocol, economic and animal-research reporting guidelines
+
+- Added coverage manifests for PRISMA-P 2015 (26 identifiers, systematic review protocols), CHEERS 2022 (28, health economic evaluations) and ARRIVE 2.0 (21, animal research). CHEERS 2022 supersedes CHEERS 2013 and ARRIVE 2.0 supersedes ARRIVE 2010; both superseded editions are now excluded by the superseded-edition test.
+- CHEERS 2022 was taken from its CC BY BMC Medicine co-publication because the BMJ edition is not retrievable; ARRIVE 2.0 is released under CC0, and attribution is retained anyway.
+- `kiem-chuan-bao-cao` now routes eleven study designs across fourteen coverage manifests holding 411 checklist identifiers in total.
+- Narrowed the ARRIVE routing trigger, which matched the ordinary English word "arrive" and would have pulled unrelated requests into guideline checking; a test now guards that.
+
 ## 2.0.0-alpha.6 — Four further reporting guidelines
 
 - Added coverage manifests for SPIRIT 2025 (53 identifiers, trial protocols), STARD 2015 (34, diagnostic accuracy), COREQ 2007 (32, interview and focus-group research) and CARE 2013 (13, clinical case reports). SPIRIT 2025 supersedes SPIRIT 2013, which the superseded-edition test now also excludes.

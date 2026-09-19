@@ -1,0 +1,45 @@
+instrument: CHEERS 2022 checklist for health economic evaluations
+version: 2022 statement, BMC Med 2022;20:23; supersedes CHEERS 2013
+source_url: https://doi.org/10.1186/s12916-021-02204-0
+license: CC BY 4.0 (Husereau D and colleagues, BMC Med 2022;20:23); item wording reproduced with attribution
+last_verified: 2026-09-19
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+sections:
+  - Title
+  - Abstract
+  - Introduction
+  - Methods
+  - Results
+  - Discussion
+  - Other relevant information
+expected_ids: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28']
+implemented_ids: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28']
+items:
+  - {id: '1', section: 'Title', topic: 'Title', operational_prompt: 'Identify the study as an economic evaluation and specify the interventions being compared.', source_locator: 's12916-021-02204-0/checklist/item-1'}
+  - {id: '2', section: 'Abstract', topic: 'Abstract', operational_prompt: 'Provide a structured summary that highlights context, key methods, results, and alternative analyses.', source_locator: 's12916-021-02204-0/checklist/item-2'}
+  - {id: '3', section: 'Introduction', topic: 'Background and objectives', operational_prompt: 'Give the context for the study, the study question, and its practical relevance for decision making in policy or practice.', source_locator: 's12916-021-02204-0/checklist/item-3'}
+  - {id: '4', section: 'Methods', topic: 'Health economic analysis plan', operational_prompt: 'Indicate whether a health economic analysis plan was developed and where available.', source_locator: 's12916-021-02204-0/checklist/item-4'}
+  - {id: '5', section: 'Methods', topic: 'Study population', operational_prompt: 'Describe characteristics of the study population (such as age range, demographics, socioeconomic, or clinical characteristics).', source_locator: 's12916-021-02204-0/checklist/item-5'}
+  - {id: '6', section: 'Methods', topic: 'Setting and location', operational_prompt: 'Provide relevant contextual information that may influence findings.', source_locator: 's12916-021-02204-0/checklist/item-6'}
+  - {id: '7', section: 'Methods', topic: 'Comparators', operational_prompt: 'Describe the interventions or strategies being compared and why chosen.', source_locator: 's12916-021-02204-0/checklist/item-7'}
+  - {id: '8', section: 'Methods', topic: 'Perspective', operational_prompt: 'State the perspective(s) adopted by the study and why chosen.', source_locator: 's12916-021-02204-0/checklist/item-8'}
+  - {id: '9', section: 'Methods', topic: 'Time horizon', operational_prompt: 'State the time horizon for the study and why appropriate.', source_locator: 's12916-021-02204-0/checklist/item-9'}
+  - {id: '10', section: 'Methods', topic: 'Discount rate', operational_prompt: 'Report the discount rate(s) and reason chosen.', source_locator: 's12916-021-02204-0/checklist/item-10'}
+  - {id: '11', section: 'Methods', topic: 'Selection of outcomes', operational_prompt: 'Describe what outcomes were used as the measure(s) of benefit(s) and harm(s).', source_locator: 's12916-021-02204-0/checklist/item-11'}
+  - {id: '12', section: 'Methods', topic: 'Measurement of outcomes', operational_prompt: 'Describe how outcomes used to capture benefit(s) and harm(s) were measured.', source_locator: 's12916-021-02204-0/checklist/item-12'}
+  - {id: '13', section: 'Methods', topic: 'Valuation of outcomes', operational_prompt: 'Describe the population and methods used to measure and value outcomes.', source_locator: 's12916-021-02204-0/checklist/item-13'}
+  - {id: '14', section: 'Methods', topic: 'Measurement and valuation of resources and costs', operational_prompt: 'Describe how costs were valued.', source_locator: 's12916-021-02204-0/checklist/item-14'}
+  - {id: '15', section: 'Methods', topic: 'Currency, price date, and conversion', operational_prompt: 'Report the dates of the estimated resource quantities and unit costs, plus the currency and year of conversion.', source_locator: 's12916-021-02204-0/checklist/item-15'}
+  - {id: '16', section: 'Methods', topic: 'Rationale and description of model', operational_prompt: 'If modelling is used, describe in detail and why used. Report if the model is publicly available and where it can be accessed.', source_locator: 's12916-021-02204-0/checklist/item-16'}
+  - {id: '17', section: 'Methods', topic: 'Analytics and assumptions', operational_prompt: 'Describe any methods for analysing or statistically transforming data, any extrapolation methods, and approaches for validating any model used.', source_locator: 's12916-021-02204-0/checklist/item-17'}
+  - {id: '18', section: 'Methods', topic: 'Characterising heterogeneity', operational_prompt: 'Describe any methods used for estimating how the results of the study vary for subgroups.', source_locator: 's12916-021-02204-0/checklist/item-18'}
+  - {id: '19', section: 'Methods', topic: 'Characterising distributional effects', operational_prompt: 'Describe how impacts are distributed across different individuals or adjustments made to reflect priority populations.', source_locator: 's12916-021-02204-0/checklist/item-19'}
+  - {id: '20', section: 'Methods', topic: 'Characterising uncertainty', operational_prompt: 'Describe methods to characterise any sources of uncertainty in the analysis.', source_locator: 's12916-021-02204-0/checklist/item-20'}
+  - {id: '21', section: 'Methods', topic: 'Approach to engagement with patients and others affected by the study', operational_prompt: 'Describe any approaches to engage patients or service recipients, the general public, communities, or stakeholders (such as clinicians or payers) in the design of the study.', source_locator: 's12916-021-02204-0/checklist/item-21'}
+  - {id: '22', section: 'Results', topic: 'Study parameters', operational_prompt: 'Report all analytic inputs (such as values, ranges, references) including uncertainty or distributional assumptions.', source_locator: 's12916-021-02204-0/checklist/item-22'}
+  - {id: '23', section: 'Results', topic: 'Summary of main results', operational_prompt: 'Report the mean values for the main categories of costs and outcomes of interest and summarise them in the most appropriate overall measure.', source_locator: 's12916-021-02204-0/checklist/item-23'}
+  - {id: '24', section: 'Results', topic: 'Effect of uncertainty', operational_prompt: 'Describe how uncertainty about analytic judgments, inputs, or projections affect findings. Report the effect of choice of discount rate and time horizon, if applicable.', source_locator: 's12916-021-02204-0/checklist/item-24'}
+  - {id: '25', section: 'Results', topic: 'Effect of engagement with patients and others affected by the study', operational_prompt: 'Report on any difference patient/service recipient, general public, community, or stakeholder involvement made to the approach or findings of the study', source_locator: 's12916-021-02204-0/checklist/item-25'}
+  - {id: '26', section: 'Discussion', topic: 'Study findings, limitations, generalisability, and current knowledge', operational_prompt: 'Report key findings, limitations, ethical or equity considerations not captured, and how these could affect patients, policy, or practice.', source_locator: 's12916-021-02204-0/checklist/item-26'}
+  - {id: '27', section: 'Other relevant information', topic: 'Source of funding', operational_prompt: 'Describe how the study was funded and any role of the funder in the identification, design, conduct, and reporting of the analysis', source_locator: 's12916-021-02204-0/checklist/item-27'}
+  - {id: '28', section: 'Other relevant information', topic: 'Conflicts of interest', operational_prompt: 'Report authors conflicts of interest according to journal or International Committee of Medical Journal Editors requirements.', source_locator: 's12916-021-02204-0/checklist/item-28'}

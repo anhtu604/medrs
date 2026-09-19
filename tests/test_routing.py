@@ -30,6 +30,15 @@ def test_reporting_guideline_request_routes_to_guideline_skill():
     assert decision.mode == "guideline-compliance"
 
 
+def test_everyday_use_of_the_word_arrive_does_not_trigger_guideline_routing():
+    decision = route_request(
+        RoutingRequest(text="Viết kết quả khi số liệu arrive từ phòng xét nghiệm"),
+        {},
+        active_skills={"medrs", "kiem-chuan-bao-cao", "viet-ket-qua"},
+    )
+    assert decision.canonical != "kiem-chuan-bao-cao"
+
+
 def test_citation_check_routes_to_citation_management():
     decision = route_request(
         RoutingRequest(text="Nhờ kiểm tra trích dẫn trong chương tổng quan"),
