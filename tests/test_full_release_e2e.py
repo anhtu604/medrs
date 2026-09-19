@@ -9,13 +9,14 @@ from medical_research_skills_vn.evaluation import run_scenario
 ROOT = Path(__file__).parents[1]
 
 
-def test_all_twenty_four_skills_are_accepted_and_discoverable():
+def test_every_canonical_skill_is_accepted_and_discoverable():
     inventory = yaml.safe_load((ROOT / "config/canonical-skills.yaml").read_text(encoding="utf-8"))
     index = json.loads((ROOT / "skills/index.json").read_text(encoding="utf-8"))
-    assert len(inventory["skills"]) == 24
+    expected = inventory["final_count"]
+    assert len(inventory["skills"]) == expected
     assert all(item["status"] == "accepted" for item in inventory["skills"])
-    assert len(index["skills"]) == 24
-    assert "all 24 canonical" in (ROOT / "README.md").read_text(encoding="utf-8")
+    assert len(index["skills"]) == expected
+    assert f"all {expected} canonical" in (ROOT / "README.md").read_text(encoding="utf-8")
 
 
 def test_six_release_exemplars_pass_offline():

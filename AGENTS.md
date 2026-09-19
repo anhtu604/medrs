@@ -11,9 +11,12 @@ Run validation in this order:
 ```text
 claude plugin validate . --strict
 python scripts/validate_skills.py
+python scripts/sync_version.py --check
 python -m pytest -q
 python tests/eval_runner.py --offline
 ```
+
+Release versions are written by hand in `.claude-plugin/plugin.json` alone, and the canonical skill count in `config/canonical-skills.yaml` alone. Propagate a version bump with `python scripts/sync_version.py`; never hand-edit a version in `pyproject.toml`, `__init__.py`, or a skill's frontmatter.
 
 Do not install version 1.3.0 alongside 2.0. The old release is an archival rollback artifact only.
 

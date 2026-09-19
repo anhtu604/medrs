@@ -10,6 +10,12 @@ $UserRoot = [IO.Path]::GetFullPath($UserRoot)
 $Targets = @($Targets -split ',' | ForEach-Object { $_.Trim().ToLowerInvariant() } | Where-Object { $_ } | Select-Object -Unique)
 $targetFolders = @{ codex = '.codex'; claude = '.claude'; generic = '.agents' }
 $problems = @()
+$ExpectedSkillCount = $null
+$inventoryPath = Join-Path $PSScriptRoot 'config/canonical-skills.yaml'
+if (Test-Path -LiteralPath $inventoryPath -PathType Leaf) {
+  $countMatch = [regex]::Match((Get-Content -LiteralPath $inventoryPath -Raw -Encoding UTF8), '(?m)^final_count:\s*(\d+)\s*$')
+  if ($countMatch.Success) { $ExpectedSkillCount = [int] $countMatch.Groups[1].Value }
+}
 foreach ($target in $Targets) {
   if (-not $targetFolders.ContainsKey($target)) { $problems += "Unknown target: $target"; continue }
   $hostRoot = Join-Path $UserRoot $targetFolders[$target]
@@ -20,7 +26,9 @@ foreach ($target in $Targets) {
   }
   try { $manifest = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json }
   catch { $problems += "${target}: install manifest invalid"; continue }
-  if (@($manifest.skills).Count -ne 24) { $problems += "${target}: manifest does not list 24 skills" }
+  if ($null -ne $ExpectedSkillCount -and @($manifest.skills).Count -ne $ExpectedSkillCount) {
+    $problems += "${target}: manifest does not list $ExpectedSkillCount skills"
+  }
   foreach ($name in $manifest.skills) {
     if (-not (Test-Path -LiteralPath (Join-Path $hostRoot "skills\$name\SKILL.md") -PathType Leaf)) {
       $problems += "${target}: missing skill $name"

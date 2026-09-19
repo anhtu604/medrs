@@ -3,6 +3,8 @@ from pathlib import Path
 
 import yaml
 
+from medical_research_skills_vn.release import canonical_version, expected_skill_count, version_drift
+
 
 ROOT = Path(__file__).parents[1]
 
@@ -39,7 +41,7 @@ def test_inventory_lifecycle_matches_current_slice_four_progress():
     ]
     assert active == []
     assert inventory["active_slice"] == 4
-    assert inventory["final_count"] == 24
+    assert inventory["final_count"] == len(inventory["skills"])
 
 
 def test_claude_manifest_and_marketplace_are_repo_first():
@@ -47,11 +49,19 @@ def test_claude_manifest_and_marketplace_are_repo_first():
     marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
     assert not (ROOT / "plugin.json").exists()
     assert claude_manifest["name"] == "medrs"
-    assert claude_manifest["version"] == "2.0.0-alpha.3"
     assert claude_manifest["license"] == "CC-BY-NC-4.0"
     assert claude_manifest["repository"] == "https://github.com/anhtu604/medrs"
     assert marketplace["plugins"][0]["source"] == "./"
     assert marketplace["plugins"][0]["name"] == claude_manifest["name"]
+
+
+def test_every_version_carrier_matches_the_plugin_manifest():
+    assert version_drift(ROOT) == []
+    assert canonical_version(ROOT) in (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+
+
+def test_declared_skill_count_matches_the_skills_on_disk():
+    assert len(list((ROOT / "skills").glob("*/SKILL.md"))) == expected_skill_count(ROOT)
 
 
 def test_portable_repository_entry_files_exist():

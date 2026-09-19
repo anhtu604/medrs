@@ -4,6 +4,7 @@ import subprocess
 from pathlib import Path
 
 from medical_research_skills_vn.installer import validate_install_source
+from medical_research_skills_vn.release import expected_skill_count
 
 
 ROOT = Path(__file__).parents[1]
@@ -20,7 +21,7 @@ def _run(script, *args):
     )
 
 
-def test_source_validator_requires_exactly_twenty_four_indexed_skills(tmp_path):
+def test_source_validator_requires_the_declared_indexed_skill_set(tmp_path):
     assert validate_install_source(ROOT)["status"] == "VALID"
     broken = tmp_path / "broken"
     (broken / "skills/only-one").mkdir(parents=True)
@@ -41,13 +42,13 @@ def test_local_installer_supports_all_targets_and_paths_with_spaces(tmp_path):
     assert result.returncode == 0, result.stderr + result.stdout
     for host in (".codex", ".claude", ".agents"):
         host_root = user_root / host
-        assert len(list((host_root / "skills").glob("*/SKILL.md"))) == 24
+        assert len(list((host_root / "skills").glob("*/SKILL.md"))) == expected_skill_count(ROOT)
         support = host_root / "medical-research-skills-vn"
         assert (support / "coverage/rob2-parallel-2019.yaml").is_file()
         assert (support / "profiles/institution/hmu/word-format-master-2020-current-2026.yaml").is_file()
         manifest = json.loads((host_root / "medical-research-skills-vn.install.json").read_text(encoding="utf-8-sig"))
         assert manifest["version_ref"] == "test-ref"
-        assert len(manifest["skills"]) == 24
+        assert len(manifest["skills"]) == expected_skill_count(ROOT)
 
 
 def test_failed_source_validation_does_not_replace_existing_install(tmp_path):

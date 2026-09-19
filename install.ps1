@@ -20,7 +20,12 @@ $indexPath = Join-Path $skillRoot 'index.json'
 if (-not (Test-Path -LiteralPath $indexPath -PathType Leaf)) { throw "Install source has no skills/index.json: $SourceRoot" }
 $index = Get-Content -LiteralPath $indexPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $skillNames = @($index.skills | ForEach-Object { $_.name } | Sort-Object -Unique)
-if ($skillNames.Count -ne 24) { throw "Install source must contain exactly 24 indexed skills; found $($skillNames.Count)." }
+$inventoryPath = Join-Path $SourceRoot 'config/canonical-skills.yaml'
+if (-not (Test-Path -LiteralPath $inventoryPath -PathType Leaf)) { throw "Install source has no config/canonical-skills.yaml: $SourceRoot" }
+$countMatch = [regex]::Match((Get-Content -LiteralPath $inventoryPath -Raw -Encoding UTF8), '(?m)^final_count:\s*(\d+)\s*$')
+if (-not $countMatch.Success) { throw "Install source inventory declares no final_count: $inventoryPath" }
+$ExpectedSkillCount = [int] $countMatch.Groups[1].Value
+if ($skillNames.Count -ne $ExpectedSkillCount) { throw "Install source must contain exactly $ExpectedSkillCount indexed skills; found $($skillNames.Count)." }
 foreach ($name in $skillNames) {
   if (-not (Test-Path -LiteralPath (Join-Path $skillRoot "$name\SKILL.md") -PathType Leaf)) {
     throw "Indexed skill is missing its SKILL.md: $name"
@@ -38,7 +43,8 @@ foreach ($target in $Targets) {
   $skillsDestination = Join-Path $hostRoot 'skills'
   $supportDestination = Join-Path $hostRoot $PackageName
   $manifestPath = Join-Path $hostRoot "$PackageName.install.json"
-  $stage = Join-Path $hostRoot (".$PackageName-stage-" + [Guid]::NewGuid().ToString('N'))
+  # Stage names stay short so deep user profiles keep staged skill paths under the 260-character Windows limit.
+  $stage = Join-Path $hostRoot ('.medrs-stage-' + [Guid]::NewGuid().ToString('N').Substring(0, 12))
   $backup = Join-Path $stage 'backup'
   $activated = @()
   $backedUp = @()
@@ -72,8 +78,8 @@ foreach ($target in $Targets) {
     foreach ($shared in @('coverage', 'profiles', 'schemas')) {
       Copy-Item -LiteralPath (Join-Path $SourceRoot $shared) -Destination (Join-Path $stage $shared) -Recurse -Force
     }
-    if ((Get-ChildItem -LiteralPath (Join-Path $stage 'skills') -Directory).Count -ne 24) {
-      throw 'Staging validation failed: expected 24 skill directories.'
+    if ((Get-ChildItem -LiteralPath (Join-Path $stage 'skills') -Directory).Count -ne $ExpectedSkillCount) {
+      throw "Staging validation failed: expected $ExpectedSkillCount skill directories."
     }
 
     New-Item -ItemType Directory -Path $skillsDestination -Force | Out-Null
