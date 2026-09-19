@@ -2,7 +2,7 @@
 name: kiem-van-phong
 description: Use when auditing or revising Vietnamese or English medical academic prose before standalone delivery, document assembly, submission, or defense. Dùng để kiểm lập luận, bằng chứng, giọng tác giả và văn phong; không dùng để dự đoán văn bản có phải do AI viết.
 metadata:
-  version: 2.0.0-alpha.7
+  version: 2.0.0-alpha.8
   role: gate
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript, review]
@@ -10,7 +10,7 @@ metadata:
 
 # Kiểm văn phong
 
-Gate này đánh giá chất lượng và tính liêm chính của văn bản y học. Nó không chấm “độ giống người”, không dự đoán tác giả và không tối ưu để né bộ phát hiện AI.
+Gate này đánh giá và nâng chất lượng, tính liêm chính của văn bản y học, gồm cả việc viết lại cho câu văn tự nhiên hơn. Nó không chấm “độ giống người”, không dự đoán tác giả và không tối ưu để né bộ phát hiện AI; mục tiêu là văn tốt hơn, không phải qua được công cụ kiểm tra.
 
 ## Đầu vào
 
@@ -26,6 +26,7 @@ Gate này đánh giá chất lượng và tính liêm chính của văn bản y 
 2. Nạp `references/argument-quality.md` để nối từng luận điểm với kết quả, nguồn, lý giải hoặc marker.
 3. Chỉ nạp `references/composition-vi.md` hoặc `references/composition-en.md` theo locale đang hoạt động.
 4. Nạp `references/formulaic-writing-audit.md` để tìm triệu chứng sáo rỗng và sửa vấn đề sâu hơn, không gán nhãn tác giả.
+5. Khi tác giả yêu cầu viết lại chứ không chỉ chẩn đoán, nạp `references/prose-rewriting.md`.
 
 ## Vòng đời
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0-alpha.8 — Automatic Word numbering, prose rewriting, two-round self-review
+
+- Added heading numbering and cross-reference mechanics to `dinh-dang-tai-lieu`: one multilevel numbering definition bound to `Heading 1`–`Heading 4`, per-object `SEQ` caption sequences numbered by chapter, and reference fields for every mention of a table, figure, section or appendix. Hand-typed numbers and hand-typed label-and-number strings in body text are now reported with their location, which is the usual cause of a thesis citing the wrong table after one is inserted.
+- Extended `kiem-van-phong` from auditing into rewriting with `prose-rewriting.md`: sentence-rhythm variation, removal of formulaic scaffolding, inflated significance, vague attribution and chatbot artefacts. Rewriting may not touch numbers, citations, claim scope or quoted material, and every claim is re-checked against the claim–evidence table afterwards.
+- Encoded the rule that hedging in medical writing is usually content rather than style: an observational association is never rewritten into a causal claim, and only redundant layers of hedging are cut. General-purpose rewriting advice gets this wrong and would introduce overclaiming.
+- Softened the style gate's stance from refusing naturalness work altogether to improving prose while still refusing to score human-likeness, infer authorship, or optimise against AI detectors. Both upstream sources state the same goal.
+- Added `tu-phan-bien`, which runs two independent self-review rounds on a hash-locked manuscript before any revision. The second round may not read the first, the manuscript may not change between rounds, and the two rounds use different lenses: evidence soundness, then a sceptical reader. Findings reconcile into agreed, single-round and contradictory states, and revision starts only after the author approves the list.
+
 ## 2.0.0-alpha.7 — Protocol, economic and animal-research reporting guidelines
 
 - Added coverage manifests for PRISMA-P 2015 (26 identifiers, systematic review protocols), CHEERS 2022 (28, health economic evaluations) and ARRIVE 2.0 (21, animal research). CHEERS 2022 supersedes CHEERS 2013 and ARRIVE 2.0 supersedes ARRIVE 2010; both superseded editions are now excluded by the superseded-edition test.

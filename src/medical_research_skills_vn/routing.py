@@ -68,6 +68,19 @@ def route_request(request, legacy_map, active_skills):
         availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
         return RoutingDecision("medrs", skill, "semantic-restructure", availability)
 
+    self_review_phrases = (
+        "tự phản biện",
+        "tự review",
+        "tự rà soát",
+        "self-review",
+        "review độc lập",
+        "hai vòng",
+    )
+    if any(phrase in text for phrase in self_review_phrases):
+        skill = "tu-phan-bien"
+        availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
+        return RoutingDecision("medrs", skill, "two-round-self-review", availability)
+
     guideline_phrases = (
         "chuẩn báo cáo",
         "đối chiếu consort",

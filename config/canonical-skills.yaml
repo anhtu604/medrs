@@ -1,4 +1,4 @@
-final_count: 27
+final_count: 28
 active_slice: 4
 description_limits:
   target_words: 45
@@ -35,3 +35,4 @@ skills:
   - {name: quan-ly-trich-dan, slice: 5, status: accepted, description_target_words: 45}
   - {name: bieu-do-cong-bo, slice: 5, status: accepted, description_target_words: 45}
   - {name: kiem-chuan-bao-cao, slice: 5, status: accepted, description_target_words: 45}
+  - {name: tu-phan-bien, slice: 5, status: accepted, description_target_words: 45}

@@ -1,6 +1,6 @@
 [project]
 name = "medical-research-skills-vn"
-version = "2.0.0a7"
+version = "2.0.0a8"
 requires-python = ">=3.11"
 dependencies = ["jsonschema>=4.20", "PyYAML>=6.0", "python-docx>=1.1"]
 

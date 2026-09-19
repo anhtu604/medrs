@@ -11,6 +11,8 @@
 | `dougwyu/claude-zotero-skills` | `main` inspected 2026-09-19 | Apache 2.0 | Read-only reference-library invariants, runtime field resolution, trash exclusion and the four-verdict citation-faithfulness taxonomy independently rewritten in `quan-ly-trich-dan`; no source prose, SQL or code copied |
 | `Galaxy-Dawn/claude-scholar` | `main` inspected 2026-09-19 | MIT | Pre-plot evidence contract and publication QA concepts independently rewritten and re-scoped to R/Stata medical figures in `bieu-do-cong-bo`; no source prose or code copied, and the upstream Python figure toolchain is not adopted |
 | `joshzyj/open-scholar-skill` | `main` inspected 2026-09-19 | No license file; rights reserved by default | Excluded. Nothing consulted for reuse and nothing derived from it |
+| `momo2young/humanize-academic-writing` | `main` inspected 2026-09-19 | MIT | Sentence-rhythm variation and formulaic-scaffolding removal independently rewritten in `prose-rewriting.md`; no source prose or examples copied. Upstream states its goal is writing quality rather than defeating detection, which matches this package's stance |
+| `jpeggdev/humanize-writing` | `main` inspected 2026-09-19 | MIT | Editorial symptom categories independently rewritten in `prose-rewriting.md`; both it and this package trace those categories to Wikipedia "Signs of AI writing", already recorded above. No source prose copied and no detector evasion |
 
 ## Per-file upstream audit
 

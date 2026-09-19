@@ -141,6 +141,7 @@
       "skill_path": "skills/dinh-dang-tai-lieu/SKILL.md",
       "reference_files": [
         "skills/dinh-dang-tai-lieu/references/backend-and-validation-contract.md",
+        "skills/dinh-dang-tai-lieu/references/heading-numbering-and-cross-references.md",
         "skills/dinh-dang-tai-lieu/references/hmu-word-mechanics.md",
         "skills/dinh-dang-tai-lieu/references/word-style-and-refresh-contract.md"
       ]
@@ -227,6 +228,7 @@
         "skills/kiem-van-phong/references/composition-en.md",
         "skills/kiem-van-phong/references/composition-vi.md",
         "skills/kiem-van-phong/references/formulaic-writing-audit.md",
+        "skills/kiem-van-phong/references/prose-rewriting.md",
         "skills/kiem-van-phong/references/scientific-integrity.md"
       ]
     },
@@ -389,6 +391,27 @@
       "reference_files": [
         "skills/tong-hop-bang-chung/references/meta-analysis-readiness.md",
         "skills/tong-hop-bang-chung/references/synthesis-modes.md"
+      ]
+    },
+    {
+      "name": "tu-phan-bien",
+      "purpose": "Tự phản biện bản thảo qua hai vòng độc lập rồi mới đối chiếu và sửa, dùng khi chưa có nhận xét từ người phản biện thật. Runs two independent self-review rounds before revision. Không để vòng sau đọc kết quả vòng trước, không sửa giữa hai vòng, không thay phản biện thật.",
+      "role": "gate",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "thesis",
+        "dissertation",
+        "journal-article",
+        "review",
+        "evidence-synthesis"
+      ],
+      "skill_path": "skills/tu-phan-bien/SKILL.md",
+      "reference_files": [
+        "skills/tu-phan-bien/references/reconciliation.md",
+        "skills/tu-phan-bien/references/two-round-contract.md"
       ]
     },
     {

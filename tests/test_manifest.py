@@ -41,6 +41,7 @@ def test_inventory_lifecycle_matches_current_slice_four_progress():
         "quan-ly-trich-dan",
         "bieu-do-cong-bo",
         "kiem-chuan-bao-cao",
+        "tu-phan-bien",
     ]
     assert active == []
     assert inventory["active_slice"] == 4

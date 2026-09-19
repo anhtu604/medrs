@@ -20,6 +20,16 @@ def test_old_skill_name_routes_through_co_van_without_alias():
     assert decision.availability == "NOT_IN_ACTIVE_SLICE"
 
 
+def test_self_review_request_routes_to_two_round_self_review():
+    decision = route_request(
+        RoutingRequest(text="Tự phản biện bản thảo giúp tôi trước khi gửi"),
+        {},
+        active_skills={"medrs", "tu-phan-bien", "phan-bien-va-chinh-sua"},
+    )
+    assert decision.canonical == "tu-phan-bien"
+    assert decision.mode == "two-round-self-review"
+
+
 def test_reporting_guideline_request_routes_to_guideline_skill():
     decision = route_request(
         RoutingRequest(text="Đối chiếu bản thảo với STROBE giúp tôi"),
