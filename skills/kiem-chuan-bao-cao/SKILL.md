@@ -2,7 +2,7 @@
 name: kiem-chuan-bao-cao
 description: Đối chiếu bản thảo với chuẩn báo cáo hợp thiết kế, bao phủ từng mục của bản chính thức. Checks manuscripts against reporting guidelines item by item. Không chọn chuẩn khi thiết kế chưa rõ, không dựng lại mục từ trí nhớ, không kết luận tuân thủ khi chưa định vị chỗ báo cáo.
 metadata:
-  version: 2.0.0-alpha.5
+  version: 2.0.0-alpha.6
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review, evidence-synthesis]

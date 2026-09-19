@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0-alpha.6 — Four further reporting guidelines
+
+- Added coverage manifests for SPIRIT 2025 (53 identifiers, trial protocols), STARD 2015 (34, diagnostic accuracy), COREQ 2007 (32, interview and focus-group research) and CARE 2013 (13, clinical case reports). SPIRIT 2025 supersedes SPIRIT 2013, which the superseded-edition test now also excludes.
+- Encoded each instrument at the depth its licence allows. SPIRIT 2025 and STARD 2015 are CC BY 4.0, so their item wording is reproduced with attribution. CARE is CC BY-NC-ND 3.0 and COREQ is closed access, so both carry identifiers and item names only, with independently written operational prompts and no official wording; a test enforces that their licence fields say so.
+- COREQ identifiers, domains and topic grouping were retrieved from the EQUATOR-hosted validated Portuguese translation because no open-access edition of the original exists; the provenance is recorded in the manifest and in ATTRIBUTION.md rather than implied.
+- `kiem-chuan-bao-cao` now routes eight designs and states which manifests carry official wording and which carry independently written prompts, so an author knows when to consult the official document.
+
 ## 2.0.0-alpha.5 — Reporting-guideline coverage and time-to-event analysis
 
 - Added `kiem-chuan-bao-cao`, which checks a manuscript against the reporting guideline matching its study design, item by item, and judges each item as reported, partially reported, not reported or not applicable with a required location in the manuscript.

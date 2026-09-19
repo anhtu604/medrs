@@ -1,0 +1,22 @@
+instrument: CARE checklist for clinical case reports
+version: 2013 statement, BMJ Case Reports 2013;2013:bcr-2013-201554
+source_url: https://doi.org/10.1136/bcr-2013-201554
+license: CC BY-NC-ND 3.0 (Gagnier JJ and colleagues, 2013); the no-derivatives term is respected by encoding identifiers and item names only, with independently written operational prompts and no official wording reproduced
+last_verified: 2026-09-19
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+expected_ids: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
+implemented_ids: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
+items:
+  - {id: '1', topic: 'Title', operational_prompt: 'Establish whether the title identifies the article as a case report.', source_locator: 'bcr-2013-201554/checklist/item-1'}
+  - {id: '2', topic: 'Keywords', operational_prompt: 'Establish whether keywords capture the key elements of the case.', source_locator: 'bcr-2013-201554/checklist/item-2'}
+  - {id: '3', topic: 'Abstract', operational_prompt: 'Check that the abstract covers what the case adds, the presentation, and the conclusions.', source_locator: 'bcr-2013-201554/checklist/item-3'}
+  - {id: '4', topic: 'Introduction', operational_prompt: 'Check that the background summarises the relevant literature for this case.', source_locator: 'bcr-2013-201554/checklist/item-4'}
+  - {id: '5', topic: 'Patient information', operational_prompt: 'Check that de-identified patient demographics, main concerns and relevant history are reported.', source_locator: 'bcr-2013-201554/checklist/item-5'}
+  - {id: '6', topic: 'Clinical findings', operational_prompt: 'Check that the relevant physical examination findings are described.', source_locator: 'bcr-2013-201554/checklist/item-6'}
+  - {id: '7', topic: 'Timeline', operational_prompt: 'Check that the important dates and events of the case are presented as an ordered timeline.', source_locator: 'bcr-2013-201554/checklist/item-7'}
+  - {id: '8', topic: 'Diagnostic assessment', operational_prompt: 'Check that diagnostic methods, challenges, reasoning and prognostic characteristics are reported.', source_locator: 'bcr-2013-201554/checklist/item-8'}
+  - {id: '9', topic: 'Therapeutic intervention', operational_prompt: 'Check that the types of intervention, their administration and any changes are reported.', source_locator: 'bcr-2013-201554/checklist/item-9'}
+  - {id: '10', topic: 'Follow-up and outcomes', operational_prompt: 'Check that the clinical course, outcomes, adherence and adverse events across follow-up are reported.', source_locator: 'bcr-2013-201554/checklist/item-10'}
+  - {id: '11', topic: 'Discussion', operational_prompt: 'Check that strengths, limitations, the relevant literature, the rationale for conclusions and the main lessons are discussed.', source_locator: 'bcr-2013-201554/checklist/item-11'}
+  - {id: '12', topic: 'Patient perspective', operational_prompt: 'Establish whether the patient shared their own perspective on the episode of care.', source_locator: 'bcr-2013-201554/checklist/item-12'}
+  - {id: '13', topic: 'Informed consent', operational_prompt: 'Establish whether informed consent was obtained and can be provided on request.', source_locator: 'bcr-2013-201554/checklist/item-13'}

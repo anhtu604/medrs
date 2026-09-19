@@ -1,0 +1,51 @@
+instrument: STARD 2015 checklist for diagnostic accuracy studies
+version: 2015 statement, BMJ 2015;351:h5527
+source_url: https://doi.org/10.1136/bmj.h5527
+license: CC BY 4.0 (Bossuyt PM and colleagues, BMJ 2015;351:h5527); item wording reproduced with attribution
+last_verified: 2026-09-19
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+sections:
+  - Title or abstract
+  - Abstract
+  - Introduction
+  - Methods
+  - Results
+  - Discussion
+  - Other information
+expected_ids: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10a', '10b', '11', '12a', '12b', '13a', '13b', '14', '15', '16', '17', '18', '19', '20', '21a', '21b', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+implemented_ids: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10a', '10b', '11', '12a', '12b', '13a', '13b', '14', '15', '16', '17', '18', '19', '20', '21a', '21b', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+items:
+  - {id: '1', section: 'Title or abstract', operational_prompt: 'Identification as a study of diagnostic accuracy using at least one measure of accuracy (such as sensitivity, specificity, predictive values, or AUC)', source_locator: 'bmj.h5527/checklist/item-1'}
+  - {id: '2', section: 'Abstract', operational_prompt: 'Structured summary of study design, methods, results, and conclusions (for specific guidance, see STARD for Abstracts)', source_locator: 'bmj.h5527/checklist/item-2'}
+  - {id: '3', section: 'Introduction', operational_prompt: 'Scientific and clinical background, including the intended use and clinical role of the index test', source_locator: 'bmj.h5527/checklist/item-3'}
+  - {id: '4', section: 'Introduction', operational_prompt: 'Study objectives and hypotheses', source_locator: 'bmj.h5527/checklist/item-4'}
+  - {id: '5', section: 'Methods', topic: 'Study design', operational_prompt: 'Whether data collection was planned before the index test and reference standard were performed (prospective study) or after (retrospective study)', source_locator: 'bmj.h5527/checklist/item-5'}
+  - {id: '6', section: 'Methods', topic: 'Participants', operational_prompt: 'Eligibility criteria', source_locator: 'bmj.h5527/checklist/item-6'}
+  - {id: '7', section: 'Methods', topic: 'Participants', operational_prompt: 'On what basis potentially eligible participants were identified (such as symptoms, results from previous tests, inclusion in registry)', source_locator: 'bmj.h5527/checklist/item-7'}
+  - {id: '8', section: 'Methods', topic: 'Participants', operational_prompt: 'Where and when potentially eligible participants were identified (setting, location, and dates)', source_locator: 'bmj.h5527/checklist/item-8'}
+  - {id: '9', section: 'Methods', topic: 'Participants', operational_prompt: 'Whether participants formed a consecutive, random, or convenience series', source_locator: 'bmj.h5527/checklist/item-9'}
+  - {id: '10a', section: 'Methods', topic: 'Test methods', operational_prompt: 'Index test, in sufficient detail to allow replication', source_locator: 'bmj.h5527/checklist/item-10a'}
+  - {id: '10b', section: 'Methods', topic: 'Test methods', operational_prompt: 'Reference standard, in sufficient detail to allow replication', source_locator: 'bmj.h5527/checklist/item-10b'}
+  - {id: '11', section: 'Methods', topic: 'Test methods', operational_prompt: 'Rationale for choosing the reference standard (if alternatives exist)', source_locator: 'bmj.h5527/checklist/item-11'}
+  - {id: '12a', section: 'Methods', topic: 'Test methods', operational_prompt: 'Definition of and rationale for test positivity cut-offs or result categories of the index test, distinguishing pre-specified from exploratory', source_locator: 'bmj.h5527/checklist/item-12a'}
+  - {id: '12b', section: 'Methods', topic: 'Test methods', operational_prompt: 'Definition of and rationale for test positivity cut-offs or result categories of the reference standard, distinguishing pre-specified from exploratory', source_locator: 'bmj.h5527/checklist/item-12b'}
+  - {id: '13a', section: 'Methods', topic: 'Test methods', operational_prompt: 'Whether clinical information and reference standard results were available to the performers or readers of the index test', source_locator: 'bmj.h5527/checklist/item-13a'}
+  - {id: '13b', section: 'Methods', topic: 'Test methods', operational_prompt: 'Whether clinical information and index test results were available to the assessors of the reference standard', source_locator: 'bmj.h5527/checklist/item-13b'}
+  - {id: '14', section: 'Methods', topic: 'Analysis', operational_prompt: 'Methods for estimating or comparing measures of diagnostic accuracy', source_locator: 'bmj.h5527/checklist/item-14'}
+  - {id: '15', section: 'Methods', topic: 'Analysis', operational_prompt: 'How indeterminate index test or reference standard results were handled', source_locator: 'bmj.h5527/checklist/item-15'}
+  - {id: '16', section: 'Methods', topic: 'Analysis', operational_prompt: 'How missing data on the index test and reference standard were handled', source_locator: 'bmj.h5527/checklist/item-16'}
+  - {id: '17', section: 'Methods', topic: 'Analysis', operational_prompt: 'Any analyses of variability in diagnostic accuracy, distinguishing pre-specified from exploratory', source_locator: 'bmj.h5527/checklist/item-17'}
+  - {id: '18', section: 'Methods', topic: 'Analysis', operational_prompt: 'Intended sample size and how it was determined', source_locator: 'bmj.h5527/checklist/item-18'}
+  - {id: '19', section: 'Results', topic: 'Participants', operational_prompt: 'Flow of participants, using a diagram', source_locator: 'bmj.h5527/checklist/item-19'}
+  - {id: '20', section: 'Results', topic: 'Participants', operational_prompt: 'Baseline demographic and clinical characteristics of participants', source_locator: 'bmj.h5527/checklist/item-20'}
+  - {id: '21a', section: 'Results', topic: 'Participants', operational_prompt: 'Distribution of severity of disease in those with the target condition', source_locator: 'bmj.h5527/checklist/item-21a'}
+  - {id: '21b', section: 'Results', topic: 'Participants', operational_prompt: 'Distribution of alternative diagnoses in those without the target condition', source_locator: 'bmj.h5527/checklist/item-21b'}
+  - {id: '22', section: 'Results', topic: 'Participants', operational_prompt: 'Time interval and any clinical interventions between index test and reference standard', source_locator: 'bmj.h5527/checklist/item-22'}
+  - {id: '23', section: 'Results', topic: 'Test results', operational_prompt: 'Cross tabulation of the index test results (or their distribution) by the results of the reference standard', source_locator: 'bmj.h5527/checklist/item-23'}
+  - {id: '24', section: 'Results', topic: 'Test results', operational_prompt: 'Estimates of diagnostic accuracy and their precision (such as 95% confidence intervals)', source_locator: 'bmj.h5527/checklist/item-24'}
+  - {id: '25', section: 'Results', topic: 'Test results', operational_prompt: 'Any adverse events from performing the index test or the reference standard', source_locator: 'bmj.h5527/checklist/item-25'}
+  - {id: '26', section: 'Discussion', topic: 'Test results', operational_prompt: 'Study limitations, including sources of potential bias, statistical uncertainty, and generalisability', source_locator: 'bmj.h5527/checklist/item-26'}
+  - {id: '27', section: 'Discussion', topic: 'Test results', operational_prompt: 'Implications for practice, including the intended use and clinical role of the index test', source_locator: 'bmj.h5527/checklist/item-27'}
+  - {id: '28', section: 'Other information', topic: 'Test results', operational_prompt: 'Registration number and name of registry', source_locator: 'bmj.h5527/checklist/item-28'}
+  - {id: '29', section: 'Other information', topic: 'Test results', operational_prompt: 'Where the full study protocol can be accessed', source_locator: 'bmj.h5527/checklist/item-29'}
+  - {id: '30', section: 'Other information', topic: 'Test results', operational_prompt: 'Sources of funding and other support; role of funders', source_locator: 'bmj.h5527/checklist/item-30'}

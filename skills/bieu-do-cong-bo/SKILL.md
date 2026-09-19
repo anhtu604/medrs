@@ -2,7 +2,7 @@
 name: bieu-do-cong-bo
 description: Chọn, dựng và kiểm định biểu đồ cùng bảng đạt chuẩn công bố cho nghiên cứu y học bằng R hoặc Stata. Designs publication-grade medical figures and tables. Không vẽ khi chưa chốt đơn vị phân tích và cơ sở thanh sai số, không cắt trục để phóng đại hiệu quả, không khẳng định đã dựng hình khi thiếu runtime.
 metadata:
-  version: 2.0.0-alpha.5
+  version: 2.0.0-alpha.6
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review, evidence-synthesis]

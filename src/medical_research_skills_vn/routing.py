@@ -72,9 +72,13 @@ def route_request(request, legacy_map, active_skills):
         "chuẩn báo cáo",
         "đối chiếu consort",
         "consort",
+        "spirit",
         "strobe",
         "prisma checklist",
         "tripod",
+        "stard",
+        "coreq",
+        "care checklist",
         "reporting guideline",
         "reporting checklist",
     )

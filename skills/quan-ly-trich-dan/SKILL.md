@@ -2,7 +2,7 @@
 name: quan-ly-trich-dan
 description: Đọc thư viện trích dẫn Zotero, BibTeX hoặc CSL-JSON ở chế độ chỉ-đọc và kiểm chứng mức độ trung thực của từng trích dẫn. Verifies citation faithfulness against the author's own library. Không ghi vào thư viện nguồn, không bịa mục tham khảo, không kết luận trung thực khi chưa đọc được toàn văn.
 metadata:
-  version: 2.0.0-alpha.5
+  version: 2.0.0-alpha.6
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review, evidence-synthesis]

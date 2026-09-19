@@ -39,9 +39,13 @@ def test_grade_and_cerqual_manifests_cover_every_adopted_component():
 def test_reporting_guideline_manifests_are_current_and_fully_covered():
     expected_counts = {
         "coverage/consort-2025.yaml": 42,
+        "coverage/spirit-2025.yaml": 53,
         "coverage/strobe-2007.yaml": 34,
         "coverage/prisma-2020.yaml": 42,
         "coverage/tripod-ai-2024.yaml": 52,
+        "coverage/stard-2015.yaml": 34,
+        "coverage/coreq-2007.yaml": 32,
+        "coverage/care-2013.yaml": 13,
     }
     for relative, count in expected_counts.items():
         manifest = load_coverage_manifest(ROOT / relative)
@@ -49,13 +53,19 @@ def test_reporting_guideline_manifests_are_current_and_fully_covered():
         assert len(manifest["expected_ids"]) == count, relative
         assert manifest["implemented_ids"] == manifest["expected_ids"], relative
         assert manifest["caller"] == "skills/kiem-chuan-bao-cao/SKILL.md", relative
-        assert "CC BY" in manifest["license"], relative
+
+
+def test_restrictively_licensed_guidelines_state_that_no_wording_is_reproduced():
+    for relative in ("coverage/coreq-2007.yaml", "coverage/care-2013.yaml"):
+        licence = load_coverage_manifest(ROOT / relative)["license"]
+        assert "no official wording" in licence, relative
+        assert "independently written" in licence, relative
 
 
 def test_superseded_reporting_guidelines_are_not_shipped():
     shipped = {path.name for path in (ROOT / "coverage").glob("*.yaml")}
-    assert "consort-2010.yaml" not in shipped
-    assert "tripod-2015.yaml" not in shipped
+    for superseded in ("consort-2010.yaml", "tripod-2015.yaml", "spirit-2013.yaml"):
+        assert superseded not in shipped
 
 
 def test_manifest_rejects_named_only_or_missing_items():

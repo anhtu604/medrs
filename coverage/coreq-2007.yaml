@@ -1,0 +1,45 @@
+instrument: COREQ 32-item checklist for interviews and focus groups
+version: 2007 statement, Int J Qual Health Care 2007;19(6):349-57
+source_url: https://doi.org/10.1093/intqhc/mzm042
+license: Original article is closed access, copyright Oxford University Press; no official wording is reproduced or translated. Identifiers, domains and topic grouping were retrieved from the EQUATOR-hosted validated Portuguese translation (Souza VR and colleagues, Acta Paul Enferm 2021;34:eAPE02631) and the operational prompts are independently written
+last_verified: 2026-09-19
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+domains:
+  D1: research team and reflexivity
+  D2: study design
+  D3: analysis and findings
+expected_ids: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32']
+implemented_ids: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32']
+items:
+  - {id: '1', domain: 'D1', topic: 'Personal characteristics', operational_prompt: 'Identify which author conducted the interview or focus group.', source_locator: 'equator-translation/coreq/item-1'}
+  - {id: '2', domain: 'D1', topic: 'Personal characteristics', operational_prompt: 'Record the credentials the researcher held.', source_locator: 'equator-translation/coreq/item-2'}
+  - {id: '3', domain: 'D1', topic: 'Personal characteristics', operational_prompt: 'Record the occupation each author held at the time of the study.', source_locator: 'equator-translation/coreq/item-3'}
+  - {id: '4', domain: 'D1', topic: 'Personal characteristics', operational_prompt: 'Record the gender reported for the researcher.', source_locator: 'equator-translation/coreq/item-4'}
+  - {id: '5', domain: 'D1', topic: 'Personal characteristics', operational_prompt: 'Record the experience and training the researcher brought to the method.', source_locator: 'equator-translation/coreq/item-5'}
+  - {id: '6', domain: 'D1', topic: 'Relationship with participants', operational_prompt: 'Establish whether a relationship existed before the study began.', source_locator: 'equator-translation/coreq/item-6'}
+  - {id: '7', domain: 'D1', topic: 'Relationship with participants', operational_prompt: 'Establish what participants were told about the researcher and the study purpose.', source_locator: 'equator-translation/coreq/item-7'}
+  - {id: '8', domain: 'D1', topic: 'Relationship with participants', operational_prompt: 'Record the interviewer characteristics disclosed, including assumptions and interests in the topic.', source_locator: 'equator-translation/coreq/item-8'}
+  - {id: '9', domain: 'D2', topic: 'Theoretical framework', operational_prompt: 'Identify the declared methodological orientation underpinning the study.', source_locator: 'equator-translation/coreq/item-9'}
+  - {id: '10', domain: 'D2', topic: 'Participant selection', operational_prompt: 'Determine how participants were selected.', source_locator: 'equator-translation/coreq/item-10'}
+  - {id: '11', domain: 'D2', topic: 'Participant selection', operational_prompt: 'Determine how participants were approached.', source_locator: 'equator-translation/coreq/item-11'}
+  - {id: '12', domain: 'D2', topic: 'Participant selection', operational_prompt: 'Record how many participants were included.', source_locator: 'equator-translation/coreq/item-12'}
+  - {id: '13', domain: 'D2', topic: 'Participant selection', operational_prompt: 'Record how many people declined or dropped out, and the stated reasons.', source_locator: 'equator-translation/coreq/item-13'}
+  - {id: '14', domain: 'D2', topic: 'Setting', operational_prompt: 'Record where the data were collected.', source_locator: 'equator-translation/coreq/item-14'}
+  - {id: '15', domain: 'D2', topic: 'Setting', operational_prompt: 'Establish whether anyone besides participants and researchers was present.', source_locator: 'equator-translation/coreq/item-15'}
+  - {id: '16', domain: 'D2', topic: 'Setting', operational_prompt: 'Record the sample characteristics reported.', source_locator: 'equator-translation/coreq/item-16'}
+  - {id: '17', domain: 'D2', topic: 'Data collection', operational_prompt: 'Establish whether an interview guide was provided and whether it was pilot tested.', source_locator: 'equator-translation/coreq/item-17'}
+  - {id: '18', domain: 'D2', topic: 'Data collection', operational_prompt: 'Establish whether interviews were repeated and how many.', source_locator: 'equator-translation/coreq/item-18'}
+  - {id: '19', domain: 'D2', topic: 'Data collection', operational_prompt: 'Establish whether audio or visual recording was used.', source_locator: 'equator-translation/coreq/item-19'}
+  - {id: '20', domain: 'D2', topic: 'Data collection', operational_prompt: 'Establish whether field notes were made during or after the session.', source_locator: 'equator-translation/coreq/item-20'}
+  - {id: '21', domain: 'D2', topic: 'Data collection', operational_prompt: 'Record the duration of the interviews or focus groups.', source_locator: 'equator-translation/coreq/item-21'}
+  - {id: '22', domain: 'D2', topic: 'Data collection', operational_prompt: 'Establish whether data saturation was discussed.', source_locator: 'equator-translation/coreq/item-22'}
+  - {id: '23', domain: 'D2', topic: 'Data collection', operational_prompt: 'Establish whether transcripts were returned to participants for comment or correction.', source_locator: 'equator-translation/coreq/item-23'}
+  - {id: '24', domain: 'D3', topic: 'Data analysis', operational_prompt: 'Record how many coders analysed the data.', source_locator: 'equator-translation/coreq/item-24'}
+  - {id: '25', domain: 'D3', topic: 'Data analysis', operational_prompt: 'Establish whether a description of the coding tree was provided.', source_locator: 'equator-translation/coreq/item-25'}
+  - {id: '26', domain: 'D3', topic: 'Data analysis', operational_prompt: 'Establish whether themes were identified in advance or derived from the data.', source_locator: 'equator-translation/coreq/item-26'}
+  - {id: '27', domain: 'D3', topic: 'Data analysis', operational_prompt: 'Record the software used to manage the data, where applicable.', source_locator: 'equator-translation/coreq/item-27'}
+  - {id: '28', domain: 'D3', topic: 'Data analysis', operational_prompt: 'Establish whether participants gave feedback on the findings.', source_locator: 'equator-translation/coreq/item-28'}
+  - {id: '29', domain: 'D3', topic: 'Reporting', operational_prompt: 'Establish whether participant quotations illustrate the findings and whether each is identified.', source_locator: 'equator-translation/coreq/item-29'}
+  - {id: '30', domain: 'D3', topic: 'Reporting', operational_prompt: 'Assess whether the data presented and the findings are consistent.', source_locator: 'equator-translation/coreq/item-30'}
+  - {id: '31', domain: 'D3', topic: 'Reporting', operational_prompt: 'Assess whether the major themes are clearly presented in the findings.', source_locator: 'equator-translation/coreq/item-31'}
+  - {id: '32', domain: 'D3', topic: 'Reporting', operational_prompt: 'Assess whether minor themes or diverse cases are described.', source_locator: 'equator-translation/coreq/item-32'}

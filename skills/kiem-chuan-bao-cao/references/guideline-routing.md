@@ -7,15 +7,21 @@ Chuẩn báo cáo được chọn theo **thiết kế nghiên cứu**, không th
 | Thiết kế | Manifest | Số mục | Phiên bản |
 |---|---|---|---|
 | Thử nghiệm lâm sàng ngẫu nhiên | `../../coverage/consort-2025.yaml` | 42 | CONSORT 2025, thay thế CONSORT 2010 |
+| Đề cương thử nghiệm lâm sàng | `../../coverage/spirit-2025.yaml` | 53 | SPIRIT 2025, thay thế SPIRIT 2013 |
 | Nghiên cứu quan sát (thuần tập, bệnh–chứng, cắt ngang) | `../../coverage/strobe-2007.yaml` | 34 | STROBE 2007 |
 | Tổng quan hệ thống và phân tích gộp | `../../coverage/prisma-2020.yaml` | 42 | PRISMA 2020 |
 | Mô hình tiên lượng hoặc chẩn đoán lâm sàng | `../../coverage/tripod-ai-2024.yaml` | 52 | TRIPOD+AI 2024, thay thế TRIPOD 2015 |
+| Nghiên cứu độ chính xác chẩn đoán | `../../coverage/stard-2015.yaml` | 34 | STARD 2015 |
+| Nghiên cứu định tính phỏng vấn hoặc nhóm trọng tâm | `../../coverage/coreq-2007.yaml` | 32 | COREQ 2007 |
+| Báo cáo ca bệnh | `../../coverage/care-2013.yaml` | 13 | CARE 2013 |
 
 Số mục tính cả phụ mục chữ cái. Danh sách định danh chuẩn nằm ở `expected_ids` của từng manifest và là nguồn duy nhất; không tự thêm, bớt hay đổi tên mục.
 
+Ba manifest mang mức độ chi tiết khác nhau vì giấy phép nguồn khác nhau. CONSORT, SPIRIT, STROBE, PRISMA, TRIPOD+AI và STARD giữ nguyên văn mục theo giấy phép CC BY. COREQ và CARE chỉ mã hóa định danh cùng tên mục, với câu lệnh vận hành viết độc lập, vì bản gốc lần lượt là tài liệu đóng và cấm tạo bản phái sinh. Khi cần đối chiếu chính xác nguyên văn của hai chuẩn này, hướng tác giả tới bản chính thức.
+
 ## Khi không có manifest phù hợp
 
-Nhiều thiết kế chưa có manifest trong bản phát hành này: nghiên cứu định tính, báo cáo ca bệnh, nghiên cứu độ chính xác chẩn đoán, đề cương thử nghiệm, nghiên cứu kinh tế y tế, thử nghiệm theo cụm.
+Nhiều thiết kế vẫn chưa có manifest: nghiên cứu kinh tế y tế, thử nghiệm theo cụm, nghiên cứu không thua kém, nghiên cứu trên động vật, đề cương tổng quan hệ thống.
 
 Trả `GUIDELINE_UNAVAILABLE` kèm tên chuẩn phù hợp và lý do chưa mã hóa. Nêu rằng tác giả vẫn nên đối chiếu bản chính thức. Không thay bằng chuẩn gần đúng và không tự liệt kê mục từ trí nhớ.
 
