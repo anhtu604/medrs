@@ -50,6 +50,11 @@ Citations inserted with the Zotero Word plugin survive MedRS edits. To edit a dr
 
 ```powershell
 python skills/quan-ly-trich-dan/scripts/zotero_roundtrip.py export draft.docx --out paragraphs.json
+```
+
+In `paragraphs.json`, edit the `text` values of paragraphs marked `editable: true`. Keep each existing `⟦Z:n⟧` or `⟦F:n⟧` field token exactly once; insert a new citation with a Zotero item key such as `⟦cite:ABCD2345⟧`. See the [Zotero field contract](skills/quan-ly-trich-dan/references/zotero-field-contract.md).
+
+```powershell
 python skills/quan-ly-trich-dan/scripts/zotero_roundtrip.py apply draft.docx paragraphs.json --out revised.docx --zotero-db "$env:USERPROFILE\Zotero\zotero.sqlite"
 ```
 
