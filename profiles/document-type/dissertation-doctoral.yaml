@@ -23,5 +23,5 @@ rules:
   requirements:
     - {id: doctoral-scientific-report, source_locator: 'Quy chế, Điều 16 khoản 1 điểm a', summary: 'Luận án dùng kết quả học tập và nghiên cứu để thể hiện năng lực nghiên cứu độc lập và đóng góp tri thức hoặc giải pháp mới.'}
     - {id: doctoral-independent-review, source_locator: 'Quy chế, Điều 16 khoản 1 điểm b', summary: 'Luận án phải đạt quy trình phản biện độc lập trước khi bảo vệ tại hội đồng cấp cơ sở đào tạo.'}
-    - {id: doctoral-integrity-and-format, source_locator: 'Quy chế, Điều 16 khoản 1 điểm c', summary: 'Luận án tuân thủ quy định trình bày và liêm chính của cơ sở đào tạo, minh bạch nguồn kết quả nghiên cứu chung và nguồn của tác giả khác.'}
+    - {id: doctoral-integrity-and-format, source_locator: 'Quy chế, Điều 16 khoản 1 điểm c', summary: 'Luận án tuân thủ quy định của cơ sở đào tạo về trình bày, kiểm soát đạo văn và liêm chính học thuật; minh bạch nguồn tham khảo kết quả nghiên cứu chung và của tác giả khác; tuân thủ pháp luật sở hữu trí tuệ.'}
 rules_note: Quy chế quốc gia không ấn định bố cục hay vị trí mục đóng góp mới; đối chiếu quy định trình bày luận án tiến sĩ hiện hành của cơ sở đào tạo.
