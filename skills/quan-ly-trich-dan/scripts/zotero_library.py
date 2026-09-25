@@ -16,6 +16,10 @@ CSL_TYPES = {
     "webpage": "webpage",
 }
 
+# Only roles with a direct CSL name are emitted. In particular, Zotero's
+# contributor role must not be silently promoted to author.
+CSL_CREATOR_ROLES = {"author", "editor", "translator"}
+
 
 @dataclass(frozen=True)
 class ZoteroItem:
@@ -34,19 +38,23 @@ def _account(conn: sqlite3.Connection, key: str) -> str | None:
     return str(row[0]) if row and row[0] not in (None, "") else None
 
 
-def _uri_prefix(conn: sqlite3.Connection, library_id: int) -> str:
+def _uri_prefix(conn: sqlite3.Connection, library_id: int) -> str | None:
     kind = conn.execute("SELECT type FROM libraries WHERE libraryID = ?", (library_id,)).fetchone()
-    if kind and kind[0] == "group":
+    if kind is None:
+        return None
+    if kind[0] == "group":
         group = conn.execute('SELECT groupID FROM "groups" WHERE libraryID = ?', (library_id,)).fetchone()
         if group is None:
-            raise ValueError(f"GROUP_ID_MISSING:{library_id}")
+            return None
         return f"http://zotero.org/groups/{group[0]}"
+    if kind[0] != "user":
+        return None
     user_id = _account(conn, "userID")
     if user_id:
         return f"http://zotero.org/users/{user_id}"
     local_key = _account(conn, "localUserKey")
     if local_key is None:
-        raise ValueError("LOCAL_USER_KEY_MISSING")
+        return None
     return f"http://zotero.org/users/local/{local_key}"
 
 
@@ -61,14 +69,20 @@ def _field(conn: sqlite3.Connection, item_id: int, name: str) -> str | None:
     return str(row[0]) if row else None
 
 
-def _authors(conn: sqlite3.Connection, item_id: int) -> list[dict]:
+def _creators(conn: sqlite3.Connection, item_id: int) -> dict[str, list[dict]]:
     rows = conn.execute(
-        """SELECT c.lastName, c.firstName FROM itemCreators ic
+        """SELECT ct.creatorType, c.lastName, c.firstName FROM itemCreators ic
            JOIN creators c ON c.creatorID = ic.creatorID
+           JOIN creatorTypes ct ON ct.creatorTypeID = ic.creatorTypeID
            WHERE ic.itemID = ? ORDER BY ic.orderIndex""",
         (item_id,),
     ).fetchall()
-    return [({"family": last, "given": first} if first else {"literal": last}) for last, first in rows]
+    creators: dict[str, list[dict]] = {}
+    for role, last, first in rows:
+        if role not in CSL_CREATOR_ROLES or not last:
+            continue
+        creators.setdefault(role, []).append({"family": last, "given": first} if first else {"literal": last})
+    return creators
 
 
 def resolve_items(db_path: Path, keys: list[str]) -> tuple[list[ZoteroItem], list[str]]:
@@ -87,20 +101,23 @@ def resolve_items(db_path: Path, keys: list[str]) -> tuple[list[ZoteroItem], lis
                 missing.append(key)
                 continue
             item_id, library_id, type_name = rows[0]
+            uri_prefix = _uri_prefix(conn, library_id)
+            if uri_prefix is None:
+                missing.append(key)
+                continue
             csl: dict = {"id": item_id, "type": CSL_TYPES.get(type_name, "article")}
             title = _field(conn, item_id, "title")
             journal = _field(conn, item_id, "publicationTitle")
             date = _field(conn, item_id, "date")
-            authors = _authors(conn, item_id)
+            creators = _creators(conn, item_id)
             if title:
                 csl["title"] = title
             if journal:
                 csl["container-title"] = journal
-            if authors:
-                csl["author"] = authors
+            csl.update(creators)
             if date and date[:4].isdigit():
                 csl["issued"] = {"date-parts": [[int(date[:4])]]}
-            found.append(ZoteroItem(key=key, item_id=item_id, uri=f"{_uri_prefix(conn, library_id)}/items/{key}", csl=csl))
+            found.append(ZoteroItem(key=key, item_id=item_id, uri=f"{uri_prefix}/items/{key}", csl=csl))
     finally:
         conn.close()
     return found, missing
