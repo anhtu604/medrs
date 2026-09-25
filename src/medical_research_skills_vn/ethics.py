@@ -96,19 +96,23 @@ def build_ethics_artifact(
     registration_state: str,
 ) -> dict:
     unresolved = []
+    checklist = []
     if not approval_number:
         unresolved.append("OFFICIAL_RULE_REQUIRED")
+        checklist.append("Số và ngày quyết định chấp thuận của hội đồng đạo đức")
     if consent_state == "UNRESOLVED":
         unresolved.append("AUTHOR_APPROVAL_REQUIRED")
+        checklist.append("Cách lấy đồng thuận của người tham gia")
     return {
         "jurisdiction": jurisdiction,
         "study_stage": study_stage,
         "data_class": data_class,
         "destination": destination,
-        "authorization_basis": "UNRESOLVED",
+        "authorization_basis": "CONFIRMED" if approval_number else "PENDING_AUTHOR_INPUT",
         "consent_state": consent_state,
         "registration_state": registration_state,
         "approval_number": approval_number,
         "unresolved_approvals": sorted(set(unresolved)),
+        "checklist": checklist,
         "invented_values": [],
     }

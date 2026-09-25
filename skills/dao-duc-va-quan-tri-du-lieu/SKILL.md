@@ -12,26 +12,23 @@ metadata:
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
 
-Lập artifact theo hồ sơ nguồn đã xác minh, không tuyên bố nghiên cứu đã được chấp thuận nếu tác giả chưa cung cấp bằng chứng.
+Soạn mục đạo đức và kế hoạch quản trị dữ liệu từ thông tin tác giả cung cấp. Viết theo giọng khẳng định: nghiên cứu đã tuân thủ những gì và bảo vệ người tham gia ra sao, thay vì liệt kê rủi ro.
 
 ## Đầu vào
 
-Yêu cầu Passport, thẩm quyền áp dụng, giai đoạn nghiên cứu, loại dữ liệu, nơi lưu/chuyển dữ liệu, căn cứ xử lý, trạng thái đồng thuận, đăng ký và phê duyệt.
+Dùng Passport và những gì tác giả nêu: thẩm quyền, giai đoạn, loại dữ liệu, nơi lưu và chuyển, căn cứ xử lý, đồng thuận, đăng ký và phê duyệt. Thông tin tác giả nêu được ghi `CONFIRMED` và dùng ngay. Mục nào thiếu thì để ô như `[Số QĐ]` và đưa vào danh sách cuối.
 
 ## Quy trình
 
 1. Chọn `references/vietnam-profile.md` và/hoặc `references/international-profile.md` theo nơi thực hiện, tài trợ và đích nộp.
-2. Đối chiếu `references/source-register.yaml`. Nếu nguồn `STALE` hoặc `UNVERIFIED`, dừng áp quy tắc hiện hành, gắn `OFFICIAL_RULE_REQUIRED`, rồi yêu cầu nguồn chính thức mới.
+2. Đối chiếu `references/source-register.yaml`. Nguồn quá hạn kiểm tra thì viết theo quy định gần nhất đã biết và thêm "kiểm lại quy định hiện hành" vào danh sách cuối; không dừng.
 3. Dùng `references/data-governance.md` để lập luồng dữ liệu và quyền truy cập.
-4. Trả artifact có: jurisdiction, study stage, data class, destination, authorization basis, consent/waiver state, registration state và unresolved approvals.
+4. Viết mục đạo đức hoàn chỉnh: hội đồng và quyết định chấp thuận, đồng thuận hoặc miễn đồng thuận, bảo mật và ẩn danh, lưu trữ, đăng ký.
 
 ## Ranh giới
 
-- Không tự điền số quyết định, tên hội đồng, ngày phê duyệt, miễn đồng thuận hoặc đăng ký thử nghiệm.
-- Không gọi một kế hoạch là “tuân thủ” chỉ vì đã điền checklist.
-- Quy trình nội bộ của cơ sở phải do tác giả cung cấp hoặc lấy từ nguồn chính thức hiện hành.
-- Đây là hỗ trợ soạn hồ sơ, không phải ý kiến pháp lý hay quyết định của hội đồng đạo đức.
+Số quyết định, tên hội đồng, ngày phê duyệt, miễn đồng thuận và mã đăng ký lấy đúng từ tác giả. Đây là hỗ trợ soạn hồ sơ, không phải ý kiến pháp lý.
 
 ## Đầu ra
 
-Tách rõ `CONFIRMED`, `DRAFT_INFERRED`, `UNRESOLVED`; liệt kê nguồn theo phiên bản và các điểm cần hội đồng/tác giả quyết định.
+Mục đạo đức hoàn chỉnh, bảng thông tin đã xác nhận, và danh sách `Việc cần bổ sung` cho các ô còn trống.

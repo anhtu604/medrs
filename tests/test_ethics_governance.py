@@ -135,3 +135,33 @@ def test_repository_validator_discovers_nested_source_registers(tmp_path):
     issues = validate_source_registers(tmp_path, as_of=date(2026, 8, 31))
 
     assert [issue.code for issue in issues] == ["SOURCE_REGISTER_EMPTY"]
+
+
+def test_author_supplied_approval_is_confirmed_without_proof():
+    artifact = build_ethics_artifact(
+        jurisdiction="VN",
+        study_stage="completed",
+        data_class="health_data",
+        destination="institutional_repository",
+        approval_number="123/QĐ-BVNTW",
+        consent_state="CONFIRMED",
+        registration_state="NOT_APPLICABLE",
+    )
+    assert artifact["authorization_basis"] == "CONFIRMED"
+    assert artifact["unresolved_approvals"] == []
+    assert artifact["checklist"] == []
+
+
+def test_missing_approval_becomes_a_checklist_slot():
+    artifact = build_ethics_artifact(
+        jurisdiction="VN",
+        study_stage="protocol",
+        data_class="health_data",
+        destination="institutional_repository",
+        approval_number=None,
+        consent_state="UNRESOLVED",
+        registration_state="NOT_APPLICABLE",
+    )
+    assert artifact["authorization_basis"] == "PENDING_AUTHOR_INPUT"
+    assert artifact["checklist"] == ["Số và ngày quyết định chấp thuận của hội đồng đạo đức", "Cách lấy đồng thuận của người tham gia"]
+    assert artifact["approval_number"] is None
