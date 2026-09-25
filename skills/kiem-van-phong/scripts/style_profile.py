@@ -15,6 +15,8 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from statistics import mean, median, quantiles
+from xml.etree import ElementTree
+from zipfile import ZipFile
 
 MIN_CONFIDENT_WORDS = 8000
 MAX_EXCERPT_WORDS = 40
@@ -45,6 +47,7 @@ NUMERIC_CITATION = re.compile(r"\[\d+(?:\s*[,–-]\s*\d+)*\]")
 AUTHOR_YEAR_CITATION = re.compile(r"\([^()]*\b(?:19|20)\d{2}[a-z]?\)")
 P_VALUE = re.compile(r"\b[pP]\s*[<=>≤≥]\s*0[.,]\d+")
 ABBREVIATION = re.compile(r"\(([A-ZĐ]{2,6})\)")
+WORDPROCESSING_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 
 
 def count_words(text: str) -> int:
@@ -54,9 +57,23 @@ def count_words(text: str) -> int:
 def read_text(path: Path) -> str:
     suffix = path.suffix.casefold()
     if suffix == ".docx":
-        from docx import Document
-
-        return "\n\n".join(p.text for p in Document(str(path)).paragraphs if p.text.strip())
+        with ZipFile(path) as archive:
+            root = ElementTree.fromstring(archive.read("word/document.xml"))
+        paragraphs = []
+        prefix = f"{{{WORDPROCESSING_NS}}}"
+        for paragraph in root.iter(f"{prefix}p"):
+            parts = []
+            for node in paragraph.iter():
+                if node.tag == f"{prefix}t":
+                    parts.append(node.text or "")
+                elif node.tag == f"{prefix}tab":
+                    parts.append("\t")
+                elif node.tag in {f"{prefix}br", f"{prefix}cr"}:
+                    parts.append("\n")
+            value = "".join(parts)
+            if value.strip():
+                paragraphs.append(value)
+        return "\n\n".join(paragraphs)
     if suffix in {".txt", ".md"}:
         return path.read_text(encoding="utf-8")
     raise ValueError(f"UNSUPPORTED_SOURCE:{path.name} (convert PDF to DOCX or TXT first)")
@@ -147,20 +164,69 @@ def build_profile(paths: list[Path], author: str) -> dict:
     }
 
 
-def validate_patterns(profile: dict) -> list[str]:
-    return [
-        f"PATTERN_EXCERPT_TOO_LONG:{index}"
-        for index, pattern in enumerate(profile.get("patterns", []))
-        if count_words(pattern.get("excerpt", "")) > MAX_EXCERPT_WORDS
-    ]
+def validate_patterns(profile: dict, source_paths: list[Path] | None = None) -> list[str]:
+    """Check pattern provenance against the original, unchanged author files.
+
+    Supply the original source paths after manually filling ``patterns``. No
+    pattern is accepted when its source file cannot be checked.
+    """
+    supplied = {}
+    for path in source_paths or []:
+        supplied.setdefault(Path(path).name, []).append(Path(path))
+    declared = {}
+    for source in profile.get("sources", []):
+        declared.setdefault(source.get("path"), []).append(source)
+
+    errors = []
+    for index, pattern in enumerate(profile.get("patterns", [])):
+        excerpt = pattern.get("excerpt", "")
+        if count_words(excerpt) > MAX_EXCERPT_WORDS:
+            errors.append(f"PATTERN_EXCERPT_TOO_LONG:{index}")
+            continue
+        source_name = pattern.get("source")
+        records = declared.get(source_name, [])
+        if not records:
+            errors.append(f"PATTERN_SOURCE_UNKNOWN:{index}")
+            continue
+        paths = supplied.get(source_name, [])
+        if len(records) != 1 or len(paths) > 1:
+            errors.append(f"PATTERN_SOURCE_AMBIGUOUS:{index}")
+            continue
+        if not paths or not paths[0].is_file():
+            errors.append(f"PATTERN_SOURCE_UNAVAILABLE:{index}")
+            continue
+        path = paths[0]
+        if hashlib.sha256(path.read_bytes()).hexdigest() != records[0].get("sha256"):
+            errors.append(f"PATTERN_SOURCE_HASH_MISMATCH:{index}")
+            continue
+        try:
+            source_text = read_text(path)
+        except (OSError, ValueError, KeyError, ElementTree.ParseError):
+            errors.append(f"PATTERN_SOURCE_UNAVAILABLE:{index}")
+            continue
+        if not excerpt or excerpt not in source_text:
+            errors.append(f"PATTERN_EXCERPT_NOT_FOUND:{index}")
+    return errors
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build an author style profile from the author's own documents.")
-    parser.add_argument("--author", required=True)
-    parser.add_argument("--out", required=True, type=Path)
+    parser.add_argument("--author")
+    parser.add_argument("--out", type=Path)
+    parser.add_argument("--check-profile", type=Path, help="Verify edited pattern excerpts against the original source files")
     parser.add_argument("files", nargs="+", type=Path)
     args = parser.parse_args()
+    if args.check_profile:
+        profile = json.loads(args.check_profile.read_text(encoding="utf-8"))
+        errors = validate_patterns(profile, args.files)
+        if errors:
+            for error in errors:
+                print(error, file=sys.stderr)
+            return 1
+        print("Pattern provenance verified")
+        return 0
+    if not args.author or not args.out:
+        parser.error("--author and --out are required when building a profile")
     profile = build_profile(args.files, args.author)
     args.out.write_text(json.dumps(profile, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{args.out} — {profile['total_words']} words, {profile['confidence']}")
