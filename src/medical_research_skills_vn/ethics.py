@@ -103,6 +103,8 @@ def build_ethics_artifact(
     if consent_state == "UNRESOLVED":
         unresolved.append("AUTHOR_APPROVAL_REQUIRED")
         checklist.append("Cách lấy đồng thuận của người tham gia")
+    if registration_state == "NOT_APPLICABLE_PENDING_CONFIRMATION":
+        checklist.append("Xác nhận tình trạng đăng ký nghiên cứu và mã đăng ký (nếu có)")
     return {
         "jurisdiction": jurisdiction,
         "study_stage": study_stage,
