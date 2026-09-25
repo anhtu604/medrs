@@ -78,6 +78,69 @@ def test_profile_without_rule_layer_needs_a_note(tmp_path):
     )
 
 
+def _write_profiles_with_protocol_override(tmp_path, change):
+    folder = tmp_path / "profiles/document-type"
+    folder.mkdir(parents=True)
+    for name in DOCUMENT_TYPES:
+        profile = load_document_type(ROOT, name)
+        if name == "protocol":
+            change(profile)
+        (folder / f"{name}.yaml").write_text(
+            yaml.safe_dump(profile, allow_unicode=True), encoding="utf-8"
+        )
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "expected_code"),
+    [
+        ("frame", [], "DOCUMENT_TYPE_CONVENTION_FRAME_INVALID"),
+        ("frame", [" ", 2], "DOCUMENT_TYPE_CONVENTION_FRAME_INVALID"),
+        ("frame", "Introduction", "DOCUMENT_TYPE_CONVENTION_FRAME_INVALID"),
+        ("abstract_languages", [], "DOCUMENT_TYPE_CONVENTION_ABSTRACT_LANGUAGES_INVALID"),
+        ("abstract_languages", ["vi", " "], "DOCUMENT_TYPE_CONVENTION_ABSTRACT_LANGUAGES_INVALID"),
+        ("strengths_limitations", {}, "DOCUMENT_TYPE_CONVENTION_STRENGTHS_LIMITATIONS_INVALID"),
+        ("strengths_limitations", {"placement": " "}, "DOCUMENT_TYPE_CONVENTION_STRENGTHS_LIMITATIONS_INVALID"),
+        ("strengths_limitations", {"placement": "not-applicable"}, "DOCUMENT_TYPE_CONVENTION_STRENGTHS_LIMITATIONS_INVALID"),
+        ("section_word_budget", {}, "DOCUMENT_TYPE_CONVENTION_SECTION_WORD_BUDGET_INVALID"),
+        ("section_word_budget", {"methods": 0}, "DOCUMENT_TYPE_CONVENTION_SECTION_WORD_BUDGET_INVALID"),
+        ("section_word_budget", {"methods": -1}, "DOCUMENT_TYPE_CONVENTION_SECTION_WORD_BUDGET_INVALID"),
+        ("section_word_budget", {"methods": 1.5}, "DOCUMENT_TYPE_CONVENTION_SECTION_WORD_BUDGET_INVALID"),
+        ("section_word_budget", {"methods": True}, "DOCUMENT_TYPE_CONVENTION_SECTION_WORD_BUDGET_INVALID"),
+    ],
+)
+def test_convention_rejects_malformed_fields(tmp_path, field, value, expected_code):
+    _write_profiles_with_protocol_override(
+        tmp_path, lambda profile: profile["convention"].__setitem__(field, value)
+    )
+    assert expected_code in issue_codes(validate_document_type_profiles(tmp_path, date(2026, 9, 25)))
+
+
+def test_convention_rejects_non_mapping_without_crashing(tmp_path):
+    _write_profiles_with_protocol_override(tmp_path, lambda profile: profile.__setitem__("convention", []))
+    assert "DOCUMENT_TYPE_CONVENTION_INVALID" in issue_codes(
+        validate_document_type_profiles(tmp_path, date(2026, 9, 25))
+    )
+
+
+@pytest.mark.parametrize("source_sha256", [None, "not-a-hash", "a" * 63, " "])
+def test_rule_layer_requires_valid_source_sha256(tmp_path, source_sha256):
+    def change(profile):
+        profile["rules"] = load_document_type(ROOT, "dissertation-doctoral")["rules"].copy()
+        profile["rules"]["source_sha256"] = source_sha256
+
+    _write_profiles_with_protocol_override(tmp_path, change)
+    assert "DOCUMENT_TYPE_RULES_SOURCE_SHA256_INVALID" in issue_codes(
+        validate_document_type_profiles(tmp_path, date(2026, 9, 25))
+    )
+
+
+def test_rule_layer_rejects_non_mapping_without_crashing(tmp_path):
+    _write_profiles_with_protocol_override(tmp_path, lambda profile: profile.__setitem__("rules", []))
+    assert "DOCUMENT_TYPE_RULES_INVALID" in issue_codes(
+        validate_document_type_profiles(tmp_path, date(2026, 9, 25))
+    )
+
+
 @pytest.mark.parametrize(
     ("field", "value", "expected_code"),
     [

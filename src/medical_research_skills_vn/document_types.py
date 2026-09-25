@@ -2,6 +2,7 @@
 
 from datetime import date
 from pathlib import Path
+import re
 
 import yaml
 
@@ -33,6 +34,35 @@ CONVENTION_FIELDS = {
     "contributions_section",
     "section_word_budget",
 }
+SHA256_HEX = re.compile(r"[0-9a-fA-F]{64}\Z")
+
+
+def _nonempty_strings(value: object) -> bool:
+    return isinstance(value, list) and bool(value) and all(
+        isinstance(item, str) and bool(item.strip()) for item in value
+    )
+
+
+def _valid_strengths_limitations(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    if not {"placement", "heading_vi", "heading_en"} <= value.keys():
+        return False
+    placement = value.get("placement")
+    if not isinstance(placement, str) or not placement.strip():
+        return False
+    headings = (value.get("heading_vi"), value.get("heading_en"))
+    if placement == "not-applicable":
+        return all(heading is None or isinstance(heading, str) and bool(heading.strip()) for heading in headings)
+    return all(isinstance(heading, str) and bool(heading.strip()) for heading in headings)
+
+
+def _valid_section_word_budget(value: object) -> bool:
+    return isinstance(value, dict) and bool(value) and all(
+        isinstance(section, str) and bool(section.strip())
+        and type(words) is int and words > 0
+        for section, words in value.items()
+    )
 
 
 def resolve_document_type(value: str, locale_profile: str) -> str:
@@ -64,21 +94,40 @@ def validate_document_type_profiles(root: Path, as_of: date) -> list[ValidationI
         profile = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         if profile.get("profile_id") != name or profile.get("document_type") != name:
             issues.append(ValidationIssue("DOCUMENT_TYPE_ID_MISMATCH", str(path), name))
-        convention = profile.get("convention") or {}
+        convention = profile.get("convention")
+        if not isinstance(convention, dict):
+            issues.append(ValidationIssue("DOCUMENT_TYPE_CONVENTION_INVALID", str(path), name))
+            convention = {}
         missing = sorted(CONVENTION_FIELDS - set(convention))
         if missing:
             issues.append(ValidationIssue("DOCUMENT_TYPE_CONVENTION_INCOMPLETE", str(path), ", ".join(missing)))
         elif convention["status"] != "CONVENTION":
             issues.append(ValidationIssue("DOCUMENT_TYPE_CONVENTION_STATUS", str(path), str(convention["status"])))
+        for field, check in (
+            ("frame", _nonempty_strings),
+            ("abstract_languages", _nonempty_strings),
+            ("strengths_limitations", _valid_strengths_limitations),
+            ("section_word_budget", _valid_section_word_budget),
+        ):
+            if field in convention and not check(convention[field]):
+                issues.append(ValidationIssue(
+                    f"DOCUMENT_TYPE_CONVENTION_{field.upper()}_INVALID", str(path), field
+                ))
         rules = profile.get("rules")
         if rules is None:
             if not profile.get("rules_note"):
                 issues.append(ValidationIssue("DOCUMENT_TYPE_RULES_NOTE_MISSING", str(path), name))
             continue
+        if not isinstance(rules, dict):
+            issues.append(ValidationIssue("DOCUMENT_TYPE_RULES_INVALID", str(path), name))
+            continue
         missing_source = sorted(REQUIRED_SOURCE_FIELDS - set(rules))
         if missing_source:
             issues.append(ValidationIssue("DOCUMENT_TYPE_RULES_SOURCE_MISSING", str(path), ", ".join(missing_source)))
             continue
+        source_sha256 = rules.get("source_sha256")
+        if not isinstance(source_sha256, str) or not SHA256_HEX.fullmatch(source_sha256):
+            issues.append(ValidationIssue("DOCUMENT_TYPE_RULES_SOURCE_SHA256_INVALID", str(path), name))
         empty_source = sorted(
             field for field in ("source_url", "source_version", "source_license", "source_cutoff", "last_verified")
             if not isinstance(rules[field], str) or not rules[field].strip()

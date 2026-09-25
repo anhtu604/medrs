@@ -167,6 +167,21 @@ def test_missing_approval_becomes_a_checklist_slot():
     assert artifact["approval_number"] is None
 
 
+def test_whitespace_only_approval_remains_pending():
+    artifact = build_ethics_artifact(
+        jurisdiction="VN",
+        study_stage="protocol",
+        data_class="health_data",
+        destination="institutional_repository",
+        approval_number="  \t ",
+        consent_state="CONFIRMED",
+        registration_state="NOT_APPLICABLE",
+    )
+    assert artifact["authorization_basis"] == "PENDING_AUTHOR_INPUT"
+    assert "OFFICIAL_RULE_REQUIRED" in artifact["unresolved_approvals"]
+    assert "Số và ngày quyết định chấp thuận của hội đồng đạo đức" in artifact["checklist"]
+
+
 def test_pending_registration_becomes_a_checklist_slot():
     artifact = build_ethics_artifact(
         jurisdiction="VN",
