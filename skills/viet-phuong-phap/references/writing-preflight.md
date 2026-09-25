@@ -23,3 +23,7 @@ Return `status` as `PASS` or `REVISE`, one record per check, markers, locale-pro
 ## Độ sâu và độ dài
 
 Lấy phạm vi, độ sâu phân tích và ngân sách từ profile loại tài liệu (`profiles/document-type/<loại>.yaml` trong thư mục hỗ trợ của MedRS), chọn theo `document_type` trong Research Passport. Giá trị cũ như `thesis` hay `journal-article` được ánh xạ tự động; nói lựa chọn trong một dòng. Chỉ hỏi khi tác giả muốn khác mặc định.
+
+## Giọng tác giả
+
+Nếu cạnh Research Passport có `author-style-profile.json`, soạn ngay theo giọng đó: độ dài câu và đoạn, từ nối, ngôi xưng, quy ước số và cách đặt trích dẫn trong `measured`, và các khuôn diễn đạt trong `patterns`. Hồ sơ quyết định lựa từ và nhịp câu; số liệu, trích dẫn và mức độ mệnh đề không đổi vì giọng văn.

@@ -28,7 +28,7 @@ Gate này đánh giá và nâng chất lượng, tính liêm chính của văn b
 2. Nạp `references/argument-quality.md` để nối từng luận điểm với kết quả, nguồn, lý giải hoặc marker.
 3. Chỉ nạp `references/composition-vi.md` hoặc `references/composition-en.md` theo locale đang hoạt động.
 4. Nạp `references/formulaic-writing-audit.md` để tìm triệu chứng sáo rỗng và sửa vấn đề sâu hơn, không gán nhãn tác giả.
-5. Khi tác giả yêu cầu viết lại chứ không chỉ chẩn đoán, nạp `references/prose-rewriting.md`.
+5. Khi tác giả yêu cầu viết lại chứ không chỉ chẩn đoán, nạp `references/prose-rewriting.md`; nếu có `author-style-profile.json`, viết theo hồ sơ đó. Dựng hồ sơ bằng `scripts/style_profile.py`.
 
 ## Vòng đời
 

@@ -55,3 +55,9 @@ Với tiếng Việt, theo `composition-vi.md`; với tiếng Anh, theo `composi
 Trả bản viết lại kèm bảng đối chiếu từng thay đổi: vị trí, câu cũ, câu mới, lý do. Đánh dấu riêng những chỗ đã cân nhắc nhưng giữ nguyên vì dè dặt là cần thiết.
 
 Không tự nhận bản viết lại đã được tác giả duyệt. Thay đổi cách diễn đạt trong phần Kết quả và Bàn luận cần tác giả xác nhận trước khi vào bản nộp.
+
+## Theo hồ sơ văn phong của tác giả
+
+Khi có `author-style-profile.json`, lấy hồ sơ làm đích thay cho hướng dẫn văn phong chung. Báo độ lệch bằng con số, ví dụ "câu trung bình 38 từ; hồ sơ 24", thay vì nhận xét chung chung. Hồ sơ `LOW_CONFIDENCE` vẫn dùng được, nhưng nói rõ độ tin cậy trong một dòng.
+
+Dựng hồ sơ từ 3–5 văn bản tác giả tự viết, ưu tiên có phần Bàn luận: chạy `scripts/style_profile.py`, rồi đọc các văn bản đó để điền `patterns` — cách mở đoạn so sánh y văn, cách nêu điểm mạnh, cách nêu hạn chế, cách đi từ con số sang ý nghĩa lâm sàng — mỗi khuôn kèm một trích đoạn nguyên văn không quá 40 từ. Hồ sơ nằm cạnh Research Passport, không đưa vào repo hay gói phát hành.

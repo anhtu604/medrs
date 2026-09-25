@@ -6,3 +6,4 @@ __pycache__/
 dist/
 archive/*.zip
 sources/hmu/snapshots/*
+author-style-profile.json

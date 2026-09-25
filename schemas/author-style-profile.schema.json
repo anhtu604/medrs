@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Author style profile",
+  "type": "object",
+  "required": ["schema_version", "author", "built_at", "sources", "total_words", "confidence", "locale", "measured", "patterns"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "author": {"type": "string", "minLength": 1},
+    "built_at": {"type": "string"},
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "words"],
+        "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "words": {"type": "integer", "minimum": 0}}
+      }
+    },
+    "total_words": {"type": "integer", "minimum": 0},
+    "confidence": {"enum": ["NORMAL", "LOW_CONFIDENCE"]},
+    "locale": {"enum": ["vi", "en"]},
+    "measured": {"type": "object", "required": ["sentence_words", "paragraph_words", "connectors", "decimal_separator", "citation_style"]},
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["move", "excerpt", "source"],
+        "properties": {
+          "move": {"enum": ["literature_comparison", "strength", "limitation", "number_to_meaning"]},
+          "excerpt": {"type": "string", "minLength": 1},
+          "source": {"type": "string"}
+        }
+      }
+    }
+  }
+}
