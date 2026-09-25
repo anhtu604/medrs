@@ -1,6 +1,6 @@
 ---
 name: dao-duc-va-quan-tri-du-lieu
-description: "Soạn mục đạo đức nghiên cứu và kế hoạch quản trị dữ liệu theo thông tin tác giả cung cấp và quy định Việt Nam hoặc quốc tế, viết theo giọng khẳng định tuân thủ. Drafts ethics and data-governance sections."
+description: "Soạn mục đạo đức nghiên cứu và kế hoạch quản trị dữ liệu theo thông tin tác giả cung cấp và quy định Việt Nam hoặc quốc tế, với thì phù hợp giai đoạn nghiên cứu. Drafts ethics and data-governance sections."
 metadata:
   version: 3.0.0-rc.1
   role: leaf
@@ -12,7 +12,7 @@ metadata:
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
 
-Soạn mục đạo đức và kế hoạch quản trị dữ liệu từ thông tin tác giả cung cấp. Viết theo giọng khẳng định: nghiên cứu đã tuân thủ những gì và bảo vệ người tham gia ra sao, thay vì liệt kê rủi ro.
+Soạn mục đạo đức và kế hoạch quản trị dữ liệu từ thông tin tác giả cung cấp. Với nghiên cứu đã hoàn thành, nêu rõ những gì đã được chấp thuận và thực hiện; với đề cương, nêu kế hoạch bảo vệ người tham gia bằng thì tương lai. Chỉ khẳng định phê duyệt hoặc đồng thuận khi tác giả đã cung cấp thông tin đó.
 
 ## Đầu vào
 

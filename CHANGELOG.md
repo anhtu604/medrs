@@ -12,7 +12,7 @@
 - Zotero citations now survive every edit through a token round-trip with a blocking audit, and new drafts can carry live `ZOTERO_ITEM` fields resolved read-only from the author's library. REF cross-references are preserved the same way.
 - Descriptions now state what each skill does rather than what it refuses.
 
-**Open verification item:** Confirm the Zotero field and preference formats, URI forms, and no-op round-trip against a DOCX with citations inserted by the author's Zotero Word plugin. No author sample was available for this release-candidate build; this check remains pending before final release.
+**Verification:** Tested against an author-supplied DOCX with Zotero Word citations: 166 item fields, one bibliography field, and both Zotero preference entries were preserved in a no-op round-trip, a one-paragraph edit, formatting, and structure application. All 238 citation URIs used the personal-library item form. Other URI forms and an interactive Zotero Word refresh remain unverified.
 
 ## 2.0.0-alpha.8 — Automatic Word numbering, prose rewriting, two-round self-review
 

@@ -251,6 +251,24 @@ def test_audit_blocks_lost_ref_field(tmp_path):
     assert any(instruction.startswith("REF _Ref123") for instruction in report["missing"])
 
 
+@pytest.mark.parametrize("story", ["header", "footer"])
+def test_audit_blocks_lost_field_in_header_or_footer(tmp_path, story):
+    document = Document()
+    paragraph = getattr(document.sections[0], story).paragraphs[0]
+    add_field(paragraph, " REF _RefStory \\h ", "Table 1")
+    source = tmp_path / "source.docx"
+    document.save(source)
+
+    flattened = Document(str(source))
+    getattr(flattened.sections[0], story).paragraphs[0].text = "Table 1"
+    broken = tmp_path / "broken.docx"
+    flattened.save(broken)
+
+    report = audit(source, broken)
+    assert report["status"] == "BLOCKED"
+    assert any(instruction.startswith("REF _RefStory") for instruction in report["missing"])
+
+
 def test_repeated_cite_placeholder_gets_distinct_live_fields(tmp_path):
     document = Document()
     document.add_paragraph("Cite twice.")

@@ -20,7 +20,7 @@ def test_old_skill_name_routes_through_co_van_without_alias():
     assert decision.availability == "NOT_IN_ACTIVE_SLICE"
 
 
-def test_self_review_request_routes_to_two_round_self_review():
+def test_self_review_request_routes_to_pre_submission_review():
     decision = route_request(
         RoutingRequest(text="Tự phản biện bản thảo giúp tôi trước khi gửi"),
         {},

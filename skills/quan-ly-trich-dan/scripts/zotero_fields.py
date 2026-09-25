@@ -30,6 +30,7 @@ FIELD_TOKEN = re.compile(r"⟦(?:Z|F):\d+⟧")
 CITE_TOKEN = re.compile(r"⟦cite:([A-Za-z0-9]+(?:;[A-Za-z0-9]+)*)⟧")
 W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 FIELD_PARTS = ("word/document.xml", "word/footnotes.xml", "word/endnotes.xml")
+HEADER_FOOTER_PART = re.compile(r"word/(?:header|footer)\d+\.xml\Z")
 PREFERENCE_PARTS = ("docProps/custom.xml", "word/settings.xml")
 PREFERENCE_NAME = re.compile(r'name="(ZOTERO_PREF_\d+)"')
 PARAGRAPH_CHILDREN = {qn("w:pPr"), qn("w:r"), qn("w:proofErr")}
@@ -283,9 +284,8 @@ def _field_inventory(path: Path, *, zotero_only: bool) -> Counter:
     counts: Counter = Counter()
     with zipfile.ZipFile(path) as archive:
         names = set(archive.namelist())
-        for part in FIELD_PARTS:
-            if part in names:
-                counts.update(_field_instructions(etree.fromstring(archive.read(part)), zotero_only=zotero_only))
+        for part in _field_parts(names):
+            counts.update(_field_instructions(etree.fromstring(archive.read(part)), zotero_only=zotero_only))
     return counts
 
 
@@ -293,39 +293,42 @@ def zotero_inventory(path: Path) -> Counter:
     return _field_inventory(path, zotero_only=True)
 
 
+def _field_parts(names: set[str]) -> list[str]:
+    return sorted(set(FIELD_PARTS) & names | {name for name in names if HEADER_FOOTER_PART.fullmatch(name)})
+
+
 def _field_xml_inventory(path: Path) -> Counter:
     """Inventory complete complex-field runs, preserving their exact XML bytes."""
     found: Counter = Counter()
     with zipfile.ZipFile(path) as archive:
         names = set(archive.namelist())
-        for part in FIELD_PARTS:
-            if part in names:
-                root = etree.fromstring(archive.read(part))
-                depth = 0
-                runs: list[bytes] = []
-                instruction: list[str] = []
-                collecting = False
-                for run in root.iter(qn("w:r")):
-                    children = list(run)
-                    starts = any(child.tag == qn("w:fldChar") and child.get(qn("w:fldCharType")) == "begin" for child in children)
-                    if starts and depth == 0:
-                        runs, instruction, collecting = [], [], True
-                    if depth or starts:
-                        runs.append(etree.tostring(deepcopy(run)))
-                    for child in children:
-                        if child.tag == qn("w:fldChar"):
-                            kind = child.get(qn("w:fldCharType"))
-                            if kind == "begin":
-                                depth += 1
-                            elif kind == "separate" and depth == 1:
-                                collecting = False
-                            elif kind == "end":
-                                if depth == 1:
-                                    found[("".join(instruction).strip(), tuple(runs))] += 1
-                                    runs, instruction = [], []
-                                depth = max(depth - 1, 0)
-                        elif child.tag == qn("w:instrText") and collecting and depth == 1:
-                            instruction.append(child.text or "")
+        for part in _field_parts(names):
+            root = etree.fromstring(archive.read(part))
+            depth = 0
+            runs: list[bytes] = []
+            instruction: list[str] = []
+            collecting = False
+            for run in root.iter(qn("w:r")):
+                children = list(run)
+                starts = any(child.tag == qn("w:fldChar") and child.get(qn("w:fldCharType")) == "begin" for child in children)
+                if starts and depth == 0:
+                    runs, instruction, collecting = [], [], True
+                if depth or starts:
+                    runs.append(etree.tostring(deepcopy(run)))
+                for child in children:
+                    if child.tag == qn("w:fldChar"):
+                        kind = child.get(qn("w:fldCharType"))
+                        if kind == "begin":
+                            depth += 1
+                        elif kind == "separate" and depth == 1:
+                            collecting = False
+                        elif kind == "end":
+                            if depth == 1:
+                                found[("".join(instruction).strip(), tuple(runs))] += 1
+                                runs, instruction = [], []
+                            depth = max(depth - 1, 0)
+                    elif child.tag == qn("w:instrText") and collecting and depth == 1:
+                        instruction.append(child.text or "")
     return found
 
 
