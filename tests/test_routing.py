@@ -27,7 +27,7 @@ def test_self_review_request_routes_to_two_round_self_review():
         active_skills={"medrs", "tu-phan-bien", "phan-bien-va-chinh-sua"},
     )
     assert decision.canonical == "tu-phan-bien"
-    assert decision.mode == "two-round-self-review"
+    assert decision.mode == "pre-submission-review"
 
 
 def test_reporting_guideline_request_routes_to_guideline_skill():
@@ -179,7 +179,7 @@ def test_p_value_shopping_routes_to_analysis_refusal_boundary():
         ("Viết phần Discussion từ kết quả nghiên cứu", "viet-ban-luan"),
         ("Viết kết luận và khuyến nghị", "viet-ket-luan-khuyen-nghi"),
         ("Write the final abstract from the completed manuscript", "viet-tom-tat"),
-        ("Kiểm chứng bản thảo trước khi nộp báo", "kiem-chung-ban-thao"),
+        ("Kiểm chứng bản thảo trước khi nộp báo", "tu-phan-bien"),
     ],
 )
 def test_article_requests_route_to_specific_writer(prompt, expected):
@@ -192,7 +192,7 @@ def test_article_requests_route_to_specific_writer(prompt, expected):
         "viet-ban-luan",
         "viet-ket-luan-khuyen-nghi",
         "viet-tom-tat",
-        "kiem-chung-ban-thao",
+        "tu-phan-bien",
     }
     decision = route_request(RoutingRequest(text=prompt), {}, active_skills=article_skills)
 
@@ -246,7 +246,7 @@ def test_reporting_guideline_check_does_not_route_to_quality_appraisal():
         active_skills={
             "medrs",
             "danh-gia-chat-luong-bang-chung",
-            "kiem-chung-ban-thao",
+            "tu-phan-bien",
             "kiem-chuan-bao-cao",
         },
     )
@@ -298,3 +298,23 @@ def test_review_and_revision_requests_route_to_final_skill(prompt, mode):
     )
     assert decision.canonical == "phan-bien-va-chinh-sua"
     assert decision.mode == mode
+
+
+def test_submission_readiness_routes_to_the_single_pre_submission_reviewer():
+    for prompt in ("Kiểm tra trước khi nộp giúp tôi", "Check submission readiness", "Validate the manuscript"):
+        decision = route_request(RoutingRequest(text=prompt), {}, active_skills={"medrs", "tu-phan-bien"})
+        assert decision.canonical == "tu-phan-bien", prompt
+        assert decision.mode == "pre-submission-review", prompt
+
+
+def test_legacy_manuscript_validation_name_reaches_tu_phan_bien():
+    import yaml
+    from pathlib import Path
+
+    legacy = yaml.safe_load(
+        (Path(__file__).parents[1] / "skills/medrs/references/legacy-skill-map.yaml").read_text(encoding="utf-8")
+    )["legacy"]
+    assert legacy["kiem-chung-ban-thao"]["canonical"] == "tu-phan-bien"
+    decision = route_request(RoutingRequest(text="kiem-chung-ban-thao"), legacy, active_skills={"medrs", "tu-phan-bien"})
+    assert decision.canonical == "tu-phan-bien"
+    assert decision.availability == "AVAILABLE"

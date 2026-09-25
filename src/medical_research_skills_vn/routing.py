@@ -68,18 +68,22 @@ def route_request(request, legacy_map, active_skills):
         availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
         return RoutingDecision("medrs", skill, "semantic-restructure", availability)
 
-    self_review_phrases = (
+    pre_submission_phrases = (
         "tự phản biện",
         "tự review",
         "tự rà soát",
         "self-review",
         "review độc lập",
         "hai vòng",
+        "kiểm chứng bản thảo",
+        "kiểm tra trước khi nộp",
+        "validate the manuscript",
+        "submission readiness",
     )
-    if any(phrase in text for phrase in self_review_phrases):
+    if any(phrase in text for phrase in pre_submission_phrases):
         skill = "tu-phan-bien"
         availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("medrs", skill, "two-round-self-review", availability)
+        return RoutingDecision("medrs", skill, "pre-submission-review", availability)
 
     guideline_phrases = (
         "chuẩn báo cáo",
@@ -151,7 +155,6 @@ def route_request(request, legacy_map, active_skills):
         return RoutingDecision("medrs", "phan-tich-stata", "generate-code", availability)
 
     article_routes = (
-        (("kiểm chứng bản thảo", "validate the manuscript", "submission readiness"), "kiem-chung-ban-thao", "validate"),
         (("điều phối viết toàn bộ", "assemble the medical manuscript", "orchestrate the manuscript"), "viet-ban-thao-y-hoc", "orchestrate"),
         (("kết luận và khuyến nghị", "conclusion and recommendations"), "viet-ket-luan-khuyen-nghi", "draft-section"),
         (("final abstract", "tóm tắt cuối", "viết tóm tắt"), "viet-tom-tat", "draft-last"),
@@ -181,9 +184,9 @@ def route_request(request, legacy_map, active_skills):
             return RoutingDecision("medrs", skill, mode, availability)
 
     if any(phrase in text for phrase in ("checklist consort", "checklist strobe", "checklist prisma")):
-        skill = "kiem-chung-ban-thao"
+        skill = "tu-phan-bien"
         availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("medrs", skill, "reporting-guideline", availability)
+        return RoutingDecision("medrs", skill, "pre-submission-review", availability)
 
     if any(phrase in text for phrase in ("mạng trích dẫn", "citation network", "citation graph")):
         availability = "AVAILABLE" if "tim-y-van" in active_skills else "NOT_IN_ACTIVE_SLICE"

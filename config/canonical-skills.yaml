@@ -1,4 +1,4 @@
-final_count: 28
+final_count: 27
 active_slice: 4
 description_limits:
   target_words: 45
@@ -28,7 +28,6 @@ skills:
   - {name: viet-ban-luan, slice: 2, status: accepted, description_target_words: 45}
   - {name: viet-ket-luan-khuyen-nghi, slice: 2, status: accepted, description_target_words: 45}
   - {name: viet-tom-tat, slice: 2, status: accepted, description_target_words: 45}
-  - {name: kiem-chung-ban-thao, slice: 2, status: accepted, description_target_words: 45}
   - {name: bo-cuc-tai-lieu, slice: 4, status: accepted, description_target_words: 45}
   - {name: dinh-dang-tai-lieu, slice: 4, status: accepted, description_target_words: 45}
   - {name: phan-bien-va-chinh-sua, slice: 4, status: accepted, description_target_words: 45}

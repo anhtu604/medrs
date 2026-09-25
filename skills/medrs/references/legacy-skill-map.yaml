@@ -17,9 +17,10 @@ legacy:
   tim-tai-lieu: {canonical: tim-y-van, mode: literature, note: Available in slice 3}
   kiem-van-phong: {canonical: kiem-van-phong, mode: style, note: Canonical name retained}
   kiem-cau-van-en: {canonical: kiem-van-phong, mode: composition-en, note: English locale mode}
-  kiem-trich-dan: {canonical: kiem-chung-ban-thao, mode: citations, note: Available in slice 2}
-  kiem-liem-chinh: {canonical: kiem-chung-ban-thao, mode: integrity, note: Available in slice 2}
-  kiem-chuan-bao-cao: {canonical: kiem-chung-ban-thao, mode: reporting-guideline, note: Available in slice 2/3}
+  kiem-trich-dan: {canonical: quan-ly-trich-dan, mode: verify-faithfulness, note: Citation checks moved to citation management}
+  kiem-liem-chinh: {canonical: tu-phan-bien, mode: pre-submission-review, note: Integrity checks run in pre-submission review}
+  kiem-chuan-bao-cao: {canonical: kiem-chuan-bao-cao, mode: guideline-compliance, note: Canonical name retained}
+  kiem-chung-ban-thao: {canonical: tu-phan-bien, mode: pre-submission-review, note: Merged into pre-submission review in 3.0}
   kiem-sai-lech: {canonical: danh-gia-chat-luong-bang-chung, mode: risk-of-bias, note: Available in slice 3}
   kiem-dinh-dang: {canonical: bo-cuc-tai-lieu, mode: validate-structure, note: Available in slice 4}
   dinh-dang-tai-lieu: {canonical: dinh-dang-tai-lieu, mode: word-format, note: Available in slice 4}

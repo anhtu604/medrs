@@ -35,4 +35,4 @@ Bảng một dòng cho mỗi cặp trích dẫn × mệnh đề, gồm: định 
 
 Kèm theo: danh sách bài đã thu hồi, danh sách không kiểm chứng được kèm lý do, và ghi chú rằng phán định chỉ bao phủ các mệnh đề đã liệt kê chứ không chứng nhận toàn bộ bản thảo.
 
-Không tự sửa câu văn của tác giả trong bước này. Đề xuất sửa được chuyển cho `kiem-chung-ban-thao` và `phan-bien-va-chinh-sua`.
+Không tự sửa câu văn của tác giả trong bước này. Đề xuất sửa được chuyển cho `tu-phan-bien` và `phan-bien-va-chinh-sua`.

@@ -28,7 +28,6 @@ EXPECTED_NAMES = {
     "viet-ket-luan-khuyen-nghi",
     "viet-tom-tat",
     "kiem-van-phong",
-    "kiem-chung-ban-thao",
     "bo-cuc-tai-lieu",
     "dinh-dang-tai-lieu",
     "phan-bien-va-chinh-sua",

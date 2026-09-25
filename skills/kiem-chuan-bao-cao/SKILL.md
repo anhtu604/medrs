@@ -28,6 +28,6 @@ Không có vị trí cụ thể thì mục đó chưa được coi là đã báo
 
 ## Bàn giao
 
-Nhận thiết kế và artifact từ `ho-so-nghien-cuu`; trả danh mục thiếu sót cho `kiem-chung-ban-thao` và `phan-bien-va-chinh-sua`. Sơ đồ dòng chảy đối tượng do `bieu-do-cong-bo` dựng, nhưng nhãn và mục lấy từ manifest ở đây.
+Nhận thiết kế và artifact từ `ho-so-nghien-cuu`; trả danh mục thiếu sót cho `tu-phan-bien` và `phan-bien-va-chinh-sua`. Sơ đồ dòng chảy đối tượng do `bieu-do-cong-bo` dựng, nhưng nhãn và mục lấy từ manifest ở đây.
 
 Trả về chuẩn đã chọn kèm phiên bản và nguồn, bảng phán định từng mục có vị trí báo cáo, danh sách chưa đạt theo mức ưu tiên, và các mục cần tác giả xác nhận.

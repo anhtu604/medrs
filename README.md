@@ -1,8 +1,8 @@
 # MedRS 2.0
 
-This development branch contains all 28 canonical medical-research skills, spanning protocol design, analysis, medical writing, evidence retrieval/synthesis/appraisal, reporting-guideline compliance, citation management, publication figures, document structure/formatting, two-round self-review, and peer-review revision.
+This development branch contains all 27 canonical medical-research skills, spanning protocol design, analysis, medical writing, evidence retrieval/synthesis/appraisal, reporting-guideline compliance, citation management, publication figures, document structure/formatting, two-round self-review, and peer-review revision.
 
-All 28 skills are accepted in this alpha and indexed in `skills/index.json`. Version 1.3.0 must remain uninstalled while this package is active. The license is CC BY-NC 4.0; commercial use may require separate permission and legal review.
+All 27 skills are accepted in this alpha and indexed in `skills/index.json`. Version 1.3.0 must remain uninstalled while this package is active. The license is CC BY-NC 4.0; commercial use may require separate permission and legal review.
 
 Start with `skills/medrs/SKILL.md`. Non-Claude agents can enumerate the present skills from the generated `skills/index.json`.
 

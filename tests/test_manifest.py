@@ -34,7 +34,6 @@ def test_inventory_lifecycle_matches_current_slice_four_progress():
         "viet-ban-luan",
         "viet-ket-luan-khuyen-nghi",
         "viet-tom-tat",
-        "kiem-chung-ban-thao",
         "bo-cuc-tai-lieu",
         "dinh-dang-tai-lieu",
         "phan-bien-va-chinh-sua",

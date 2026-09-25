@@ -188,26 +188,6 @@
       ]
     },
     {
-      "name": "kiem-chung-ban-thao",
-      "purpose": "Kiểm chứng bản thảo y học trước nộp: claim–citation, số liệu xuyên phần, reporting guideline, liêm chính, disclosure và target profile. Validates actual artifacts. Không sửa ngầm nội dung hoặc cho qua checklist chưa nạp đủ.",
-      "role": "leaf",
-      "locale": [
-        "vi",
-        "en"
-      ],
-      "document_types": [
-        "protocol",
-        "thesis",
-        "dissertation",
-        "journal-article",
-        "review"
-      ],
-      "skill_path": "skills/kiem-chung-ban-thao/SKILL.md",
-      "reference_files": [
-        "skills/kiem-chung-ban-thao/references/validation-contract.md"
-      ]
-    },
-    {
       "name": "kiem-van-phong",
       "purpose": "Use when auditing or revising Vietnamese or English medical academic prose before standalone delivery, document assembly, submission, or defense. Dùng để kiểm lập luận, bằng chứng, giọng tác giả và văn phong; không dùng để dự đoán văn bản có phải do AI viết.",
       "role": "gate",
@@ -411,7 +391,8 @@
       "skill_path": "skills/tu-phan-bien/SKILL.md",
       "reference_files": [
         "skills/tu-phan-bien/references/reconciliation.md",
-        "skills/tu-phan-bien/references/two-round-contract.md"
+        "skills/tu-phan-bien/references/two-round-contract.md",
+        "skills/tu-phan-bien/references/validation-contract.md"
       ]
     },
     {

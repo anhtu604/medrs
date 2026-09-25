@@ -10,7 +10,7 @@ metadata:
 
 # Tự phản biện
 
-Read [references/two-round-contract.md](references/two-round-contract.md) before starting, and [references/reconciliation.md](references/reconciliation.md) before comparing the rounds.
+Read [references/two-round-contract.md](references/two-round-contract.md) before starting. Round 1 applies [references/validation-contract.md](references/validation-contract.md) and the reporting-guideline check of `kiem-chuan-bao-cao`; round 2 adds the argument pass of `kiem-van-phong`. Read [references/reconciliation.md](references/reconciliation.md) before comparing the rounds.
 
 Dùng khi tác giả muốn biết bản thảo yếu ở đâu trước khi gửi đi. Khi đã có nhận xét từ người phản biện thật, đó là việc của `phan-bien-va-chinh-sua`; skill này không thay thế phản biện thật và không dự đoán hội đồng sẽ nói gì.
 

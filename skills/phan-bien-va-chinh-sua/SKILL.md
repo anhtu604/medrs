@@ -16,6 +16,6 @@ Preserve each reviewer/examiner comment verbatim with reviewer, round, page/line
 
 For accepted or partially accepted requests, make the change in a new artifact and link the response to its exact locator and artifact hash. A response that claims a change without a changed artifact is blocked. When any number changes, use the claim ledger to propagate it through abstract, text, tables, figures, supplement and response letter; unresolved mismatches remain `PROPAGATION_INCOMPLETE`.
 
-Run the relevant section writer, statistical workflow, `kiem-van-phong`, `kiem-chung-ban-thao`, structure or formatting skill when the commitment touches that domain. Reopen and re-review the changed artifact. If its hash changes after review, invalidate the commitment and return `RE_REVIEW_REQUIRED`.
+Run the relevant section writer, statistical workflow, `kiem-van-phong`, `tu-phan-bien`, structure or formatting skill when the commitment touches that domain. Reopen and re-review the changed artifact. If its hash changes after review, invalidate the commitment and return `RE_REVIEW_REQUIRED`.
 
 Return review findings or response matrix, evidence/rationale, commitments, changed-artifact links and hashes, propagation report, disclosure changes, unresolved items and re-review state.

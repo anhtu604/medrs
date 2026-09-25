@@ -16,4 +16,4 @@ Choose the framework from the study and inference target, not from the preferred
 
 For RoB 2, complete every applicable signalling-question identifier, retain NI where justified, and use the official algorithm/version for domain and overall judgments. This plugin's summaries are navigation aids, not a replacement for the licensed official workbook. For GRADE and CERQual, explain each domain/component and the resulting direction of concern. Do not auto-rate an RCT high or treat study-level appraisal as outcome-level certainty.
 
-Return framework/version, target of inference, evidence locators, item-level answers, domain judgments, official-tool provenance, unresolved items, overall judgment with rationale, sensitivity implications, and handoff to `tong-hop-bang-chung` or `kiem-chung-ban-thao`.
+Return framework/version, target of inference, evidence locators, item-level answers, domain judgments, official-tool provenance, unresolved items, overall judgment with rationale, sensitivity implications, and handoff to `tong-hop-bang-chung` or `tu-phan-bien`.

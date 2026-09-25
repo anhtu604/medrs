@@ -28,6 +28,6 @@ Mọi con số cụ thể phải xuất hiện trong chính bài được trích
 
 ## Bàn giao
 
-Nhận truy xuất mới từ `tim-y-van`; trả kết quả phán định cho `kiem-chung-ban-thao`; chuyển yêu cầu kiểu trích dẫn và danh mục tham khảo trong Word cho `dinh-dang-tai-lieu`.
+Nhận truy xuất mới từ `tim-y-van`; trả kết quả phán định cho `tu-phan-bien`; chuyển yêu cầu kiểu trích dẫn và danh mục tham khảo trong Word cho `dinh-dang-tai-lieu`.
 
 Trả về backend đã dùng, phạm vi thư viện, bảng phán định theo từng cặp trích dẫn × mệnh đề, danh sách thu hồi, mục chưa phân giải và giới hạn năng lực.

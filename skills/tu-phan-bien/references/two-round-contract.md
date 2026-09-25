@@ -20,9 +20,9 @@ Khi host cho phép chạy hai tiến trình tách biệt, chạy tách. Khi khô
 
 Hai vòng dùng hai trục khác nhau để không lặp lại nhau.
 
-**Vòng 1 — tính vững của bằng chứng.** Câu hỏi nghiên cứu và thiết kế có khớp nhau không; dân số và tiêu chuẩn chọn có định nghĩa được không; kết cục chính có tiền định không; phân tích có đúng với kế hoạch không; số liệu trong bài có nhất quán giữa tóm tắt, bảng, hình và bàn luận; kết luận có nằm trong phạm vi thiết kế cho phép không; hạn chế có nêu đúng cái đáng lo nhất không.
+**Vòng 1 — tính vững của bằng chứng.** Áp `validation-contract.md`: đối chiếu mọi con số và mệnh đề giữa tóm tắt, thân bài, bảng, hình và phụ lục; kiểm trích dẫn có thật và đỡ đúng mệnh đề; kiểm mục tiêu – phương pháp – kết quả – kết luận khớp nhau. Gọi `kiem-chuan-bao-cao` cho chuẩn báo cáo hợp thiết kế.
 
-**Vòng 2 — người đọc phản biện.** Đọc như một người phản biện hoài nghi nhưng thiện chí: chỗ nào sẽ bị hỏi lại; giải thích nào có cách lý giải khác chưa được loại trừ; yếu tố nhiễu nào chưa xử lý; kết quả âm tính có bị chôn không; phần bàn luận có né kết quả bất lợi không; bài có thiếu thông tin khiến người khác không lặp lại được không.
+**Vòng 2 — người đọc phản biện.** Đọc như một người phản biện hoài nghi nhưng thiện chí: chỗ nào sẽ bị hỏi lại; giải thích nào có cách lý giải khác chưa được loại trừ; yếu tố nhiễu nào chưa xử lý; kết quả âm tính có bị chôn không; phần bàn luận có né kết quả bất lợi không; bài có thiếu thông tin khiến người khác không lặp lại được không. Gọi pass lập luận của `kiem-van-phong` cho phần này.
 
 Mỗi phát hiện ở cả hai vòng đều phải có vị trí cụ thể trong bản thảo. Nhận xét chung chung kiểu "phần bàn luận còn yếu" không được tính là phát hiện.
 
