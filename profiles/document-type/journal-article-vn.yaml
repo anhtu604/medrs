@@ -12,4 +12,4 @@ convention:
   contributions_section: null
   section_word_budget: {introduction: 350, methods: 700, results: 800, discussion: 1000, conclusion: 150, abstract: 250}
 rules: null
-rules_note: Chưa mã hóa thể lệ của tạp chí cụ thể; đối chiếu thể lệ gửi bài chính thức của tạp chí đích.
+rules_note: Chọn tạp chí đích rồi đối chiếu Thể lệ gửi bài hiện hành tại trang Các bài gửi của Tạp chí Nghiên cứu Y học hoặc trang Các bài gửi của Tạp chí Y học Việt Nam; hai tạp chí có yêu cầu khác nhau nên không áp một bộ quy tắc chung.

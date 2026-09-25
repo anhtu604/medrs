@@ -11,5 +11,17 @@ convention:
   strengths_limitations: {placement: end-of-discussion-chapter, heading_vi: "Điểm mạnh và hạn chế của đề tài", heading_en: "Strengths and limitations"}
   contributions_section: {placement: after-conclusion, heading_vi: "Những đóng góp mới của luận án", heading_en: "New contributions of the dissertation"}
   section_word_budget: {introduction: 800, literature-review: 12000, methods: 4000, results: 9000, discussion: 12000, conclusion: 600, abstract: 500}
-rules: null
-rules_note: Chưa mã hóa quy chế luận án; đối chiếu văn bản chính thức của cơ sở đào tạo, kể cả vị trí mục đóng góp mới.
+rules:
+  source_url: https://tueba.edu.vn/uploads/2021/Thong-tu-18-2021-TT-BGDDT-2061153184.pdf
+  source_version: Thông tư 18/2021/TT-BGDĐT ngày 28/06/2021, Quy chế tuyển sinh và đào tạo trình độ tiến sĩ
+  source_license: Official document; redistribution not asserted
+  source_cutoff: '2026-09-25'
+  last_verified: '2026-09-25'
+  expires_after_days: 365
+  verification_status: CURRENT
+  source_sha256: 732A13748E7D6D93F36AC3EE7FC263D394AE61EB08BD84C4D382DCC1273C5D98
+  requirements:
+    - {id: doctoral-scientific-report, source_locator: 'Quy chế, Điều 16 khoản 1 điểm a', summary: 'Luận án dùng kết quả học tập và nghiên cứu để thể hiện năng lực nghiên cứu độc lập và đóng góp tri thức hoặc giải pháp mới.'}
+    - {id: doctoral-independent-review, source_locator: 'Quy chế, Điều 16 khoản 1 điểm b', summary: 'Luận án phải đạt quy trình phản biện độc lập trước khi bảo vệ tại hội đồng cấp cơ sở đào tạo.'}
+    - {id: doctoral-integrity-and-format, source_locator: 'Quy chế, Điều 16 khoản 1 điểm c', summary: 'Luận án tuân thủ quy định trình bày và liêm chính của cơ sở đào tạo, minh bạch nguồn kết quả nghiên cứu chung và nguồn của tác giả khác.'}
+rules_note: Quy chế quốc gia không ấn định bố cục hay vị trí mục đóng góp mới; đối chiếu quy định trình bày luận án tiến sĩ hiện hành của cơ sở đào tạo.
