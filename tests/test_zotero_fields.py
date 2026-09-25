@@ -2,6 +2,7 @@ import json
 import zipfile
 from itertools import count
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 from docx import Document
@@ -13,6 +14,7 @@ from zotero_fields import (
     ZoteroFieldError,
     apply_edits,
     audit,
+    build_citation_field,
     export_paragraphs,
     tokenize_paragraph,
 )
@@ -158,3 +160,81 @@ def test_paragraph_holding_an_image_is_not_editable(tmp_path):
     row = export_paragraphs(path)["paragraphs"][0]
     assert row["editable"] is False
     assert row["reason"] == "UNSUPPORTED_RUN_CONTENT"
+
+
+def test_adjacent_ref_fields_sharing_a_boundary_run_are_rejected(tmp_path):
+    document = Document()
+    paragraph = document.add_paragraph("See ")
+    _run(paragraph, _fld("begin"))
+    _run(paragraph, _instr(" REF _RefOne \\h "))
+    _run(paragraph, _fld("separate"))
+    _run(paragraph, _t("Table 1"))
+    _run(paragraph, _fld("end"), _fld("begin"))
+    _run(paragraph, _instr(" REF _RefTwo \\h "))
+    _run(paragraph, _fld("separate"))
+    _run(paragraph, _t("Table 2"))
+    _run(paragraph, _fld("end"))
+    source = tmp_path / "adjacent.docx"
+    out = tmp_path / "out.docx"
+    document.save(source)
+
+    row = export_paragraphs(source)["paragraphs"][0]
+    assert row["editable"] is False
+    with pytest.raises(ZoteroFieldError, match="PARAGRAPH_NOT_EDITABLE"):
+        apply_edits(source, {0: row["text"] + " changed"}, out)
+    assert not out.exists()
+
+
+def test_audit_blocks_lost_ref_field(tmp_path):
+    source = make_docx(tmp_path / "source.docx")
+    flattened = Document(str(source))
+    flattened.paragraphs[1].text = "Xem Bảng 3.1 để biết chi tiết."
+    broken = tmp_path / "broken.docx"
+    flattened.save(broken)
+
+    report = audit(source, broken)
+    assert report["status"] == "BLOCKED"
+    assert report["fields_before"] == report["fields_after"] == 1
+    assert any(instruction.startswith("REF _Ref123") for instruction in report["missing"])
+
+
+def test_repeated_cite_placeholder_gets_distinct_live_fields(tmp_path):
+    document = Document()
+    document.add_paragraph("Cite twice.")
+    source = tmp_path / "source.docx"
+    out = tmp_path / "out.docx"
+    document.save(source)
+    item = SimpleNamespace(
+        key="ABCD2345", item_id=15,
+        uri="http://zotero.org/users/123456/items/ABCD2345",
+        csl={"type": "article-journal", "author": [{"family": "Nguyễn"}], "issued": {"date-parts": [[2020]]}},
+    )
+
+    report = apply_edits(
+        source,
+        {0: "⟦cite:ABCD2345⟧ then ⟦cite:ABCD2345⟧"},
+        out,
+        resolver=lambda keys: ([item], []),
+    )
+    assert report["status"] == "PASS"
+    assert report["added_count"] == 2
+    with zipfile.ZipFile(out) as archive:
+        root = etree.fromstring(archive.read("word/document.xml"))
+    instructions = [node.text for node in root.iter(qn("w:instrText"))]
+    payloads = [json.loads(text.split("CSL_CITATION ", 1)[1]) for text in instructions]
+    assert len(payloads) == 2
+    assert payloads[0]["citationID"] != payloads[1]["citationID"]
+
+
+def test_corporate_and_incomplete_csl_authors_have_safe_labels():
+    corporate = SimpleNamespace(
+        key="CORP1234", item_id=1, uri="http://zotero.org/users/1/items/CORP1234",
+        csl={"author": [{"literal": "World Health Organization"}], "issued": {"date-parts": [[2024]]}},
+    )
+    incomplete = SimpleNamespace(
+        key="BARE1234", item_id=2, uri="http://zotero.org/users/1/items/BARE1234",
+        csl={"author": [{}], "issued": {"date-parts": []}},
+    )
+    runs = build_citation_field([corporate, incomplete], "citation-1")
+    display = "".join(node.text or "" for run in runs for node in run.iter(qn("w:t")))
+    assert display == "(World Health Organization, 2024; BARE1234)"

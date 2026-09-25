@@ -2,7 +2,7 @@
 
 The model edits text only. Every complex field is replaced by a token before the edit
 (`⟦Z:n⟧` for Zotero, `⟦F:n⟧` for any other field) and restored byte for byte after it.
-An audit compares Zotero fields and preferences before and after; any loss blocks delivery.
+An audit compares complex fields and Zotero preferences before and after; any loss blocks delivery.
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ from docx.oxml.ns import qn
 from lxml import etree
 
 ZOTERO_PREFIXES = ("ADDIN ZOTERO_ITEM", "ADDIN ZOTERO_BIBL")
-TOKEN = re.compile(r"⟦(?:Z|F):\d+⟧|⟦cite:[^⟧]+⟧")
+TOKEN = re.compile(r"⟦(?:Z|F):\d+⟧|⟦C:[0-9a-f]{32}⟧|⟦cite:[^⟧]+⟧")
 FIELD_TOKEN = re.compile(r"⟦(?:Z|F):\d+⟧")
 CITE_TOKEN = re.compile(r"⟦cite:([A-Za-z0-9]+(?:;[A-Za-z0-9]+)*)⟧")
 W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
@@ -77,6 +77,10 @@ def tokenize_paragraph(p, counter, depth_in: int = 0) -> tuple[ParagraphFields, 
     for run in p.iter(qn("w:r")):
         if run.getparent() is not p:
             continue
+        # A run shared by adjacent fields cannot be assigned to either token
+        # without splitting its original XML. Refuse the edit instead of losing one.
+        if sum(child.tag == qn("w:fldChar") for child in run) > 1:
+            pf.editable, pf.reason = False, pf.reason or "MULTIPLE_FIELD_BOUNDARIES_IN_RUN"
         started_here = False
         for child in run:
             if child.tag == qn("w:fldChar"):
@@ -203,8 +207,10 @@ def _expand_citations(text: str, resolver) -> tuple[str, dict[str, list], list[s
         if missing:
             unresolved.extend(missing)
             return f"[CẦN TRÍCH DẪN: {'; '.join(keys)}]"
-        citations[match.group(0)] = build_citation_field(items, uuid.uuid4().hex[:8])
-        return match.group(0)
+        occurrence_id = uuid.uuid4().hex
+        marker = f"⟦C:{occurrence_id}⟧"
+        citations[marker] = build_citation_field(items, occurrence_id)
+        return marker
 
     return CITE_TOKEN.sub(replace, text), citations, unresolved
 
@@ -238,7 +244,7 @@ def apply_edits(
     return report
 
 
-def _field_instructions(root) -> list[str]:
+def _field_instructions(root, *, zotero_only: bool = True) -> list[str]:
     found = []
     depth = 0
     buffer: list[str] = []
@@ -255,7 +261,7 @@ def _field_instructions(root) -> list[str]:
             elif kind == "end":
                 if depth == 1:
                     instruction = "".join(buffer).strip()
-                    if instruction.startswith(ZOTERO_PREFIXES):
+                    if instruction and (not zotero_only or instruction.startswith(ZOTERO_PREFIXES)):
                         found.append(instruction)
                 depth = max(depth - 1, 0)
         elif collecting and depth == 1:
@@ -263,14 +269,18 @@ def _field_instructions(root) -> list[str]:
     return found
 
 
-def zotero_inventory(path: Path) -> Counter:
+def _field_inventory(path: Path, *, zotero_only: bool) -> Counter:
     counts: Counter = Counter()
     with zipfile.ZipFile(path) as archive:
         names = set(archive.namelist())
         for part in FIELD_PARTS:
             if part in names:
-                counts.update(_field_instructions(etree.fromstring(archive.read(part))))
+                counts.update(_field_instructions(etree.fromstring(archive.read(part)), zotero_only=zotero_only))
     return counts
+
+
+def zotero_inventory(path: Path) -> Counter:
+    return _field_inventory(path, zotero_only=True)
 
 
 def zotero_preferences(path: Path) -> set[str]:
@@ -285,7 +295,7 @@ def zotero_preferences(path: Path) -> set[str]:
 
 def audit(before: Path, after: Path) -> dict:
     fields_before, fields_after = zotero_inventory(before), zotero_inventory(after)
-    missing = fields_before - fields_after
+    missing = _field_inventory(before, zotero_only=False) - _field_inventory(after, zotero_only=False)
     preferences_missing = sorted(zotero_preferences(before) - zotero_preferences(after))
     return {
         "status": "BLOCKED" if missing or preferences_missing else "PASS",
@@ -307,8 +317,11 @@ def _fld_run(kind: str):
 
 def _label(item) -> str:
     authors = item.csl.get("author") or []
-    year = (item.csl.get("issued") or {}).get("date-parts", [[None]])[0][0]
-    name = authors[0]["family"] if authors else item.key
+    first_author = authors[0] if authors and isinstance(authors[0], dict) else {}
+    name = first_author.get("literal") or first_author.get("family") or first_author.get("given") or item.key
+    issued = item.csl.get("issued") or {}
+    date_parts = issued.get("date-parts") or []
+    year = date_parts[0][0] if date_parts and date_parts[0] else None
     return f"{name}, {year}" if year else name
 
 
