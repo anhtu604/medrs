@@ -1,0 +1,6 @@
+name: discussion-strength-led
+workflow: discussion-blueprint
+request: Viết phần Discussion từ kết quả nghiên cứu
+active_skills: [medrs, viet-ban-luan]
+document_type: thesis-master
+expect: {route: viet-ban-luan, mode: draft-section}

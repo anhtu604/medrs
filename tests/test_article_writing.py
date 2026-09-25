@@ -22,7 +22,6 @@ def verified_inputs():
         "passport_hash": "passport-sha256",
         "target_profile": "journal-example-2026",
         "locale_profile": "vi-medical-academic@1.0.0",
-        "outline_approved": True,
         "source_ledger_version": "ledger-3",
         "word_budget": 500,
     }
@@ -89,34 +88,79 @@ def test_literature_review_rejects_author_by_author_catalogue():
         )
 
 
-def test_discussion_blueprint_requires_lawful_full_text_and_author_approval():
+def test_discussion_blueprint_needs_lawful_full_text_only_when_comparators_are_given():
     with pytest.raises(WritingContractError, match="FULL_TEXT_REQUIRED"):
-        build_discussion_blueprint(
-            comparators=[{"doi": "10.1/example", "access": "abstract-only"}],
-            paper_selection_approved=True,
-            blueprint_approved=True,
-        )
+        build_discussion_blueprint(comparators=[{"doi": "10.1/example", "access": "abstract-only"}])
+
+    blueprint = build_discussion_blueprint()
+    assert blueprint["comparators"] == []
 
 
-def test_discussion_requires_inferential_and_audit_artifacts():
+def test_discussion_blueprint_keeps_limitations_out_of_argument_paragraphs():
+    from medical_research_skills_vn.document_types import ROOT as PACKAGE_ROOT, load_document_type
+
+    blueprint = build_discussion_blueprint(document_type_profile=load_document_type(PACKAGE_ROOT, "thesis-master"))
+
+    assert blueprint["moves"] == ["finding", "meaning", "contribution", "comparison"]
+    closing = blueprint["closing_sections"][0]
+    assert closing["id"] == "strengths_and_limitations"
+    assert closing["order"] == ["strengths", "limitations"]
+    assert closing["placement"] == "end-of-discussion-chapter"
+
+
+def test_doctoral_blueprint_adds_the_contributions_section():
+    from medical_research_skills_vn.document_types import ROOT as PACKAGE_ROOT, load_document_type
+
+    blueprint = build_discussion_blueprint(
+        document_type_profile=load_document_type(PACKAGE_ROOT, "dissertation-doctoral")
+    )
+    assert [section["id"] for section in blueprint["closing_sections"]] == [
+        "strengths_and_limitations",
+        "new_contributions",
+    ]
+
+
+def test_discussion_needs_design_but_no_approval_or_finished_audits():
     with pytest.raises(WritingContractError, match="DISCUSSION_PREFLIGHT_REQUIRED"):
-        build_section_artifact(
-            section="discussion",
-            inputs=verified_inputs() | {"discussion_blueprint_approved": True},
-            claims=[],
-        )
+        build_section_artifact(section="discussion", inputs=verified_inputs(), claims=[])
 
-    with pytest.raises(WritingContractError, match="AUTHOR_APPROVAL_REQUIRED"):
-        build_discussion_blueprint(
-            comparators=[{"doi": "10.1/example", "access": "author-supplied-full-text"}],
-            paper_selection_approved=True,
-            blueprint_approved=False,
-        )
+    artifact = build_section_artifact(
+        section="discussion",
+        inputs=verified_inputs() | {"study_design": "cohort", "inferential_ceiling": "association"},
+        claims=[{"text": "Tỷ lệ biến chứng thấp hơn ở nhóm can thiệp sớm", "source_verified": False}],
+    )
+    assert artifact["author_approval_requests"] == []
+    assert "SOURCE_NEEDED" in artifact["markers"]
+    assert {"AUDIT_PENDING:similarity", "AUDIT_PENDING:causal_language", "AUDIT_PENDING:citation"} <= set(
+        artifact["markers"]
+    )
+
+
+def test_effect_size_wording_is_not_mistaken_for_a_causal_claim():
+    artifact = build_section_artifact(
+        section="discussion",
+        inputs=verified_inputs() | {"study_design": "cohort", "inferential_ceiling": "association"},
+        claims=[{"text": "The effect size was moderate and consistent across sites.", "source_verified": False}],
+    )
+    assert "CAUSAL_OVERREACH" not in artifact["markers"]
+
+
+def test_word_budget_defaults_from_the_document_type_profile():
+    inputs = verified_inputs()
+    inputs.pop("word_budget")
+    artifact = build_section_artifact(
+        section="discussion",
+        inputs=inputs | {"document_type": "thesis", "study_design": "cohort", "inferential_ceiling": "association"},
+        claims=[],
+    )
+    assert artifact["word_budget"] == 7000
+
+    with pytest.raises(WritingContractError, match="WRITING_INPUT_REQUIRED:word_budget"):
+        build_section_artifact(section="discussion", inputs=inputs | {"study_design": "cohort", "inferential_ceiling": "association"}, claims=[])
 
 
 def test_discussion_rejects_phrase_copy_and_observational_causal_overreach():
     inputs = verified_inputs() | {
-        "discussion_blueprint_approved": True,
         "study_design": "cohort",
         "inferential_ceiling": "association",
     }
@@ -141,7 +185,7 @@ def test_discussion_rejects_phrase_copy_and_observational_causal_overreach():
         )
 
 
-def test_conclusion_rejects_new_findings_and_unsupported_recommendations():
+def test_conclusion_rejects_new_findings_and_lists_incomplete_recommendation_basis():
     with pytest.raises(WritingContractError, match="NEW_FINDING_NOT_ALLOWED"):
         build_section_artifact(
             section="conclusion",
@@ -149,25 +193,26 @@ def test_conclusion_rejects_new_findings_and_unsupported_recommendations():
             claims=[{"text": "Một phân tích mới cho thấy...", "present_in_results": False}],
         )
 
-    with pytest.raises(WritingContractError, match="OVERCLAIM_BLOCKED"):
-        build_section_artifact(
-            section="conclusion",
-            inputs=verified_inputs() | {"study_design": "randomized-trial", "inferential_ceiling": "causal"},
-            claims=[
-                {
-                    "text": "Nên triển khai thường quy",
-                    "present_in_results": True,
-                    "recommendation": True,
-                    "recommendation_basis": {
-                        "design": True,
-                        "certainty": False,
-                        "benefit_harm": True,
-                        "feasibility": True,
-                        "scope": True,
-                    },
-                }
-            ],
-        )
+    artifact = build_section_artifact(
+        section="conclusion",
+        inputs=verified_inputs() | {"study_design": "randomized-trial", "inferential_ceiling": "causal"},
+        claims=[
+            {
+                "text": "Nên triển khai thường quy",
+                "present_in_results": True,
+                "recommendation": True,
+                "recommendation_basis": {
+                    "design": True,
+                    "certainty": False,
+                    "benefit_harm": True,
+                    "feasibility": True,
+                    "scope": True,
+                },
+            }
+        ],
+    )
+    assert "RECOMMENDATION_BASIS_INCOMPLETE" in artifact["markers"]
+    assert artifact["draft"] == "Nên triển khai thường quy"
 
     with pytest.raises(WritingContractError, match="CAUSAL_OVERREACH"):
         build_section_artifact(

@@ -6,6 +6,7 @@ from pathlib import Path
 import yaml
 
 from .contracts import load_contract, planning_decision
+from .document_types import load_document_type
 from .ethics import build_ethics_artifact
 from .evidence import EvidenceContractError, synthesize_evidence
 from .methods import draft_methods
@@ -13,6 +14,7 @@ from .passport import confirm_field, new_passport, validate_passport
 from .quality import assess_cerqual
 from .routing import RoutingRequest, route_request
 from .structure_profiles import load_structure_profile, verify_profile_source
+from .writing import build_discussion_blueprint
 
 
 @dataclass
@@ -63,6 +65,16 @@ def run_scenario(path: Path, root: Path) -> ScenarioResult:
             artifacts["profile_verification"] = verification
             if verification["status"] != expected["source_status"]:
                 errors.append("HMU source verification failed")
+        elif workflow == "discussion-blueprint":
+            blueprint = build_discussion_blueprint(
+                document_type_profile=load_document_type(root, case["document_type"])
+            )
+            artifacts["blueprint"] = blueprint
+            if "limitation" in blueprint["moves"]:
+                errors.append("discussion: limitations repeated in every argument paragraph")
+            closing = blueprint["closing_sections"][0]
+            if closing["id"] != "strengths_and_limitations" or closing["order"] != ["strengths", "limitations"]:
+                errors.append("discussion: strengths and limitations are not one strength-first section")
         return ScenarioResult(name=case["name"], artifacts=artifacts, errors=errors)
 
     passport = new_passport(case["project_id"], "protocol", case["locale_profile"])

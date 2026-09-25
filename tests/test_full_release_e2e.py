@@ -19,7 +19,7 @@ def test_every_canonical_skill_is_accepted_and_discoverable():
     assert f"all {expected} canonical" in (ROOT / "README.md").read_text(encoding="utf-8")
 
 
-def test_six_release_exemplars_pass_offline():
+def test_release_exemplars_pass_offline():
     scenarios = sorted((ROOT / "tests/cases/end-to-end").glob("*.yaml"))
     assert {path.stem for path in scenarios} == {
         "protocol-new-project",
@@ -28,6 +28,7 @@ def test_six_release_exemplars_pass_offline():
         "qualitative-synthesis",
         "meta-analysis-guard",
         "thesis-hmu",
+        "discussion-strength-led",
     }
     results = [run_scenario(path, ROOT) for path in scenarios]
     assert {result.name for result in results} == {
@@ -37,5 +38,6 @@ def test_six_release_exemplars_pass_offline():
         "qualitative-synthesis",
         "meta-analysis-guard",
         "thesis-hmu",
+        "discussion-strength-led",
     }
     assert all(result.errors == [] for result in results)

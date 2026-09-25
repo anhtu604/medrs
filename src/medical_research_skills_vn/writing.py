@@ -4,6 +4,8 @@ from hashlib import sha256
 import json
 import re
 
+from .document_types import ROOT as PACKAGE_ROOT, load_document_type, resolve_document_type, section_word_budget
+
 
 class WritingContractError(ValueError):
     pass
@@ -14,9 +16,7 @@ REQUIRED_INPUTS = {
     "passport_hash",
     "target_profile",
     "locale_profile",
-    "outline_approved",
     "source_ledger_version",
-    "word_budget",
 }
 
 
@@ -24,8 +24,17 @@ def _require_inputs(inputs: dict) -> None:
     missing = sorted(REQUIRED_INPUTS - set(inputs))
     if missing:
         raise WritingContractError(f"WRITING_INPUT_REQUIRED:{','.join(missing)}")
-    if not inputs["outline_approved"]:
-        raise WritingContractError("AUTHOR_APPROVAL_REQUIRED:section-outline")
+
+
+def _word_budget(inputs: dict, section: str) -> int:
+    if inputs.get("word_budget"):
+        return int(inputs["word_budget"])
+    if inputs.get("document_type"):
+        name = resolve_document_type(inputs["document_type"], inputs["locale_profile"])
+        budget = section_word_budget(load_document_type(PACKAGE_ROOT, name), section)
+        if budget:
+            return budget
+    raise WritingContractError("WRITING_INPUT_REQUIRED:word_budget")
 
 
 def _claim_evidence_rows(claims: list[dict]) -> list[dict]:
@@ -59,12 +68,13 @@ def _is_observational(design: str) -> bool:
 
 
 def _causal_text(text: str) -> bool:
-    return bool(re.search(r"\b(cause[sd]?|effect|caused by)\b|gây ra|dẫn đến|tác động", text, re.I))
+    return bool(re.search(r"\b(cause[sd]?|caused by)\b|gây ra|dẫn đến|tác động", text, re.I))
 
 
 def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) -> dict:
     _require_inputs(inputs)
     section = section.casefold()
+    word_budget = _word_budget(inputs, section)
     markers: list[str] = []
 
     if section == "results":
@@ -78,8 +88,6 @@ def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) ->
                 supplied_unverified.append(claim)
             else:
                 raise WritingContractError("VERIFIED_RESULTS_REQUIRED")
-        if supplied_unverified:
-            markers.append("AUTHOR_SUPPLIED_OUTPUT_UNVERIFIED")
         if any(
             claim.get("result_verified", False)
             and (not claim.get("artifact_id") or not claim.get("locator"))
@@ -97,8 +105,6 @@ def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) ->
         if claims and any(not claim.get("theme") for claim in claims):
             raise WritingContractError("THEMATIC_SYNTHESIS_REQUIRED")
     elif section == "discussion":
-        if not inputs.get("discussion_blueprint_approved", False):
-            raise WritingContractError("AUTHOR_APPROVAL_REQUIRED:discussion-blueprint")
         if any(claim.get("copied_from_comparator", False) for claim in claims):
             raise WritingContractError("PHRASE_COPY_NOT_ALLOWED")
         if not inputs.get("study_design") or not inputs.get("inferential_ceiling"):
@@ -128,14 +134,15 @@ def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) ->
             ):
                 raise WritingContractError("CITATION_VERIFICATION_ARTIFACT_REQUIRED")
         audits = inputs.get("discussion_audits", {})
-        if claims and any(
-            not isinstance(audits.get(name), dict)
-            or audits[name].get("status") != "PASS"
-            or not audits[name].get("artifact_id")
-            or not audits[name].get("artifact_hash")
-            for name in ("similarity", "causal_language", "citation")
-        ):
-            raise WritingContractError("DISCUSSION_AUDIT_REQUIRED")
+        for name in ("similarity", "causal_language", "citation"):
+            audit = audits.get(name)
+            if not (
+                isinstance(audit, dict)
+                and audit.get("status") == "PASS"
+                and audit.get("artifact_id")
+                and audit.get("artifact_hash")
+            ):
+                markers.append(f"AUDIT_PENDING:{name}")
     elif section == "conclusion":
         if any(not claim.get("present_in_results", False) for claim in claims):
             raise WritingContractError("NEW_FINDING_NOT_ALLOWED")
@@ -156,7 +163,7 @@ def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) ->
             )
             for claim in claims
         ):
-            raise WritingContractError("OVERCLAIM_BLOCKED")
+            markers.append("RECOMMENDATION_BASIS_INCOMPLETE")
     elif section == "abstract":
         lifecycle_state = inputs.get("abstract_state", "FINAL_VERIFIED")
         if lifecycle_state not in {"SKELETON", "DRAFT_FROM_INCOMPLETE_MANUSCRIPT", "SYNCED_DRAFT", "FINAL_VERIFIED"}:
@@ -216,10 +223,10 @@ def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) ->
         "claim_evidence": _claim_evidence_rows(claims),
         "markers": sorted(set(markers)),
         "dependencies": [inputs["passport_hash"], inputs["source_ledger_version"]],
-        "author_approval_requests": ["SCIENTIFIC_INTERPRETATION_APPROVAL"],
+        "author_approval_requests": [],
         "locale_profile": inputs["locale_profile"],
         "target_profile": inputs["target_profile"],
-        "word_budget": inputs["word_budget"],
+        "word_budget": word_budget,
         "section_hash": section_hash,
         "preflight": {
             "status": "REVISE" if markers else "PASS",
@@ -244,21 +251,45 @@ def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) ->
 
 
 def build_discussion_blueprint(
-    *, comparators: list[dict], paper_selection_approved: bool, blueprint_approved: bool
+    *, comparators: list[dict] | None = None, document_type_profile: dict | None = None
 ) -> dict:
-    if not paper_selection_approved or not blueprint_approved:
-        raise WritingContractError("AUTHOR_APPROVAL_REQUIRED:discussion-workflow")
+    comparators = comparators or []
     permitted = {"author-supplied-full-text", "publisher-open-access", "repository-full-text", "pmc"}
-    if not comparators or any(item.get("access") not in permitted for item in comparators):
+    if any(item.get("access") not in permitted for item in comparators):
         raise WritingContractError("FULL_TEXT_REQUIRED:discussion-reverse-engineering")
+    convention = (document_type_profile or {}).get("convention", {})
+    placement = convention.get("strengths_limitations") or {
+        "placement": "subsection-in-discussion",
+        "heading_vi": "Điểm mạnh và hạn chế",
+        "heading_en": "Strengths and limitations",
+    }
+    closing = [
+        {
+            "id": "strengths_and_limitations",
+            "placement": placement["placement"],
+            "heading_vi": placement["heading_vi"],
+            "heading_en": placement["heading_en"],
+            "order": ["strengths", "limitations"],
+        }
+    ]
+    contributions = convention.get("contributions_section")
+    if contributions:
+        closing.append(
+            {
+                "id": "new_contributions",
+                "placement": contributions["placement"],
+                "heading_vi": contributions["heading_vi"],
+                "heading_en": contributions["heading_en"],
+            }
+        )
     return {
         "comparators": [
             {"doi": item.get("doi"), "access": item["access"], "stored_content": "functional-summary-only"}
             for item in comparators
         ],
-        "moves": ["finding", "meaning", "comparison", "explanation", "limitation", "implication"],
+        "moves": ["finding", "meaning", "contribution", "comparison"],
+        "closing_sections": closing,
         "copying_policy": "RHETORICAL_MOVES_ONLY_NO_PHRASE_COPY",
-        "approved": True,
     }
 
 
