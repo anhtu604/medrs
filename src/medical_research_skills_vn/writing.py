@@ -69,7 +69,7 @@ def _is_observational(design: str) -> bool:
 
 
 def _causal_text(text: str) -> bool:
-    pattern = r"\b(cause[sd]?|caused by)\b|\beffects?\b(?![\s-]+sizes?\b)|gây ra|dẫn đến|tác động"
+    pattern = r"\b(cause[sd]?|caused by)\b|\beffects?\b(?![\s-]+(?:sizes?|models?)\b)|gây ra|dẫn đến|tác động"
     return bool(re.search(pattern, text, re.I))
 
 

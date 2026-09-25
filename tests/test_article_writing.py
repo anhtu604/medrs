@@ -167,6 +167,20 @@ def test_effect_size_wording_is_not_mistaken_for_a_causal_claim():
 
 
 @pytest.mark.parametrize("section", ["discussion", "conclusion"])
+@pytest.mark.parametrize("model", ["random effects model", "fixed effects model"])
+def test_statistical_effects_model_is_not_mistaken_for_a_causal_claim(section, model):
+    claim = {"text": f"We fitted a {model} to summarize the cohort estimates."}
+    if section == "conclusion":
+        claim["present_in_results"] = True
+    artifact = build_section_artifact(
+        section=section,
+        inputs=verified_inputs() | {"study_design": "cohort", "inferential_ceiling": "association"},
+        claims=[claim],
+    )
+    assert "CAUSAL_OVERREACH" not in artifact["markers"]
+
+
+@pytest.mark.parametrize("section", ["discussion", "conclusion"])
 def test_observational_effect_claim_is_blocked_as_causal(section):
     claim = {"text": "The treatment had an effect on mortality."}
     if section == "conclusion":
