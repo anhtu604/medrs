@@ -2,7 +2,7 @@
 name: phan-tich-r
 description: "Viết và chạy mã R tái lập cho phân tích y học, kèm nhật ký, phiên bản gói và băm kết quả. Writes and runs reproducible R analyses."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [analysis, thesis, dissertation, journal-article]

@@ -2,7 +2,7 @@
 name: viet-tong-quan
 description: "Viết tổng quan y văn theo chủ đề, tổng hợp và so sánh thay vì liệt kê từng tác giả. Writes thematic literature reviews."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review]

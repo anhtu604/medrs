@@ -2,7 +2,7 @@
 name: co-mau-va-ke-hoach-phan-tich
 description: "Tính cỡ mẫu và lập kế hoạch phân tích thống kê tiền định cho đề cương: ước lượng, lực mẫu, kết cục chính và phân tích phụ. Plans sample size and statistical analysis."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation]

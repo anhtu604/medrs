@@ -2,7 +2,7 @@
 name: viet-ket-luan-khuyen-nghi
 description: "Viết Kết luận bám từng mục tiêu và Khuyến nghị dựa trên kết quả, khẳng định đúng sức bằng chứng. Writes conclusions and recommendations."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

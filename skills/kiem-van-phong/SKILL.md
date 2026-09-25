@@ -2,7 +2,7 @@
 name: kiem-van-phong
 description: "Kiểm và nâng chất văn phong học thuật y học tiếng Việt hoặc tiếng Anh: lập luận, bằng chứng, nhịp câu, và viết lại theo hồ sơ văn phong riêng của tác giả. Audits and rewrites prose in the author's voice."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: gate
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript, review]

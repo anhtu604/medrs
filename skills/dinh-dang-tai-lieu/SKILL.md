@@ -2,7 +2,7 @@
 name: dinh-dang-tai-lieu
 description: "Định dạng Word chuẩn cho luận văn, luận án và bản thảo: style, lề, đề mục đánh số tự động, mục lục, chú thích bảng hình và tham chiếu chéo. Formats Word documents."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

@@ -2,7 +2,7 @@
 name: danh-gia-chat-luong-bang-chung
 description: "Đánh giá nguy cơ sai lệch và độ chắc chắn của bằng chứng bằng RoB 2, GRADE và GRADE-CERQual theo đúng từng mục của công cụ chính thức. Appraises bias and certainty of evidence."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, journal-article, review]

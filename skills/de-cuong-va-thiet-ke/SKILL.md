@@ -2,7 +2,7 @@
 name: de-cuong-va-thiet-ke
 description: "Thiết kế nghiên cứu và soạn đề cương: câu hỏi, thiết kế, đối tượng, biến số và quy trình, cho luận văn, luận án hay đề tài. Designs studies and drafts protocols."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation]

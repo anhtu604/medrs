@@ -2,7 +2,7 @@
 name: phan-tich-stata
 description: "Viết và chạy do-file Stata tái lập cho phân tích y học, kèm nhật ký, phiên bản và băm kết quả. Writes and runs reproducible Stata analyses."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [analysis, thesis, dissertation, journal-article]

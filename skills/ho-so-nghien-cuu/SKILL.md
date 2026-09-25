@@ -2,7 +2,7 @@
 name: ho-so-nghien-cuu
 description: "Lập và cập nhật Research Passport của dự án: mục tiêu, thiết kế, loại tài liệu và quyết định của tác giả; nhận bản thảo đang viết dở để làm tiếp. Creates and maintains the project's Research Passport."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript, evidence-synthesis]

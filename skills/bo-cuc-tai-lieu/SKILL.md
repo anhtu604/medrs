@@ -2,7 +2,7 @@
 name: bo-cuc-tai-lieu
 description: "Sắp xếp bố cục chương mục của luận văn, luận án hoặc bài báo theo profile nguồn chính thức, tạo bản mới không ghi đè. Restructures document sections. Định dạng Word thuộc skill định dạng tài liệu."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

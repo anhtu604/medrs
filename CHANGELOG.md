@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.0.0-rc.1 — Works for the author
+
+- Added shared working principles that every skill links: the author's word is enough, ask as little as possible, do it the author's way, never invent (the one hard boundary, answered with a slot rather than a refusal), lead with strength, and keep drafts clean with one closing checklist.
+- Merged manuscript validation into `tu-phan-bien`, now the single pre-submission reviewer; the installer retires the old skill and the legacy map routes its name. The inventory is 27 skills.
+- Added six document-type profiles — Vietnamese article, international article, master's thesis, specialist thesis, doctoral dissertation, protocol — whose convention layer defines Discussion scope, analysis depth, literature comparison, section budgets and the placement of strengths and limitations, with an optional source-governed rule layer.
+- Rebuilt the Discussion contract: argument paragraphs run finding, meaning, contribution, comparison, and limitations move into one strength-first section. Approval gates, pending audits and incomplete recommendation bases became checklist markers; "effect size" no longer trips the causal-language check.
+- Ethics trusts author-stated approvals and no longer halts on overdue regulation sources.
+- Interpretation leads with clinical meaning and effect size; the rules against significance-driven analysis remain.
+- Added author style profiles measured from the author's own writing, used both to draft and to rewrite.
+- Zotero citations now survive every edit through a token round-trip with a blocking audit, and new drafts can carry live `ZOTERO_ITEM` fields resolved read-only from the author's library. REF cross-references are preserved the same way.
+- Descriptions now state what each skill does rather than what it refuses.
+
+**Open verification item:** Confirm the Zotero field and preference formats, URI forms, and no-op round-trip against a DOCX with citations inserted by the author's Zotero Word plugin. No author sample was available for this release-candidate build; this check remains pending before final release.
+
 ## 2.0.0-alpha.8 — Automatic Word numbering, prose rewriting, two-round self-review
 
 - Added heading numbering and cross-reference mechanics to `dinh-dang-tai-lieu`: one multilevel numbering definition bound to `Heading 1`–`Heading 4`, per-object `SEQ` caption sequences numbered by chapter, and reference fields for every mention of a table, figure, section or appendix. Hand-typed numbers and hand-typed label-and-number strings in body text are now reported with their location, which is the usual cause of a thesis citing the wrong table after one is inserted.

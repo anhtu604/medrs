@@ -2,7 +2,7 @@
 name: viet-tom-tat
 description: "Viết tóm tắt có cấu trúc, song ngữ hoặc tiếng Anh, đồng bộ với toàn văn và viết sau cùng. Writes structured abstracts from the finished text."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

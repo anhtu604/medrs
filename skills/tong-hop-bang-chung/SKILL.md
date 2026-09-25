@@ -2,7 +2,7 @@
 name: tong-hop-bang-chung
 description: "Tổng hợp bằng chứng cho tổng quan tường thuật, hệ thống, phạm vi hoặc phân tích gộp, kèm bản đồ bằng chứng. Synthesises evidence across study types."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review]

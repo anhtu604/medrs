@@ -1,6 +1,8 @@
-# Medical Research Skills VN 2.0
+# Medical Research Skills VN 3.0
 
 This repository is the portable core and Claude package for a medical-research assistant. Start with `skills/medrs/SKILL.md`. Canonical content lives only under `skills/<name>/`; host adapters must remain thin.
+
+Every skill links `skills/medrs/references/working-principles.md`, which governs posture. Depth and length come from `profiles/document-type/`. Runtime code that must reach every host lives in a skill's `scripts/` folder, because the Cowork package does not ship `src/` or `scripts/`.
 
 Never reconstruct a reporting checklist, appraisal instrument, regulatory rule, citation, result, or institutional requirement from memory. Retrieve primary material, record source/version/license/retrieval/freshness metadata, and implement exact item coverage. If primary material is unavailable, create `BLOCKED.md`, leave the implemented item list empty, and let validation fail.
 

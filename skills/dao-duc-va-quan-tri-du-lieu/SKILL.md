@@ -2,7 +2,7 @@
 name: dao-duc-va-quan-tri-du-lieu
 description: "Soạn mục đạo đức nghiên cứu và kế hoạch quản trị dữ liệu theo thông tin tác giả cung cấp và quy định Việt Nam hoặc quốc tế, viết theo giọng khẳng định tuân thủ. Drafts ethics and data-governance sections."
 metadata:
-  version: 2.0.0-alpha.8
+  version: 3.0.0-rc.1
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript]
