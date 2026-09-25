@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from medical_research_skills_vn.budgets import validate_context_budget  # noqa: E402
 from medical_research_skills_vn.coverage import validate_coverage_manifests  # noqa: E402
+from medical_research_skills_vn.document_types import validate_document_type_profiles  # noqa: E402
 from medical_research_skills_vn.ethics import validate_source_registers  # noqa: E402
 from medical_research_skills_vn.indexing import build_index, validate_reference_callers  # noqa: E402
 from medical_research_skills_vn.inventory import validate_inventory  # noqa: E402
@@ -28,6 +29,7 @@ def main() -> int:
         + validate_working_principles(ROOT)
         + validate_reference_callers(ROOT)
         + validate_profiles(ROOT, date.today())
+        + validate_document_type_profiles(ROOT, date.today())
         + validate_coverage_manifests(ROOT)
     )
     index_path = ROOT / "skills/index.json"

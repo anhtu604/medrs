@@ -1,0 +1,15 @@
+profile_id: thesis-master
+document_type: thesis-master
+title: Luận văn thạc sĩ
+convention:
+  status: CONVENTION
+  frame: ["Đặt vấn đề", "Chương 1. Tổng quan", "Chương 2. Đối tượng và phương pháp nghiên cứu", "Chương 3. Kết quả nghiên cứu", "Chương 4. Bàn luận", "Kết luận", "Khuyến nghị", "Tài liệu tham khảo", "Phụ lục"]
+  abstract_languages: [vi]
+  discussion_scope: Bàn theo từng mục tiêu, bao quát các nhóm kết quả
+  analysis_depth: Mô tả, so sánh nhóm và đa biến khi phù hợp với mục tiêu
+  literature_comparison: Rộng, trong và ngoài nước
+  strengths_limitations: {placement: end-of-discussion-chapter, heading_vi: "Điểm mạnh và hạn chế của đề tài", heading_en: "Strengths and limitations"}
+  contributions_section: null
+  section_word_budget: {introduction: 600, literature-review: 6000, methods: 2500, results: 5000, discussion: 7000, conclusion: 400, abstract: 350}
+rules: null
+rules_note: Quy định luận văn thạc sĩ Trường Đại học Y Hà Nội nằm ở profiles/institution/hmu/; cơ sở khác cần văn bản chính thức của cơ sở đó.

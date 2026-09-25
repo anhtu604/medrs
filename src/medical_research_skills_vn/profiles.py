@@ -22,7 +22,10 @@ REQUIRED_SOURCE_FIELDS = {
 
 def validate_profiles(root: Path, as_of: date) -> list[ValidationIssue]:
     issues = []
-    for path in sorted((Path(root) / "profiles").glob("**/*.yaml")):
+    profile_root = Path(root) / "profiles"
+    for path in sorted(profile_root.glob("**/*.yaml")):
+        if path.relative_to(profile_root).parts[0] == "document-type":
+            continue
         profile = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         missing = REQUIRED_SOURCE_FIELDS - set(profile)
         if missing:

@@ -1,0 +1,15 @@
+profile_id: dissertation-doctoral
+document_type: dissertation-doctoral
+title: Luận án tiến sĩ
+convention:
+  status: CONVENTION
+  frame: ["Đặt vấn đề", "Chương 1. Tổng quan", "Chương 2. Đối tượng và phương pháp nghiên cứu", "Chương 3. Kết quả nghiên cứu", "Chương 4. Bàn luận", "Kết luận", "Kiến nghị", "Những đóng góp mới của luận án", "Tài liệu tham khảo", "Phụ lục"]
+  abstract_languages: [vi, en]
+  discussion_scope: Như luận văn, đào sâu cơ chế và các giải thích thay thế
+  analysis_depth: Mô hình đa biến và phân tích độ nhạy
+  literature_comparison: Rộng và phản biện
+  strengths_limitations: {placement: end-of-discussion-chapter, heading_vi: "Điểm mạnh và hạn chế của đề tài", heading_en: "Strengths and limitations"}
+  contributions_section: {placement: after-conclusion, heading_vi: "Những đóng góp mới của luận án", heading_en: "New contributions of the dissertation"}
+  section_word_budget: {introduction: 800, literature-review: 12000, methods: 4000, results: 9000, discussion: 12000, conclusion: 600, abstract: 500}
+rules: null
+rules_note: Chưa mã hóa quy chế luận án; đối chiếu văn bản chính thức của cơ sở đào tạo, kể cả vị trí mục đóng góp mới.

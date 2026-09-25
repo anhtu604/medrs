@@ -19,3 +19,7 @@ Every section writer reads this reference by relative path before returning a dr
 ## Output
 
 Return `status` as `PASS` or `REVISE`, one record per check, markers, locale-profile identifier, Passport hash, and section hash. In a multi-section draft, the complete `kiem-van-phong` gate remains `PENDING`; this preflight is not a substitute for the assembled-document audit.
+
+## Độ sâu và độ dài
+
+Lấy phạm vi, độ sâu phân tích và ngân sách từ profile loại tài liệu (`profiles/document-type/<loại>.yaml` trong thư mục hỗ trợ của MedRS), chọn theo `document_type` trong Research Passport. Giá trị cũ như `thesis` hay `journal-article` được ánh xạ tự động; nói lựa chọn trong một dòng. Chỉ hỏi khi tác giả muốn khác mặc định.

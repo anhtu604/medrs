@@ -1,0 +1,15 @@
+profile_id: protocol
+document_type: protocol
+title: Đề cương nghiên cứu
+convention:
+  status: CONVENTION
+  frame: ["Đặt vấn đề", "Chương 1. Tổng quan", "Chương 2. Đối tượng và phương pháp nghiên cứu", "Dự kiến kết quả", "Kế hoạch thực hiện", "Tài liệu tham khảo"]
+  abstract_languages: [vi]
+  discussion_scope: Không có phần Bàn luận
+  analysis_depth: Kế hoạch phân tích tiền định
+  literature_comparison: Đủ để xác lập khoảng trống và căn cứ thiết kế
+  strengths_limitations: {placement: not-applicable, heading_vi: null, heading_en: null}
+  contributions_section: null
+  section_word_budget: {introduction: 500, literature-review: 3000, methods: 2500, abstract: 250}
+rules: null
+rules_note: Chưa mã hóa mẫu đề cương của cơ sở đào tạo; đối chiếu mẫu chính thức nếu có.

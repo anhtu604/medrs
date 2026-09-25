@@ -1,0 +1,15 @@
+profile_id: journal-article-vn
+document_type: journal-article-vn
+title: Bài báo tạp chí trong nước
+convention:
+  status: CONVENTION
+  frame: ["Đặt vấn đề (kèm mục tiêu)", "Đối tượng và phương pháp", "Kết quả", "Bàn luận", "Kết luận", "Tài liệu tham khảo"]
+  abstract_languages: [vi, en]
+  discussion_scope: Bàn theo từng nhóm kết quả, gần kiểu luận văn nhưng cô đọng
+  analysis_depth: Nghiên cứu mô tả được chấp nhận rộng rãi; so sánh nhóm và đa biến khi dữ liệu cho phép
+  literature_comparison: Nghiên cứu trong nước và quốc tế
+  strengths_limitations: {placement: subsection-in-discussion, heading_vi: "Điểm mạnh và hạn chế", heading_en: "Strengths and limitations"}
+  contributions_section: null
+  section_word_budget: {introduction: 350, methods: 700, results: 800, discussion: 1000, conclusion: 150, abstract: 250}
+rules: null
+rules_note: Chưa mã hóa thể lệ của tạp chí cụ thể; đối chiếu thể lệ gửi bài chính thức của tạp chí đích.

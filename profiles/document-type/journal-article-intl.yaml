@@ -1,0 +1,15 @@
+profile_id: journal-article-intl
+document_type: journal-article-intl
+title: International journal article
+convention:
+  status: CONVENTION
+  frame: ["Introduction", "Methods", "Results", "Discussion", "References"]
+  abstract_languages: [en]
+  discussion_scope: Three to five principal findings; principal findings, comparison with other studies, strengths and limitations, implications, conclusion
+  analysis_depth: Multivariable adjustment and sensitivity analysis expected
+  literature_comparison: Mainly international literature, stressing what the study adds
+  strengths_limitations: {placement: subsection-in-discussion, heading_vi: "Điểm mạnh và hạn chế", heading_en: "Strengths and limitations"}
+  contributions_section: null
+  section_word_budget: {introduction: 450, methods: 900, results: 800, discussion: 1100, conclusion: 100, abstract: 250}
+rules: null
+rules_note: Read the target journal's current author instructions at the time of use; individual journals are not encoded.
