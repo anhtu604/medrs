@@ -283,27 +283,81 @@ def zotero_inventory(path: Path) -> Counter:
     return _field_inventory(path, zotero_only=True)
 
 
-def zotero_preferences(path: Path) -> set[str]:
-    found: set[str] = set()
+def _field_xml_inventory(path: Path) -> Counter:
+    """Inventory complete complex-field runs, preserving their exact XML bytes."""
+    found: Counter = Counter()
+    with zipfile.ZipFile(path) as archive:
+        names = set(archive.namelist())
+        for part in FIELD_PARTS:
+            if part in names:
+                root = etree.fromstring(archive.read(part))
+                depth = 0
+                runs: list[bytes] = []
+                instruction: list[str] = []
+                collecting = False
+                for run in root.iter(qn("w:r")):
+                    children = list(run)
+                    starts = any(child.tag == qn("w:fldChar") and child.get(qn("w:fldCharType")) == "begin" for child in children)
+                    if starts and depth == 0:
+                        runs, instruction, collecting = [], [], True
+                    if depth or starts:
+                        runs.append(etree.tostring(deepcopy(run)))
+                    for child in children:
+                        if child.tag == qn("w:fldChar"):
+                            kind = child.get(qn("w:fldCharType"))
+                            if kind == "begin":
+                                depth += 1
+                            elif kind == "separate" and depth == 1:
+                                collecting = False
+                            elif kind == "end":
+                                if depth == 1:
+                                    found[("".join(instruction).strip(), tuple(runs))] += 1
+                                    runs, instruction = [], []
+                                depth = max(depth - 1, 0)
+                        elif child.tag == qn("w:instrText") and collecting and depth == 1:
+                            instruction.append(child.text or "")
+    return found
+
+
+def _preference_values(path: Path) -> Counter:
+    values: Counter = Counter()
     with zipfile.ZipFile(path) as archive:
         names = set(archive.namelist())
         for part in PREFERENCE_PARTS:
-            if part in names:
-                found.update(PREFERENCE_NAME.findall(archive.read(part).decode("utf-8", errors="replace")))
-    return found
+            if part not in names:
+                continue
+            root = etree.fromstring(archive.read(part))
+            for node in root.iter():
+                name = node.get("name") or node.get(qn("w:name"))
+                if name is None or not PREFERENCE_NAME.fullmatch(f'name="{name}"'):
+                    continue
+                value = node.get(qn("w:val"))
+                if value is None:
+                    value = b"".join(etree.tostring(deepcopy(child), method="c14n") for child in node).decode("utf-8")
+                values[(name, value)] += 1
+    return values
+
+
+def zotero_preferences(path: Path) -> set[str]:
+    return {name for name, _ in _preference_values(path)}
 
 
 def audit(before: Path, after: Path) -> dict:
     fields_before, fields_after = zotero_inventory(before), zotero_inventory(after)
     missing = _field_inventory(before, zotero_only=False) - _field_inventory(after, zotero_only=False)
-    preferences_missing = sorted(zotero_preferences(before) - zotero_preferences(after))
+    fields_changed = _field_xml_inventory(before) - _field_xml_inventory(after)
+    preferences_before, preferences_after = _preference_values(before), _preference_values(after)
+    preferences_missing = sorted({name for name, _ in preferences_before} - {name for name, _ in preferences_after})
+    preferences_changed = sorted({name for name, _ in preferences_before - preferences_after} - set(preferences_missing))
     return {
-        "status": "BLOCKED" if missing or preferences_missing else "PASS",
+        "status": "BLOCKED" if missing or fields_changed or preferences_missing or preferences_changed else "PASS",
         "fields_before": sum(fields_before.values()),
         "fields_after": sum(fields_after.values()),
         "missing": [instruction[:160] for instruction in missing.elements()],
+        "fields_changed": [instruction[:160] for instruction, _ in fields_changed.elements()],
         "added_count": sum((fields_after - fields_before).values()),
         "preferences_missing": preferences_missing,
+        "preferences_changed": preferences_changed,
     }
 
 

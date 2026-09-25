@@ -140,10 +140,20 @@ def _configure_style_system(document, profile: dict):
             style.unhide_when_used = False
             style.priority = gallery_order[name]
 
+    field_depth = 0
     for paragraph in document.paragraphs:
         if paragraph.style and paragraph.style.name not in REFRESH_SAFE_STYLES:
             _set_style_font(paragraph.style, body["font"], body["size_pt"])
         for run in paragraph.runs:
+            boundaries = [node.get(qn("w:fldCharType")) for node in run._r.iter(qn("w:fldChar"))]
+            in_field = field_depth > 0 or bool(boundaries)
+            for boundary in boundaries:
+                if boundary == "begin":
+                    field_depth += 1
+                elif boundary == "end":
+                    field_depth = max(0, field_depth - 1)
+            if in_field:
+                continue
             # Keep semantic emphasis, but clear font/size drift so the paragraph style governs.
             run.font.name = None
             run.font.size = None

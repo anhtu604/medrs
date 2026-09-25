@@ -7,7 +7,7 @@ Mọi skill viết hoặc sửa bản thảo Word đi qua hợp đồng này. M�
 1. Xuất đoạn văn thành văn bản có token: `python scripts/zotero_roundtrip.py export ban-thao.docx --out doan-van.json`. Mỗi trường Zotero hiện thành `⟦Z:n⟧`, mỗi trường khác như tham chiếu chéo hiện thành `⟦F:n⟧`.
 2. Chỉ sửa chữ. Giữ mọi token, mỗi token đúng một lần, có thể dời vị trí trong câu.
 3. Áp lại: `python scripts/zotero_roundtrip.py apply ban-thao.docx doan-van.json --out ban-moi.docx`. Công cụ đặt lại nguyên văn từng trường và kiểm tra.
-4. Kiểm tra mất bất kỳ trường Zotero nào, hoặc mất `ZOTERO_PREF_*`, là lỗi chặn: tệp không được giao.
+4. Kiểm tra mất hoặc thay đổi XML của bất kỳ trường nào (kể cả tham chiếu chéo), hoặc mất hay đổi giá trị `ZOTERO_PREF_*`, là lỗi chặn: tệp không được giao.
 
 Đoạn báo `editable: false` — nằm trong danh mục tài liệu tham khảo, chứa hình, chú thích chân trang, hoặc trường trải nhiều đoạn — không sửa qua đường này. Đoạn có `mixed_formatting: true` sẽ mất định dạng nhấn mạnh trong câu sau khi viết lại; báo tác giả để định dạng lại.
 

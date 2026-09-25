@@ -160,6 +160,44 @@ def test_zotero_guard_blocks_and_removes_a_file_that_lost_citations(tmp_path):
     assert not broken.exists()
 
 
+def test_formatter_preserves_zotero_and_ref_field_xml(tmp_path):
+    from medical_research_skills_vn.docx_formatting import format_docx
+    from medical_research_skills_vn.structure_profiles import load_structure_profile
+
+    source = make_docx(tmp_path / "source.docx")
+    document = Document(str(source))
+    document.add_heading("ĐẶT VẤN ĐỀ", level=1)
+    document.save(source)
+    before_zotero = _field_xml(source, 0)
+    before_ref = _field_xml(source, 1)
+    profile = load_structure_profile(Path(__file__).parents[1] / "profiles/institution/hmu/word-format-master-2020-current-2026.yaml")
+    output = tmp_path / "formatted.docx"
+
+    result = format_docx(source, output, profile, author_approved=True)
+
+    assert result["status"] == "FORMATTED_WITH_UNPERFORMED_CHECKS"
+    assert result["zotero"]["status"] == "PASS"
+    assert _field_xml(output, 0) == before_zotero
+    assert _field_xml(output, 1) == before_ref
+
+
+def test_audit_blocks_changed_field_xml_and_preference_value(tmp_path):
+    source = make_docx(tmp_path / "source.docx")
+    altered = Document(str(source))
+    field_run = altered.paragraphs[0].runs[1]
+    field_run.font.bold = True
+    preference = next(altered.settings.element.iter(qn("w:docVar")))
+    preference.set(qn("w:val"), '<data data-version="4"/>')
+    changed = tmp_path / "changed.docx"
+    altered.save(changed)
+
+    report = audit(source, changed)
+
+    assert report["status"] == "BLOCKED"
+    assert report["fields_changed"]
+    assert report["preferences_changed"] == ["ZOTERO_PREF_1"]
+
+
 def test_changed_source_is_refused(tmp_path):
     source = make_docx(tmp_path / "source.docx")
     with pytest.raises(ZoteroFieldError, match="SOURCE_CHANGED_SINCE_EXPORT"):
