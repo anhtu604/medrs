@@ -112,7 +112,7 @@ MedRS learns the author's voice from the author's own writing and uses it both t
 
 **Input:** three to five documents the author wrote, preferably including Discussion sections. Below 8,000 words of source text the profile is still built and marked `LOW_CONFIDENCE`.
 
-**Measured layer** — computed by `src/medical_research_skills_vn/style_profile.py` through `scripts/build_style_profile.py`:
+**Measured layer** — computed by `skills/kiem-van-phong/scripts/style_profile.py`:
 
 - sentence and paragraph length distributions;
 - preferred connectors and sentence openers, such as `Tuy nhiên`, `Bên cạnh đó`, `Như vậy`;
@@ -122,7 +122,7 @@ MedRS learns the author's voice from the author's own writing and uses it both t
 
 **Pattern layer** — extracted by the model, each pattern illustrated by a verbatim excerpt of at most 40 words from the author's own text: how the author opens a literature comparison, states a strength, states a limitation, and moves from a number to its clinical meaning.
 
-**Storage:** `author-style-profile.json` beside the Research Passport in the author's project folder, validated by `schemas/author-style-profile.schema.json`. The Passport points to it. The profile never enters the repository or a release package. One profile per author, so an author who supervises or writes for several researchers keeps each voice separate.
+**Storage:** `author-style-profile.json` beside the Research Passport in the author's project folder, under that fixed name, so no Passport field is needed and §9 holds. It is validated by `schemas/author-style-profile.schema.json`. The profile never enters the repository or a release package. One profile per author, so an author who supervises or writes for several researchers keeps each voice separate.
 
 **Use:**
 
@@ -145,6 +145,8 @@ Recognised fields are complex fields whose instruction begins `ADDIN ZOTERO_ITEM
 
 Preservation is pure XML handling and needs no library access. It therefore works on every host, including Cowork on the web.
 
+The round-trip also tokenises non-Zotero complex fields, such as the `REF` cross-references added in 2.0.0-alpha.8, as `⟦F:n⟧`, so an edit never flattens a cross-reference either. The audit counts Zotero fields only.
+
 ### 8.2 Generation of live citations
 
 When drafting, the model writes `⟦cite:ITEMKEY⟧`, or `⟦cite:KEY1;KEY2⟧` for several items. `insert` resolves each key read-only against the author's Zotero library and emits a live `ADDIN ZOTERO_ITEM CSL_CITATION` field holding the item URI, minimal CSL item data, and placeholder display text. The author opens the document in Word and clicks **Zotero → Refresh**; Zotero renders every citation in the chosen style and rebuilds the bibliography. MedRS points at the right items; Zotero does the formatting.
@@ -164,7 +166,7 @@ When no library is readable, as on Cowork, or a key does not resolve, the draft 
 
 ### 8.3 Code and contract
 
-- `src/medical_research_skills_vn/zotero_fields.py` provides `extract`, `tokenize`, `detokenize`, `insert`, and `audit`.
+- `skills/quan-ly-trich-dan/scripts/zotero_fields.py` provides `tokenize_paragraph`, `detokenize_paragraph`, `export_paragraphs`, `apply_edits`, `build_citation_field` and `audit`; `skills/quan-ly-trich-dan/scripts/zotero_library.py` resolves item keys read-only; `skills/quan-ly-trich-dan/scripts/zotero_roundtrip.py` is the command-line entry. The code lives inside the skill because the Cowork package ships `skills/` but not `src/` or `scripts/`.
 - `skills/quan-ly-trich-dan/references/zotero-field-contract.md` states the token formats, the audit rule, and host behaviour. `quan-ly-trich-dan` gains an insert mode.
 - Every skill that writes or edits manuscript text links the contract exactly once, enforced by `structure.py`: the seven `viet-*` section writers, `viet-ban-thao-y-hoc`, `kiem-van-phong`, `phan-bien-va-chinh-sua`, `tu-phan-bien`, and `bo-cuc-tai-lieu`.
 - The library read-only invariant stays. MedRS writes to the manuscript, never to the Zotero library.
