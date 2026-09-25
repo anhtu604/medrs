@@ -92,6 +92,7 @@ def route_request(request, legacy_map, active_skills):
         "spirit",
         "strobe",
         "prisma checklist",
+        "checklist prisma",
         "tripod",
         "stard",
         "coreq",
@@ -182,11 +183,6 @@ def route_request(request, legacy_map, active_skills):
             skill = "danh-gia-chat-luong-bang-chung"
             availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
             return RoutingDecision("medrs", skill, mode, availability)
-
-    if any(phrase in text for phrase in ("checklist consort", "checklist strobe", "checklist prisma")):
-        skill = "tu-phan-bien"
-        availability = "AVAILABLE" if skill in active_skills else "NOT_IN_ACTIVE_SLICE"
-        return RoutingDecision("medrs", skill, "pre-submission-review", availability)
 
     if any(phrase in text for phrase in ("mạng trích dẫn", "citation network", "citation graph")):
         availability = "AVAILABLE" if "tim-y-van" in active_skills else "NOT_IN_ACTIVE_SLICE"

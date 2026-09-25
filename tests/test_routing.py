@@ -318,3 +318,13 @@ def test_legacy_manuscript_validation_name_reaches_tu_phan_bien():
     decision = route_request(RoutingRequest(text="kiem-chung-ban-thao"), legacy, active_skills={"medrs", "tu-phan-bien"})
     assert decision.canonical == "tu-phan-bien"
     assert decision.availability == "AVAILABLE"
+
+
+def test_prisma_checklist_request_routes_to_reporting_guideline_check():
+    decision = route_request(
+        RoutingRequest(text="Kiểm checklist PRISMA cho bài tổng quan"),
+        {},
+        active_skills={"medrs", "kiem-chuan-bao-cao", "tu-phan-bien"},
+    )
+    assert decision.canonical == "kiem-chuan-bao-cao"
+    assert decision.mode == "guideline-compliance"
