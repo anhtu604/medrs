@@ -10,6 +10,8 @@ metadata:
 
 # Định dạng tài liệu
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/backend-and-validation-contract.md](references/backend-and-validation-contract.md) and [references/word-style-and-refresh-contract.md](references/word-style-and-refresh-contract.md). For heading numbering, caption sequences and cross-references, read [references/heading-numbering-and-cross-references.md](references/heading-numbering-and-cross-references.md). For HMU, also read [references/hmu-word-mechanics.md](references/hmu-word-mechanics.md) and `../../profiles/institution/hmu/word-format-master-2020-current-2026.yaml`.
 
 For a new HMU document, use [assets/hmu-word-styles.docx](assets/hmu-word-styles.docx) as the style carrier when the host can preserve DOCX styles. For an existing document, merge or recreate those definitions; never replace the user's content with the carrier file.

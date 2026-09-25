@@ -229,7 +229,8 @@
       ],
       "skill_path": "skills/medrs/SKILL.md",
       "reference_files": [
-        "skills/medrs/references/legacy-skill-map.yaml"
+        "skills/medrs/references/legacy-skill-map.yaml",
+        "skills/medrs/references/working-principles.md"
       ]
     },
     {

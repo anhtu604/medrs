@@ -10,6 +10,8 @@ metadata:
 
 # Phản biện và chỉnh sửa
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/review-revision-contract.md](references/review-revision-contract.md). For point-by-point responses, also read [references/response-matrix.md](references/response-matrix.md). For thesis examination, read [references/thesis-examination.md](references/thesis-examination.md).
 
 Preserve each reviewer/examiner comment verbatim with reviewer, round, page/line or source locator. Classify the request, assess whether it is scientifically valid, and choose `accept`, `partial`, `decline`, or `clarify` with evidence. Politeness never requires accepting an unsupported change. Never invent new analyses, ethics approvals, citations or results to satisfy a comment.

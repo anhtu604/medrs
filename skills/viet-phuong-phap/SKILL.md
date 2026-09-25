@@ -10,6 +10,8 @@ metadata:
 
 # Viết Phương pháp
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Viết từ artifact đã xác nhận và phân biệt nghiêm ngặt giữa kế hoạch với việc đã thực hiện.
 
 ## Đầu vào bắt buộc

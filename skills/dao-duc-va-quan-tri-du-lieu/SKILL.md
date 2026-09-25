@@ -10,6 +10,8 @@ metadata:
 
 # Đạo đức và quản trị dữ liệu
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Lập artifact theo hồ sơ nguồn đã xác minh, không tuyên bố nghiên cứu đã được chấp thuận nếu tác giả chưa cung cấp bằng chứng.
 
 ## Đầu vào

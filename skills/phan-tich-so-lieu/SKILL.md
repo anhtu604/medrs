@@ -10,6 +10,8 @@ metadata:
 
 # Phân tích số liệu
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Coordinate execution through `phan-tich-r` or `phan-tich-stata`; do not impersonate either runtime. Before accepting any change to the confirmed analysis plan, read [references/analysis-deviation-contract.md](references/analysis-deviation-contract.md). For time-to-event outcomes or a clinical prediction model, read [references/time-to-event-contract.md](references/time-to-event-contract.md) first.
 
 ## Required inputs

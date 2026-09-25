@@ -10,6 +10,8 @@ metadata:
 
 # MedRS
 
+Follow the [working principles](references/working-principles.md) in every response.
+
 Treat `/medrs` as the single user-facing entrypoint. Classify the request, preserve the Research Passport, and route to one canonical skill. Do not perform specialist work inside this entrypoint.
 
 ## Routing

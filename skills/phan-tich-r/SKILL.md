@@ -10,6 +10,8 @@ metadata:
 
 # Phân tích bằng R
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Generate an auditable R script from a confirmed analysis plan. Read [references/reproducibility-contract.md](references/reproducibility-contract.md) before creating or interpreting execution artifacts, and honor the parent deviation rules in [../phan-tich-so-lieu/references/analysis-deviation-contract.md](../phan-tich-so-lieu/references/analysis-deviation-contract.md).
 
 Require an input schema, coding and reference levels, analysis sets, missing-data rules, model specification, planned tables/figures, and de-identified data or traceable real output.

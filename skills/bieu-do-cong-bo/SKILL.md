@@ -10,6 +10,8 @@ metadata:
 
 # Biểu đồ công bố
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/evidence-contract.md](references/evidence-contract.md) before choosing a chart. For form selection read [references/figure-families.md](references/figure-families.md); before delivery read [references/publication-qa.md](references/publication-qa.md).
 
 ## Hợp đồng bằng chứng

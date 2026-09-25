@@ -10,6 +10,8 @@ metadata:
 
 # Kiểm chuẩn báo cáo
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/guideline-routing.md](references/guideline-routing.md) to choose the instrument, then [references/compliance-contract.md](references/compliance-contract.md) before judging any item.
 
 Chuẩn báo cáo trả lời câu hỏi bản thảo có **báo cáo đủ** hay không. Nó không đánh giá nguy cơ sai lệch và không thay thế `danh-gia-chat-luong-bang-chung`.

@@ -10,6 +10,8 @@ metadata:
 
 # Cỡ mẫu và kế hoạch phân tích
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Create a prospective, reproducible analysis-plan artifact. Read [references/contract.yaml](references/contract.yaml) for ownership and [references/estimand-and-power.md](references/estimand-and-power.md) for sourced planning requirements.
 
 ## Required inputs

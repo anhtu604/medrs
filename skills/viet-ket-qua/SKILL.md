@@ -10,6 +10,8 @@ metadata:
 
 # Viết Kết quả
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once. Require verified `AnalysisRun` artifacts or clearly labeled author-supplied output, the Passport, approved Results outline, target/locale profiles, depth, and budget.
 
 Report participant flow, denominators, missingness, descriptive results, primary and secondary estimates, confidence intervals, exact p-values where relevant, and table/figure callouts. Every number links to an artifact and locator. Missing numbers remain `[CẦN SỐ LIỆU]` / `[DATA REQUIRED]`; unverified supplied output remains visibly marked.

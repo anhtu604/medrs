@@ -10,6 +10,8 @@ metadata:
 
 # Tổng hợp bằng chứng
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/synthesis-modes.md](references/synthesis-modes.md). Before any quantitative pooling, also read [references/meta-analysis-readiness.md](references/meta-analysis-readiness.md). Consume the confirmed question/protocol, record and access ledgers from `tim-y-van`, eligibility decisions, study characteristics, extraction provenance, target synthesis mode, and quality-appraisal state.
 
 Select only the mode actually supported. Narrative synthesis and evidence mapping do not become systematic reviews through prose. Keep included, excluded and unresolved records with reasons. Treat abstract-only evidence as limited; do not infer full Methods, detailed risk of bias or unreported effect data. Preserve supportive, neutral and contradictory evidence in a contradiction matrix.

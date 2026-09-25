@@ -10,6 +10,8 @@ metadata:
 
 # Viết Bàn luận
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/discussion-workflow.md](references/discussion-workflow.md), then read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once before delivery.
 
 Require verified Results, study design and inferential ceiling, source ledger, exact target journal/article type when available, active locale/target profiles, and author approvals after comparator selection and blueprint creation. Quartile is optional metadata, never an entry gate.

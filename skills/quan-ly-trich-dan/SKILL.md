@@ -10,6 +10,8 @@ metadata:
 
 # Quản lý trích dẫn
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/library-access-contract.md](references/library-access-contract.md) before touching any library. For verification work, also read [references/citation-faithfulness.md](references/citation-faithfulness.md).
 
 Xác định backend trước: thư viện Zotero cục bộ, tệp xuất BibTeX/RIS/CSL-JSON, hay không có thư viện nào. Khai báo backend đã dùng trong mọi kết quả trả về.

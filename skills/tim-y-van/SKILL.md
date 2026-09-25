@@ -10,6 +10,8 @@ metadata:
 
 # Tìm y văn
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/retrieval-contract.md](references/retrieval-contract.md). For citation chasing, also read [references/citation-network.md](references/citation-network.md). Start from the confirmed question, eligibility concepts, date/language limits, intended review mode, target databases, lawful-access boundary, and stopping rule.
 
 ## Database-search mode

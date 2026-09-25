@@ -36,3 +36,25 @@ def validate_shared_preflight(root):
         if "PREFLIGHT_RULE:" in text:
             issues.append(ValidationIssue("PREFLIGHT_RULE_DUPLICATED", str(path), "move rule to shared contract"))
     return issues
+
+
+PRINCIPLES_TARGET = "medrs/references/working-principles.md"
+
+
+def validate_working_principles(root):
+    root = Path(root)
+    issues: list[ValidationIssue] = []
+    target = root / "skills" / PRINCIPLES_TARGET
+    if not target.exists():
+        issues.append(ValidationIssue("WORKING_PRINCIPLES_MISSING", str(target), "shared principles not found"))
+    for path in sorted((root / "skills").glob("*/SKILL.md")):
+        expected = "references/working-principles.md" if path.parent.name == "medrs" else f"../{PRINCIPLES_TARGET}"
+        if path.read_text(encoding="utf-8").count(expected) != 1:
+            issues.append(
+                ValidationIssue(
+                    "WORKING_PRINCIPLES_NOT_LINKED",
+                    str(path),
+                    "skill must link the shared working principles exactly once",
+                )
+            )
+    return issues

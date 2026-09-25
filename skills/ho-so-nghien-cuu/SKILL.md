@@ -10,6 +10,8 @@ metadata:
 
 # Hồ sơ nghiên cứu
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Own the Research Passport lifecycle. Use `new`, `adopt-existing-project`, `validate`, `confirm`, or `summarize` mode.
 
 ## New project

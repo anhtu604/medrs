@@ -10,6 +10,8 @@ metadata:
 
 # Đề cương và thiết kế
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Develop a defensible design artifact from a confirmed Research Passport. Read [references/contract.yaml](references/contract.yaml) before accepting work and [references/design-contract.md](references/design-contract.md) when design details are needed.
 
 ## Owns

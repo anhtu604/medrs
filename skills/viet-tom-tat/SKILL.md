@@ -10,6 +10,8 @@ metadata:
 
 # Viết Tóm tắt
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/abstract-lifecycle.md](references/abstract-lifecycle.md), then read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once. A skeleton may be prepared early, but a submission abstract is written last from a complete, current manuscript snapshot and verified analysis artifacts.
 
 Follow the target profile's structured/unstructured form and word limit. Compare design, setting, dates, eligibility, sample counts, analysis set, exposure/intervention, outcome, model, estimates, uncertainty, missingness, harms, conclusion, registration, and funding against the full text. Never resolve conflict by plausibility or significance.

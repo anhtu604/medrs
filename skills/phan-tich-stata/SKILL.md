@@ -10,6 +10,8 @@ metadata:
 
 # Phân tích bằng Stata
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Generate an auditable Stata do-file from a confirmed analysis plan. Read [references/reproducibility-contract.md](references/reproducibility-contract.md) before creating or interpreting execution artifacts, and honor [../phan-tich-so-lieu/references/analysis-deviation-contract.md](../phan-tich-so-lieu/references/analysis-deviation-contract.md).
 
 Require an input schema, value labels and reference groups, analysis-set filters, missing-data rules, model specification, planned tables/figures, and de-identified data or traceable real output.

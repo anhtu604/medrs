@@ -10,6 +10,8 @@ metadata:
 
 # Bố cục tài liệu
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/structure-contract.md](references/structure-contract.md). For HMU theses, also read [references/hmu-profile-use.md](references/hmu-profile-use.md) and `../../profiles/institution/hmu/thesis-master-2020-current-2026.yaml`.
 
 First verify the target institution/journal, document type, submission stage, source version, checksum and freshness. If an official profile is absent, stale or mismatched, return `OFFICIAL_RULE_REQUIRED`; do not turn remembered conventions into requirements. Compare the actual draft's semantic sections with the target order and preserve unknown blocks for author review.

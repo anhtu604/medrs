@@ -10,6 +10,8 @@ metadata:
 
 # Đánh giá chất lượng bằng chứng
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read [references/appraisal-routing.md](references/appraisal-routing.md) first. For RoB 2, also read [references/rob2-use-contract.md](references/rob2-use-contract.md) and `../../coverage/rob2-parallel-2019.yaml`. For certainty of quantitative intervention effects, read [references/grade-certainty.md](references/grade-certainty.md) and `../../coverage/grade-interventions-6.5.1.yaml`. For qualitative review findings, read [references/cerqual-confidence.md](references/cerqual-confidence.md) and `../../coverage/cerqual-2018.yaml`.
 
 Choose the framework from the study and inference target, not from the preferred output label. Define the result, outcome or review finding before judging it. Record the source used for every answer. Missing protocols, analysis plans, reports or result-specific evidence remain `UNRESOLVED`; they are never reconstructed from memory.

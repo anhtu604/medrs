@@ -10,6 +10,8 @@ metadata:
 
 # Viết Đặt vấn đề
 
+Follow the shared [working principles](../medrs/references/working-principles.md).
+
 Read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once before delivery. Build a narrowing argument: defined clinical/scientific problem → current evidence → specific unresolved gap → why this study can address it → confirmed objective/hypothesis.
 
 Require the Passport, approved outline, active locale and target profiles, verified source ledger, claim-strength limits, depth, and budget. Do not import study Results, claim priority without a current novelty record, or use generic claims that a topic is “important” without a concrete burden or decision consequence.
