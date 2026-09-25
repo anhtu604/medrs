@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import sqlite3
 import uuid
 import zipfile
 from collections import Counter
@@ -194,16 +195,22 @@ def export_paragraphs(path: Path) -> dict:
     return {"source_sha256": _sha256(path), "paragraphs": rows}
 
 
-def _expand_citations(text: str, resolver) -> tuple[str, dict[str, list], list[str]]:
+def _expand_citations(text: str, resolver) -> tuple[str, dict[str, list], list[str], list[str]]:
     citations: dict[str, list] = {}
     unresolved: list[str] = []
+    diagnostics: list[str] = []
 
     def replace(match):
         keys = match.group(1).split(";")
         if resolver is None:
             unresolved.extend(keys)
             return f"[CẦN TRÍCH DẪN: {'; '.join(keys)}]"
-        items, missing = resolver(keys)
+        try:
+            items, missing = resolver(keys)
+        except sqlite3.Error as error:
+            unresolved.extend(keys)
+            diagnostics.append(f"ZOTERO_DB_UNAVAILABLE: {error}")
+            return f"[CẦN TRÍCH DẪN: {'; '.join(keys)}]"
         if missing:
             unresolved.extend(missing)
             return f"[CẦN TRÍCH DẪN: {'; '.join(keys)}]"
@@ -212,7 +219,7 @@ def _expand_citations(text: str, resolver) -> tuple[str, dict[str, list], list[s
         citations[marker] = build_citation_field(items, occurrence_id)
         return marker
 
-    return CITE_TOKEN.sub(replace, text), citations, unresolved
+    return CITE_TOKEN.sub(replace, text), citations, unresolved, diagnostics
 
 
 def apply_edits(
@@ -227,18 +234,21 @@ def apply_edits(
     counter = count(1)
     depth = 0
     unresolved: list[str] = []
+    citation_diagnostics: list[str] = []
     for index, p in enumerate(_paragraphs(document)):
         pf, depth = tokenize_paragraph(p, counter, depth)
-        if index not in edits or edits[index] == pf.text:
+        if index not in edits or (edits[index] == pf.text and not CITE_TOKEN.search(edits[index])):
             continue
         if not pf.editable:
             raise ZoteroFieldError(f"PARAGRAPH_NOT_EDITABLE:{index}:{pf.reason}")
-        new_text, citations, missing = _expand_citations(edits[index], resolver)
+        new_text, citations, missing, diagnostics = _expand_citations(edits[index], resolver)
         unresolved.extend(missing)
+        citation_diagnostics.extend(diagnostics)
         detokenize_paragraph(p, new_text, pf, citations)
     document.save(str(out_path))
     report = audit(path, out_path)
     report["unresolved_citations"] = sorted(set(unresolved))
+    report["citation_diagnostics"] = sorted(set(citation_diagnostics))
     if report["status"] == "BLOCKED":
         out_path.unlink()
     return report

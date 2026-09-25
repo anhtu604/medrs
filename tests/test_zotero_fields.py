@@ -279,6 +279,32 @@ def test_repeated_cite_placeholder_gets_distinct_live_fields(tmp_path):
     assert payloads[0]["citationID"] != payloads[1]["citationID"]
 
 
+def test_unchanged_paragraph_with_cite_marker_is_resolved(tmp_path):
+    document = Document()
+    document.add_paragraph("Evidence ⟦cite:ABCD2345⟧.")
+    source = tmp_path / "source.docx"
+    out = tmp_path / "out.docx"
+    document.save(source)
+    text = export_paragraphs(source)["paragraphs"][0]["text"]
+    item = SimpleNamespace(
+        key="ABCD2345", item_id=15,
+        uri="http://zotero.org/users/123456/items/ABCD2345",
+        csl={"type": "article-journal", "title": "Evidence"},
+    )
+    calls = []
+
+    def resolver(keys):
+        calls.append(keys)
+        return [item], []
+
+    report = apply_edits(source, {0: text}, out, resolver=resolver)
+
+    assert report["status"] == "PASS"
+    assert calls == [["ABCD2345"]]
+    assert report["added_count"] == 1
+    assert "⟦cite:" not in export_paragraphs(out)["paragraphs"][0]["text"]
+
+
 def test_corporate_and_incomplete_csl_authors_have_safe_labels():
     corporate = SimpleNamespace(
         key="CORP1234", item_id=1, uri="http://zotero.org/users/1/items/CORP1234",

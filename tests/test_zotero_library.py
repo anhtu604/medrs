@@ -3,6 +3,8 @@ import json
 import sqlite3
 from pathlib import Path
 
+import pytest
+
 from docx import Document
 
 from zotero_fields import apply_edits, export_paragraphs, zotero_inventory
@@ -166,3 +168,25 @@ def test_cite_marker_becomes_a_live_zotero_field(tmp_path):
     payload = json.loads(instruction.split("CSL_CITATION ", 1)[1])
     assert payload["citationItems"][0]["uris"] == ["http://zotero.org/users/123456/items/ABCD2345"]
     assert "[CẦN TRÍCH DẪN: NOPE0000]" in export_paragraphs(out)["paragraphs"][0]["text"]
+
+
+@pytest.mark.parametrize("invalid_db", ["missing", "corrupt"])
+def test_unavailable_zotero_database_keeps_a_revised_draft_with_diagnostic(tmp_path, invalid_db):
+    db = tmp_path / "zotero.sqlite"
+    if invalid_db == "corrupt":
+        db.write_text("not a SQLite database", encoding="utf-8")
+    source = tmp_path / "draft.docx"
+    document = Document()
+    document.add_paragraph("A claim.")
+    document.save(source)
+    out = tmp_path / "revised.docx"
+
+    report = apply_edits(
+        source, {0: "A claim ⟦cite:ABCD2345⟧."}, out,
+        resolver=lambda keys: resolve_items(db, keys),
+    )
+
+    assert report["status"] == "PASS"
+    assert report["unresolved_citations"] == ["ABCD2345"]
+    assert any("ZOTERO_DB_UNAVAILABLE" in message for message in report["citation_diagnostics"])
+    assert "[CẦN TRÍCH DẪN: ABCD2345]" in export_paragraphs(out)["paragraphs"][0]["text"]
