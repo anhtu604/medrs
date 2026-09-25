@@ -76,3 +76,41 @@ def test_profile_without_rule_layer_needs_a_note(tmp_path):
     assert "DOCUMENT_TYPE_RULES_NOTE_MISSING" in issue_codes(
         validate_document_type_profiles(tmp_path, date(2026, 9, 25))
     )
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "expected_code"),
+    [
+        ("source_url", None, "DOCUMENT_TYPE_RULES_SOURCE_EMPTY"),
+        ("source_version", " ", "DOCUMENT_TYPE_RULES_SOURCE_EMPTY"),
+        ("source_license", "", "DOCUMENT_TYPE_RULES_SOURCE_EMPTY"),
+        ("source_cutoff", None, "DOCUMENT_TYPE_RULES_SOURCE_EMPTY"),
+        ("verification_status", "UNVERIFIED", "DOCUMENT_TYPE_RULES_UNVERIFIED"),
+        ("source_locator", " ", "DOCUMENT_TYPE_RULES_UNLOCATED"),
+    ],
+)
+def test_rule_layer_requires_verified_source_and_substantive_locator(tmp_path, field, value, expected_code):
+    folder = tmp_path / "profiles/document-type"
+    folder.mkdir(parents=True)
+    for name in DOCUMENT_TYPES:
+        profile = load_document_type(ROOT, name)
+        if name == "protocol":
+            rules = {
+                "source_url": "https://example.org/official-rules",
+                "source_version": "2026",
+                "source_license": "public",
+                "source_cutoff": "2026-09-25",
+                "last_verified": "2026-09-25",
+                "expires_after_days": 365,
+                "verification_status": "CURRENT",
+                "requirements": [{"source_locator": "section 2"}],
+            }
+            if field == "source_locator":
+                rules["requirements"][0][field] = value
+            else:
+                rules[field] = value
+            profile["rules"] = rules
+        (folder / f"{name}.yaml").write_text(
+            yaml.safe_dump(profile, allow_unicode=True), encoding="utf-8"
+        )
+    assert expected_code in issue_codes(validate_document_type_profiles(tmp_path, date(2026, 9, 25)))

@@ -79,6 +79,17 @@ def validate_document_type_profiles(root: Path, as_of: date) -> list[ValidationI
         if missing_source:
             issues.append(ValidationIssue("DOCUMENT_TYPE_RULES_SOURCE_MISSING", str(path), ", ".join(missing_source)))
             continue
+        empty_source = sorted(
+            field for field in ("source_url", "source_version", "source_license", "source_cutoff", "last_verified")
+            if not isinstance(rules[field], str) or not rules[field].strip()
+        )
+        if rules["expires_after_days"] is None:
+            empty_source.append("expires_after_days")
+        if empty_source:
+            issues.append(ValidationIssue("DOCUMENT_TYPE_RULES_SOURCE_EMPTY", str(path), ", ".join(empty_source)))
+            continue
+        if rules["verification_status"] == "UNVERIFIED":
+            issues.append(ValidationIssue("DOCUMENT_TYPE_RULES_UNVERIFIED", str(path), name))
         computed = verification_status(rules, as_of)
         if computed != rules["verification_status"]:
             issues.append(
@@ -88,6 +99,11 @@ def validate_document_type_profiles(root: Path, as_of: date) -> list[ValidationI
                     f"declared {rules['verification_status']}, computed {computed}",
                 )
             )
-        if not rules.get("requirements") or any(not item.get("source_locator") for item in rules["requirements"]):
+        if not rules.get("requirements") or any(
+            not isinstance(item, dict)
+            or not isinstance(item.get("source_locator"), str)
+            or not item["source_locator"].strip()
+            for item in rules["requirements"]
+        ):
             issues.append(ValidationIssue("DOCUMENT_TYPE_RULES_UNLOCATED", str(path), name))
     return issues
