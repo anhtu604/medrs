@@ -76,6 +76,27 @@ def test_results_blocks_causal_mechanism_recommendation_and_value_judgment_flags
             )
 
 
+def test_author_supplied_results_keep_unverified_status_and_preflight_marker():
+    artifact = build_section_artifact(
+        section="results",
+        inputs=verified_inputs(),
+        claims=[
+            {
+                "text": "Tỷ lệ đáp ứng là 61%",
+                "output_status": "USER_SUPPLIED_OUTPUT_UNVERIFIED",
+                "artifact_id": "author-table-1",
+                "locator": "table-1:row-2",
+            }
+        ],
+    )
+
+    assert artifact["draft"] == "Tỷ lệ đáp ứng là 61%"
+    assert artifact["claim_evidence"][0]["output_status"] == "USER_SUPPLIED_OUTPUT_UNVERIFIED"
+    assert artifact["claim_evidence"][0]["result_verified"] is False
+    assert "AUTHOR_SUPPLIED_OUTPUT_UNVERIFIED" in artifact["markers"]
+    assert artifact["preflight"]["status"] == "REVISE"
+
+
 def test_literature_review_rejects_author_by_author_catalogue():
     with pytest.raises(WritingContractError, match="THEMATIC_SYNTHESIS_REQUIRED"):
         build_section_artifact(
@@ -143,6 +164,19 @@ def test_effect_size_wording_is_not_mistaken_for_a_causal_claim():
         claims=[{"text": "The effect size was moderate and consistent across sites.", "source_verified": False}],
     )
     assert "CAUSAL_OVERREACH" not in artifact["markers"]
+
+
+@pytest.mark.parametrize("section", ["discussion", "conclusion"])
+def test_observational_effect_claim_is_blocked_as_causal(section):
+    claim = {"text": "The treatment had an effect on mortality."}
+    if section == "conclusion":
+        claim["present_in_results"] = True
+    with pytest.raises(WritingContractError, match="CAUSAL_OVERREACH"):
+        build_section_artifact(
+            section=section,
+            inputs=verified_inputs() | {"study_design": "cohort", "inferential_ceiling": "association"},
+            claims=[claim],
+        )
 
 
 def test_word_budget_defaults_from_the_document_type_profile():

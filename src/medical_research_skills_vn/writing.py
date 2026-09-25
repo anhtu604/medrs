@@ -43,6 +43,7 @@ def _claim_evidence_rows(claims: list[dict]) -> list[dict]:
             "claim": claim.get("text", ""),
             "evidence_id": claim.get("evidence_id"),
             "result_verified": bool(claim.get("result_verified", False)),
+            "output_status": claim.get("output_status"),
             "source_verified": bool(claim.get("source_verified", False)),
             "artifact_id": claim.get("artifact_id"),
             "locator": claim.get("locator"),
@@ -68,7 +69,8 @@ def _is_observational(design: str) -> bool:
 
 
 def _causal_text(text: str) -> bool:
-    return bool(re.search(r"\b(cause[sd]?|caused by)\b|gây ra|dẫn đến|tác động", text, re.I))
+    pattern = r"\b(cause[sd]?|caused by)\b|\beffects?\b(?![\s-]+sizes?\b)|gây ra|dẫn đến|tác động"
+    return bool(re.search(pattern, text, re.I))
 
 
 def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) -> dict:
@@ -88,6 +90,8 @@ def build_section_artifact(*, section: str, inputs: dict, claims: list[dict]) ->
                 supplied_unverified.append(claim)
             else:
                 raise WritingContractError("VERIFIED_RESULTS_REQUIRED")
+        if supplied_unverified:
+            markers.append("AUTHOR_SUPPLIED_OUTPUT_UNVERIFIED")
         if any(
             claim.get("result_verified", False)
             and (not claim.get("artifact_id") or not claim.get("locator"))
