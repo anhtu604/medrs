@@ -1,6 +1,6 @@
 ---
 name: phan-bien-va-chinh-sua
-description: Use when reviewing a medical manuscript or thesis, answering reviewers point by point, revising after peer review, examining a thesis, or verifying revision commitments. Không dùng cho kiểm tra trước nộp khi chưa có nhận xét phản biện.
+description: "Trả lời phản biện từng điểm, sửa bài sau phản biện và nhận xét luận văn, lan truyền mọi thay đổi số liệu. Handles real reviewer comments. Rà soát trước khi nộp thuộc skill tự phản biện."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

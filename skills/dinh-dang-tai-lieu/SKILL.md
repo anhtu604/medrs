@@ -1,6 +1,6 @@
 ---
 name: dinh-dang-tai-lieu
-description: Use when a medical thesis, dissertation, or manuscript DOCX needs source-governed Word styles, margins, headings, TOC, captions, section breaks, page numbering, rendering, or pre-submission format validation. Không dùng để đổi nội dung hay bố cục ngữ nghĩa.
+description: "Định dạng Word chuẩn cho luận văn, luận án và bản thảo: style, lề, đề mục đánh số tự động, mục lục, chú thích bảng hình và tham chiếu chéo. Formats Word documents."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

@@ -1,6 +1,6 @@
 ---
 name: phan-tich-r
-description: Sinh, kiểm tra và điều phối chạy script R tái lập cho nghiên cứu y học; reads real outputs and builds tables. Không bịa kết quả hoặc nhận đã chạy khi thiếu R runtime, dữ liệu và provenance.
+description: "Viết và chạy mã R tái lập cho phân tích y học, kèm nhật ký, phiên bản gói và băm kết quả. Writes and runs reproducible R analyses."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

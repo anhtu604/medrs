@@ -1,6 +1,6 @@
 ---
 name: phan-tich-so-lieu
-description: Điều phối phân tích số liệu y học theo kế hoạch đã xác nhận và diễn giải output thật. Coordinates R/Stata execution and uncertainty. Không chọn mô hình theo p-value, sửa ngược cỡ mẫu hay nhận đã chạy khi thiếu runtime.
+description: "Điều phối phân tích số liệu y học theo kế hoạch và diễn giải kết quả theo ý nghĩa lâm sàng và cỡ hiệu ứng, chạy qua R hoặc Stata. Coordinates analysis and interprets results clinically."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf
@@ -24,7 +24,10 @@ Probe the requested backend. If it is unavailable, produce code and an execution
 
 Refuse significance-driven model selection, outcome switching, unexplained exclusions, or rewriting target sample size after recruitment. Label justified departures `DEVIATION`, record rationale and timing, and retain prespecified, sensitivity, and exploratory analyses separately.
 
+## Interpretation
+
+Interpret each estimate by its clinical meaning first: the size and direction of the effect, its confidence interval, and whether it crosses a minimal clinically important difference when the author supplies one. P-values support that reading; they do not lead it. State what each estimate shows at the strength the design supports.
+
 ## Output
 
 Return an `AnalysisRun`, assumption checks, missingness and denominator accounting, effect estimates with confidence intervals, exact p-values where relevant, sensitivity results, deviations, limitations, and routes to the backend artifacts. Never fabricate coefficients, tables, figures, logs, or interpretations.
-

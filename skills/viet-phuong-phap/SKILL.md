@@ -1,6 +1,6 @@
 ---
 name: viet-phuong-phap
-description: Use when drafting or revising a medical Methods section from a Research Passport, protocol, or confirmed study record. Dùng cho phần Phương pháp; không dùng để mô tả thủ thuật chưa thực hiện như đã hoàn tất hoặc để viết Kết quả.
+description: "Viết phần Đối tượng và phương pháp cho đề cương hoặc nghiên cứu đã hoàn thành, đúng thì của từng loại tài liệu. Writes the Methods section."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

@@ -1,6 +1,6 @@
 ---
 name: co-mau-va-ke-hoach-phan-tich
-description: Lập estimand, giả định, cỡ mẫu và kế hoạch phân tích định trước cho nghiên cứu y học. Plans estimands, power and analysis sets. Không dùng kết quả quan sát để chọn mô hình hay tối ưu ý nghĩa thống kê.
+description: "Tính cỡ mẫu và lập kế hoạch phân tích thống kê tiền định cho đề cương: ước lượng, lực mẫu, kết cục chính và phân tích phụ. Plans sample size and statistical analysis."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

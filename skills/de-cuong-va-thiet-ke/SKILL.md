@@ -1,6 +1,6 @@
 ---
 name: de-cuong-va-thiet-ke
-description: Thiết kế câu hỏi, mục tiêu, quần thể, biến và chiến lược chọn mẫu cho nghiên cứu y học. Designs medical research protocols. Không tính cỡ mẫu, chọn mô hình theo kết quả quan sát hay viết Results.
+description: "Thiết kế nghiên cứu và soạn đề cương: câu hỏi, thiết kế, đối tượng, biến số và quy trình, cho luận văn, luận án hay đề tài. Designs studies and drafts protocols."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

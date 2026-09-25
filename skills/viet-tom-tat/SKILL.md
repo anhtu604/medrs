@@ -1,6 +1,6 @@
 ---
 name: viet-tom-tat
-description: Viết Tóm tắt/Abstract sau cùng từ snapshot toàn văn đã hoàn chỉnh và kiểm tra nhất quán từng số, phương pháp, kết luận. Không chọn số đẹp, che xung đột hay tuyên bố tính mới chưa xác minh.
+description: "Viết tóm tắt có cấu trúc, song ngữ hoặc tiếng Anh, đồng bộ với toàn văn và viết sau cùng. Writes structured abstracts from the finished text."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

@@ -1,6 +1,6 @@
 ---
 name: viet-ban-luan
-description: Viết Discussion từ kết quả thật qua bài đối chiếu hợp pháp, bản đồ chức năng đoạn và blueprint được duyệt. Interprets cautiously. Không suy cấu trúc từ abstract, sao câu nguồn, bịa citation hay vượt trần nhân quả.
+description: "Viết phần Bàn luận làm nổi bật phát hiện và đóng góp của nghiên cứu, so sánh với y văn, gom điểm mạnh và hạn chế vào một mục riêng. Writes a strength-led Discussion."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf
@@ -14,7 +14,6 @@ Follow the shared [working principles](../medrs/references/working-principles.md
 
 Read [references/discussion-workflow.md](references/discussion-workflow.md), then read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once before delivery.
 
-Require verified Results, study design and inferential ceiling, source ledger, exact target journal/article type when available, active locale/target profiles, and author approvals after comparator selection and blueprint creation. Quartile is optional metadata, never an entry gate.
+Use verified Results, the study design and its inferential ceiling, the source ledger, and the document-type profile. A target journal and comparator papers help but are optional.
 
-Draft each argument as finding → meaning → literature comparison → plausible explanations including bias/confounding/chance → limitation → proportionate implication. Missing support remains `[CẦN TÌM NGUỒN]` / `[SOURCE NEEDED]`. Return access ledger, paragraph-function maps, blueprint, evidence-needs matrix, draft, causal/citation/similarity audits, preflight, and gate state.
-
+Draft argument paragraphs as finding → meaning → contribution → comparison with the literature, each stated at the strength the design supports. Then write one strengths-and-limitations section placed by the profile, strengths first, each limitation paired with how it was mitigated or why it does not overturn the finding. Missing support stays as `[CẦN TRÍCH DẪN: …]` / `[SOURCE NEEDED: …]`. Return the draft, paragraph map, evidence-needs matrix, audit results and the closing checklist.

@@ -1,6 +1,6 @@
 ---
 name: medrs
-description: Điểm vào duy nhất `/medrs` cho dự án nghiên cứu y học; định tuyến yêu cầu Việt–Anh đến đúng skill chuyên môn. Không dùng cho tư vấn điều trị hoặc khi tác giả chỉ yêu cầu thao tác ngoài nghiên cứu.
+description: "Điểm vào duy nhất `/medrs` cho dự án nghiên cứu y học: hiểu yêu cầu tiếng Việt hoặc tiếng Anh và chuyển đến đúng skill chuyên môn. Routes medical research requests to the right specialist skill. Dùng cho nghiên cứu, không dùng để tư vấn điều trị."
 metadata:
   version: 2.0.0-alpha.8
   role: entry-point

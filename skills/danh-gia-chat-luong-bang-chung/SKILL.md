@@ -1,6 +1,6 @@
 ---
 name: danh-gia-chat-luong-bang-chung
-description: Đánh giá nguy cơ sai lệch và độ chắc chắn bằng chứng y học bằng RoB 2, GRADE hoặc CERQual theo từng kết quả/phát hiện. Appraises evidence quality. Không kiểm checklist báo cáo, đoán signalling answer hay dùng nhãn chung cho toàn nghiên cứu.
+description: "Đánh giá nguy cơ sai lệch và độ chắc chắn của bằng chứng bằng RoB 2, GRADE và GRADE-CERQual theo đúng từng mục của công cụ chính thức. Appraises bias and certainty of evidence."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

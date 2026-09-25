@@ -1,6 +1,6 @@
 ---
 name: viet-ket-qua
-description: Viết Results/Kết quả chỉ từ bảng, hình, dữ liệu hoặc output thống kê đã xác minh. Reports denominators, estimates and uncertainty. Không điền số thiếu, giải thích cơ chế, đánh giá hiệu quả hay đưa khuyến nghị.
+description: "Viết phần Kết quả từ bảng, hình và output thống kê với mẫu số, ước lượng và khoảng tin cậy; phần diễn giải thuộc Bàn luận. Writes the Results section."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

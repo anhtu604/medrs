@@ -1,6 +1,6 @@
 ---
 name: viet-ban-thao-y-hoc
-description: Điều phối viết và ráp bài báo, luận văn hoặc luận án y học từ Research Passport và target profile. Orchestrates section writers and gates. Không thay section writer, không tự quyết bố cục hay bịa phần còn thiếu.
+description: "Điều phối viết toàn bộ bài báo, luận văn hoặc luận án theo profile loại tài liệu, gọi từng skill viết phần rồi ráp bản thảo; chuyển luận văn thành bài báo. Orchestrates full manuscripts."
 metadata:
   version: 2.0.0-alpha.8
   role: orchestrator

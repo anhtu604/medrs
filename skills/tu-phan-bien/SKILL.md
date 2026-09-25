@@ -1,6 +1,6 @@
 ---
 name: tu-phan-bien
-description: Tự phản biện bản thảo qua hai vòng độc lập rồi mới đối chiếu và sửa, dùng khi chưa có nhận xét từ người phản biện thật. Runs two independent self-review rounds before revision. Không để vòng sau đọc kết quả vòng trước, không sửa giữa hai vòng, không thay phản biện thật.
+description: "Rà soát bản thảo trước khi nộp qua hai vòng độc lập: nhất quán số liệu, trích dẫn, chuẩn báo cáo, rồi đọc như người phản biện, sau đó mới sửa. Runs two-round pre-submission review. Nhận xét phản biện thật thuộc skill phản biện và chỉnh sửa."
 metadata:
   version: 2.0.0-alpha.8
   role: gate

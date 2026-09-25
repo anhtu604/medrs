@@ -1,6 +1,6 @@
 ---
 name: kiem-van-phong
-description: Use when auditing or revising Vietnamese or English medical academic prose before standalone delivery, document assembly, submission, or defense. Dùng để kiểm lập luận, bằng chứng, giọng tác giả và văn phong; không dùng để dự đoán văn bản có phải do AI viết.
+description: "Kiểm và nâng chất văn phong học thuật y học tiếng Việt hoặc tiếng Anh: lập luận, bằng chứng, nhịp câu, và viết lại theo hồ sơ văn phong riêng của tác giả. Audits and rewrites prose in the author's voice."
 metadata:
   version: 2.0.0-alpha.8
   role: gate

@@ -1,6 +1,6 @@
 ---
 name: ho-so-nghien-cuu
-description: Tạo, kiểm tra hoặc tiếp nhận dự án nghiên cứu đang dở thành Research Passport. Creates, validates, confirms, or adopts an existing medical-research project. Không viết bài hay xác nhận dữ kiện thay tác giả.
+description: "Lập và cập nhật Research Passport của dự án: mục tiêu, thiết kế, loại tài liệu và quyết định của tác giả; nhận bản thảo đang viết dở để làm tiếp. Creates and maintains the project's Research Passport."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

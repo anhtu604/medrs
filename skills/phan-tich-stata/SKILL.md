@@ -1,6 +1,6 @@
 ---
 name: phan-tich-stata
-description: Sinh, kiểm tra và điều phối chạy Stata do-file tái lập cho nghiên cứu y học; reads real logs and outputs. Không tạo log giả, chọn lệnh theo ý nghĩa thống kê hoặc nhận đã chạy khi thiếu runtime.
+description: "Viết và chạy do-file Stata tái lập cho phân tích y học, kèm nhật ký, phiên bản và băm kết quả. Writes and runs reproducible Stata analyses."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

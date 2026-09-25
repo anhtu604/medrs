@@ -1,18 +1,32 @@
 # Discussion workflow
 
-## 1. Target and access
+## 1. Structure from the document-type profile
 
-Verify the exact journal, article type, and current author instructions. Register two or three comparator papers from that journal when lawfully accessible, prioritizing topic and design. Allowed routes are author-supplied files, publisher/repository open access, PubMed Central, lawful discovery services, or manual institutional access authorized by the author. Never bypass a paywall or infer a Discussion from an abstract. Record DOI/PMID, version, access route, available sections, and access date.
+Take the Discussion scope and the placement of the strengths-and-limitations section from the document-type profile named in the Research Passport. An article discusses its principal findings; a thesis or dissertation works through every objective. The author may override either.
 
-## 2. Reverse engineering
+## 2. Comparator papers (optional)
 
-After author approval of comparator selection, map each full-text Discussion paragraph by rhetorical function, source finding, literature comparison, explanation/mechanism, handling of agreement/disagreement, and role in the argument. Store functional summaries and locators, not long excerpts. Abstract shared moves into a reusable blueprint; do not reproduce sentences, distinctive sequences, or one author's voice. Obtain approval of the blueprint before drafting.
+When the author names a target journal, two or three recent Discussions from it make a useful model. Use only lawful full text: author-supplied files, publisher or repository open access, PubMed Central, or institutional access the author provides. Never bypass a paywall or infer a Discussion from an abstract. Map each comparator paragraph by rhetorical function and keep functional summaries, not sentences or another author's voice. Without comparators, use the profile's structure.
 
-## 3. Evidence-needs matrix
+## 3. Argument paragraphs
 
-For each intended paragraph, link the study finding, interpretation, direct/indirect comparator evidence, contradiction, mechanism status, causal ceiling, limitation, and implication. Citation metadata and claim support must be verified. If absent, retain `[CẦN TÌM NGUỒN]` / `[SOURCE NEEDED]`; never generate a plausible citation.
+Each argument paragraph runs finding → meaning → contribution → comparison with the literature.
 
-## 4. Draft and audit
+- **Finding**: state it at the full strength the design supports.
+- **Meaning**: what it means clinically or for practice, not a restatement of the number.
+- **Contribution**: what this study adds — a new population, setting or measure, greater precision, or confirmation in a Vietnamese context.
+- **Comparison**: agreement and disagreement with the literature, with plausible reasons for differences in population, method or timing.
 
-Lead with the finding, explain rather than repeat it, compare evidence, offer proportionate alternatives, disclose limitations, and end with an implication supported by the design. Observational work normally uses association language. Unmeasured mechanisms remain hypotheses. Audit copied phrase proximity, every causal verb, citation existence/support, Results consistency, and formulaic prose before the author checkpoint.
+Limitations do not appear in argument paragraphs.
 
+## 4. Strengths and limitations section
+
+One section, placed by the profile. Strengths first: design choices, sample, measurement, analysis, setting. Then limitations, each with how it was mitigated or why it does not overturn the finding. Close by returning to what the findings still show.
+
+## 5. Evidence and citations
+
+Every comparison cites a verified source. When a source is missing, write `[CẦN TRÍCH DẪN: …]` / `[SOURCE NEEDED: …]` and continue; list it in the closing checklist. Observational designs use association language, stated with confidence.
+
+## 6. Audit before delivery
+
+Check copied phrasing against comparators, every causal verb, citation support and Results consistency. Unfinished audits go into the closing checklist rather than stopping the draft.

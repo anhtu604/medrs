@@ -1,6 +1,6 @@
 ---
 name: dao-duc-va-quan-tri-du-lieu
-description: Use when a medical protocol needs ethics, consent, registration, privacy, data-governance, or approval-status planning. Dùng khi lập hồ sơ đạo đức và quản trị dữ liệu; không dùng để bịa số chấp thuận hoặc thay tư vấn pháp lý.
+description: "Soạn mục đạo đức nghiên cứu và kế hoạch quản trị dữ liệu theo thông tin tác giả cung cấp và quy định Việt Nam hoặc quốc tế, viết theo giọng khẳng định tuân thủ. Drafts ethics and data-governance sections."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf

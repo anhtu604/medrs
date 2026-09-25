@@ -3,7 +3,7 @@
   "skills": [
     {
       "name": "bieu-do-cong-bo",
-      "purpose": "Chọn, dựng và kiểm định biểu đồ cùng bảng đạt chuẩn công bố cho nghiên cứu y học bằng R hoặc Stata. Designs publication-grade medical figures and tables. Không vẽ khi chưa chốt đơn vị phân tích và cơ sở thanh sai số, không cắt trục để phóng đại hiệu quả, không khẳng định đã dựng hình khi thiếu runtime.",
+      "purpose": "Chọn, dựng và kiểm định biểu đồ và bảng chuẩn công bố cho nghiên cứu y học bằng R hoặc Stata. Designs publication-grade figures and tables.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -25,7 +25,7 @@
     },
     {
       "name": "bo-cuc-tai-lieu",
-      "purpose": "Lập và áp dụng bố cục ngữ nghĩa cho luận văn, luận án hoặc bài báo theo profile nguồn chính thức. Restructures approved sections in a new artifact. Không chỉnh font, lề, trường mục lục, phân trang hoặc tự viết phần còn thiếu.",
+      "purpose": "Sắp xếp bố cục chương mục của luận văn, luận án hoặc bài báo theo profile nguồn chính thức, tạo bản mới không ghi đè. Restructures document sections. Định dạng Word thuộc skill định dạng tài liệu.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -44,7 +44,7 @@
     },
     {
       "name": "co-mau-va-ke-hoach-phan-tich",
-      "purpose": "Lập estimand, giả định, cỡ mẫu và kế hoạch phân tích định trước cho nghiên cứu y học. Plans estimands, power and analysis sets. Không dùng kết quả quan sát để chọn mô hình hay tối ưu ý nghĩa thống kê.",
+      "purpose": "Tính cỡ mẫu và lập kế hoạch phân tích thống kê tiền định cho đề cương: ước lượng, lực mẫu, kết cục chính và phân tích phụ. Plans sample size and statistical analysis.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -63,7 +63,7 @@
     },
     {
       "name": "danh-gia-chat-luong-bang-chung",
-      "purpose": "Đánh giá nguy cơ sai lệch và độ chắc chắn bằng chứng y học bằng RoB 2, GRADE hoặc CERQual theo từng kết quả/phát hiện. Appraises evidence quality. Không kiểm checklist báo cáo, đoán signalling answer hay dùng nhãn chung cho toàn nghiên cứu.",
+      "purpose": "Đánh giá nguy cơ sai lệch và độ chắc chắn của bằng chứng bằng RoB 2, GRADE và GRADE-CERQual theo đúng từng mục của công cụ chính thức. Appraises bias and certainty of evidence.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -86,7 +86,7 @@
     },
     {
       "name": "dao-duc-va-quan-tri-du-lieu",
-      "purpose": "Use when a medical protocol needs ethics, consent, registration, privacy, data-governance, or approval-status planning. Dùng khi lập hồ sơ đạo đức và quản trị dữ liệu; không dùng để bịa số chấp thuận hoặc thay tư vấn pháp lý.",
+      "purpose": "Soạn mục đạo đức nghiên cứu và kế hoạch quản trị dữ liệu theo thông tin tác giả cung cấp và quy định Việt Nam hoặc quốc tế, viết theo giọng khẳng định tuân thủ. Drafts ethics and data-governance sections.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -108,7 +108,7 @@
     },
     {
       "name": "de-cuong-va-thiet-ke",
-      "purpose": "Thiết kế câu hỏi, mục tiêu, quần thể, biến và chiến lược chọn mẫu cho nghiên cứu y học. Designs medical research protocols. Không tính cỡ mẫu, chọn mô hình theo kết quả quan sát hay viết Results.",
+      "purpose": "Thiết kế nghiên cứu và soạn đề cương: câu hỏi, thiết kế, đối tượng, biến số và quy trình, cho luận văn, luận án hay đề tài. Designs studies and drafts protocols.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -127,7 +127,7 @@
     },
     {
       "name": "dinh-dang-tai-lieu",
-      "purpose": "Use when a medical thesis, dissertation, or manuscript DOCX needs source-governed Word styles, margins, headings, TOC, captions, section breaks, page numbering, rendering, or pre-submission format validation. Không dùng để đổi nội dung hay bố cục ngữ nghĩa.",
+      "purpose": "Định dạng Word chuẩn cho luận văn, luận án và bản thảo: style, lề, đề mục đánh số tự động, mục lục, chú thích bảng hình và tham chiếu chéo. Formats Word documents.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -148,7 +148,7 @@
     },
     {
       "name": "ho-so-nghien-cuu",
-      "purpose": "Tạo, kiểm tra hoặc tiếp nhận dự án nghiên cứu đang dở thành Research Passport. Creates, validates, confirms, or adopts an existing medical-research project. Không viết bài hay xác nhận dữ kiện thay tác giả.",
+      "purpose": "Lập và cập nhật Research Passport của dự án: mục tiêu, thiết kế, loại tài liệu và quyết định của tác giả; nhận bản thảo đang viết dở để làm tiếp. Creates and maintains the project's Research Passport.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -168,7 +168,7 @@
     },
     {
       "name": "kiem-chuan-bao-cao",
-      "purpose": "Đối chiếu bản thảo với chuẩn báo cáo hợp thiết kế, bao phủ từng mục của bản chính thức. Checks manuscripts against reporting guidelines item by item. Không chọn chuẩn khi thiết kế chưa rõ, không dựng lại mục từ trí nhớ, không kết luận tuân thủ khi chưa định vị chỗ báo cáo.",
+      "purpose": "Đối chiếu bản thảo với chuẩn báo cáo hợp thiết kế như CONSORT, STROBE, PRISMA, theo đúng từng mục của bản chính thức. Checks reporting-guideline compliance item by item.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -189,7 +189,7 @@
     },
     {
       "name": "kiem-van-phong",
-      "purpose": "Use when auditing or revising Vietnamese or English medical academic prose before standalone delivery, document assembly, submission, or defense. Dùng để kiểm lập luận, bằng chứng, giọng tác giả và văn phong; không dùng để dự đoán văn bản có phải do AI viết.",
+      "purpose": "Kiểm và nâng chất văn phong học thuật y học tiếng Việt hoặc tiếng Anh: lập luận, bằng chứng, nhịp câu, và viết lại theo hồ sơ văn phong riêng của tác giả. Audits and rewrites prose in the author's voice.",
       "role": "gate",
       "locale": [
         "vi",
@@ -214,7 +214,7 @@
     },
     {
       "name": "medrs",
-      "purpose": "Điểm vào duy nhất `/medrs` cho dự án nghiên cứu y học; định tuyến yêu cầu Việt–Anh đến đúng skill chuyên môn. Không dùng cho tư vấn điều trị hoặc khi tác giả chỉ yêu cầu thao tác ngoài nghiên cứu.",
+      "purpose": "Điểm vào duy nhất `/medrs` cho dự án nghiên cứu y học: hiểu yêu cầu tiếng Việt hoặc tiếng Anh và chuyển đến đúng skill chuyên môn. Routes medical research requests to the right specialist skill. Dùng cho nghiên cứu, không dùng để tư vấn điều trị.",
       "role": "entry-point",
       "locale": [
         "vi",
@@ -235,7 +235,7 @@
     },
     {
       "name": "phan-bien-va-chinh-sua",
-      "purpose": "Use when reviewing a medical manuscript or thesis, answering reviewers point by point, revising after peer review, examining a thesis, or verifying revision commitments. Không dùng cho kiểm tra trước nộp khi chưa có nhận xét phản biện.",
+      "purpose": "Trả lời phản biện từng điểm, sửa bài sau phản biện và nhận xét luận văn, lan truyền mọi thay đổi số liệu. Handles real reviewer comments. Rà soát trước khi nộp thuộc skill tự phản biện.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -256,7 +256,7 @@
     },
     {
       "name": "phan-tich-r",
-      "purpose": "Sinh, kiểm tra và điều phối chạy script R tái lập cho nghiên cứu y học; reads real outputs and builds tables. Không bịa kết quả hoặc nhận đã chạy khi thiếu R runtime, dữ liệu và provenance.",
+      "purpose": "Viết và chạy mã R tái lập cho phân tích y học, kèm nhật ký, phiên bản gói và băm kết quả. Writes and runs reproducible R analyses.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -275,7 +275,7 @@
     },
     {
       "name": "phan-tich-so-lieu",
-      "purpose": "Điều phối phân tích số liệu y học theo kế hoạch đã xác nhận và diễn giải output thật. Coordinates R/Stata execution and uncertainty. Không chọn mô hình theo p-value, sửa ngược cỡ mẫu hay nhận đã chạy khi thiếu runtime.",
+      "purpose": "Điều phối phân tích số liệu y học theo kế hoạch và diễn giải kết quả theo ý nghĩa lâm sàng và cỡ hiệu ứng, chạy qua R hoặc Stata. Coordinates analysis and interprets results clinically.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -295,7 +295,7 @@
     },
     {
       "name": "phan-tich-stata",
-      "purpose": "Sinh, kiểm tra và điều phối chạy Stata do-file tái lập cho nghiên cứu y học; reads real logs and outputs. Không tạo log giả, chọn lệnh theo ý nghĩa thống kê hoặc nhận đã chạy khi thiếu runtime.",
+      "purpose": "Viết và chạy do-file Stata tái lập cho phân tích y học, kèm nhật ký, phiên bản và băm kết quả. Writes and runs reproducible Stata analyses.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -314,7 +314,7 @@
     },
     {
       "name": "quan-ly-trich-dan",
-      "purpose": "Đọc thư viện trích dẫn Zotero, BibTeX hoặc CSL-JSON ở chế độ chỉ-đọc và kiểm chứng mức độ trung thực của từng trích dẫn. Verifies citation faithfulness against the author's own library. Không ghi vào thư viện nguồn, không bịa mục tham khảo, không kết luận trung thực khi chưa đọc được toàn văn.",
+      "purpose": "Quản lý trích dẫn Zotero trong Word: giữ nguyên trường trích dẫn khi sửa, gắn trích dẫn sống từ thư viện của tác giả và kiểm độ trung thực. Manages live Zotero citations.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -335,7 +335,7 @@
     },
     {
       "name": "tim-y-van",
-      "purpose": "Tìm y văn y học có query log, provenance, khử trùng lặp và chế độ mạng trích dẫn seed/backward/forward. Retrieves literature reproducibly. Không bịa citation, vượt quyền truy cập, phân loại từ title hay gọi citation graph là tìm kiếm toàn diện.",
+      "purpose": "Tìm y văn y học có ghi vết truy vấn, khử trùng lặp và mở rộng theo mạng trích dẫn xuôi và ngược. Retrieves medical literature reproducibly.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -356,7 +356,7 @@
     },
     {
       "name": "tong-hop-bang-chung",
-      "purpose": "Tổng hợp bằng chứng y học từ record ledger đã xác minh theo narrative, systematic, scoping, evidence-map hoặc meta-analysis readiness. Không đổi nhãn review, bịa citation, bỏ nghiên cứu trái chiều hay gộp khi thiếu số liệu.",
+      "purpose": "Tổng hợp bằng chứng cho tổng quan tường thuật, hệ thống, phạm vi hoặc phân tích gộp, kèm bản đồ bằng chứng. Synthesises evidence across study types.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -376,7 +376,7 @@
     },
     {
       "name": "tu-phan-bien",
-      "purpose": "Tự phản biện bản thảo qua hai vòng độc lập rồi mới đối chiếu và sửa, dùng khi chưa có nhận xét từ người phản biện thật. Runs two independent self-review rounds before revision. Không để vòng sau đọc kết quả vòng trước, không sửa giữa hai vòng, không thay phản biện thật.",
+      "purpose": "Rà soát bản thảo trước khi nộp qua hai vòng độc lập: nhất quán số liệu, trích dẫn, chuẩn báo cáo, rồi đọc như người phản biện, sau đó mới sửa. Runs two-round pre-submission review. Nhận xét phản biện thật thuộc skill phản biện và chỉnh sửa.",
       "role": "gate",
       "locale": [
         "vi",
@@ -398,7 +398,7 @@
     },
     {
       "name": "viet-ban-luan",
-      "purpose": "Viết Discussion từ kết quả thật qua bài đối chiếu hợp pháp, bản đồ chức năng đoạn và blueprint được duyệt. Interprets cautiously. Không suy cấu trúc từ abstract, sao câu nguồn, bịa citation hay vượt trần nhân quả.",
+      "purpose": "Viết phần Bàn luận làm nổi bật phát hiện và đóng góp của nghiên cứu, so sánh với y văn, gom điểm mạnh và hạn chế vào một mục riêng. Writes a strength-led Discussion.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -416,7 +416,7 @@
     },
     {
       "name": "viet-ban-thao-y-hoc",
-      "purpose": "Điều phối viết và ráp bài báo, luận văn hoặc luận án y học từ Research Passport và target profile. Orchestrates section writers and gates. Không thay section writer, không tự quyết bố cục hay bịa phần còn thiếu.",
+      "purpose": "Điều phối viết toàn bộ bài báo, luận văn hoặc luận án theo profile loại tài liệu, gọi từng skill viết phần rồi ráp bản thảo; chuyển luận văn thành bài báo. Orchestrates full manuscripts.",
       "role": "orchestrator",
       "locale": [
         "vi",
@@ -434,7 +434,7 @@
     },
     {
       "name": "viet-dat-van-de",
-      "purpose": "Viết Đặt vấn đề/Introduction y học theo vấn đề, bằng chứng, khoảng trống, lý do và mục tiêu. Writes source-bounded introductions. Không dùng tuyên bố quan trọng chung chung, tính mới chưa xác minh hay kết quả của nghiên cứu.",
+      "purpose": "Viết Đặt vấn đề hoặc Introduction: gánh nặng vấn đề, khoảng trống bằng chứng và mục tiêu nghiên cứu. Writes the Introduction.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -451,7 +451,7 @@
     },
     {
       "name": "viet-ket-luan-khuyen-nghi",
-      "purpose": "Viết kết luận và khuyến nghị ánh xạ mục tiêu với kết quả đã xác minh và mức chắc chắn. Produces proportionate conclusions. Không thêm phát hiện mới, nâng quan sát thành nhân quả hoặc khuyến nghị vượt dữ liệu.",
+      "purpose": "Viết Kết luận bám từng mục tiêu và Khuyến nghị dựa trên kết quả, khẳng định đúng sức bằng chứng. Writes conclusions and recommendations.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -467,7 +467,7 @@
     },
     {
       "name": "viet-ket-qua",
-      "purpose": "Viết Results/Kết quả chỉ từ bảng, hình, dữ liệu hoặc output thống kê đã xác minh. Reports denominators, estimates and uncertainty. Không điền số thiếu, giải thích cơ chế, đánh giá hiệu quả hay đưa khuyến nghị.",
+      "purpose": "Viết phần Kết quả từ bảng, hình và output thống kê với mẫu số, ước lượng và khoảng tin cậy; phần diễn giải thuộc Bàn luận. Writes the Results section.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -483,7 +483,7 @@
     },
     {
       "name": "viet-phuong-phap",
-      "purpose": "Use when drafting or revising a medical Methods section from a Research Passport, protocol, or confirmed study record. Dùng cho phần Phương pháp; không dùng để mô tả thủ thuật chưa thực hiện như đã hoàn tất hoặc để viết Kết quả.",
+      "purpose": "Viết phần Đối tượng và phương pháp cho đề cương hoặc nghiên cứu đã hoàn thành, đúng thì của từng loại tài liệu. Writes the Methods section.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -503,7 +503,7 @@
     },
     {
       "name": "viet-tom-tat",
-      "purpose": "Viết Tóm tắt/Abstract sau cùng từ snapshot toàn văn đã hoàn chỉnh và kiểm tra nhất quán từng số, phương pháp, kết luận. Không chọn số đẹp, che xung đột hay tuyên bố tính mới chưa xác minh.",
+      "purpose": "Viết tóm tắt có cấu trúc, song ngữ hoặc tiếng Anh, đồng bộ với toàn văn và viết sau cùng. Writes structured abstracts from the finished text.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -521,7 +521,7 @@
     },
     {
       "name": "viet-tong-quan",
-      "purpose": "Viết tổng quan y văn theo chủ đề, khái niệm hoặc câu hỏi từ evidence map đã xác minh. Produces synthesis, not a study catalogue. Không xếp bài theo tác giả, bịa citation hay gọi narrative review là systematic review.",
+      "purpose": "Viết tổng quan y văn theo chủ đề, tổng hợp và so sánh thay vì liệt kê từng tác giả. Writes thematic literature reviews.",
       "role": "leaf",
       "locale": [
         "vi",

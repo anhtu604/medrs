@@ -1,6 +1,6 @@
 ---
 name: quan-ly-trich-dan
-description: Đọc thư viện trích dẫn Zotero, BibTeX hoặc CSL-JSON ở chế độ chỉ-đọc và kiểm chứng mức độ trung thực của từng trích dẫn. Verifies citation faithfulness against the author's own library. Không ghi vào thư viện nguồn, không bịa mục tham khảo, không kết luận trung thực khi chưa đọc được toàn văn.
+description: "Quản lý trích dẫn Zotero trong Word: giữ nguyên trường trích dẫn khi sửa, gắn trích dẫn sống từ thư viện của tác giả và kiểm độ trung thực. Manages live Zotero citations."
 metadata:
   version: 2.0.0-alpha.8
   role: leaf
