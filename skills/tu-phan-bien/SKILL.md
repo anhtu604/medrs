@@ -11,6 +11,7 @@ metadata:
 # Tự phản biện
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read [references/two-round-contract.md](references/two-round-contract.md) before starting. Round 1 applies [references/validation-contract.md](references/validation-contract.md) and the reporting-guideline check of `kiem-chuan-bao-cao`; round 2 adds the argument pass of `kiem-van-phong`. Read [references/reconciliation.md](references/reconciliation.md) before comparing the rounds.
 

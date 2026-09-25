@@ -11,6 +11,7 @@ metadata:
 # Viết tổng quan
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once. Consume the Research Passport, approved thematic/conceptual outline, evidence map from `tong-hop-bang-chung`, source ledger, synthesis mode, target/locale profiles, depth, and budget.
 

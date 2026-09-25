@@ -11,6 +11,7 @@ metadata:
 # Viết bản thảo y học
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read [references/assembly-workflow.md](references/assembly-workflow.md). Use the Research Passport, its document-type profile from `../../profiles/document-type/`, the locale profile, the source ledger and the verified analysis artifacts. Converting a thesis into an article means switching the document-type profile and reassembling from the same verified results. Route prose to the matching section writer; route semantic order to `bo-cuc-tai-lieu`, Word mechanics to `dinh-dang-tai-lieu`, and analysis to `phan-tich-so-lieu`.
 

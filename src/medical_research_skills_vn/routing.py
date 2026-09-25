@@ -112,6 +112,7 @@ def route_request(request, legacy_map, active_skills):
 
     citation_routes = (
         (("kiểm tra trích dẫn", "check my citations", "citation faithfulness", "trích dẫn có trung thực"), "verify-faithfulness"),
+        (("gắn trích dẫn", "chèn trích dẫn", "insert citations", "add citations"), "insert-citations"),
         (("zotero", "thư viện trích dẫn", "bibtex", "csl-json"), "library-read"),
     )
     for phrases, mode in citation_routes:

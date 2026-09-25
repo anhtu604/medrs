@@ -11,6 +11,7 @@ metadata:
 # Viết Đặt vấn đề
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once before delivery. Build a narrowing argument: defined clinical/scientific problem → current evidence → specific unresolved gap → why this study can address it → confirmed objective/hypothesis.
 

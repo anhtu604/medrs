@@ -145,6 +145,21 @@ def test_audit_detects_a_lost_field_and_a_lost_preference(tmp_path):
     assert report["preferences_missing"] == ["ZOTERO_PREF_1"]
 
 
+def test_zotero_guard_blocks_and_removes_a_file_that_lost_citations(tmp_path):
+    from medical_research_skills_vn.docx_formatting import zotero_guard
+
+    source = make_docx(tmp_path / "source.docx")
+    flattened = Document(str(source))
+    flattened.paragraphs[0].text = "Tỷ lệ đáp ứng cao hơn (Nguyễn, 2020) so với nhóm chứng."
+    broken = tmp_path / "broken.docx"
+    flattened.save(broken)
+
+    report = zotero_guard(source, broken)
+
+    assert report["status"] == "BLOCKED"
+    assert not broken.exists()
+
+
 def test_changed_source_is_refused(tmp_path):
     source = make_docx(tmp_path / "source.docx")
     with pytest.raises(ZoteroFieldError, match="SOURCE_CHANGED_SINCE_EXPORT"):

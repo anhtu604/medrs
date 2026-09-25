@@ -11,6 +11,7 @@ metadata:
 # Kiểm văn phong
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Gate này đánh giá và nâng chất lượng, tính liêm chính của văn bản y học, gồm cả việc viết lại cho câu văn tự nhiên hơn. Nó không chấm “độ giống người”, không dự đoán tác giả và không tối ưu để né bộ phát hiện AI; mục tiêu là văn tốt hơn, không phải qua được công cụ kiểm tra.
 

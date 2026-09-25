@@ -60,6 +60,14 @@ def test_citation_check_routes_to_citation_management():
     assert decision.availability == "AVAILABLE"
 
 
+def test_citation_insertion_routes_to_citation_management():
+    decision = route_request(
+        RoutingRequest(text="Gắn trích dẫn Zotero vào chương 1"), {}, active_skills={"medrs", "quan-ly-trich-dan"}
+    )
+    assert decision.canonical == "quan-ly-trich-dan"
+    assert decision.mode == "insert-citations"
+
+
 def test_publication_figure_request_routes_to_figure_skill():
     decision = route_request(
         RoutingRequest(text="Tôi cần một forest plot cho phần kết quả"),

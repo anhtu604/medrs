@@ -14,7 +14,9 @@ from medical_research_skills_vn.ethics import validate_source_registers  # noqa:
 from medical_research_skills_vn.indexing import build_index, validate_reference_callers  # noqa: E402
 from medical_research_skills_vn.inventory import validate_inventory  # noqa: E402
 from medical_research_skills_vn.profiles import validate_profiles  # noqa: E402
-from medical_research_skills_vn.structure import validate_shared_preflight, validate_working_principles  # noqa: E402
+from medical_research_skills_vn.structure import (  # noqa: E402
+    validate_shared_preflight, validate_working_principles, validate_zotero_contract,
+)
 
 
 def main() -> int:
@@ -27,6 +29,7 @@ def main() -> int:
         + validate_inventory(ROOT)
         + validate_shared_preflight(ROOT)
         + validate_working_principles(ROOT)
+        + validate_zotero_contract(ROOT)
         + validate_reference_callers(ROOT)
         + validate_profiles(ROOT, date.today())
         + validate_document_type_profiles(ROOT, date.today())

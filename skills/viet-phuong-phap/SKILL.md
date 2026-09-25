@@ -11,6 +11,7 @@ metadata:
 # Viết Phương pháp
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Viết từ artifact đã xác nhận và phân biệt nghiêm ngặt giữa kế hoạch với việc đã thực hiện.
 

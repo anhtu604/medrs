@@ -11,6 +11,7 @@ metadata:
 # Bố cục tài liệu
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read [references/structure-contract.md](references/structure-contract.md). For HMU theses, also read [references/hmu-profile-use.md](references/hmu-profile-use.md) and `../../profiles/institution/hmu/thesis-master-2020-current-2026.yaml`.
 

@@ -11,6 +11,7 @@ metadata:
 # Viết Kết quả
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once. Require verified `AnalysisRun` artifacts or clearly labeled author-supplied output, the Passport, approved Results outline, target/locale profiles, depth, and budget.
 

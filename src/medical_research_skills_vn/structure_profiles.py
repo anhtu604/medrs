@@ -189,7 +189,12 @@ def apply_docx_structure(source_path: Path, output_path: Path, profile: dict, au
             insertion_index += 1
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    from .docx_formatting import zotero_guard
+
     document.save(output_path)
+    zotero = zotero_guard(source_path, output_path)
+    if zotero["status"] == "BLOCKED":
+        return {"status": "ZOTERO_FIELDS_LOST", "zotero": zotero}
     validation = inspect_docx_structure(output_path, profile)
     return {
         "status": "STRUCTURE_APPLIED" if validation["status"] == "PASS" else "VALIDATION_FAILED",
@@ -199,5 +204,6 @@ def apply_docx_structure(source_path: Path, output_path: Path, profile: dict, au
         "output_hash": _sha256(output_path),
         "changes": plan["moves"],
         "validation": validation,
+        "zotero": zotero,
         "missing_required": [],
     }

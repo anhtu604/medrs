@@ -33,3 +33,9 @@ def test_principles_keep_the_single_hard_boundary():
     assert "Lời tác giả là đủ" in text
     assert "Không bịa" in text
     assert "Việc cần bổ sung" in text
+
+
+def test_every_manuscript_editing_skill_links_the_zotero_contract():
+    from medical_research_skills_vn.structure import validate_zotero_contract
+
+    assert validate_zotero_contract(ROOT) == []

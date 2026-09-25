@@ -58,3 +58,29 @@ def validate_working_principles(root):
                 )
             )
     return issues
+
+
+ZOTERO_CONTRACT_TARGET = "quan-ly-trich-dan/references/zotero-field-contract.md"
+MANUSCRIPT_EDITING_SKILLS = WRITING_SKILLS | {
+    "viet-ban-thao-y-hoc",
+    "kiem-van-phong",
+    "phan-bien-va-chinh-sua",
+    "tu-phan-bien",
+    "bo-cuc-tai-lieu",
+}
+
+
+def validate_zotero_contract(root):
+    root = Path(root)
+    issues: list[ValidationIssue] = []
+    for name in sorted(MANUSCRIPT_EDITING_SKILLS):
+        path = root / "skills" / name / "SKILL.md"
+        if path.exists() and path.read_text(encoding="utf-8").count(f"../{ZOTERO_CONTRACT_TARGET}") != 1:
+            issues.append(
+                ValidationIssue(
+                    "ZOTERO_CONTRACT_NOT_LINKED",
+                    str(path),
+                    "manuscript-editing skill must link the Zotero field contract exactly once",
+                )
+            )
+    return issues

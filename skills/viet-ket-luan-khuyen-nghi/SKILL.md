@@ -11,6 +11,7 @@ metadata:
 # Viết Kết luận và khuyến nghị
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once. Use confirmed objectives, verified Results, the design and its inferential ceiling, and the document-type profile.
 

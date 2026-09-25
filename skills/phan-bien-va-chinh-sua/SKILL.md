@@ -11,6 +11,7 @@ metadata:
 # Phản biện và chỉnh sửa
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read [references/review-revision-contract.md](references/review-revision-contract.md). For point-by-point responses, also read [references/response-matrix.md](references/response-matrix.md). For thesis examination, read [references/thesis-examination.md](references/thesis-examination.md).
 

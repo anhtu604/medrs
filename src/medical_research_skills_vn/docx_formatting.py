@@ -3,6 +3,7 @@
 from copy import deepcopy
 from math import sqrt
 from pathlib import Path
+import sys as _sys
 
 from docx import Document
 from docx.enum.style import WD_STYLE_TYPE
@@ -12,6 +13,19 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Inches, Pt, RGBColor
 
 from .structure_profiles import ROOT, _sha256, verify_profile_source
+
+_ZOTERO_SCRIPTS = Path(__file__).parents[2] / "skills/quan-ly-trich-dan/scripts"
+if str(_ZOTERO_SCRIPTS) not in _sys.path:
+    _sys.path.insert(0, str(_ZOTERO_SCRIPTS))
+
+from zotero_fields import audit as _zotero_audit  # noqa: E402
+
+
+def zotero_guard(source: Path, output: Path) -> dict:
+    report = _zotero_audit(source, output)
+    if report["status"] == "BLOCKED" and Path(output).resolve() != Path(source).resolve():
+        Path(output).unlink(missing_ok=True)
+    return report
 
 
 def _field(paragraph, instruction: str):
@@ -408,12 +422,16 @@ def format_docx(source_path: Path, output_path: Path, profile: dict, *, author_a
 
     output.parent.mkdir(parents=True, exist_ok=True)
     document.save(output)
+    zotero = zotero_guard(source, output)
+    if zotero["status"] == "BLOCKED":
+        return {"status": "ZOTERO_FIELDS_LOST", "zotero": zotero}
     return {
         "status": "FORMATTED_WITH_UNPERFORMED_CHECKS",
         "backend": "ooxml-only",
         "source_hash": _sha256(source),
         "output_hash": _sha256(output),
         "output": str(output),
+        "zotero": zotero,
         "style_system": list(REFRESH_SAFE_STYLES),
         "normalized_bullets": bullet_count,
         "adaptive_tables": len(document.tables),

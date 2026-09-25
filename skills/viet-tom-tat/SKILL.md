@@ -11,6 +11,7 @@ metadata:
 # Viết Tóm tắt
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read [references/abstract-lifecycle.md](references/abstract-lifecycle.md), then read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once. A skeleton may be prepared early, but a submission abstract is written last from a complete, current manuscript snapshot and verified analysis artifacts.
 
