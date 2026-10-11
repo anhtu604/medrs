@@ -10,6 +10,8 @@ metadata:
 
 # Định dạng tài liệu
 
+For existing/returned/final Word files read [references/word-integrity-contract.md](references/word-integrity-contract.md) and run its package audit before and after changes. Canonical portable formatter/validator code is in the linked skill runtime; repository modules are adapters only.
+
 Follow the shared [working principles](../medrs/references/working-principles.md).
 
 Read [references/backend-and-validation-contract.md](references/backend-and-validation-contract.md) and [references/word-style-and-refresh-contract.md](references/word-style-and-refresh-contract.md). For heading numbering, caption sequences and cross-references, read [references/heading-numbering-and-cross-references.md](references/heading-numbering-and-cross-references.md). For HMU, also read [references/hmu-word-mechanics.md](references/hmu-word-mechanics.md) and `../../profiles/institution/hmu/word-format-master-2020-current-2026.yaml`.

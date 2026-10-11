@@ -1,12 +1,9 @@
-"""Source freshness calculations."""
+"""Thin repository adapter; canonical implementation ships inside the Word skill."""
+import importlib
+from pathlib import Path
+import sys
 
-from datetime import date
-
-
-def verification_status(record: dict, as_of: date) -> str:
-    raw = record.get("last_verified")
-    if not raw:
-        return "UNVERIFIED"
-    verified = date.fromisoformat(raw)
-    expires_after_days = int(record["expires_after_days"])
-    return "CURRENT" if (as_of - verified).days <= expires_after_days else "STALE"
+_scripts = Path(__file__).parents[2] / "skills/dinh-dang-tai-lieu/scripts"
+if str(_scripts) not in sys.path:
+    sys.path.insert(0, str(_scripts))
+sys.modules[__name__] = importlib.import_module("medrs_word_runtime.freshness")
