@@ -1,0 +1,25 @@
+instrument: JBI analytical cross-sectional assessment
+version: "2026 revised instrument; footer cites 2025 DOI"
+source_version: "2026 revised instrument; footer cites 2025 DOI"
+implemented_version: "2026 revised instrument; footer cites 2025 DOI"
+source_url: https://jbi.global/sites/default/files/2026-05/Assessment%20of%20Risk%20of%20Bias%20for%20Analytical%20Cross-sectional%20Studies%202026.docx
+source_sha256: a37aaaacc15fe4bb128d9cbcfb16f978e4ced69213867973c0837852ddc0a2f9
+license: JBI copyright; official wording not redistributed; independently written navigation only; official tool required at use
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/danh-gia-chat-luong-bang-chung/SKILL.md
+status: SOURCE_MAPPED
+applicability: analytical cross-sectional; study/outcome/result-specific assessment
+official_tool_required_at_use: true
+expected_ids: ["1","2","3","4","5","6","7","8"]
+implemented_ids: ["1","2","3","4","5","6","7","8"]
+items:
+  - {id: '1', operational_prompt: "Assess explicit participant eligibility.", source_locator: "P46-P50", appraisal_level: study}
+  - {id: '2', operational_prompt: "Check objective condition definition.", source_locator: "P52-P56", appraisal_level: outcome}
+  - {id: '3', operational_prompt: "Evaluate exposure ascertainment validity and reliability.", source_locator: "P61-P66", appraisal_level: study}
+  - {id: '4', operational_prompt: "Evaluate outcome ascertainment and measurement consistency.", source_locator: "P68-P73", appraisal_level: outcome}
+  - {id: '5', operational_prompt: "Check identification of relevant confounders.", source_locator: "P76-P80", appraisal_level: study}
+  - {id: '6', operational_prompt: "Evaluate declared confounding-control strategy.", source_locator: "P82-P86", appraisal_level: outcome}
+  - {id: '7', operational_prompt: "Assess analysis assumptions and effect-measure suitability.", source_locator: "P88-P91", appraisal_level: result}
+  - {id: '8', operational_prompt: "Check actual participant and setting description.", source_locator: "P92-P95", appraisal_level: study}

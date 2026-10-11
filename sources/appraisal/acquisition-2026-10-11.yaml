@@ -1,0 +1,45 @@
+checked_at: '2026-10-11'
+redistribute_originals: false
+sources:
+  - instrument: JBI analytical cross-sectional
+    version: Revised 2026 file; footer cites 2025 DOI
+    source_url: https://jbi.global/sites/default/files/2026-05/Assessment%20of%20Risk%20of%20Bias%20for%20Analytical%20Cross-sectional%20Studies%202026.docx
+    sha256: a37aaaacc15fe4bb128d9cbcfb16f978e4ced69213867973c0837852ddc0a2f9
+    status: SOURCE_MAPPED_OFFICIAL_TOOL_REQUIRED_AT_USE
+    item_count: 8
+    license: JBI copyright; independently written navigation only
+  - instrument: JBI prevalence
+    version: Undated checklist; cites 2015 paper; retrieved 2026, not a claimed 2026 revision
+    source_url: https://jbi.global/sites/default/files/2026-05/Checklist_for_Prevalence_Studies.docx
+    sha256: 47b5f7018351b3a0031dd97907cb457165c1563c17f1fae58a0e268006575136
+    status: SOURCE_MAPPED_OFFICIAL_TOOL_REQUIRED_AT_USE
+    item_count: 9
+    license: JBI copyright; independently written navigation only
+  - instrument: QUADAS-3
+    version: '1.2'
+    source_url: https://www.bristol.ac.uk/media-library/sites/social-community-medicine/quadas/QUADAS-3%201.2.docx
+    sha256: 2565bc17f2508f4d7564d199a12ded3837301487666a06b94eaa76204a6a0e13
+    status: ACQUIRED_NOT_YET_IMPLEMENTED
+    license: Permission to redistribute original or translation not verified; private original only
+  - instrument: ROBINS-I V2
+    version: 20 November 2025 draft; subject to change
+    official_page: https://www.riskofbias.info/welcome/robins-i-v2
+    source_url: https://drive.google.com/file/d/1tXCLVa7aFVaiV3OnitZDgAnX3kXWXor0/view
+    sha256: 1d3120a98d83913aa8f5e76ee7c4f7bb2e00de4bae54c5bbcf557b4ed6d1059a
+    status: ACQUIRED_NOT_YET_IMPLEMENTED
+    license: CC BY-NC-ND 4.0; no original or translation redistributed
+    note: Six domains; baseline/per-protocol variants; do not silently apply 2016 numbering. Source question 4.4 contains a repeated cross-reference, requiring official clarification rather than silent correction.
+  - instrument: ROBINS-E
+    version: 24 March 2024
+    official_page: https://www.riskofbias.info/welcome/robins-e-tool
+    source_url: https://drive.google.com/file/d/1bcOVMna3CJJXpsIm5vobFJMP0-13CW8Q/view
+    sha256: 852bb266aaeb78c76504d0f8607d898c9d617aed5a47265d870607513a9985ec
+    status: ACQUIRED_NOT_YET_IMPLEMENTED
+    license: CC BY-NC-ND 4.0; no original or translation redistributed
+    note: Seven domains; confounding has two variants and exposure measurement three variants. A flat deduplicated ID list loses applicable questions.
+  - instrument: AMSTAR 2
+    version: 2017 instrument currently linked on official site
+    source_url: https://www.amstar.ca/docs/AMSTAR-2.pdf
+    status: OFFICIAL_CONTENT_READ_NOT_YET_IMPLEMENTED
+    license: Official site all rights reserved; original not redistributed
+    item_count: 16

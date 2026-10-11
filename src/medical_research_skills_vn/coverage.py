@@ -16,16 +16,25 @@ def load_coverage_manifest(path: Path) -> dict:
 
 def validate_coverage_manifest(manifest: dict) -> list[str]:
     issues: list[str] = []
+    if manifest.get("status") == "BLOCKED":
+        issues.append("SOURCE_BLOCKED")
+    if (manifest.get("source_version") is not None and manifest.get("implemented_version") is not None
+            and manifest["source_version"] != manifest["implemented_version"]):
+        issues.append("SOURCE_VERSION_MISMATCH")
     missing_metadata = sorted(REQUIRED_METADATA - set(manifest))
     issues.extend(f"METADATA_MISSING:{field}" for field in missing_metadata)
     for field in REQUIRED_METADATA:
-        if field in manifest and not str(manifest[field]).strip():
+        if field in manifest and (manifest[field] is None or not str(manifest[field]).strip()):
             issues.append(f"METADATA_EMPTY:{field}")
     expected = list(manifest.get("expected_ids", []))
     implemented = list(manifest.get("implemented_ids", []))
+    if not expected:
+        issues.append("EMPTY_COVERAGE")
     if expected != implemented or len(expected) != len(set(expected)):
         issues.append("COVERAGE_MISMATCH")
     items = {str(item.get("id")): item for item in manifest.get("items", [])}
+    if len(items) != len(manifest.get("items", [])):
+        issues.append("DUPLICATE_ITEM_IDS")
     if set(items) != set(expected):
         issues.append("ITEM_SET_MISMATCH")
     for identifier in expected:

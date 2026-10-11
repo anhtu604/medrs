@@ -1,0 +1,26 @@
+instrument: JBI prevalence checklist
+version: "Undated published checklist; retrieved 11 October 2026; cites Munn et al. 2015"
+source_version: "Undated published checklist; retrieved 11 October 2026; cites Munn et al. 2015"
+implemented_version: "Undated published checklist; retrieved 11 October 2026; cites Munn et al. 2015"
+source_url: https://jbi.global/sites/default/files/2026-05/Checklist_for_Prevalence_Studies.docx
+source_sha256: 47b5f7018351b3a0031dd97907cb457165c1563c17f1fae58a0e268006575136
+license: JBI copyright; official wording not redistributed; independently written navigation only; official tool required at use
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/danh-gia-chat-luong-bang-chung/SKILL.md
+status: SOURCE_MAPPED
+applicability: studies reporting prevalence; population and condition-specific assessment
+official_tool_required_at_use: true
+expected_ids: ["1","2","3","4","5","6","7","8","9"]
+implemented_ids: ["1","2","3","4","5","6","7","8","9"]
+items:
+  - {id: '1', operational_prompt: "Evaluate sampling-frame coverage of the target population.", source_locator: "T0R1; P44-P45", appraisal_level: study}
+  - {id: '2', operational_prompt: "Assess participant selection from that frame.", source_locator: "T0R2; P46-P47", appraisal_level: study}
+  - {id: '3', operational_prompt: "Assess precision-based sample-size adequacy.", source_locator: "T0R3", appraisal_level: study}
+  - {id: '4', operational_prompt: "Check participant and setting detail.", source_locator: "T0R4; P64-P65", appraisal_level: study}
+  - {id: '5', operational_prompt: "Check subgroup coverage in the analyzed sample.", source_locator: "T0R5; P66-P67", appraisal_level: study}
+  - {id: '6', operational_prompt: "Assess validity of condition classification.", source_locator: "T0R6; P68-P69", appraisal_level: outcome}
+  - {id: '7', operational_prompt: "Assess standardized condition measurement across participants.", source_locator: "T0R7; P70-P71", appraisal_level: outcome}
+  - {id: '8', operational_prompt: "Assess prevalence estimators, denominators and uncertainty.", source_locator: "T0R8; P73-P74", appraisal_level: result}
+  - {id: '9', operational_prompt: "Evaluate response rate and nonresponse handling.", source_locator: "T0R9; P75-P76", appraisal_level: study}

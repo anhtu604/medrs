@@ -11,6 +11,7 @@ metadata:
 # Đánh giá chất lượng bằng chứng
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+For analytical cross-sectional or prevalence targets read [references/jbi-use-contract.md](references/jbi-use-contract.md) and its exact coverage manifests; load the official tool at use time.
 
 Read [references/appraisal-routing.md](references/appraisal-routing.md) first. For RoB 2, also read [references/rob2-use-contract.md](references/rob2-use-contract.md) and `../../coverage/rob2-parallel-2019.yaml`. For certainty of quantitative intervention effects, read [references/grade-certainty.md](references/grade-certainty.md) and `../../coverage/grade-interventions-6.5.1.yaml`. For qualitative review findings, read [references/cerqual-confidence.md](references/cerqual-confidence.md) and `../../coverage/cerqual-2018.yaml`.
 
