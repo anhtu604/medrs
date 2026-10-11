@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MedRS local project workspace",
+  "type": "object",
+  "required": ["schema_version", "project_id", "status", "final", "last_event"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "project_id": {"type": "string", "minLength": 1},
+    "status": {"type": "string"},
+    "final": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["sha256", "date", "round"],
+        "properties": {
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "date": {"type": "string", "format": "date"},
+          "round": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "last_event": {"type": ["object", "null"]}
+  },
+  "additionalProperties": false
+}

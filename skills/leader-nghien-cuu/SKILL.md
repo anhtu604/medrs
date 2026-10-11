@@ -15,6 +15,8 @@ Read [references/revision-and-acceptance.md](references/revision-and-acceptance.
 
 Receive the full route plan from `medrs`. Plan every requested item with its owner, input version, dependency and observable acceptance condition. Give concise practical guidance when requested. Execute specialist handoffs in dependency order; a handoff is not completed work.
 
+Before starting/adopting a project, follow [references/project-workspace.md](references/project-workspace.md): create README context/progress, one accepted `final/` set and dated history with every run's logs and change notes. Use its portable helper for recoverable final promotion; never replace an author-modified final silently.
+
 Maintain one project work order alongside the Research Passport. Reuse confirmed decisions and the newest author-designated draft. Record superseded instructions, protected regions, terminology/codebook, display conventions, forbidden additions and accepted exceptions. Never invent a later source version from a filename. Existing authorization covers reversible edits within scope; ask only about unresolved consequential conflicts.
 
 Start from [assets/work-order.json](assets/work-order.json), populate it from existing files and confirmed decisions, not another questionnaire. Keep empty/unknown fields visible; do not store patient identifiers. When asking about a conflict, record the resolved scoped decision so the same question is not asked next round.

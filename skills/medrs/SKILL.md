@@ -14,6 +14,8 @@ Follow the [working principles](references/working-principles.md) in every respo
 
 Treat `/medrs` as the single user-facing entrypoint. Classify every requested item, preserve the Research Passport and effective work order, and build a complete route plan. Do not perform specialist work inside this entrypoint.
 
+At project start/adoption, hand off README, dated history/logs and accepted-final setup through [../leader-nghien-cuu/references/project-workspace.md](../leader-nghien-cuu/references/project-workspace.md) before substantive work. Reuse the existing workspace on later rounds.
+
 Read [references/routing-contract.md](references/routing-contract.md). Use [scripts/router.py](scripts/router.py) for reproducible candidate routing when Python exists; read the same contract and skill index on chat-only hosts. A candidate is not proof of execution.
 
 ## Routing
