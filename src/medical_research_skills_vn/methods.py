@@ -46,7 +46,7 @@ def draft_methods(
         "preflight": {"status": "PENDING_EXECUTION", "scope": "section"},
         "full_gate": {
             "status": "PENDING",
-            "reason": "kiem-van-phong is not active in slice 1",
+            "reason": "Actual kiem-van-phong audit has not been executed",
         },
         "document_context": "multi-section" if multi_section else "standalone",
     }

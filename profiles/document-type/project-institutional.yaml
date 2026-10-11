@@ -1,0 +1,17 @@
+profile_id: project-institutional
+document_type: project-institutional
+title: Đề tài cơ sở — mức cơ bản
+convention:
+  status: CONVENTION
+  frame: ["Đặt vấn đề", "Tổng quan ngắn", "Đối tượng và phương pháp nghiên cứu", "Kết quả", "Bàn luận", "Kết luận và đề xuất ứng dụng", "Tài liệu tham khảo", "Phụ lục cần thiết"]
+  abstract_languages: [vi]
+  discussion_scope: Phát hiện trả lời câu hỏi thực hành tại cơ sở, so sánh ngắn và giải thích dễ hiểu
+  analysis_depth: Mô tả và so sánh phù hợp thiết kế; không tự thêm mô hình, bảng hoặc kiểm định ngoài mục tiêu
+  literature_comparison: Ít nguồn gốc phù hợp, không đặt quota nguồn hoặc thêm y văn chỉ để đủ độ dài
+  strengths_limitations: {placement: end-of-discussion-chapter, heading_vi: "Điểm mạnh và hạn chế", heading_en: "Strengths and limitations"}
+  contributions_section: null
+  section_word_budget: {introduction: 400, literature-review: 1400, methods: 1400, results: 1800, discussion: 1800, conclusion: 300, abstract: 250}
+  complexity: basic-question-led
+  budget_policy: Planning ceilings, not mandatory minima; author and official institution rules override
+rules: null
+rules_note: Quy ước MedRS cho đề tài cơ sở; dùng mẫu chính thức của bệnh viện hoặc đơn vị nếu có. Không tự áp quy định HMU hay luận văn thạc sĩ.

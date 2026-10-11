@@ -2,7 +2,7 @@
 name: phan-tich-so-lieu
 description: "Điều phối phân tích số liệu y học theo kế hoạch và diễn giải kết quả theo ý nghĩa lâm sàng và cỡ hiệu ứng, chạy qua R hoặc Stata. Coordinates analysis and interprets results clinically."
 metadata:
-  version: 3.0.0-rc.1
+  version: 3.1.0
   role: leaf
   locale: [vi, en]
   document_types: [analysis, thesis, dissertation, journal-article]
@@ -25,6 +25,8 @@ Probe the requested backend. If it is unavailable, produce code and an execution
 Refuse significance-driven model selection, outcome switching, unexplained exclusions, or rewriting target sample size after recruitment. Label justified departures `DEVIATION`, record rationale and timing, and retain prespecified, sensitivity, and exploratory analyses separately.
 
 ## Interpretation
+
+Read [result identity contract](references/result-identity-contract.md) before interpreting or reconciling numeric claims. Match the complete result key, not only the displayed p-value.
 
 Interpret each estimate by its clinical meaning first: the size and direction of the effect, its confidence interval, and whether it crosses a minimal clinically important difference when the author supplies one. P-values support that reading; they do not lead it. State what each estimate shows at the strength the design supports.
 

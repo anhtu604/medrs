@@ -1,0 +1,13 @@
+# Basic clinical projects: CK2 and institutional research
+
+Choose project-ck2 for a CK2 research project and project-institutional for a local institutional project. A CK2 thesis explicitly governed by its school's thesis rules remains thesis-specialist. These profiles set editorial defaults, not invented official regulations. Use the author's named type; clarify only when the distinction changes a required deliverable.
+
+Start from the clinical question and objectives. Use enough background to establish the problem, relevant local context and practical gap; retain verified clinical procedures, recruitment, measurements, timing and ethical statements. Methods must remain reproducible even when short. Results need only the tables/figures answering objectives and necessary participant description. Each newly separated table gets its own concise observation where the project convention requires it.
+
+Select descriptive and inferential statistics appropriate to design, variable and repeated measures. Basic does not mean invalid: clustering by patient, paired data, bounded proportions, missing data and multiplicity still require correct handling. Add regression, predictive metrics, effect decompositions, subgroup fishing, network diagrams or elaborate sensitivity analyses only when the question/design needs them or the author commissions them; explain them plainly.
+
+Discussion prioritizes the nearest relevant original clinical studies, including comparable domestic studies when verified. Compare population, measure, dose/procedure and time point when explaining differences. There is no quota for comparisons, references, tables, headings or words. Do not add a claims-of-novelty section or a sentence about contribution to every paragraph. A short justified discussion is preferable to padding; convention budgets are planning ceilings, not institution mandates or minimums.
+
+Conclusions answer each objective. Recommendations must follow an actual result/argument and be proportionate to the observational or experimental design. Maintain one concise limitations section; retain a local qualification when omission would mislead. Remove technical processing details from the clinical narrative and preserve needed reproducibility detail in Methods or a concise technical supplement.
+
+For an existing draft, shorten only within the author's scope. Keep valuable comparisons, sources supporting recommendations and confirmed terminology. Provide a before/after list of sections, table/figure counts and substantive arguments retained/removed. A citation count drop is a signal to inspect lost support, not a reason to add irrelevant references.

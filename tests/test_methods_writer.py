@@ -52,7 +52,7 @@ def test_standalone_methods_does_not_fake_unavailable_slice_two_style_gate():
 
     assert artifact["full_gate"] == {
         "status": "PENDING",
-        "reason": "kiem-van-phong is not active in slice 1",
+        "reason": "Actual kiem-van-phong audit has not been executed",
     }
 
 

@@ -63,9 +63,10 @@ def test_stale_regulatory_source_produces_a_visible_banner(tmp_path):
 
 def test_checked_in_sources_have_primary_urls_and_current_computed_status():
     register = load_source_register(REGISTER)
-    report = validate_sources(register, as_of=date(2026, 8, 31))
+    report = validate_sources(register, as_of=date(2026, 10, 11))
 
-    assert not report.issues
+    assert [issue.code for issue in report.issues] == ["SOURCE_STALE"]
+    assert register["sources"][0]["stale_action"] == "BLOCK_CURRENT_RULES"
     assert {source["id"] for source in register["sources"]} == {
         "vn-tt43-2024-byt",
         "wma-helsinki-2024",

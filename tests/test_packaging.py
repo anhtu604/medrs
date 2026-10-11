@@ -39,6 +39,7 @@ def test_cowork_package_is_minimal_complete_and_reproducible(tmp_path):
     assert ".claude-plugin/plugin.json" in names
     assert ".claude-plugin/marketplace.json" in names
     assert "skills/index.json" in names
+    assert "docs/medrs-3.1-upgrade.md" in names
     staged_skills = {name.split("/")[1] for name in names if name.startswith("skills/") and name.endswith("/SKILL.md")}
     assert len(staged_skills) == expected_skill_count(ROOT)
     assert any(name.startswith("coverage/") for name in names)

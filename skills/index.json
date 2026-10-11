@@ -141,6 +141,7 @@
       "skill_path": "skills/dinh-dang-tai-lieu/SKILL.md",
       "reference_files": [
         "skills/dinh-dang-tai-lieu/references/backend-and-validation-contract.md",
+        "skills/dinh-dang-tai-lieu/references/final-file-checks.md",
         "skills/dinh-dang-tai-lieu/references/heading-numbering-and-cross-references.md",
         "skills/dinh-dang-tai-lieu/references/hmu-word-mechanics.md",
         "skills/dinh-dang-tai-lieu/references/word-style-and-refresh-contract.md"
@@ -213,6 +214,28 @@
       ]
     },
     {
+      "name": "leader-nghien-cuu",
+      "purpose": "Lập kế hoạch, hướng dẫn và điều phối vòng sửa nghiên cứu; nghiệm thu nội dung và hình thức trên đúng file cuối. Plans research work and verifies final deliverables. Nhận việc qua medrs; chuyên môn do skill phụ trách.",
+      "role": "orchestrator",
+      "locale": [
+        "vi",
+        "en"
+      ],
+      "document_types": [
+        "protocol",
+        "thesis",
+        "dissertation",
+        "manuscript",
+        "project-ck2",
+        "project-institutional"
+      ],
+      "skill_path": "skills/leader-nghien-cuu/SKILL.md",
+      "reference_files": [
+        "skills/leader-nghien-cuu/references/basic-projects.md",
+        "skills/leader-nghien-cuu/references/revision-and-acceptance.md"
+      ]
+    },
+    {
       "name": "medrs",
       "purpose": "Điểm vào duy nhất `/medrs` cho dự án nghiên cứu y học: hiểu yêu cầu tiếng Việt hoặc tiếng Anh và chuyển đến đúng skill chuyên môn. Routes medical research requests to the right specialist skill. Dùng cho nghiên cứu, không dùng để tư vấn điều trị.",
       "role": "entry-point",
@@ -230,6 +253,7 @@
       "skill_path": "skills/medrs/SKILL.md",
       "reference_files": [
         "skills/medrs/references/legacy-skill-map.yaml",
+        "skills/medrs/references/routing-contract.md",
         "skills/medrs/references/working-principles.md"
       ]
     },
@@ -290,6 +314,7 @@
       "skill_path": "skills/phan-tich-so-lieu/SKILL.md",
       "reference_files": [
         "skills/phan-tich-so-lieu/references/analysis-deviation-contract.md",
+        "skills/phan-tich-so-lieu/references/result-identity-contract.md",
         "skills/phan-tich-so-lieu/references/time-to-event-contract.md"
       ]
     },
@@ -498,6 +523,7 @@
       ],
       "skill_path": "skills/viet-phuong-phap/SKILL.md",
       "reference_files": [
+        "skills/viet-phuong-phap/references/clinical-methods-checks.md",
         "skills/viet-phuong-phap/references/protocol-vs-completed.md",
         "skills/viet-phuong-phap/references/writing-preflight.md"
       ]

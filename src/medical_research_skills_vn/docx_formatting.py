@@ -4,6 +4,7 @@ from copy import deepcopy
 from math import sqrt
 from pathlib import Path
 import sys as _sys
+from tempfile import TemporaryDirectory
 
 from docx import Document
 from docx.enum.style import WD_STYLE_TYPE
@@ -19,6 +20,11 @@ if str(_ZOTERO_SCRIPTS) not in _sys.path:
     _sys.path.insert(0, str(_ZOTERO_SCRIPTS))
 
 from zotero_fields import audit as _zotero_audit  # noqa: E402
+
+_LEADER_SCRIPTS = Path(__file__).parents[2] / "skills/leader-nghien-cuu/scripts"
+if str(_LEADER_SCRIPTS) not in _sys.path:
+    _sys.path.insert(0, str(_LEADER_SCRIPTS))
+from revision_guard import snapshot, commit_new_artifact  # noqa: E402
 
 
 def zotero_guard(source: Path, output: Path) -> dict:
@@ -388,12 +394,15 @@ def format_docx(source_path: Path, output_path: Path, profile: dict, *, author_a
     output = Path(output_path).resolve()
     if source == output:
         return {"status": "SOURCE_OVERWRITE_FORBIDDEN"}
+    if output.exists():
+        return {"status": "OUTPUT_ALREADY_EXISTS"}
     verification = verify_profile_source(ROOT, profile)
     if verification["status"] != "VERIFIED":
         return verification
     if not author_approved:
         return {"status": "AUTHOR_APPROVAL_REQUIRED"}
 
+    source_snapshot = snapshot(source)
     document = Document(source)
     _configure_style_system(document, profile)
     _enable_field_refresh(document)
@@ -431,14 +440,17 @@ def format_docx(source_path: Path, output_path: Path, profile: dict, *, author_a
         _field(header_paragraph, "PAGE")
 
     output.parent.mkdir(parents=True, exist_ok=True)
-    document.save(output)
-    zotero = zotero_guard(source, output)
-    if zotero["status"] == "BLOCKED":
-        return {"status": "ZOTERO_FIELDS_LOST", "zotero": zotero}
+    with TemporaryDirectory(prefix="medrs-format-") as staging:
+        staged = Path(staging) / "formatted.docx"
+        document.save(staged)
+        zotero = zotero_guard(source, staged)
+        if zotero["status"] == "BLOCKED":
+            return {"status": "ZOTERO_FIELDS_LOST", "zotero": zotero}
+        commit_new_artifact(staged, output, source_snapshot, owner="dinh-dang-tai-lieu")
     return {
         "status": "FORMATTED_WITH_UNPERFORMED_CHECKS",
         "backend": "ooxml-only",
-        "source_hash": _sha256(source),
+        "source_hash": source_snapshot["sha256"],
         "output_hash": _sha256(output),
         "output": str(output),
         "zotero": zotero,

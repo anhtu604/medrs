@@ -202,7 +202,7 @@ def test_plain_libreoffice_render_does_not_fake_field_refresh(tmp_path):
 
     report = validate_docx(output, profile, rendered_artifacts=[pdf, png], backend="libreoffice-convert")
 
-    assert report["rendered_checks"]["visual_layout"] == "PASS"
+    assert report["rendered_checks"]["visual_layout"] == "VISUAL_INSPECTION_UNPERFORMED"
     assert report["rendered_checks"]["pagination"] == "FIELD_UPDATE_UNVERIFIED"
 
 

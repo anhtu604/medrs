@@ -15,6 +15,9 @@ Every section writer reads this reference by relative path before returning a dr
 2. `UNRESOLVED`: unresolved scientific or administrative decisions remain visible and are not converted into fluent prose that appears final.
 3. `CAUSALITY`: causal verbs do not exceed the design and estimand. Observational association is not rewritten as intervention effect.
 4. `LOCALE`: language, terminology, attribution, tense, forms of address, and section conventions match the active locale profile rather than literal translation.
+5. `PROJECT_DECISIONS`: use the effective terminology/codebook, scoped author decisions and protected arguments; scan all changed manuscript surfaces for workflow codes.
+6. `RESULT_IDENTITY`: every numerical sentence matches indicator, denominator, group, time/pair, test and adjustment as well as value; do not borrow an equal p from another comparison.
+7. `PLAIN_PROSE`: each sentence adds a concrete point. Remove generic contribution filler and repeated caveats while preserving necessary qualification and source support.
 
 ## Output
 

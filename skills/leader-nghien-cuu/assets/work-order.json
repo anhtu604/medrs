@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "project_id": null,
+  "document_type": null,
+  "research_passport": null,
+  "source_snapshot": null,
+  "effective_decisions": [],
+  "protected_regions": [],
+  "tasks": [],
+  "dependencies": [],
+  "propagation_checks": [],
+  "evidence": [],
+  "acceptance": {"internal": "NOT_REVIEWED", "author": "PENDING"}
+}

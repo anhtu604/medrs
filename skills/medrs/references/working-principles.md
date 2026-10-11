@@ -20,7 +20,7 @@ Không tự tạo số hoặc ngày quyết định chấp thuận, giá trị s
 
 ## 5. Điểm mạnh dẫn
 
-Diễn giải mỗi phát hiện đúng hết sức bằng chứng cho phép, không tự hạ giọng. Nêu rõ đóng góp. Gom hạn chế vào một mục duy nhất, đặt theo profile loại tài liệu, điểm mạnh viết trước; mỗi hạn chế đi kèm cách đã giảm thiểu hoặc lý do nó không lật ngược phát hiện. Thiết kế quan sát vẫn nói "có liên quan", nhưng nói một cách tự tin.
+Diễn giải phát hiện ở đúng mức bằng chứng cho phép, rõ ý nghĩa lâm sàng. Nêu đóng góp khi có căn cứ, không ép câu khẳng định mới mẻ vào mỗi đoạn. Gom hạn chế chung vào một mục theo profile; giữ giới hạn tại chỗ khi cần tránh suy diễn. Chỉ nêu biện pháp giảm thiểu đã thực hiện và được xác nhận; không mặc định hạn chế không đổi kết luận. Thiết kế quan sát dùng "có liên quan", không đổi thành quan hệ nhân quả.
 
 ## 6. Bản nháp sạch
 
@@ -28,4 +28,12 @@ Trong thân bài chỉ có các ô ngắn. Mọi việc tác giả cần bổ su
 
 ## Khi nguồn quy định quá hạn
 
-Nguồn quy định quá hạn kiểm tra không làm dừng việc. Viết theo quy định gần nhất đã biết và thêm "kiểm lại quy định hiện hành" vào danh sách cuối.
+Nguồn quy định quá hạn không làm dừng các phần độc lập. Hiện `SOURCE_STALE`, có thể soạn bản nháp có điều kiện theo nguồn lịch sử nhưng không tuyên bố tuân thủ quy định hiện hành. Nguồn có `BLOCK_CURRENT_RULES` buộc phần xác nhận hiện hành mang `OFFICIAL_RULE_REQUIRED` đến khi xác minh; không cập nhật ngày xác minh chỉ từ kết quả tìm kiếm cũ hoặc trang web tải được nhưng không có đúng nội dung.
+
+## Vòng sửa, phạm vi và nghiệm thu
+
+Yêu cầu sửa đã ủy quyền cho thao tác có thể đảo ngược trong phạm vi đó; không xin phép lại máy móc. Dùng bản mới nhất tác giả chỉ định, giữ sửa tay ngoài phạm vi và mọi quyết định đã chốt. Chỉ thị thay thế mới nhất thắng chỉ thị cũ; yêu cầu bổ sung không làm mất các việc còn hiệu lực. Không tự thêm bảng, kiểm định hay chương để làm bài trông công phu.
+
+Đọc [hợp đồng vòng sửa và nghiệm thu](../../leader-nghien-cuu/references/revision-and-acceptance.md) khi sửa file, điều phối nhiều việc hoặc giao bản cuối. Mỗi vòng tạo file mới, ghi nguồn/hash và các phụ thuộc thay đổi. Sau sửa phải lưu, refresh khi có backend, mở lại và kiểm chính file cuối. Nghiệm thu nội bộ cần cả nội dung lẫn hình thức; thiếu kiểm nào ghi chưa kiểm, không tự báo xong. Tác giả quyết định nghiệm thu cuối.
+
+Điểm mạnh phải có căn cứ; không ép câu đóng góp chung chung vào từng đoạn. Gom giới hạn chung nhưng giữ giới hạn tại chỗ nếu cần tránh người đọc hiểu sai. Không tự khẳng định một hạn chế đã được giảm thiểu hay không ảnh hưởng kết quả khi chưa có căn cứ.

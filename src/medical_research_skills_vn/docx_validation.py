@@ -23,9 +23,13 @@ def _refresh_safe_styles_pass(document, profile: dict) -> bool:
         if name not in document.styles:
             return False
         style = document.styles[name]
-        if style.font.name != body["font"]:
+        override = profile.get("word_styles", {}).get(name, {})
+        if style.font.name != override.get("font", body["font"]):
             return False
         expected_spacing = profile.get("table", {}).get("line_spacing", 1.0) if name in compact else body["line_spacing"]
+        expected_spacing = override.get("line_spacing", expected_spacing)
+        if style.font.size is None or abs(style.font.size.pt - override.get("size_pt", body["size_pt"])) > 0.05:
+            return False
         if style.paragraph_format.line_spacing != expected_spacing:
             return False
     return True
@@ -84,12 +88,14 @@ def _list_numbering_pass(document, numbering_xml: str) -> bool:
     )
 
 
-def validate_docx(path: Path, profile: dict, *, rendered_artifacts: list, backend: str = "ooxml-only") -> dict:
+def validate_docx(path: Path, profile: dict, *, rendered_artifacts: list, backend: str = "ooxml-only",
+                  field_update_evidence: dict | None = None, visual_review: dict | None = None) -> dict:
     path = Path(path)
     document = Document(path)
     normal = document.styles["Normal"]
     body = profile["body"]
-    normal_pass = normal.font.name == body["font"] and round(normal.font.size.pt, 1) in profile["body"]["allowed_size_pt"]
+    normal_override = profile.get("word_styles", {}).get("Normal", {})
+    normal_pass = normal.font.name == normal_override.get("font", body["font"]) and normal.font.size is not None and round(normal.font.size.pt, 1) == normal_override.get("size_pt", body["size_pt"])
     runs = [run for paragraph in document.paragraphs for run in paragraph.runs if run.text]
     direct_formatting_pass = all(
         (run.font.name in {None, body["font"]})
@@ -114,13 +120,22 @@ def validate_docx(path: Path, profile: dict, *, rendered_artifacts: list, backen
     rendered_pdf = next((item for item in rendered_artifacts if str(item).lower().endswith(".pdf")), None)
     rendered_images = [item for item in rendered_artifacts if str(item).lower().endswith((".png", ".jpg", ".jpeg"))]
     render_state = validate_render_claim(backend, rendered_pdf, rendered_images)
-    rendered_check = "PASS" if render_state == "RENDERED_ARTIFACTS_AVAILABLE" else render_state
+    artifact_hash = _sha256(path)
+    rendered_hashes = {str(Path(item).resolve()): _sha256(Path(item)) for item in rendered_artifacts if Path(item).is_file()}
+    def evidence_pass(record):
+        if not record or record.get("status") != "PASS" or not record.get("reviewer"):
+            return False
+        evidence_path = Path(record.get("path") or "")
+        return (record.get("artifact_sha256") == artifact_hash and record.get("rendered_sha256") == rendered_hashes
+                and bool(rendered_hashes) and evidence_path.is_file()
+                and record.get("sha256") == _sha256(evidence_path))
+    rendered_check = ("PASS" if evidence_pass(visual_review) else "VISUAL_INSPECTION_UNPERFORMED") if render_state == "RENDERED_ARTIFACTS_AVAILABLE" else render_state
     if render_state == "RENDERED_ARTIFACTS_AVAILABLE":
-        pagination_check = "PASS" if backend in {"word-com", "libreoffice-uno"} else "FIELD_UPDATE_UNVERIFIED"
+        pagination_check = "PASS" if backend in {"word-com", "libreoffice-uno"} and evidence_pass(field_update_evidence) else "FIELD_UPDATE_UNVERIFIED"
     else:
         pagination_check = render_state
     return {
-        "artifact_hash": _sha256(path),
+        "artifact_hash": artifact_hash,
         "mechanical_checks": {
             "normal_style": "PASS" if normal_pass else "FAIL",
             "direct_formatting": "PASS" if direct_formatting_pass else "FAIL",

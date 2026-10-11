@@ -1,7 +1,7 @@
 {
   "name": "medrs",
-  "version": "3.0.0-rc.1",
-  "description": "MedRS 3.0: 27 kỹ năng nghiên cứu y học Việt–Anh — viết luận văn, luận án và bài báo theo giọng tác giả, diễn giải thiên về điểm mạnh, R/Stata, chuẩn báo cáo, trích dẫn Zotero sống và tự phản biện hai vòng.",
+  "version": "3.1.0",
+  "description": "MedRS 3.1: 28 kỹ năng nghiên cứu y học Việt–Anh; điều phối và nghiệm thu nội dung lẫn hình thức, luận văn, luận án, bài báo, CK2 và đề tài cơ sở, R/Stata, Word và Zotero.",
   "author": {"name": "Anh Tu"},
   "license": "CC-BY-NC-4.0",
   "homepage": "https://github.com/anhtu604/medrs",

@@ -2,7 +2,7 @@
 name: viet-phuong-phap
 description: "Viết phần Đối tượng và phương pháp cho đề cương hoặc nghiên cứu đã hoàn thành, đúng thì của từng loại tài liệu. Writes the Methods section."
 metadata:
-  version: 3.0.0-rc.1
+  version: 3.1.0
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript]
@@ -32,7 +32,9 @@ Viết từ artifact đã xác nhận và phân biệt nghiêm ngặt giữa k�
 2. Ráp các tiểu mục theo target profile; thiếu profile thì giữ cấu trúc nội dung, không tuyên bố đúng mẫu trường/tạp chí.
 3. Lập claim/evidence table cho thiết kế, đối tượng, biến số, quy trình, phân tích và đạo đức.
 4. Chạy `references/writing-preflight.md` đúng một lần trước khi trả bản nháp.
-5. Ghi full `kiem-van-phong` gate là `PENDING`; skill này thuộc Slice 2 và không được giả lập trong Slice 1.
+5. Chạy `kiem-van-phong` khi skill và ngữ cảnh có sẵn; nếu chưa chạy ghi `UNPERFORMED` với lý do thực tế. Không dùng nhãn Slice cũ để bỏ kiểm. Với bản nhiều phần, gate toàn văn chạy khi ráp tài liệu.
+
+Khi sửa Methods đọc [references/clinical-methods-checks.md](references/clinical-methods-checks.md): giữ đủ quy trình lâm sàng, tên riêng tác giả xác nhận và thiết kế thống nhất.
 
 ## Đầu ra
 

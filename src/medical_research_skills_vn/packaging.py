@@ -29,6 +29,7 @@ COWORK_ROOT_FILES = {
     "README.md",
     "LICENSE",
     "ATTRIBUTION.md",
+    "docs/medrs-3.1-upgrade.md",
 }
 COWORK_ROOT_DIRS = {
     ".claude-plugin",

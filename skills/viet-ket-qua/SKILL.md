@@ -2,7 +2,7 @@
 name: viet-ket-qua
 description: "Viết phần Kết quả từ bảng, hình và output thống kê với mẫu số, ước lượng và khoảng tin cậy; phần diễn giải thuộc Bàn luận. Writes the Results section."
 metadata:
-  version: 3.0.0-rc.1
+  version: 3.1.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]
@@ -11,6 +11,8 @@ metadata:
 # Viết Kết quả
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+
+For numeric claims read the shared [result identity contract](../phan-tich-so-lieu/references/result-identity-contract.md). Each changed table needs a matching observation and symbol/test legend; propagate changes through dependent sections without inventing extra analyses.
 When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once. Require verified `AnalysisRun` artifacts or clearly labeled author-supplied output, the Passport, approved Results outline, target/locale profiles, depth, and budget.

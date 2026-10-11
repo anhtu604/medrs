@@ -2,7 +2,7 @@
 name: phan-bien-va-chinh-sua
 description: "Trả lời phản biện từng điểm, sửa bài sau phản biện và nhận xét luận văn, lan truyền mọi thay đổi số liệu. Handles real reviewer comments. Rà soát trước khi nộp thuộc skill tự phản biện."
 metadata:
-  version: 3.0.0-rc.1
+  version: 3.1.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review]
@@ -14,6 +14,8 @@ Follow the shared [working principles](../medrs/references/working-principles.md
 When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read [references/review-revision-contract.md](references/review-revision-contract.md). For point-by-point responses, also read [references/response-matrix.md](references/response-matrix.md). For thesis examination, read [references/thesis-examination.md](references/thesis-examination.md).
+
+For iterative edits, use the leader's effective work order and [revision contract](../leader-nghien-cuu/references/revision-and-acceptance.md). Match comments by verbatim content plus anchor/source, not ID alone; preserve author edits outside scope and check analogous defects. “Comment handled” is not author acceptance.
 
 Preserve each reviewer/examiner comment verbatim with reviewer, round, page/line or source locator. Classify the request, assess whether it is scientifically valid, and choose `accept`, `partial`, `decline`, or `clarify` with evidence. Politeness never requires accepting an unsupported change. Never invent new analyses, ethics approvals, citations or results to satisfy a comment.
 

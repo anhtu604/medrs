@@ -2,7 +2,7 @@
 name: tu-phan-bien
 description: "Rà soát bản thảo trước khi nộp qua hai vòng độc lập: nhất quán số liệu, trích dẫn, chuẩn báo cáo, rồi đọc như người phản biện, sau đó mới sửa. Runs two-round pre-submission review. Nhận xét phản biện thật thuộc skill phản biện và chỉnh sửa."
 metadata:
-  version: 3.0.0-rc.1
+  version: 3.1.0
   role: gate
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review, evidence-synthesis]
@@ -31,6 +31,6 @@ Chỉ sau khi cả hai vòng xong mới gộp kết quả. Phát hiện được
 
 ## Sửa
 
-Sửa chỉ bắt đầu sau khi tác giả duyệt danh mục đã đối chiếu. Mỗi mục sửa đi qua skill phụ trách miền tương ứng, không sửa trực tiếp ở đây. Sau khi sửa, bản thảo mang hash mới và mọi phát hiện gắn với hash cũ phải được kiểm lại.
+Sửa trong phạm vi đã được tác giả giao không cần xin lại cùng một quyền; thay đổi mục tiêu, thiết kế, phân tích hoặc nội dung tác giả đã bảo vệ cần hỏi tác giả. Mỗi mục sửa đi qua skill phụ trách miền tương ứng. Sau khi sửa, bản thảo mang hash mới và mọi phát hiện gắn với hash cũ phải được kiểm lại. Tuân thủ [hợp đồng nghiệm thu](../leader-nghien-cuu/references/revision-and-acceptance.md): leader chỉ kết luận nội bộ đạt khi cả nội dung lẫn hình thức đúng trên file cuối; xác nhận tác giả là trạng thái riêng.
 
 Trả về hai báo cáo vòng riêng biệt, bảng đối chiếu, mức ưu tiên, mục mâu thuẫn, danh mục sửa đã duyệt và trạng thái kiểm lại.

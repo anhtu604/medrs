@@ -1,5 +1,5 @@
 register_version: 1
-as_of: '2026-08-31'
+as_of: '2026-10-11'
 sources:
   - id: vn-tt43-2024-byt
     title: Thông tư 43/2024/TT-BYT
@@ -11,8 +11,9 @@ sources:
     source_cutoff: '2025-02-01'
     last_verified: '2026-08-31'
     expires_after_days: 30
-    verification_status: CURRENT
-    retrieval_note: National legal database recorded the instrument as current on verification date.
+    verification_status: STALE
+    stale_action: BLOCK_CURRENT_RULES
+    retrieval_note: Verified 2026-08-31 only. Recheck attempted 2026-10-11; official URLs returned access errors or a generic application shell, not instrument-specific current-status evidence. Historical drafting only; do not certify current legal compliance.
     coverage:
       scope: Routing metadata and official approval-form identifiers; not a full legal-compliance checklist
       expected_count: 7

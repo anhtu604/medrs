@@ -1,12 +1,16 @@
-# MedRS 3.0 release candidate
+# MedRS 3.1
 
-This development branch contains all 27 canonical medical-research skills, spanning protocol design, analysis, medical writing, evidence retrieval/synthesis/appraisal, reporting-guideline compliance, citation management, publication figures, document structure/formatting, two-round self-review, and peer-review revision.
+This release contains all 28 canonical medical-research skills, including an internal leader for complete task plans, revision continuity and final-artifact acceptance. It supports protocol design, R/Stata, writing, evidence work, Word/Zotero, two-round review, and basic question-led CK2 and institutional projects alongside theses, dissertations and articles.
 
-All 27 skills are indexed in `skills/index.json`. Version 1.3.0 must remain uninstalled while this package is active. The license is CC BY-NC 4.0; commercial use may require separate permission and legal review.
+All 28 skills are indexed in `skills/index.json`. Old MedRS versions must remain uninstalled while this package is active. The license is CC BY-NC 4.0; commercial use may require separate permission and legal review.
 
 Start with `skills/medrs/SKILL.md`. Non-Claude agents can enumerate the present skills from the generated `skills/index.json`.
 
-The single user-facing entrypoint is `/medrs` on Claude-compatible hosts and `$medrs` in Codex. The other 26 skills are specialist handoff targets selected by MedRS.
+The single user-facing entrypoint is `/medrs` on Claude-compatible hosts and `$medrs` in Codex. The other 27 skills are internal handoff targets. Compound requests retain every task, not just the last one. Confirmed decisions are reused; meaningful unresolved conflicts are asked once. [Upgrade details](docs/medrs-3.1-upgrade.md).
+
+Acceptance checks the actual final artifact, not just a script's settings. Content, plain prose, scope and Word presentation evidence must match the saved file's hash. Missing field-refresh or visual capability means unverified, never a simulated pass. Statistical checks match variable, indicator, denominator, group, time pair, test and adjustment—not p-values alone. Basic profiles do not replace an institution's official submission rules.
+
+Source freshness is explicit: TT43/2024/TT-BYT remains quarantined as `STALE` pending a successful official current-status recheck; the package does not certify current legal compliance from this historical source.
 
 Build and capability commands:
 

@@ -2,7 +2,7 @@
 name: dao-duc-va-quan-tri-du-lieu
 description: "Soạn mục đạo đức nghiên cứu và kế hoạch quản trị dữ liệu theo thông tin tác giả cung cấp và quy định Việt Nam hoặc quốc tế, với thì phù hợp giai đoạn nghiên cứu. Drafts ethics and data-governance sections."
 metadata:
-  version: 3.0.0-rc.1
+  version: 3.1.0
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript]
@@ -21,7 +21,7 @@ Dùng Passport và những gì tác giả nêu: thẩm quyền, giai đoạn, lo
 ## Quy trình
 
 1. Chọn `references/vietnam-profile.md` và/hoặc `references/international-profile.md` theo nơi thực hiện, tài trợ và đích nộp.
-2. Đối chiếu `references/source-register.yaml`. Nguồn quá hạn kiểm tra thì viết theo quy định gần nhất đã biết và thêm "kiểm lại quy định hiện hành" vào danh sách cuối; không dừng.
+2. Đối chiếu `references/source-register.yaml` và tính hạn theo ngày hiện tại. Nguồn quá hạn phải hiện `SOURCE_STALE`; có thể soạn bản nháp lịch sử hoặc từ thông tin tác giả đã xác nhận nhưng không chứng nhận tuân thủ pháp lý hiện hành. Với `stale_action: BLOCK_CURRENT_RULES`, phần yêu cầu quy định hiện hành mang `OFFICIAL_RULE_REQUIRED` đến khi xác minh được nguồn chính thức; các phần không phụ thuộc vẫn tiếp tục.
 3. Dùng `references/data-governance.md` để lập luồng dữ liệu và quyền truy cập.
 4. Viết mục đạo đức hoàn chỉnh: hội đồng và quyết định chấp thuận, đồng thuận hoặc miễn đồng thuận, bảo mật và ẩn danh, lưu trữ, đăng ký.
 

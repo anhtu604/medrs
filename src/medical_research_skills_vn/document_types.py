@@ -20,6 +20,8 @@ DOCUMENT_TYPES = (
     "thesis-specialist",
     "dissertation-doctoral",
     "protocol",
+    "project-ck2",
+    "project-institutional",
 )
 LEGACY_DOCUMENT_TYPES = {"thesis": "thesis-master", "dissertation": "dissertation-doctoral", "protocol": "protocol"}
 ARTICLE_ALIASES = {"journal-article", "manuscript"}
@@ -67,6 +69,15 @@ def _valid_section_word_budget(value: object) -> bool:
 
 def resolve_document_type(value: str, locale_profile: str) -> str:
     normalized = value.strip().casefold()
+    project_aliases = {
+        "đề tài ck2": "project-ck2", "ck2": "project-ck2", "bsck2": "project-ck2",
+        "đề tài chuyên khoa ii": "project-ck2",
+        "đề tài cơ sở": "project-institutional", "de tai co so": "project-institutional",
+        "institutional project": "project-institutional",
+        "luận văn ck2": "thesis-specialist",
+    }
+    if normalized in project_aliases:
+        return project_aliases[normalized]
     if normalized in DOCUMENT_TYPES:
         return normalized
     if normalized in LEGACY_DOCUMENT_TYPES:

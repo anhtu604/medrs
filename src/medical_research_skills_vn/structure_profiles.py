@@ -157,11 +157,16 @@ def apply_docx_structure(source_path: Path, output_path: Path, profile: dict, au
     output_path = Path(output_path).resolve()
     if source_path == output_path:
         return {"status": "SOURCE_OVERWRITE_FORBIDDEN"}
+    if output_path.exists():
+        return {"status": "OUTPUT_ALREADY_EXISTS"}
 
     source_verification = verify_profile_source(ROOT, profile)
     if source_verification["status"] != "VERIFIED":
         return source_verification
 
+    from tempfile import TemporaryDirectory
+    from .docx_formatting import zotero_guard, snapshot, commit_new_artifact
+    source_snapshot = snapshot(source_path)
     before = inspect_docx_structure(source_path, profile)
     duplicate_sections = sorted(
         {section for section in before["recognized"] if before["recognized"].count(section) > 1}
@@ -189,12 +194,13 @@ def apply_docx_structure(source_path: Path, output_path: Path, profile: dict, au
             insertion_index += 1
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    from .docx_formatting import zotero_guard
-
-    document.save(output_path)
-    zotero = zotero_guard(source_path, output_path)
-    if zotero["status"] == "BLOCKED":
-        return {"status": "ZOTERO_FIELDS_LOST", "zotero": zotero}
+    with TemporaryDirectory(prefix="medrs-structure-") as staging:
+        staged = Path(staging) / "structured.docx"
+        document.save(staged)
+        zotero = zotero_guard(source_path, staged)
+        if zotero["status"] == "BLOCKED":
+            return {"status": "ZOTERO_FIELDS_LOST", "zotero": zotero}
+        commit_new_artifact(staged, output_path, source_snapshot, owner="bo-cuc-tai-lieu")
     validation = inspect_docx_structure(output_path, profile)
     return {
         "status": "STRUCTURE_APPLIED" if validation["status"] == "PASS" else "VALIDATION_FAILED",

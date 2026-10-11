@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.1.0 — Revision continuity and final-artifact acceptance
+
+- Added internal leader coordination, complete task plans, scoped author decisions, immutable output publishing and hash-bound content/presentation acceptance.
+- Added question-led basic CK2 and institutional project profiles; advanced work requires methodological necessity or an explicit request.
+- Improved compound-request routing and kept the single `/medrs` entrypoint.
+- Added clinical-methods checks, keyed result validation and manuscript workflow-language inspection.
+- Tightened Word refresh/visual evidence checks; existing render files alone cannot prove a visual review or successful field updates.
+- Preserved author voice, removed mandatory novelty claims and allowed necessary local qualifications without repetitive limitations paragraphs.
+
+
 ## 3.0.0-rc.1 — Works for the author
 
 - Added shared working principles that every skill links: the author's word is enough, ask as little as possible, do it the author's way, never invent (the one hard boundary, answered with a slot rather than a refusal), lead with strength, and keep drafts clean with one closing checklist.

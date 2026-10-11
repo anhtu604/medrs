@@ -1,0 +1,17 @@
+profile_id: project-ck2
+document_type: project-ck2
+title: Đề tài nghiên cứu chuyên khoa cấp II — mức cơ bản
+convention:
+  status: CONVENTION
+  frame: ["Đặt vấn đề", "Tổng quan", "Đối tượng và phương pháp nghiên cứu", "Kết quả", "Bàn luận", "Kết luận", "Khuyến nghị", "Tài liệu tham khảo", "Phụ lục cần thiết"]
+  abstract_languages: [vi]
+  discussion_scope: Ngắn, theo mục tiêu và ý nghĩa lâm sàng cụ thể; không thêm câu đóng góp theo khuôn
+  analysis_depth: Cơ bản phù hợp thiết kế; nâng cao chỉ khi câu hỏi yêu cầu hoặc tác giả giao
+  literature_comparison: Nghiên cứu gốc gần nhất về đối tượng, chỉ tiêu và thời gian; ưu tiên nguồn trong nước phù hợp
+  strengths_limitations: {placement: end-of-discussion-chapter, heading_vi: "Điểm mạnh và hạn chế", heading_en: "Strengths and limitations"}
+  contributions_section: null
+  section_word_budget: {introduction: 500, literature-review: 2200, methods: 1800, results: 2500, discussion: 2500, conclusion: 350, abstract: 300}
+  complexity: basic-question-led
+  budget_policy: Planning ceilings, not mandatory minima; author and official institution rules override
+rules: null
+rules_note: Mặc định biên tập MedRS đã được tác giả đồng ý; không phải quy định trường. Đề tài CK2 khác luận văn CK2 theo mẫu trường; nguồn trường được áp khi tác giả cung cấp.

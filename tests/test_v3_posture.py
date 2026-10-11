@@ -18,7 +18,7 @@ def test_discussion_keeps_limitations_in_one_section():
     skill = (ROOT / "skills/viet-ban-luan/SKILL.md").read_text(encoding="utf-8")
     workflow = (ROOT / "skills/viet-ban-luan/references/discussion-workflow.md").read_text(encoding="utf-8")
     assert "finding → meaning → contribution → comparison" in skill
-    assert "Limitations do not appear in argument paragraphs." in workflow
+    assert "Retain a local qualification" in workflow
     assert "bias/confounding/chance → limitation" not in skill
 
 

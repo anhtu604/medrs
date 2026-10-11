@@ -2,7 +2,7 @@
 name: viet-ban-luan
 description: "Viết phần Bàn luận làm nổi bật phát hiện và đóng góp của nghiên cứu, so sánh với y văn, gom điểm mạnh và hạn chế vào một mục riêng. Writes a strength-led Discussion."
 metadata:
-  version: 3.0.0-rc.1
+  version: 3.1.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]
@@ -17,4 +17,4 @@ Read [references/discussion-workflow.md](references/discussion-workflow.md), the
 
 Use verified Results, the study design and its inferential ceiling, the source ledger, and the document-type profile. A target journal and comparator papers help but are optional.
 
-Draft argument paragraphs as finding → meaning → contribution → comparison with the literature, each stated at the strength the design supports. Then write one strengths-and-limitations section placed by the profile, strengths first, each limitation paired with how it was mitigated or why it does not overturn the finding. Missing support stays as `[CẦN TRÍCH DẪN: …]` / `[SOURCE NEEDED: …]`. Return the draft, paragraph map, evidence-needs matrix, audit results and the closing checklist.
+Use finding → meaning → contribution → comparison as a menu of useful argument moves, not mandatory sentences in every paragraph. Include a contribution only when supported and useful. Compare the nearest relevant original studies; explain differences only to the extent sources support. Check the direction of each explanation and preserve valuable comparisons when shortening. Keep general limitations in one profile-placed section, retaining local qualification needed to avoid misleading claims. Do not invent mitigation. Missing support stays as `[CẦN TRÍCH DẪN: …]` / `[SOURCE NEEDED: …]`. Return the draft, paragraph map, evidence-needs matrix, audit results and the closing checklist.

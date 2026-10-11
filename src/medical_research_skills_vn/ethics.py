@@ -36,7 +36,13 @@ def validate_source_registers(root: Path, as_of: date) -> list[SourceIssue]:
         if not register.get("sources"):
             issues.append(SourceIssue("SOURCE_REGISTER_EMPTY", str(path), "At least one source is required"))
             continue
-        issues.extend(validate_sources(register, as_of).issues)
+        # Distribution may carry explicitly quarantined historical sources.
+        # Runtime validate_sources still returns SOURCE_STALE and its banner.
+        quarantined = {item["id"] for item in register["sources"]
+                       if item.get("verification_status") == "STALE"
+                       and item.get("stale_action") == "BLOCK_CURRENT_RULES"}
+        issues.extend(issue for issue in validate_sources(register, as_of).issues
+                      if not (issue.code == "SOURCE_STALE" and issue.source_id in quarantined))
     return issues
 
 
