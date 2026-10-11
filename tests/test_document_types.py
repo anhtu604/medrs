@@ -17,7 +17,7 @@ from medical_research_skills_vn.document_types import (
 ROOT = Path(__file__).parents[1]
 
 
-def test_all_eight_profiles_ship_and_validate():
+def test_all_profiles_ship_and_validate():
     assert DOCUMENT_TYPES == (
         "journal-article-vn",
         "journal-article-intl",
@@ -27,6 +27,11 @@ def test_all_eight_profiles_ship_and_validate():
         "protocol",
         "project-ck2",
         "project-institutional",
+        "thesis-undergraduate",
+        "report-institutional",
+        "report-ministry",
+        "council-response",
+        "defense-slides",
     )
     assert validate_document_type_profiles(ROOT, date(2026, 9, 25)) == []
 

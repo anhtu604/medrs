@@ -1,5 +1,17 @@
 # HMU thesis profile use
 
+For official-source readiness use `../scripts/profile_policy.py::profile_readiness`: source kind must be presentation rules, with version/license/date/hash, nonempty locators and explicit applicability. Metadata READY is not checksum verification of a physical snapshot or final Word acceptance. Expired sources return STALE; a training regulation cannot pass as presentation rules. No host browsing means retain the last verified date and show the freshness/access warning rather than claim a current check.
+
+On 2026-10-11 the public attachment endpoint returned a server configuration error. The author's existing copy matches the register hash; P3/P82 explicitly concern master's theses. CKII/BSNT source acquisition is blocked under `sources/hmu/ckii-bsnt/BLOCKED.md`; the broad audience of the index does not authorize extending the master's rules. Conditional drafting may proceed from a declared convention; official acceptance cannot.
+
+## Other deliverables and tables
+
+Document-type profiles also provide explicit CONVENTION defaults for undergraduate theses, completion reports at institutional/ministry level, council responses and defense slides. These are editing aids, not official templates. An institutional completion report follows approved objectives and actual products; the project-institutional convention describes research depth, not a guarantee of administrative report compliance. Ministry reports require the specific task contract/official form; never infer cover, budget forms, signature blocks or required chapters from the word "ministry".
+
+A council response maps each requested change to the exact returned manuscript and location; disputed requests include a reason and author decision. A defense outline emphasizes question, design, key results, clinical meaning and limitations. Do not import the master's 20-minute presentation rule into another program without source applicability. Actual slide design belongs to the presentation capability of the host, and no runtime means an outline only, not a generated validated deck.
+
+Table borders are source-specific: journal no-vertical/minimal rules do not automatically replace an institutional grid, and equal-width columns are not a universal rule. `table_border_policy` returns only an explicit supported profile choice or a scoped approved author exception; absent rules require approval. Preserve the exception's reason and scope, and do not label it institutionally official. Local preference cannot turn an unavailable official source into READY.
+
 The encoded master-thesis profile is derived from HMU's official “Yêu cầu đối với luận văn” DOCX, linked from the official 2026 postgraduate-defense page. The repository source register records the download URL, retrieval date and SHA-256. Before use, verify the snapshot checksum and every paragraph locator consumed by the profile. The snapshot is retained for verification and excluded from redistributable packages because redistribution permission is not stated.
 
 The official sequence places preliminary matter before Đặt vấn đề, followed by Chapter 1 Tổng quan, Chapter 2 Đối tượng và phương pháp nghiên cứu, Chapter 3 Kết quả, Chapter 4 Bàn luận, Kết luận, references and appendices; recommendations are conditional. The profile records labels and aliases without treating an alias as authority to rewrite content.

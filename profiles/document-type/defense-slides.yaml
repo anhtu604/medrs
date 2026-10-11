@@ -1,0 +1,17 @@
+profile_id: defense-slides
+document_type: defense-slides
+title: Trình bày bảo vệ — quy ước nội dung
+convention:
+  status: CONVENTION
+  frame: ["Vấn đề và mục tiêu","Phương pháp","Kết quả chính","Bàn luận trọng tâm","Kết luận","Hạn chế và câu hỏi"]
+  abstract_languages: [vi]
+  discussion_scope: Ngắn, dễ theo dõi; số phút và số slide theo nguồn trường hoặc tác giả
+  analysis_depth: Cơ bản theo câu hỏi và thiết kế; nâng cao chỉ khi cần hoặc được giao
+  literature_comparison: Nguồn gốc phù hợp đối tượng, thời điểm và kết cục
+  strengths_limitations: {placement: end-of-discussion, heading_vi: "Điểm mạnh và hạn chế", heading_en: "Strengths and limitations"}
+  contributions_section: null
+  section_word_budget: {introduction: 400, methods: 1200, results: 1800, discussion: 1500, conclusion: 300}
+  complexity: basic-question-led
+  budget_policy: Planning ceilings only; actual task and official rules override
+rules: null
+rules_note: Quy ước biên tập MedRS, không phải mẫu chính thức. Cần nguồn của đơn vị, phiên bản và locators trước nghiệm thu hình thức; có thể viết nháp có điều kiện.

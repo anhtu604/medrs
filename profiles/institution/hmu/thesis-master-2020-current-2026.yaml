@@ -1,6 +1,8 @@
 profile_id: hmu-thesis-master-2020-current-2026
 institution: Hanoi Medical University
 document_type: master-thesis
+source_kind: presentation-rules
+applicable_document_types: [master-thesis]
 source_url: https://sdh.hmu.edu.vn/images/9_%20Yeu%20cau%20luan%20van_2020%281%29.docx
 source_version: Yêu cầu đối với luận văn 2020, linked from HMU 2026 defense page
 source_license: Official institutional document; redistribution permission not stated

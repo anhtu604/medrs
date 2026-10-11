@@ -22,6 +22,11 @@ DOCUMENT_TYPES = (
     "protocol",
     "project-ck2",
     "project-institutional",
+    "thesis-undergraduate",
+    "report-institutional",
+    "report-ministry",
+    "council-response",
+    "defense-slides",
 )
 LEGACY_DOCUMENT_TYPES = {"thesis": "thesis-master", "dissertation": "dissertation-doctoral", "protocol": "protocol"}
 ARTICLE_ALIASES = {"journal-article", "manuscript"}
@@ -75,6 +80,11 @@ def resolve_document_type(value: str, locale_profile: str) -> str:
         "đề tài cơ sở": "project-institutional", "de tai co so": "project-institutional",
         "institutional project": "project-institutional",
         "luận văn ck2": "thesis-specialist",
+        "luận văn đại học": "thesis-undergraduate",
+        "báo cáo đề tài cơ sở": "report-institutional",
+        "báo cáo đề tài cấp bộ": "report-ministry",
+        "giải trình hội đồng": "council-response",
+        "slide bảo vệ": "defense-slides",
     }
     if normalized in project_aliases:
         return project_aliases[normalized]
