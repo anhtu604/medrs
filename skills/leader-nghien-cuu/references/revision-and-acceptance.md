@@ -1,5 +1,7 @@
 # Revision and final acceptance
 
+For author-returned or external-AI revisions use [../scripts/external_revision.py](../scripts/external_revision.py) and [../../../schemas/external-handoff.schema.json](../../../schemas/external-handoff.schema.json). Prepare a local, source-hash-bound prompt/manifest for selected fields, destination, data class and confirmed scope. It does not send anything. Compare the returned file with the last delivered hash before another round. Protected-field/footnote/comment loss prevents acceptance; numerical, study-design and scope changes require semantic review even when mechanical checks pass. `REVIEW_REQUIRED` is not acceptance. Use its event recorder for the dated project log without copying manuscript text into that log.
+
 ## Effective work order
 
 At the start of a substantive round, inspect the author's designated input and its comments, headings, live citations, tracked revisions and modified time. Record the source path/hash, work-order revision, all requested items, owners, expected tables/figures, output destination and protected regions. An explicitly replaced assignment is superseded; unrelated additions remain active. An ambiguous source/comment mismatch warrants one bounded clarification. Continue independent items while it is pending.

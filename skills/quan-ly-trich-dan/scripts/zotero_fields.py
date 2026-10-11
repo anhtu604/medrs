@@ -18,6 +18,13 @@ from copy import deepcopy
 from dataclasses import dataclass, field
 from itertools import count
 from pathlib import Path
+from tempfile import TemporaryDirectory
+import sys
+
+_leader_scripts = Path(__file__).parents[3] / "skills/leader-nghien-cuu/scripts"
+if str(_leader_scripts) not in sys.path:
+    sys.path.insert(0, str(_leader_scripts))
+from revision_guard import snapshot, commit_new_artifact
 
 from docx import Document
 from docx.oxml import OxmlElement
@@ -224,13 +231,17 @@ def _expand_citations(text: str, resolver) -> tuple[str, dict[str, list], list[s
 
 
 def apply_edits(
-    path: Path, edits: dict[int, str], out_path: Path, *, expected_sha256: str | None = None, resolver=None
+    path: Path, edits: dict[int, str], out_path: Path, *, expected_sha256: str | None = None, resolver=None,
+    allow_emphasis_reflow: bool = False
 ) -> dict:
     path, out_path = Path(path), Path(out_path)
     if expected_sha256 and _sha256(path) != expected_sha256:
         raise ZoteroFieldError("SOURCE_CHANGED_SINCE_EXPORT")
     if path.resolve() == out_path.resolve():
         raise ZoteroFieldError("SOURCE_OVERWRITE_FORBIDDEN")
+    if out_path.exists():
+        raise ZoteroFieldError("OUTPUT_ALREADY_EXISTS")
+    source_snapshot = snapshot(path)
     document = Document(str(path))
     counter = count(1)
     depth = 0
@@ -242,16 +253,20 @@ def apply_edits(
             continue
         if not pf.editable:
             raise ZoteroFieldError(f"PARAGRAPH_NOT_EDITABLE:{index}:{pf.reason}")
+        if pf.mixed_formatting and not allow_emphasis_reflow:
+            raise ZoteroFieldError(f"MIXED_FORMATTING_APPROVAL_REQUIRED:{index}")
         new_text, citations, missing, diagnostics = _expand_citations(edits[index], resolver)
         unresolved.extend(missing)
         citation_diagnostics.extend(diagnostics)
         detokenize_paragraph(p, new_text, pf, citations)
-    document.save(str(out_path))
-    report = audit(path, out_path)
-    report["unresolved_citations"] = sorted(set(unresolved))
-    report["citation_diagnostics"] = sorted(set(citation_diagnostics))
-    if report["status"] == "BLOCKED":
-        out_path.unlink()
+    with TemporaryDirectory(prefix="medrs-zotero-") as temporary:
+        staged = Path(temporary) / "edited.docx"
+        document.save(str(staged))
+        report = audit(path, staged)
+        report["unresolved_citations"] = sorted(set(unresolved))
+        report["citation_diagnostics"] = sorted(set(citation_diagnostics))
+        if report["status"] != "BLOCKED":
+            commit_new_artifact(staged, out_path, source_snapshot, owner="zotero-roundtrip")
     return report
 
 

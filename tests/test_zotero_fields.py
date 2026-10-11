@@ -20,6 +20,26 @@ from zotero_fields import (
 )
 
 
+def test_apply_cannot_overwrite_existing_author_output(tmp_path):
+    source = make_docx(tmp_path / "source.docx")
+    out = tmp_path / "author-output.docx"
+    out.write_bytes(b"author edits")
+    with pytest.raises((ZoteroFieldError, FileExistsError), match="OUTPUT_ALREADY_EXISTS"):
+        apply_edits(source, {}, out)
+    assert out.read_bytes() == b"author edits"
+
+
+def test_mixed_emphasis_edit_requires_explicit_reflow_choice(tmp_path):
+    source = tmp_path / "source.docx"
+    doc = Document()
+    p = doc.add_paragraph("Plain ")
+    p.add_run("important").bold = True
+    doc.save(source)
+    with pytest.raises(ZoteroFieldError, match="MIXED_FORMATTING_APPROVAL_REQUIRED"):
+        apply_edits(source, {0: "Rewritten prose"}, tmp_path / "out.docx")
+    assert Document(source).paragraphs[0].runs[1].bold is True
+
+
 INSTRUCTION = (
     'ADDIN ZOTERO_ITEM CSL_CITATION {"citationID":"a1b2c3","properties":{"formattedCitation":"(Nguyễn, 2020)",'
     '"plainCitation":"(Nguyễn, 2020)","noteIndex":0},"citationItems":[{"id":15,"uris":'

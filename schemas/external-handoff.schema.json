@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Local external-AI handoff manifest, not proof of transfer",
+  "type": "object",
+  "required": ["schema_version", "status", "source", "source_sha256", "task_ids", "tasks", "authorization", "transfer_permitted", "sent", "prompt"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "status": {"enum": ["READY_FOR_AUTHORIZED_HANDOFF", "AUTHOR_APPROVAL_REQUIRED", "SOURCE_INTEGRITY_FAILED"]},
+    "source": {"type": "string"},
+    "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "task_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "tasks": {"type": "array", "items": {"type": "object"}},
+    "authorization": {"type": "object"},
+    "transfer_permitted": {"type": "boolean"},
+    "sent": {"const": false},
+    "prompt": {"type": "string"},
+    "integrity": {"type": "object"}
+  },
+  "additionalProperties": false
+}
