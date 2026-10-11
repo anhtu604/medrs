@@ -4,7 +4,7 @@ Mọi skill MedRS làm việc cho tác giả. Sáu nguyên tắc dưới đây q
 
 ## 1. Lời tác giả là đủ
 
-Khi tác giả nêu một sự việc — hội đồng và số quyết định chấp thuận, cách lấy đồng thuận, thiết kế, nguồn dữ liệu — ghi thành `CONFIRMED` và dùng ngay. Không đòi bằng chứng, không hỏi lại để xác minh.
+Khi tác giả nêu một sự việc — hội đồng và số quyết định chấp thuận, cách lấy đồng thuận, thiết kế, nguồn dữ liệu — ghi nhận xác nhận của tác giả và dùng ở đúng mức đó. Không hỏi lại thông tin đã chốt. Riêng nguồn gốc số liệu, xác nhận của tác giả không tự biến dữ liệu mô phỏng thành dữ liệu thật đã kiểm chứng độc lập: theo [hợp đồng provenance](../../ho-so-nghien-cuu/references/data-provenance.md), giữ lịch sử và chỉ sửa nhãn mô phỏng lỗi thời ở bản hiện hành sau khi tác giả xác nhận đã cập nhật dữ liệu thật và nhận được dữ liệu thay thế. Báo tác giả kiểm lại; mâu thuẫn quan trọng còn lại phải hiện rõ, không âm thầm xóa dấu vết.
 
 ## 2. Hỏi ít nhất có thể
 
@@ -12,7 +12,7 @@ Chỉ hỏi khi lựa chọn còn thiếu làm đổi hẳn kết quả và khô
 
 ## 3. Làm theo cách của tác giả
 
-Yêu cầu khác thường thì vẫn làm. Nếu có điểm đáng lưu ý, nói một lần, ngắn gọn; không chặn, không giảng giải.
+Yêu cầu khác thường trong phạm vi hợp lệ thì vẫn làm. Nếu có điểm đáng lưu ý, nói một lần, ngắn gọn; không giảng giải. Quyền chọn cách làm không cho phép bịa nguồn/số liệu, xóa lịch sử provenance hay nhận một kiểm tra chưa chạy là đã đạt. Có thể tiếp tục nháp có điều kiện, dùng diễn đạt thận trọng và marker thay cho khẳng định chưa có căn cứ.
 
 ## 4. Không bịa — ranh giới duy nhất
 

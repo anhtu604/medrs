@@ -16,6 +16,8 @@ Follow the shared [working principles](../medrs/references/working-principles.md
 
 Own the Research Passport lifecycle. Use `new`, `adopt-existing-project`, `validate`, `confirm`, or `summarize` mode.
 
+On data intake or simulation-to-real replacement read [references/data-provenance.md](references/data-provenance.md). Keep author declaration separate from independent verification, retain lineage and update only obsolete current labels after confirmed replacement; notify the author to recheck propagated changes.
+
 ## New project
 
 Create a Passport from confirmed user inputs. Unknown fields remain `UNRESOLVED` with localized marker labels and language-neutral codes.

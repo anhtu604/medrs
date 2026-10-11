@@ -4,6 +4,8 @@ For author-returned or external-AI revisions use [../scripts/external_revision.p
 
 ## Effective work order
 
+If data are replaced, apply the [data-provenance contract](../../ho-so-nghien-cuu/references/data-provenance.md): reuse author confirmation, receive the replacement, archive prior simulation lineage and propagate current label/results changes. Author declaration alone is not an independent verification receipt. Notify the author to recheck; unresolved provenance or partial replacement prevents unconditional final claims, not independent conditional drafting.
+
 At the start of a substantive round, inspect the author's designated input and its comments, headings, live citations, tracked revisions and modified time. Record the source path/hash, work-order revision, all requested items, owners, expected tables/figures, output destination and protected regions. An explicitly replaced assignment is superseded; unrelated additions remain active. An ambiguous source/comment mismatch warrants one bounded clarification. Continue independent items while it is pending.
 
 Author edits and decisions persist. Store terminology with its scope and allowed exceptions, codebook labels, clinical definitions, typography, punctuation, decimal/p display, table layout, removed notes/sections, and arguments/sources to retain. Apply the latest confirmed decision across every dependent item; do not resurrect removed material when rerunning a script. Institutional requirements and author exceptions must have their provenance recorded. Do not treat the ROP project's 13 pt, LPR project's 14 pt, personal vocabulary, or number of references as universal defaults.

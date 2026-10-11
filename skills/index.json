@@ -165,7 +165,8 @@
       ],
       "skill_path": "skills/ho-so-nghien-cuu/SKILL.md",
       "reference_files": [
-        "skills/ho-so-nghien-cuu/references/adopt-existing-project.md"
+        "skills/ho-so-nghien-cuu/references/adopt-existing-project.md",
+        "skills/ho-so-nghien-cuu/references/data-provenance.md"
       ]
     },
     {

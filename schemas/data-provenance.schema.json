@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MedRS data transition with retained simulation lineage",
+  "type": "object",
+  "required": ["state", "digest", "remove_current_simulation_labels", "author_recheck_required", "history_preserved", "history", "qualifications", "author_declaration"],
+  "properties": {
+    "state": {"enum": ["SIMULATED", "UNRESOLVED", "AUTHOR_DECLARED_REAL", "VERIFIED_REAL"]},
+    "digest": {"type": ["string", "null"]},
+    "remove_current_simulation_labels": {"type": "boolean"},
+    "author_recheck_required": {"type": "boolean"},
+    "history_preserved": {"const": true},
+    "history": {"type": "array", "items": {"type": "object"}},
+    "qualifications": {"type": "array", "items": {"type": "string"}},
+    "author_declaration": {"enum": [null, "REAL_UPDATED", "STILL_SIMULATED"]}
+  },
+  "additionalProperties": false
+}
