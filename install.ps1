@@ -31,7 +31,7 @@ foreach ($name in $skillNames) {
     throw "Indexed skill is missing its SKILL.md: $name"
   }
 }
-foreach ($shared in @('coverage', 'profiles', 'schemas')) {
+foreach ($shared in @('coverage', 'profiles', 'schemas', 'docs')) {
   if (-not (Test-Path -LiteralPath (Join-Path $SourceRoot $shared) -PathType Container)) {
     throw "Install source is missing shared resource: $shared"
   }
@@ -74,8 +74,15 @@ foreach ($target in $Targets) {
       [IO.File]::WriteAllText($entry, $text, (New-Object Text.UTF8Encoding $false))
       $head = [IO.File]::ReadAllBytes($entry) | Select-Object -First 3
       if (($head -join ',') -ne '45,45,45') { throw "Skill frontmatter encoding failed: $name" }
+      foreach ($markdown in Get-ChildItem -LiteralPath $stagedSkill -Recurse -File -Filter '*.md') {
+        $content = Get-Content -LiteralPath $markdown.FullName -Raw -Encoding UTF8
+        foreach ($resource in @('coverage', 'profiles', 'schemas', 'docs')) {
+          $content = $content.Replace("../../$resource/", "../../$PackageName/$resource/")
+        }
+        [IO.File]::WriteAllText($markdown.FullName, $content, (New-Object Text.UTF8Encoding $false))
+      }
     }
-    foreach ($shared in @('coverage', 'profiles', 'schemas')) {
+    foreach ($shared in @('coverage', 'profiles', 'schemas', 'docs')) {
       Copy-Item -LiteralPath (Join-Path $SourceRoot $shared) -Destination (Join-Path $stage $shared) -Recurse -Force
     }
     if ((Get-ChildItem -LiteralPath (Join-Path $stage 'skills') -Directory).Count -ne $ExpectedSkillCount) {
@@ -105,7 +112,7 @@ foreach ($target in $Targets) {
       $activated += $name
     }
     New-Item -ItemType Directory -Path $supportDestination -Force | Out-Null
-    foreach ($shared in @('coverage', 'profiles', 'schemas')) {
+    foreach ($shared in @('coverage', 'profiles', 'schemas', 'docs')) {
       Move-Item -LiteralPath (Join-Path $stage $shared) -Destination (Join-Path $supportDestination $shared)
     }
     $manifest = [ordered]@{

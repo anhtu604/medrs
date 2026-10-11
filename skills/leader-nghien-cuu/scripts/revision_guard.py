@@ -138,6 +138,8 @@ def receipt_is_current(receipt):
 def status_receipt_issues(receipt, context):
     """Context/evidence presence validation; never substitutes for external review."""
     registry_path = Path(__file__).resolve().parents[3] / "schemas/status-codes.json"
+    if not registry_path.is_file():
+        registry_path = Path(__file__).resolve().parents[3] / "medical-research-skills-vn/schemas/status-codes.json"
     try:
         codes = json.loads(registry_path.read_text(encoding="utf-8"))["codes"]
     except (OSError, ValueError, KeyError):

@@ -64,6 +64,23 @@ def test_failed_source_validation_does_not_replace_existing_install(tmp_path):
     assert marker.read_text(encoding="utf-8") == "preserve"
 
 
+def test_installed_registry_and_nested_reference_links_resolve(tmp_path):
+    import sys
+    user_root = tmp_path / "user"
+    result = _run("install.ps1", "-SourceRoot", ROOT, "-UserRoot", user_root, "-Targets", "codex", "-Quiet")
+    assert result.returncode == 0, result.stderr + result.stdout
+    host = user_root / ".codex"
+    code = "import runpy,sys; g=runpy.run_path(sys.argv[1]); assert g['status_receipt_issues']({'status':'UNPERFORMED'},'artifact-check') == []"
+    probe = subprocess.run([sys.executable, "-I", "-c", code,
+                            str(host / "skills/leader-nghien-cuu/scripts/revision_guard.py")], capture_output=True, text=True)
+    assert probe.returncode == 0, probe.stderr
+    entry = host / "skills/leader-nghien-cuu/SKILL.md"
+    assert "../../medical-research-skills-vn/schemas/" in entry.read_text(encoding="utf-8")
+    nested = host / "skills/leader-nghien-cuu/references/project-workspace.md"
+    assert "../../../medical-research-skills-vn/schemas/" in nested.read_text(encoding="utf-8")
+    assert (host / "medical-research-skills-vn/docs/source-gaps.md").is_file()
+
+
 def test_uninstaller_removes_only_manifest_owned_paths(tmp_path):
     user_root = tmp_path / "user"
     assert _run("install.ps1", "-SourceRoot", ROOT, "-UserRoot", user_root, "-Targets", "codex", "-Quiet").returncode == 0
