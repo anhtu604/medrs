@@ -1,0 +1,40 @@
+instrument: PRISMA-ScR
+version: 2018 statement; fillable form 11 September 2019
+source_version: 2018 statement; fillable form 11 September 2019
+implemented_version: 2018 statement; fillable form 11 September 2019
+source_url: https://www.prisma-statement.org/s/PRISMA-ScR-Fillable-Checklist_11Sept2019.pdf
+source_sha256: 1b70ecd1d4fc1105d9abc4996e6a3d1822986d00fdf22061f3aa8b9c237facf2
+license: Public checklist; redistribution terms not established here; independently written navigation, no official wording reproduced; lawful original required at use
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+status: SOURCE_MAPPED
+coverage_scope: item navigation; original checklist required for complete reporting judgment
+official_tool_required_at_use: true
+applicability: scoping reviews and evidence maps
+expected_ids: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22']
+implemented_ids: ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22']
+items:
+  - {id: '1', operational_prompt: Check review-type identification., source_locator: 'PDF page 1 item 1'}
+  - {id: '2', operational_prompt: Audit abstract coverage., source_locator: 'PDF page 1 item 2'}
+  - {id: '3', operational_prompt: Check approach justification., source_locator: 'PDF page 1 item 3'}
+  - {id: '4', operational_prompt: Identify explicit review questions., source_locator: 'PDF page 1 item 4'}
+  - {id: '5', operational_prompt: Check protocol availability and registration., source_locator: 'PDF page 1 item 5'}
+  - {id: '6', operational_prompt: Audit inclusion rules and rationale., source_locator: 'PDF page 1 item 6'}
+  - {id: '7', operational_prompt: Identify search sources and dates., source_locator: 'PDF page 1 item 7'}
+  - {id: '8', operational_prompt: Verify reproducible search syntax., source_locator: 'PDF page 1 item 8'}
+  - {id: '9', operational_prompt: Trace screening procedures., source_locator: 'PDF page 1 item 9'}
+  - {id: '10', operational_prompt: Audit charting procedures., source_locator: 'PDF page 1 item 10'}
+  - {id: '11', operational_prompt: Identify variables and assumptions., source_locator: 'PDF page 1 item 11'}
+  - {id: '12', operational_prompt: If performed audit appraisal methods., source_locator: 'PDF page 1 item 12', optional: true}
+  - {id: '13', operational_prompt: Audit summarization methods., source_locator: 'PDF page 1 item 13'}
+  - {id: '14', operational_prompt: Reconcile screening counts and exclusions., source_locator: 'PDF page 2 item 14'}
+  - {id: '15', operational_prompt: Trace source characteristics and citations., source_locator: 'PDF page 2 item 15'}
+  - {id: '16', operational_prompt: If performed locate appraisal findings., source_locator: 'PDF page 2 item 16', optional: true}
+  - {id: '17', operational_prompt: Trace each source contribution., source_locator: 'PDF page 2 item 17'}
+  - {id: '18', operational_prompt: Match aggregate findings to questions., source_locator: 'PDF page 2 item 18'}
+  - {id: '19', operational_prompt: Check meaning for relevant audiences., source_locator: 'PDF page 2 item 19'}
+  - {id: '20', operational_prompt: Examine review-process limitations., source_locator: 'PDF page 2 item 20'}
+  - {id: '21', operational_prompt: Check bounded interpretation and implications., source_locator: 'PDF page 2 item 21'}
+  - {id: '22', operational_prompt: Audit funding transparency and involvement., source_locator: 'PDF page 2 item 22'}

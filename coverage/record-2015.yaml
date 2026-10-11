@@ -1,0 +1,31 @@
+instrument: "RECORD"
+version: "2015"
+source_version: "2015"
+implemented_version: "2015"
+source_url: https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001885
+source_sha256: 7a61e501a2b4220e6203e097d27acea5f5cbb66a60cebd2d8618fda35c16b574
+license: "CC BY as stated by PLOS; independently written navigation; original required"
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+status: SOURCE_MAPPED
+coverage_scope: Navigation only; load complete lawful original before item judgments
+official_tool_required_at_use: true
+applicability: "routine health data observational studies; supplements STROBE"
+expected_ids: ["1.1","1.2","1.3","6.1","6.2","6.3","7.1","12.1","12.2","12.3","13.1","19.1","22.1"]
+implemented_ids: ["1.1","1.2","1.3","6.1","6.2","6.3","7.1","12.1","12.2","12.3","13.1","19.1","22.1"]
+items:
+  - {id: '1.1', operational_prompt: 'Data type and database names.', source_locator: 'PDF page 4 item 1.1'}
+  - {id: '1.2', operational_prompt: 'Place and period.', source_locator: 'PDF page 4 item 1.2'}
+  - {id: '1.3', operational_prompt: 'Linkage identified in summary.', source_locator: 'PDF page 4 item 1.3'}
+  - {id: '6.1', operational_prompt: 'Population selection algorithms or justified disclosure limits.', source_locator: 'PDF page 4 item 6.1'}
+  - {id: '6.2', operational_prompt: 'Algorithm validation.', source_locator: 'PDF page 4 item 6.2'}
+  - {id: '6.3', operational_prompt: 'Linkage flow and counts.', source_locator: 'PDF page 4 item 6.3'}
+  - {id: '7.1', operational_prompt: 'Variable code lists or justified disclosure limits.', source_locator: 'PDF page 4 item 7.1'}
+  - {id: '12.1', operational_prompt: 'Investigator database access.', source_locator: 'PDF page 4 item 12.1'}
+  - {id: '12.2', operational_prompt: 'Data cleaning.', source_locator: 'PDF page 4 item 12.2'}
+  - {id: '12.3', operational_prompt: 'Linkage procedures and quality.', source_locator: 'PDF page 5 item 12.3'}
+  - {id: '13.1', operational_prompt: 'Selection filters and availability.', source_locator: 'PDF page 5 item 13.1'}
+  - {id: '19.1', operational_prompt: 'Routine data limitations and changing eligibility.', source_locator: 'PDF page 5 item 19.1'}
+  - {id: '22.1', operational_prompt: 'Lawful access to protocol data and code.', source_locator: 'PDF page 5 item 22.1'}

@@ -11,12 +11,16 @@ def test_hmu_profile_is_source_traceable_to_registered_official_docx():
     profile = load_structure_profile(PROFILE)
     result = verify_profile_source(ROOT, profile)
 
-    assert result["status"] == "VERIFIED"
-    assert result["sha256"] == "6FAFDBB41FD09AE6D506661D2F7D9C0AC02B6B7DE6A3FF9A147CD551C125054F"
-    assert result["verification_basis"] in {
-        "LOCAL_SOURCE_HASH_AND_LOCATORS",
-        "REGISTERED_PROVENANCE_SOURCE_NOT_BUNDLED",
-    }
+    expected_hash = "6FAFDBB41FD09AE6D506661D2F7D9C0AC02B6B7DE6A3FF9A147CD551C125054F"
+    assert profile["source_sha256"].upper() == expected_hash
+    if (ROOT / profile["source_path"]).is_file():
+        assert result["status"] == "VERIFIED"
+        assert result["sha256"] == expected_hash
+        assert result["verification_basis"] == "LOCAL_SOURCE_HASH_AND_LOCATORS"
+    else:
+        assert result["status"] == "OFFICIAL_RULE_REQUIRED"
+        assert result["reason"] == "SOURCE_MISSING"
+        assert result["source_available"] is False
     assert all(rule["source_locator"].startswith("P") for rule in profile["semantic_rules"])
 
 

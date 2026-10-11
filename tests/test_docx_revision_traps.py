@@ -14,7 +14,7 @@ from docx.shared import Pt
 
 from medical_research_skills_vn.docx_formatting import format_docx
 from medical_research_skills_vn.docx_validation import validate_docx
-from medical_research_skills_vn.structure_profiles import load_structure_profile
+from profile_fixture import load_test_profile as load_structure_profile
 from medical_research_skills_vn.packaging import build_cowork_package
 
 ROOT = Path(__file__).resolve().parents[1]

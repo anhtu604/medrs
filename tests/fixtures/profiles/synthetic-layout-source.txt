@@ -1,0 +1,1 @@
+Synthetic rules for unit testing document mechanics only. Not official HMU guidance.

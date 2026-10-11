@@ -1,0 +1,57 @@
+instrument: CROSS
+version: 2021 publisher Supplement 3
+source_version: 2021 publisher Supplement 3
+implemented_version: 2021 publisher Supplement 3
+source_url: https://media.springernature.com/original/springer-static/esm/art%3A10.1007%2Fs11606-021-06737-1/MediaObjects/11606_2021_6737_MOESM1_ESM.docx
+source_sha256: 760cad7798208dfb69b6810b013ec5fc3bdc11f86e4af7a6ee0e7a7ae29fcbab
+license: Copyright Society of General Internal Medicine 2021; redistribution permission not asserted; independent navigation; lawful original required
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+status: SOURCE_MAPPED
+coverage_scope: Original Supplement 3 navigation; Table 1 has a 9c numbering discrepancy and is not the ID authority
+official_tool_required_at_use: true
+expected_ids: ["1a","1b","2","3","4","5a","5b","5c","5d","6a","6b","6c","6d","7a","7b","7c","8","9a","9b","10a","10b","10c","10d","10e","10f","10g","11a","11b","11c","11d","12","13a","13b","13c","14","15","16","17","18","19"]
+implemented_ids: ["1a","1b","2","3","4","5a","5b","5c","5d","6a","6b","6c","6d","7a","7b","7c","8","9a","9b","10a","10b","10c","10d","10e","10f","10g","11a","11b","11c","11d","12","13a","13b","13c","14","15","16","17","18","19"]
+items:
+  - {id: '1a', operational_prompt: 'Survey identification.', source_locator: 'DOCX table 1 Supplement 3 item 1a'}
+  - {id: '1b', operational_prompt: 'Summary coverage.', source_locator: 'DOCX table 1 Supplement 3 item 1b'}
+  - {id: '2', operational_prompt: 'Research rationale.', source_locator: 'DOCX table 1 Supplement 3 item 2'}
+  - {id: '3', operational_prompt: 'Explicit aims.', source_locator: 'DOCX table 1 Supplement 3 item 3'}
+  - {id: '4', operational_prompt: 'Design identification.', source_locator: 'DOCX table 1 Supplement 3 item 4'}
+  - {id: '5a', operational_prompt: 'Questionnaire structure.', source_locator: 'DOCX table 1 Supplement 3 item 5a'}
+  - {id: '5b', operational_prompt: 'Instruments measurement properties and scoring.', source_locator: 'DOCX table 1 Supplement 3 item 5b'}
+  - {id: '5c', operational_prompt: 'Pilot procedures if performed.', source_locator: 'DOCX table 1 Supplement 3 item 5c'}
+  - {id: '5d', operational_prompt: 'Questionnaire availability.', source_locator: 'DOCX table 1 Supplement 3 item 5d'}
+  - {id: '6a', operational_prompt: 'Eligibility and setting.', source_locator: 'DOCX table 1 Supplement 3 item 6a'}
+  - {id: '6b', operational_prompt: 'Sampling including clusters.', source_locator: 'DOCX table 1 Supplement 3 item 6b'}
+  - {id: '6c', operational_prompt: 'Sample size rationale.', source_locator: 'DOCX table 1 Supplement 3 item 6c'}
+  - {id: '6d', operational_prompt: 'Sample representativeness.', source_locator: 'DOCX table 1 Supplement 3 item 6d'}
+  - {id: '7a', operational_prompt: 'Administration and contacts.', source_locator: 'DOCX table 1 Supplement 3 item 7a'}
+  - {id: '7b', operational_prompt: 'Survey timing.', source_locator: 'DOCX table 1 Supplement 3 item 7b'}
+  - {id: '7c', operational_prompt: 'Entry accuracy or duplicate participation.', source_locator: 'DOCX table 1 Supplement 3 item 7c'}
+  - {id: '8', operational_prompt: 'Preparatory procedures.', source_locator: 'DOCX table 1 Supplement 3 item 8'}
+  - {id: '9a', operational_prompt: 'Ethics and consent as applicable.', source_locator: 'DOCX table 1 Supplement 3 item 9a'}
+  - {id: '9b', operational_prompt: 'Privacy protection.', source_locator: 'DOCX table 1 Supplement 3 item 9b'}
+  - {id: '10a', operational_prompt: 'Methods and software.', source_locator: 'DOCX table 1 Supplement 3 item 10a'}
+  - {id: '10b', operational_prompt: 'Variable changes.', source_locator: 'DOCX table 1 Supplement 3 item 10b'}
+  - {id: '10c', operational_prompt: 'Missingness assessment and handling.', source_locator: 'DOCX table 1 Supplement 3 item 10c'}
+  - {id: '10d', operational_prompt: 'Nonresponse handling.', source_locator: 'DOCX table 1 Supplement 3 item 10d'}
+  - {id: '10e', operational_prompt: 'Attrition for longitudinal studies.', source_locator: 'DOCX table 1 Supplement 3 item 10e'}
+  - {id: '10f', operational_prompt: 'Representativeness adjustment if used.', source_locator: 'DOCX table 1 Supplement 3 item 10f'}
+  - {id: '10g', operational_prompt: 'Sensitivity methods if performed.', source_locator: 'DOCX table 1 Supplement 3 item 10g'}
+  - {id: '11a', operational_prompt: 'Participant flow.', source_locator: 'DOCX table 1 Supplement 3 item 11a'}
+  - {id: '11b', operational_prompt: 'Nonparticipation explanations.', source_locator: 'DOCX table 1 Supplement 3 item 11b'}
+  - {id: '11c', operational_prompt: 'Response denominator and definition.', source_locator: 'DOCX table 1 Supplement 3 item 11c'}
+  - {id: '11d', operational_prompt: 'Unique online visitors and proportions.', source_locator: 'DOCX table 1 Supplement 3 item 11d'}
+  - {id: '12', operational_prompt: 'Sample outcome and confounder descriptions.', source_locator: 'DOCX table 1 Supplement 3 item 12'}
+  - {id: '13a', operational_prompt: 'Estimates and uncertainty.', source_locator: 'DOCX table 1 Supplement 3 item 13a'}
+  - {id: '13b', operational_prompt: 'Model development fit and assumptions.', source_locator: 'DOCX table 1 Supplement 3 item 13b'}
+  - {id: '13c', operational_prompt: 'Sensitivity findings.', source_locator: 'DOCX table 1 Supplement 3 item 13c'}
+  - {id: '14', operational_prompt: 'Bias and precision constraints.', source_locator: 'DOCX table 1 Supplement 3 item 14'}
+  - {id: '15', operational_prompt: 'Bounded interpretation.', source_locator: 'DOCX table 1 Supplement 3 item 15'}
+  - {id: '16', operational_prompt: 'Transferability.', source_locator: 'DOCX table 1 Supplement 3 item 16'}
+  - {id: '17', operational_prompt: 'Sponsor influence.', source_locator: 'DOCX table 1 Supplement 3 item 17'}
+  - {id: '18', operational_prompt: 'Competing interests.', source_locator: 'DOCX table 1 Supplement 3 item 18'}
+  - {id: '19', operational_prompt: 'Contributor acknowledgment.', source_locator: 'DOCX table 1 Supplement 3 item 19'}

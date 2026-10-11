@@ -1,0 +1,58 @@
+instrument: "SQUIRE 2.0"
+version: "15 September 2015"
+source_version: "15 September 2015"
+implemented_version: "15 September 2015"
+source_url: https://www.equator-network.org/wp-content/uploads/2012/12/SQUIRE-2.0-checklist.pdf
+source_sha256: 65cad45037ad6c47bb08c2541ffa56334fee8113ddfe5a880ee5383fa2162d4d
+license: "Public checklist; redistribution terms unresolved; independently written navigation; lawful original required"
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+status: SOURCE_MAPPED
+coverage_scope: Navigation only; load complete lawful original before item judgments
+official_tool_required_at_use: true
+applicability: "healthcare improvement studies"
+expected_ids: ["1","2a","2b","3","4","5","6","7","8a","8b","9a","9b","10a","10b","10c","11a","11b","12","13a","13b","13c","13d","13e","13f","14a","14b","15a","15b","15c","15d","15e","16a","16b","16c","17a","17b","17c","17d","17e","18"]
+implemented_ids: ["1","2a","2b","3","4","5","6","7","8a","8b","9a","9b","10a","10b","10c","11a","11b","12","13a","13b","13c","13d","13e","13f","14a","14b","15a","15b","15c","15d","15e","16a","16b","16c","17a","17b","17c","17d","17e","18"]
+items:
+  - {id: '1', operational_prompt: 'Improvement identification.', source_locator: 'PDF page 1 item 1'}
+  - {id: '2a', operational_prompt: 'Indexing information.', source_locator: 'PDF page 1 item 2a'}
+  - {id: '2b', operational_prompt: 'Summary coverage.', source_locator: 'PDF page 1 item 2b'}
+  - {id: '3', operational_prompt: 'Local problem.', source_locator: 'PDF page 1 item 3'}
+  - {id: '4', operational_prompt: 'Existing knowledge.', source_locator: 'PDF page 1 item 4'}
+  - {id: '5', operational_prompt: 'Intervention rationale.', source_locator: 'PDF page 1 item 5'}
+  - {id: '6', operational_prompt: 'Improvement aims.', source_locator: 'PDF page 2 item 6'}
+  - {id: '7', operational_prompt: 'Setting influences.', source_locator: 'PDF page 2 item 7'}
+  - {id: '8a', operational_prompt: 'Reproducible intervention description.', source_locator: 'PDF page 2 item 8a'}
+  - {id: '8b', operational_prompt: 'Team roles.', source_locator: 'PDF page 2 item 8b'}
+  - {id: '9a', operational_prompt: 'Impact evaluation approach.', source_locator: 'PDF page 2 item 9a'}
+  - {id: '9b', operational_prompt: 'Attribution approach without assuming causality.', source_locator: 'PDF page 2 item 9b'}
+  - {id: '10a', operational_prompt: 'Measurement definitions and quality.', source_locator: 'PDF page 2 item 10a'}
+  - {id: '10b', operational_prompt: 'Ongoing contextual assessment.', source_locator: 'PDF page 2 item 10b'}
+  - {id: '10c', operational_prompt: 'Data accuracy.', source_locator: 'PDF page 2 item 10c'}
+  - {id: '11a', operational_prompt: 'Analytical methods.', source_locator: 'PDF page 2 item 11a'}
+  - {id: '11b', operational_prompt: 'Time dependent variation.', source_locator: 'PDF page 2 item 11b'}
+  - {id: '12', operational_prompt: 'Ethical issues.', source_locator: 'PDF page 2 item 12'}
+  - {id: '13a', operational_prompt: 'Intervention evolution.', source_locator: 'PDF page 2 item 13a'}
+  - {id: '13b', operational_prompt: 'Process and outcome findings.', source_locator: 'PDF page 2 item 13b'}
+  - {id: '13c', operational_prompt: 'Context interactions.', source_locator: 'PDF page 2 item 13c'}
+  - {id: '13d', operational_prompt: 'Observed associations.', source_locator: 'PDF page 2 item 13d'}
+  - {id: '13e', operational_prompt: 'Unanticipated effects.', source_locator: 'PDF page 2 item 13e'}
+  - {id: '13f', operational_prompt: 'Missing observations.', source_locator: 'PDF page 2 item 13f'}
+  - {id: '14a', operational_prompt: 'Findings against rationale.', source_locator: 'PDF page 2 item 14a'}
+  - {id: '14b', operational_prompt: 'Study strengths.', source_locator: 'PDF page 2 item 14b'}
+  - {id: '15a', operational_prompt: 'Observed intervention outcome relationships.', source_locator: 'PDF page 3 item 15a'}
+  - {id: '15b', operational_prompt: 'Comparison with prior work.', source_locator: 'PDF page 3 item 15b'}
+  - {id: '15c', operational_prompt: 'Effects on people and systems.', source_locator: 'PDF page 3 item 15c'}
+  - {id: '15d', operational_prompt: 'Divergence and setting.', source_locator: 'PDF page 3 item 15d'}
+  - {id: '15e', operational_prompt: 'Costs and tradeoffs.', source_locator: 'PDF page 3 item 15e'}
+  - {id: '16a', operational_prompt: 'Applicability elsewhere.', source_locator: 'PDF page 3 item 16a'}
+  - {id: '16b', operational_prompt: 'Internal validity constraints.', source_locator: 'PDF page 3 item 16b'}
+  - {id: '16c', operational_prompt: 'Mitigation.', source_locator: 'PDF page 3 item 16c'}
+  - {id: '17a', operational_prompt: 'Practical utility.', source_locator: 'PDF page 3 item 17a'}
+  - {id: '17b', operational_prompt: 'Persistence.', source_locator: 'PDF page 3 item 17b'}
+  - {id: '17c', operational_prompt: 'Spread potential.', source_locator: 'PDF page 3 item 17c'}
+  - {id: '17d', operational_prompt: 'Practice and further study.', source_locator: 'PDF page 3 item 17d'}
+  - {id: '17e', operational_prompt: 'Next steps.', source_locator: 'PDF page 3 item 17e'}
+  - {id: '18', operational_prompt: 'Funding involvement.', source_locator: 'PDF page 3 item 18'}

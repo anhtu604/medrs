@@ -8,7 +8,7 @@ ROOT = Path(__file__).parents[1]
 
 
 def test_checked_in_locale_profiles_have_complete_current_metadata():
-    assert validate_profiles(ROOT, as_of=date(2026, 8, 31)) == []
+    assert validate_profiles(ROOT, as_of=date(2026, 10, 11)) == []
 
 
 def test_profile_without_source_metadata_fails(tmp_path):

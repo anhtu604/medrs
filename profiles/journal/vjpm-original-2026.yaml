@@ -1,0 +1,50 @@
+profile_id: vjpm-original-2026
+journal: Vietnam Journal of Preventive Medicine
+article_type: original
+document_type: journal-article-vn
+source_kind: presentation-rules
+applicable_document_types: [journal-article-vn]
+source_url: https://tcyhdp.vjpm.vn/cho-tac-gia/
+source_version: Undated author guidance retrieved 2026-10-11
+source_license: Public author instructions; redistribution permission not stated; independently encoded rules, no full source bundled
+source_cutoff: '2026-10-11'
+last_verified: '2026-10-11'
+expires_after_days: 90
+verification_status: CURRENT
+source_path: sources/journals/snapshots/vjpm-author-guidance.html
+source_sha256: 35519CC0C059AA9004D6635955A732EBCFBE11D970604A2B705116640F7FD638
+scope: semantic-structure-and-author-requirements
+sections:
+  - {id: title-vi, label: Tiêu đề tiếng Việt, aliases: [], required_for_restructure: true}
+  - {id: authors-vi, label: Tác giả và địa chỉ tiếng Việt, aliases: [], required_for_restructure: true}
+  - {id: abstract-vi, label: Tóm tắt tiếng Việt, aliases: [], required_for_restructure: true}
+  - {id: introduction, label: Đặt vấn đề, aliases: [Introduction], required_for_restructure: true}
+  - {id: methods, label: Phương pháp, aliases: [Methods], required_for_restructure: true}
+  - {id: results, label: Kết quả, aliases: [Results], required_for_restructure: true}
+  - {id: discussion, label: Bàn luận, aliases: [Discussion], required_for_restructure: true}
+  - {id: conclusion, label: Kết luận, aliases: [Conclusion], required_for_restructure: true}
+  - {id: acknowledgements, label: Lời cảm ơn, aliases: [Acknowledgments], required_for_restructure: false}
+  - {id: references, label: Tài liệu tham khảo, aliases: [References], required_for_restructure: true}
+  - {id: title-en, label: Tiêu đề tiếng Anh, aliases: [], required_for_restructure: true}
+  - {id: authors-en, label: Tác giả và địa chỉ tiếng Anh, aliases: [], required_for_restructure: true}
+  - {id: abstract-en, label: Tóm tắt tiếng Anh, aliases: [], required_for_restructure: true}
+semantic_rules:
+  - {id: order, source_locator: 'TEXT:Định dạng (format) chung bài báo gốc', summary: Use the original-article order, with English blocks after references}
+  - {id: mechanics, source_locator: 'TEXT:Quy định chung cho tất cả các loại bài', summary: Apply the general author requirements separately from semantic moves}
+limits:
+  total_words: {maximum: 3500, enforcement: recommendation, includes: [tables, figures, references, abstract-en]}
+  abstract_words: {maximum: 250, enforcement: recommendation, structured: false}
+  references: {maximum: 18, enforcement: requirement, citation_style: sequential-numeric-brackets}
+  combined_tables_figures: {maximum: 5, enforcement: recommendation}
+  table_columns: {maximum: 8, enforcement: recommendation}
+  keywords: {minimum: 3, maximum: 6}
+presentation:
+  paper: A4
+  font: Times New Roman
+  font_size_pt: 12
+  line_spacing: 1.5
+  margins_cm: {top: 3, bottom: 3, left: 3, right: 3}
+  table_borders: no-vertical
+  main_section_numbering: roman
+  subsection_numbering_depth: 3
+submission_files: {tables_figures_originals: separate}

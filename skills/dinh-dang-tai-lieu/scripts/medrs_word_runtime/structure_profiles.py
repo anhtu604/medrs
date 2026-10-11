@@ -36,22 +36,36 @@ def verify_profile_source(root: Path, profile: dict) -> dict:
         return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "PROFILE_STALE_OR_UNVERIFIED"}
     source = Path(root) / profile["source_path"]
     if not source.is_file():
-        if profile.get("source_url") and profile.get("source_sha256"):
-            return {
-                "status": "VERIFIED",
-                "verification_basis": "REGISTERED_PROVENANCE_SOURCE_NOT_BUNDLED",
-                "source_available": False,
-                "sha256": profile["source_sha256"].upper(),
-                "source_url": profile["source_url"],
-            }
-        return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "SOURCE_MISSING"}
+        return {
+            "status": "OFFICIAL_RULE_REQUIRED", "reason": "SOURCE_MISSING",
+            "verification_basis": "REGISTERED_METADATA_ONLY", "source_available": False,
+            "registered_sha256": profile.get("source_sha256"),
+            "source_url": profile.get("source_url"),
+        }
     actual_hash = _sha256(source)
     if actual_hash != profile.get("source_sha256", "").upper():
         return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "SOURCE_HASH_MISMATCH", "sha256": actual_hash}
-    document = Document(source)
+    suffix = source.suffix.lower()
+    if suffix == ".docx":
+        document = Document(source)
+        source_text = None
+    elif suffix in {".txt", ".html", ".htm"}:
+        source_text = source.read_text(encoding="utf-8")
+        if suffix != ".txt":
+            from lxml.html import fromstring
+            source_text = fromstring(source_text).text_content()
+        document = None
+    else:
+        return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "SOURCE_FORMAT_UNSUPPORTED"}
     for rule in profile.get("semantic_rules", []):
-        match = re.fullmatch(r"P(\d+)", str(rule.get("source_locator", "")))
-        if not match or int(match.group(1)) >= len(document.paragraphs) or not rule.get("summary"):
+        locator = str(rule.get("source_locator", ""))
+        match = re.fullmatch(r"P(\d+)", locator)
+        if document is not None:
+            valid = bool(match and int(match.group(1)) < len(document.paragraphs))
+        else:
+            anchor = locator.removeprefix("TEXT:")
+            valid = locator.startswith("TEXT:") and bool(anchor.strip()) and _normalize(anchor) in _normalize(source_text)
+        if not valid or not rule.get("summary"):
             return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "SOURCE_LOCATOR_INVALID", "rule": rule.get("id")}
     return {
         "status": "VERIFIED",

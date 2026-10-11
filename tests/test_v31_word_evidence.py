@@ -3,7 +3,8 @@ import pytest
 from docx import Document
 from medical_research_skills_vn.docx_formatting import format_docx
 from medical_research_skills_vn.docx_validation import validate_docx
-from medical_research_skills_vn.structure_profiles import load_structure_profile, _sha256
+from medical_research_skills_vn.structure_profiles import _sha256
+from profile_fixture import load_test_profile as load_structure_profile
 
 ROOT = Path(__file__).parents[1]
 

@@ -182,7 +182,7 @@ def test_zotero_guard_blocks_and_removes_a_file_that_lost_citations(tmp_path):
 
 def test_formatter_preserves_zotero_and_ref_field_xml(tmp_path):
     from medical_research_skills_vn.docx_formatting import format_docx
-    from medical_research_skills_vn.structure_profiles import load_structure_profile
+    from profile_fixture import load_test_profile as load_structure_profile
 
     source = make_docx(tmp_path / "source.docx")
     document = Document(str(source))

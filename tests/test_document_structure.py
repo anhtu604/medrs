@@ -1,6 +1,8 @@
 from pathlib import Path
+from hashlib import sha256
 
 from docx import Document
+import pytest
 
 from medical_research_skills_vn.structure_profiles import (
     apply_docx_structure,
@@ -12,6 +14,20 @@ from medical_research_skills_vn.structure_profiles import (
 
 ROOT = Path(__file__).parents[1]
 PROFILE = ROOT / "profiles/institution/hmu/thesis-master-2020-current-2026.yaml"
+
+
+@pytest.fixture
+def source_backed_profile(tmp_path):
+    """Synthetic source tests mechanics; it does not certify the actual HMU rules."""
+    profile = load_structure_profile(PROFILE)
+    source = tmp_path / "synthetic-layout-rules.docx"
+    document = Document()
+    document.add_paragraph("Synthetic test source for the section reordering engine.")
+    document.save(source)
+    profile["source_path"] = str(source)
+    profile["source_sha256"] = sha256(source.read_bytes()).hexdigest()
+    profile["semantic_rules"] = [{"id": "fixture", "source_locator": "P0", "summary": "synthetic order"}]
+    return profile
 
 
 def _make_misordered_docx(path: Path):
@@ -43,11 +59,11 @@ def test_restructure_requires_author_approval(tmp_path):
     assert plan["moves"]
 
 
-def test_reorders_actual_docx_and_validates_generated_artifact(tmp_path):
+def test_reorders_actual_docx_and_validates_generated_artifact(tmp_path, source_backed_profile):
     source = tmp_path / "draft.docx"
     output = tmp_path / "draft-structured.docx"
     _make_misordered_docx(source)
-    profile = load_structure_profile(PROFILE)
+    profile = source_backed_profile
 
     result = apply_docx_structure(source, output, profile, author_approved=True)
 
@@ -66,10 +82,10 @@ def test_reorders_actual_docx_and_validates_generated_artifact(tmp_path):
     assert source.read_bytes() != output.read_bytes()
 
 
-def test_never_overwrites_source_or_invents_missing_sections(tmp_path):
+def test_never_overwrites_source_or_invents_missing_sections(tmp_path, source_backed_profile):
     source = tmp_path / "draft.docx"
     _make_misordered_docx(source)
-    profile = load_structure_profile(PROFILE)
+    profile = source_backed_profile
 
     refused = apply_docx_structure(source, source, profile, author_approved=True)
     assert refused["status"] == "SOURCE_OVERWRITE_FORBIDDEN"
@@ -87,14 +103,14 @@ def test_never_overwrites_source_or_invents_missing_sections(tmp_path):
     assert not missing_output.exists()
 
 
-def test_duplicate_semantic_section_is_not_silently_dropped(tmp_path):
+def test_duplicate_semantic_section_is_not_silently_dropped(tmp_path, source_backed_profile):
     source = tmp_path / "duplicate.docx"
     _make_misordered_docx(source)
     document = Document(source)
     document.add_heading("CHƯƠNG 3. KẾT QUẢ", level=1)
     document.add_paragraph("Một bản kết quả thứ hai.")
     document.save(source)
-    profile = load_structure_profile(PROFILE)
+    profile = source_backed_profile
 
     output = tmp_path / "duplicate-structured.docx"
     result = apply_docx_structure(source, output, profile, author_approved=True)

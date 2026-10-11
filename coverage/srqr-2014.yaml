@@ -1,0 +1,39 @@
+instrument: "SRQR"
+version: "2014"
+source_version: "2014"
+implemented_version: "2014"
+source_url: https://doi.org/10.1097/ACM.0000000000000388
+source_sha256: 15fa0ffd35af1a5bbb98a4f72a05899e18ce20dcfe9fcd612eb64e8017281098
+license: "Copyright 2014 AAMC; no redistribution permission asserted; independently written navigation; lawful original required"
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+status: SOURCE_MAPPED
+coverage_scope: Navigation only; load complete lawful original before item judgments
+official_tool_required_at_use: true
+applicability: "qualitative research"
+expected_ids: ["S1","S2","S3","S4","S5","S6","S7","S8","S9","S10","S11","S12","S13","S14","S15","S16","S17","S18","S19","S20","S21"]
+implemented_ids: ["S1","S2","S3","S4","S5","S6","S7","S8","S9","S10","S11","S12","S13","S14","S15","S16","S17","S18","S19","S20","S21"]
+items:
+  - {id: 'S1', operational_prompt: 'Study identification.', source_locator: 'PDF page 3 Table 1 item S1'}
+  - {id: 'S2', operational_prompt: 'Summary coverage.', source_locator: 'PDF page 3 Table 1 item S2'}
+  - {id: 'S3', operational_prompt: 'Problem context.', source_locator: 'PDF page 3 Table 1 item S3'}
+  - {id: 'S4', operational_prompt: 'Study questions.', source_locator: 'PDF page 3 Table 1 item S4'}
+  - {id: 'S5', operational_prompt: 'Methodological orientation.', source_locator: 'PDF page 3 Table 1 item S5'}
+  - {id: 'S6', operational_prompt: 'Researcher influence and relationships.', source_locator: 'PDF page 3 Table 1 item S6'}
+  - {id: 'S7', operational_prompt: 'Study setting.', source_locator: 'PDF page 3 Table 1 item S7'}
+  - {id: 'S8', operational_prompt: 'Recruitment and stopping rationale.', source_locator: 'PDF page 3 Table 1 item S8'}
+  - {id: 'S9', operational_prompt: 'Ethics.', source_locator: 'PDF page 3 Table 1 item S9'}
+  - {id: 'S10', operational_prompt: 'Collection procedures and changes.', source_locator: 'PDF page 3 Table 1 item S10'}
+  - {id: 'S11', operational_prompt: 'Instruments and modifications.', source_locator: 'PDF page 3 Table 1 item S11'}
+  - {id: 'S12', operational_prompt: 'Study units and characteristics.', source_locator: 'PDF page 3 Table 1 item S12'}
+  - {id: 'S13', operational_prompt: 'Processing and protection.', source_locator: 'PDF page 3 Table 1 item S13'}
+  - {id: 'S14', operational_prompt: 'Interpretive analysis and participants.', source_locator: 'PDF page 3 Table 1 item S14'}
+  - {id: 'S15', operational_prompt: 'Credibility procedures.', source_locator: 'PDF page 3 Table 1 item S15'}
+  - {id: 'S16', operational_prompt: 'Interpretive findings.', source_locator: 'PDF page 3 Table 1 item S16'}
+  - {id: 'S17', operational_prompt: 'Empirical support.', source_locator: 'PDF page 3 Table 1 item S17'}
+  - {id: 'S18', operational_prompt: 'Comparison implications and transferability.', source_locator: 'PDF page 3 Table 1 item S18'}
+  - {id: 'S19', operational_prompt: 'Limitations.', source_locator: 'PDF page 3 Table 1 item S19'}
+  - {id: 'S20', operational_prompt: 'Conflicts and management.', source_locator: 'PDF page 4 Table 1 item S20'}
+  - {id: 'S21', operational_prompt: 'Support and sponsor influence.', source_locator: 'PDF page 4 Table 1 item S21'}

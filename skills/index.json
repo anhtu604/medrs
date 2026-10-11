@@ -39,6 +39,7 @@
       "skill_path": "skills/bo-cuc-tai-lieu/SKILL.md",
       "reference_files": [
         "skills/bo-cuc-tai-lieu/references/hmu-profile-use.md",
+        "skills/bo-cuc-tai-lieu/references/journal-profile-use.md",
         "skills/bo-cuc-tai-lieu/references/structure-contract.md"
       ]
     },
@@ -191,6 +192,7 @@
       "skill_path": "skills/kiem-chuan-bao-cao/SKILL.md",
       "reference_files": [
         "skills/kiem-chuan-bao-cao/references/compliance-contract.md",
+        "skills/kiem-chuan-bao-cao/references/extension-use-contract.md",
         "skills/kiem-chuan-bao-cao/references/guideline-routing.md"
       ]
     },

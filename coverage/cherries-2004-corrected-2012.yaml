@@ -1,0 +1,56 @@
+instrument: CHERRIES
+version: 2004 statement corrected 4 January 2012
+source_version: 2004 statement corrected 4 January 2012
+implemented_version: 2004 statement corrected 4 January 2012
+source_url: https://www.jmir.org/2004/3/e34/
+correction_url: https://www.jmir.org/2012/1/e8/
+license: CC BY 2.0; copyright Gunther Eysenbach 2004 and 2012; independent navigation
+attribution: Eysenbach G. J Med Internet Res 2004;6(3):e34. doi:10.2196/jmir.6.3.e34; correction 2012;14(1):e8. doi:10.2196/jmir.2042
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/kiem-chuan-bao-cao/SKILL.md
+status: SOURCE_MAPPED
+coverage_scope: Corrected Table 1 navigation only
+official_tool_required_at_use: true
+identifiers_are_official: false
+identifier_policy: MedRS internal row keys; original table has unnumbered rows
+snapshot_status: LOCAL_DOWNLOAD_EMPTY
+source_hash_status: REQUIRED_BEFORE_FILE_AUDIT
+rate_definitions:
+  view: [survey_visitors, site_visitors]
+  participation: [agreed, first_page_visitors]
+  completion: [finished, agreed]
+expected_ids: ["CHERRIES:01","CHERRIES:02","CHERRIES:03","CHERRIES:04","CHERRIES:05","CHERRIES:06","CHERRIES:07","CHERRIES:08","CHERRIES:09","CHERRIES:10","CHERRIES:11","CHERRIES:12","CHERRIES:13","CHERRIES:14","CHERRIES:15","CHERRIES:16","CHERRIES:17","CHERRIES:18","CHERRIES:19","CHERRIES:20","CHERRIES:21","CHERRIES:22","CHERRIES:23","CHERRIES:24","CHERRIES:25","CHERRIES:26","CHERRIES:27","CHERRIES:28","CHERRIES:29","CHERRIES:30"]
+implemented_ids: ["CHERRIES:01","CHERRIES:02","CHERRIES:03","CHERRIES:04","CHERRIES:05","CHERRIES:06","CHERRIES:07","CHERRIES:08","CHERRIES:09","CHERRIES:10","CHERRIES:11","CHERRIES:12","CHERRIES:13","CHERRIES:14","CHERRIES:15","CHERRIES:16","CHERRIES:17","CHERRIES:18","CHERRIES:19","CHERRIES:20","CHERRIES:21","CHERRIES:22","CHERRIES:23","CHERRIES:24","CHERRIES:25","CHERRIES:26","CHERRIES:27","CHERRIES:28","CHERRIES:29","CHERRIES:30"]
+items:
+  - {id: 'CHERRIES:01', operational_prompt: 'Sampling frame.', source_locator: 'Corrected publisher HTML Table 1 checklist row 1'}
+  - {id: 'CHERRIES:02', operational_prompt: 'Ethics approval.', source_locator: 'Corrected publisher HTML Table 1 checklist row 2'}
+  - {id: 'CHERRIES:03', operational_prompt: 'Consent disclosures.', source_locator: 'Corrected publisher HTML Table 1 checklist row 3'}
+  - {id: 'CHERRIES:04', operational_prompt: 'Privacy safeguards.', source_locator: 'Corrected publisher HTML Table 1 checklist row 4'}
+  - {id: 'CHERRIES:05', operational_prompt: 'Pilot and technical testing.', source_locator: 'Corrected publisher HTML Table 1 checklist row 5'}
+  - {id: 'CHERRIES:06', operational_prompt: 'Open or restricted access.', source_locator: 'Corrected publisher HTML Table 1 checklist row 6'}
+  - {id: 'CHERRIES:07', operational_prompt: 'First contact.', source_locator: 'Corrected publisher HTML Table 1 checklist row 7'}
+  - {id: 'CHERRIES:08', operational_prompt: 'Recruitment advertisement.', source_locator: 'Corrected publisher HTML Table 1 checklist row 8'}
+  - {id: 'CHERRIES:09', operational_prompt: 'Delivery channel.', source_locator: 'Corrected publisher HTML Table 1 checklist row 9'}
+  - {id: 'CHERRIES:10', operational_prompt: 'Website context.', source_locator: 'Corrected publisher HTML Table 1 checklist row 10'}
+  - {id: 'CHERRIES:11', operational_prompt: 'Mandatory participation.', source_locator: 'Corrected publisher HTML Table 1 checklist row 11'}
+  - {id: 'CHERRIES:12', operational_prompt: 'Incentives.', source_locator: 'Corrected publisher HTML Table 1 checklist row 12'}
+  - {id: 'CHERRIES:13', operational_prompt: 'Collection period.', source_locator: 'Corrected publisher HTML Table 1 checklist row 13'}
+  - {id: 'CHERRIES:14', operational_prompt: 'Item ordering.', source_locator: 'Corrected publisher HTML Table 1 checklist row 14'}
+  - {id: 'CHERRIES:15', operational_prompt: 'Branching logic.', source_locator: 'Corrected publisher HTML Table 1 checklist row 15'}
+  - {id: 'CHERRIES:16', operational_prompt: 'Items per screen.', source_locator: 'Corrected publisher HTML Table 1 checklist row 16'}
+  - {id: 'CHERRIES:17', operational_prompt: 'Screen count.', source_locator: 'Corrected publisher HTML Table 1 checklist row 17'}
+  - {id: 'CHERRIES:18', operational_prompt: 'Completeness enforcement.', source_locator: 'Corrected publisher HTML Table 1 checklist row 18'}
+  - {id: 'CHERRIES:19', operational_prompt: 'Response review.', source_locator: 'Corrected publisher HTML Table 1 checklist row 19'}
+  - {id: 'CHERRIES:20', operational_prompt: 'Visitor identification.', source_locator: 'Corrected publisher HTML Table 1 checklist row 20'}
+  - {id: 'CHERRIES:21', operational_prompt: 'View proportion.', source_locator: 'Corrected publisher HTML Table 1 checklist row 21'}
+  - {id: 'CHERRIES:22', operational_prompt: 'Participation proportion.', source_locator: 'Corrected publisher HTML Table 1 checklist row 22'}
+  - {id: 'CHERRIES:23', operational_prompt: 'Completion proportion.', source_locator: 'Corrected publisher HTML Table 1 checklist row 23'}
+  - {id: 'CHERRIES:24', operational_prompt: 'Cookie deduplication.', source_locator: 'Corrected publisher HTML Table 1 checklist row 24'}
+  - {id: 'CHERRIES:25', operational_prompt: 'Address deduplication.', source_locator: 'Corrected publisher HTML Table 1 checklist row 25'}
+  - {id: 'CHERRIES:26', operational_prompt: 'Log based deduplication.', source_locator: 'Corrected publisher HTML Table 1 checklist row 26'}
+  - {id: 'CHERRIES:27', operational_prompt: 'Authenticated deduplication.', source_locator: 'Corrected publisher HTML Table 1 checklist row 27'}
+  - {id: 'CHERRIES:28', operational_prompt: 'Incomplete response handling.', source_locator: 'Corrected publisher HTML Table 1 checklist row 28'}
+  - {id: 'CHERRIES:29', operational_prompt: 'Timing exclusions.', source_locator: 'Corrected publisher HTML Table 1 checklist row 29'}
+  - {id: 'CHERRIES:30', operational_prompt: 'Representativeness adjustment.', source_locator: 'Corrected publisher HTML Table 1 checklist row 30'}

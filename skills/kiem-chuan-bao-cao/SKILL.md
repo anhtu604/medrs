@@ -13,6 +13,7 @@ metadata:
 Follow the shared [working principles](../medrs/references/working-principles.md).
 
 Read [references/guideline-routing.md](references/guideline-routing.md) to choose the instrument, then [references/compliance-contract.md](references/compliance-contract.md) before judging any item.
+For scoping reviews or another reporting extension, read [references/extension-use-contract.md](references/extension-use-contract.md). PRISMA-ScR navigation requires its hash-matched lawful original at use; a registered map alone is not a completed audit.
 
 Chuẩn báo cáo trả lời câu hỏi bản thảo có **báo cáo đủ** hay không. Nó không đánh giá nguy cơ sai lệch và không thay thế `danh-gia-chat-luong-bang-chung`.
 

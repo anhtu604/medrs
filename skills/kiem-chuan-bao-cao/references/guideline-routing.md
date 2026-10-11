@@ -10,6 +10,12 @@ Chuẩn báo cáo được chọn theo **thiết kế nghiên cứu**, không th
 | Đề cương thử nghiệm lâm sàng | `../../coverage/spirit-2025.yaml` | 53 | SPIRIT 2025, thay thế SPIRIT 2013 |
 | Nghiên cứu quan sát (thuần tập, bệnh–chứng, cắt ngang) | `../../coverage/strobe-2007.yaml` | 34 | STROBE 2007 |
 | Tổng quan hệ thống và phân tích gộp | `../../coverage/prisma-2020.yaml` | 42 | PRISMA 2020 |
+| Tổng quan phạm vi / scoping review | `../../coverage/prisma-scr-2018.yaml` | 22 | PRISMA-ScR 2018; phải đọc bản gốc khi kiểm |
+| Nghiên cứu dữ liệu y tế thường quy | `../../coverage/record-2015.yaml` | 13 | RECORD 2015 bổ sung STROBE |
+| Nghiên cứu khảo sát | `../../coverage/cross-2021.yaml` | 40 | CROSS 2021, Supplement 3 |
+| Khảo sát trực tuyến | `../../coverage/cherries-2004-corrected-2012.yaml` | 30 | CHERRIES hiệu chỉnh 2012; khóa nội bộ, cần bổ sung bản gốc đúng hash |
+| Định tính ngoài phạm vi COREQ | `../../coverage/srqr-2014.yaml` | 21 | SRQR 2014 |
+| Cải tiến chất lượng chăm sóc | `../../coverage/squire-2-2015.yaml` | 40 | SQUIRE 2.0, 18 mục chính |
 | Mô hình tiên lượng hoặc chẩn đoán lâm sàng | `../../coverage/tripod-ai-2024.yaml` | 52 | TRIPOD+AI 2024, thay thế TRIPOD 2015 |
 | Nghiên cứu độ chính xác chẩn đoán | `../../coverage/stard-2015.yaml` | 34 | STARD 2015 |
 | Nghiên cứu định tính phỏng vấn hoặc nhóm trọng tâm | `../../coverage/coreq-2007.yaml` | 32 | COREQ 2007 |
@@ -24,7 +30,7 @@ Các manifest mang mức độ chi tiết khác nhau vì giấy phép nguồn kh
 
 ## Khi không có manifest phù hợp
 
-Nhiều thiết kế vẫn chưa có manifest: thử nghiệm theo cụm, nghiên cứu không thua kém hoặc tương đương, nghiên cứu cải tiến chất lượng, nghiên cứu độ tin cậy và thỏa thuận đo lường, đánh giá công nghệ y tế mô phỏng.
+Nhiều thiết kế vẫn chưa có manifest: thử nghiệm theo cụm, nghiên cứu không thua kém hoặc tương đương, nghiên cứu độ tin cậy và thỏa thuận đo lường, đánh giá công nghệ y tế mô phỏng.
 
 Trả `GUIDELINE_UNAVAILABLE` kèm tên chuẩn phù hợp và lý do chưa mã hóa. Nêu rằng tác giả vẫn nên đối chiếu bản chính thức. Không thay bằng chuẩn gần đúng và không tự liệt kê mục từ trí nhớ.
 

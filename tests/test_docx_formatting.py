@@ -8,7 +8,7 @@ from docx.oxml.ns import qn
 
 from medical_research_skills_vn.docx_formatting import REFRESH_SAFE_STYLES, format_docx
 from medical_research_skills_vn.docx_validation import validate_docx
-from medical_research_skills_vn.structure_profiles import load_structure_profile
+from profile_fixture import load_test_profile as load_structure_profile
 
 
 ROOT = Path(__file__).parents[1]
