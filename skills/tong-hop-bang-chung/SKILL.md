@@ -11,6 +11,7 @@ metadata:
 # Tổng hợp bằng chứng
 
 Before numerical extraction read [references/extraction-identity.md](references/extraction-identity.md): check original-source outcome/group/time/adjustment and available N, not just a secondary table or recruitment total.
+Read [../tim-y-van/references/access-fallback.md](../tim-y-van/references/access-fallback.md) when access is partial; preserve the per-source extraction receipt and publication-status history. A search-wide full-text result does not upgrade every record.
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
 

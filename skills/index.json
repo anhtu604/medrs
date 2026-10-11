@@ -387,6 +387,7 @@
       ],
       "skill_path": "skills/tim-y-van/SKILL.md",
       "reference_files": [
+        "skills/tim-y-van/references/access-fallback.md",
         "skills/tim-y-van/references/citation-network.md",
         "skills/tim-y-van/references/retrieval-contract.md"
       ]

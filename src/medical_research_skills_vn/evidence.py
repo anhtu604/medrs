@@ -11,11 +11,15 @@ class EvidenceContractError(ValueError):
 
 
 def _normalize_doi(value: str | None) -> str | None:
-    if not value:
-        return None
-    normalized = value.strip().casefold()
-    normalized = re.sub(r"^https?://(dx\.)?doi\.org/", "", normalized)
-    return normalized.removeprefix("doi:")
+    return _portable_identity().normalize_doi(value)
+
+
+def _portable_identity():
+    from pathlib import Path
+    import sys
+    sys.path.insert(0, str(Path(__file__).parents[2] / "skills/tim-y-van/scripts"))
+    import record_identity
+    return record_identity
 
 
 def create_search_log(
@@ -71,22 +75,7 @@ def _record_key(record: dict) -> str:
 
 
 def deduplicate_records(records: list[dict]) -> list[dict]:
-    merged: dict[str, dict] = {}
-    for source_record in records:
-        record = deepcopy(source_record)
-        if record.get("doi"):
-            record["doi"] = _normalize_doi(record["doi"])
-        key = _record_key(record)
-        route = record.pop("discovered_by", None)
-        if key not in merged:
-            record["discovery_routes"] = []
-            merged[key] = record
-        if route and route not in merged[key]["discovery_routes"]:
-            merged[key]["discovery_routes"].append(route)
-        for field, value in record.items():
-            if field != "discovery_routes" and not merged[key].get(field) and value:
-                merged[key][field] = value
-    return list(merged.values())
+    return _portable_identity().deduplicate_records(records)
 
 
 def _evidence_level(record: dict) -> tuple[str, str, str]:

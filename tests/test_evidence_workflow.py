@@ -92,6 +92,31 @@ def test_deduplication_prefers_doi_then_pmid_and_preserves_discovery_routes():
     assert deduped[0]["discovery_routes"] == ["database", "forward"]
 
 
+def test_doi_prefix_whitespace_and_unicode_title_normalize():
+    import unicodedata
+    assert len(deduplicate_records([
+        {"doi": "DOI: 10.1000/ABC", "discovered_by": "database"},
+        {"doi": "https://doi.org/10.1000/abc", "discovered_by": "forward"},
+    ])) == 1
+    title = "Nghiên cứu y học"
+    assert len(deduplicate_records([
+        {"title": title, "year": 2026, "discovered_by": "VJOL"},
+        {"title": unicodedata.normalize("NFD", title), "year": 2026, "discovered_by": "journal"},
+    ])) == 1
+
+
+def test_duplicate_preserves_newer_retraction_and_original_routes():
+    older = {"status": "clear", "source": "publisher", "checked_at": "2026-10-01"}
+    newer = {"status": "retracted", "source": "publisher", "checked_at": "2026-10-11"}
+    record = deduplicate_records([
+        {"doi": "10.1000/x", "discovered_by": "database", "publication_status_check": older},
+        {"doi": "10.1000/x", "discovered_by": "forward", "publication_status_check": newer},
+    ])[0]
+    assert record["publication_status_check"] == newer
+    assert record["publication_status_history"] == [older, newer]
+    assert record["discovery_routes"] == ["database", "forward"]
+
+
 def test_title_only_network_node_remains_unresolved_low_confidence():
     network = build_citation_network(
         seed_ids=["pmid:1"],
