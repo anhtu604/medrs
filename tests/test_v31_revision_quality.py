@@ -185,4 +185,3 @@ def test_cowork_zip_router_executes_without_source_tree(tmp_path):
     assert [task["skill"] for task in plan["tasks"]] == ["viet-phuong-phap", "dinh-dang-tai-lieu", "leader-nghien-cuu"]
     assert (extracted / "skills/leader-nghien-cuu/scripts/revision_guard.py").is_file()
     assert (extracted / "profiles/document-type/project-ck2.yaml").is_file()
-

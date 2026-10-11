@@ -60,4 +60,3 @@ def test_backend_name_and_render_files_alone_do_not_prove_review(tmp_path, backe
     assert checked["rendered_checks"] == {"pagination": "PASS", "visual_layout": "PASS"}
     png.write_bytes(b"changed render")
     assert validate_docx(output, profile, field_update_evidence=evidence, visual_review=evidence, **kwargs)["rendered_checks"] == checks
-
