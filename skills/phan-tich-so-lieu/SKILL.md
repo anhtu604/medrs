@@ -26,6 +26,8 @@ Refuse significance-driven model selection, outcome switching, unexplained exclu
 
 ## Interpretation
 
+Before selecting/interpreting basic tests or thresholds read [references/basic-statistics-contract.md](references/basic-statistics-contract.md). Pass its explicit exploratory/multiplicity/PH/provenance ceilings to every writer; an unperformed diagnostic is not a passed assumption.
+
 Read [result identity contract](references/result-identity-contract.md) before interpreting or reconciling numeric claims. Match the complete result key, not only the displayed p-value.
 
 Interpret each estimate by its clinical meaning first: the size and direction of the effect, its confidence interval, and whether it crosses a minimal clinically important difference when the author supplies one. P-values support that reading; they do not lead it. State what each estimate shows at the strength the design supports.

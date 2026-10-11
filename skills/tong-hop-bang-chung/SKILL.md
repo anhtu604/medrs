@@ -10,6 +10,8 @@ metadata:
 
 # Tổng hợp bằng chứng
 
+Before numerical extraction read [references/extraction-identity.md](references/extraction-identity.md): check original-source outcome/group/time/adjustment and available N, not just a secondary table or recruitment total.
+
 Follow the shared [working principles](../medrs/references/working-principles.md).
 
 Read [references/synthesis-modes.md](references/synthesis-modes.md). Before any quantitative pooling, also read [references/meta-analysis-readiness.md](references/meta-analysis-readiness.md). Consume the confirmed question/protocol, record and access ledgers from `tim-y-van`, eligibility decisions, study characteristics, extraction provenance, target synthesis mode, and quality-appraisal state.

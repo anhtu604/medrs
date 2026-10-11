@@ -10,6 +10,8 @@ metadata:
 
 # Phân tích bằng Stata
 
+Use the [project workspace](../leader-nghien-cuu/references/project-workspace.md) for dated do-files/logs/outputs and daily change notes; retain failed runs. Follow the [basic-statistics contract](../phan-tich-so-lieu/references/basic-statistics-contract.md). Use descriptive local macro names, not `0`; scope `capture program drop` to the helper being redefined, never blanket-drop unrelated programs. Check event coding and survivor/failure axis labels in KM output. R cross-validation is optional only when agreed.
+
 Follow the shared [working principles](../medrs/references/working-principles.md).
 
 Generate an auditable Stata do-file from a confirmed analysis plan. Read [references/reproducibility-contract.md](references/reproducibility-contract.md) before creating or interpreting execution artifacts, and honor [../phan-tich-so-lieu/references/analysis-deviation-contract.md](../phan-tich-so-lieu/references/analysis-deviation-contract.md).

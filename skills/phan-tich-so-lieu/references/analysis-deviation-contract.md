@@ -2,6 +2,8 @@
 
 ## Fixed record
 
+Read [basic-statistics-contract.md](basic-statistics-contract.md) before test/threshold selection or interpretation. Propagate classification, multiplicity and diagnostic limitations into Results/Discussion/abstract; do not hide them in a sidecar while writing unconditional claims.
+
 Keep the approved analysis-plan identifier and hash, approval date, planned estimand, outcome, model family, covariates, analysis sets, missing-data strategy, subgroup and multiplicity rules, planned target sample, and sensitivity analyses. Never overwrite these fields with observed choices.
 
 For every proposed change, record the request, timing relative to outcome inspection, initiator, rationale, affected estimand, expected bias, approval state, and classification: `PRESPECIFIED`, `DEVIATION`, `SENSITIVITY`, or `EXPLORATORY`.

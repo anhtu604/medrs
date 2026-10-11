@@ -10,6 +10,8 @@ metadata:
 
 # Phân tích bằng R
 
+Use the [project workspace](../leader-nghien-cuu/references/project-workspace.md) for dated run folders, full console logs and daily change notes; retain failed runs. Follow the [basic-statistics contract](../phan-tich-so-lieu/references/basic-statistics-contract.md) and do not require Stata cross-validation unless agreed.
+
 Follow the shared [working principles](../medrs/references/working-principles.md).
 
 Generate an auditable R script from a confirmed analysis plan. Read [references/reproducibility-contract.md](references/reproducibility-contract.md) before creating or interpreting execution artifacts, and honor the parent deviation rules in [../phan-tich-so-lieu/references/analysis-deviation-contract.md](../phan-tich-so-lieu/references/analysis-deviation-contract.md).

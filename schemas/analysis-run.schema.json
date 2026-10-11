@@ -8,6 +8,15 @@
     "output_paths", "output_hashes", "deviations", "status", "exit_code", "notes"
   ],
   "properties": {
+    "multiple_tests": {"type": ["boolean", "null"]},
+    "multiplicity_addressed": {"type": "boolean"},
+    "model": {"type": "string"},
+    "ph_pass": {"type": ["boolean", "null"]},
+    "causal_assumptions_met": {"type": "boolean"},
+    "run_directory": {"type": "string"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "log_hashes": {"type": "object", "additionalProperties": {"type": "string"}},
     "backend": {"enum": ["r", "stata"]},
     "runtime_verified": {"type": "boolean"},
     "runtime_executable": {"type": ["string", "null"]},

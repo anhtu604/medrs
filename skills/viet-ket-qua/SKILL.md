@@ -10,6 +10,8 @@ metadata:
 
 # Viết Kết quả
 
+For analysis-based prose inherit the [basic-statistics interpretation ceilings](../phan-tich-so-lieu/references/basic-statistics-contract.md). Preserve prespecified/exploratory classification, outcome-available denominators and real effect-measure identity; do not turn conditional output into an unqualified confirmed finding.
+
 Follow the shared [working principles](../medrs/references/working-principles.md).
 
 For numeric claims read the shared [result identity contract](../phan-tich-so-lieu/references/result-identity-contract.md). Each changed table needs a matching observation and symbol/test legend; propagate changes through dependent sections without inventing extra analyses.
