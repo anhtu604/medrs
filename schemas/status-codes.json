@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "scope": "Evidence and handoff statuses only; domain-specific markers remain in their owning contracts.",
+  "codes": {
+    "PASS": {
+      "contexts": [
+        "artifact-check"
+      ],
+      "meaning": "Reviewed check passed for the exact artifact; not author approval.",
+      "required_evidence": [
+        "artifact_sha256",
+        "path",
+        "sha256",
+        "reviewer"
+      ]
+    },
+    "FAIL": {
+      "contexts": [
+        "artifact-check"
+      ],
+      "meaning": "Performed check did not pass.",
+      "required_evidence": []
+    },
+    "NOT_RUN": {
+      "contexts": [
+        "runtime"
+      ],
+      "meaning": "No verified execution; code or a plan may exist.",
+      "required_evidence": []
+    },
+    "UNPERFORMED": {
+      "contexts": [
+        "runtime",
+        "artifact-check"
+      ],
+      "meaning": "Requested operation/check was not performed.",
+      "required_evidence": []
+    },
+    "UNAVAILABLE": {
+      "contexts": [
+        "runtime"
+      ],
+      "meaning": "Capability not available on the probed surface.",
+      "required_evidence": []
+    },
+    "CODE_ONLY": {
+      "contexts": [
+        "runtime"
+      ],
+      "meaning": "Code delivered without execution.",
+      "required_evidence": []
+    },
+    "RUN_VERIFIED": {
+      "contexts": [
+        "runtime"
+      ],
+      "meaning": "Execution evidence verified; not correctness of clinical conclusions.",
+      "required_evidence": [
+        "artifact_sha256",
+        "path",
+        "sha256",
+        "reviewer"
+      ]
+    },
+    "ACCEPTED_INTERNAL": {
+      "contexts": [
+        "acceptance"
+      ],
+      "meaning": "All internal evidence gates passed; author approval is separate.",
+      "required_evidence": [
+        "artifact_sha256",
+        "artifact"
+      ]
+    },
+    "AUTHOR_APPROVAL_REQUIRED": {
+      "contexts": [
+        "acceptance",
+        "source"
+      ],
+      "meaning": "Human decision/review outstanding.",
+      "required_evidence": []
+    },
+    "VERIFICATION_INCOMPLETE": {
+      "contexts": [
+        "acceptance"
+      ],
+      "meaning": "Required evidence missing or invalid.",
+      "required_evidence": []
+    },
+    "NEEDS_REVISION": {
+      "contexts": [
+        "acceptance"
+      ],
+      "meaning": "Task or quality check not passed.",
+      "required_evidence": []
+    },
+    "RE_REVIEW_REQUIRED": {
+      "contexts": [
+        "acceptance"
+      ],
+      "meaning": "Artifact changed after checks; receipts are stale.",
+      "required_evidence": []
+    },
+    "OFFICIAL_RULE_REQUIRED": {
+      "contexts": [
+        "source"
+      ],
+      "meaning": "Official applicable source evidence missing.",
+      "required_evidence": []
+    },
+    "CURRENT": {
+      "contexts": [
+        "source"
+      ],
+      "meaning": "Registered version within freshness window, not proof original is available.",
+      "required_evidence": [
+        "last_verified",
+        "source_url"
+      ]
+    },
+    "STALE": {
+      "contexts": [
+        "source"
+      ],
+      "meaning": "Verification expired; explicit recheck required.",
+      "required_evidence": []
+    },
+    "BLOCKED": {
+      "contexts": [
+        "source"
+      ],
+      "meaning": "Primary material unavailable; no implemented official coverage.",
+      "required_evidence": []
+    },
+    "SOURCE_MAPPED": {
+      "contexts": [
+        "source"
+      ],
+      "meaning": "Source item navigation exists; original/guidance needed for judgment.",
+      "required_evidence": [
+        "source_url",
+        "last_verified"
+      ]
+    },
+    "UNVERIFIED": {
+      "contexts": [
+        "source",
+        "data"
+      ],
+      "meaning": "Not independently verified.",
+      "required_evidence": []
+    },
+    "DRAFT_INFERRED": {
+      "contexts": [
+        "data"
+      ],
+      "meaning": "Extracted from draft; awaiting author confirmation.",
+      "required_evidence": []
+    },
+    "UNRESOLVED": {
+      "contexts": [
+        "source",
+        "data",
+        "retrieval"
+      ],
+      "meaning": "Insufficient or conflicting evidence.",
+      "required_evidence": []
+    },
+    "SEARCHED_NO_HITS": {
+      "contexts": [
+        "retrieval"
+      ],
+      "meaning": "Successful queries in stated scope returned zero; not universal absence.",
+      "required_evidence": [
+        "attempts"
+      ]
+    },
+    "INACCESSIBLE": {
+      "contexts": [
+        "retrieval"
+      ],
+      "meaning": "Access failed; literature may exist.",
+      "required_evidence": [
+        "attempts"
+      ]
+    },
+    "METADATA_ONLY": {
+      "contexts": [
+        "retrieval"
+      ],
+      "meaning": "Bibliographic discovery only.",
+      "required_evidence": [
+        "attempts"
+      ]
+    },
+    "ABSTRACT_ONLY": {
+      "contexts": [
+        "retrieval"
+      ],
+      "meaning": "Claims limited to accessible abstract.",
+      "required_evidence": [
+        "attempts"
+      ]
+    },
+    "FULL_TEXT": {
+      "contexts": [
+        "retrieval"
+      ],
+      "meaning": "Reported source access; not verified extraction or appraisal.",
+      "required_evidence": [
+        "attempts"
+      ]
+    }
+  }
+}

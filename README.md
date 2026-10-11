@@ -1,5 +1,8 @@
 # MedRS 3.1
 
+Comprehensive-upgrade branch: implementation and acceptance are in progress.
+This checkout is not a newly accepted release. See [source/capability gaps](docs/source-gaps.md).
+
 This release contains all 28 canonical medical-research skills, including an internal leader for complete task plans, revision continuity and final-artifact acceptance. It supports protocol design, R/Stata, writing, evidence work, Word/Zotero, two-round review, and basic question-led CK2 and institutional projects alongside theses, dissertations and articles.
 
 All 28 skills are indexed in `skills/index.json`. Old MedRS versions must remain uninstalled while this package is active. The license is CC BY-NC 4.0; commercial use may require separate permission and legal review.
@@ -21,7 +24,10 @@ python scripts/capability_probe.py
 
 The capability probe advertises R, Stata, Word COM, LibreOffice UNO, or DOCX support only when runtime evidence is present. Missing runtimes produce code or an explicit unavailable/unperformed state, never a simulated execution claim.
 
-HMU note: the official “Yêu cầu đối với luận văn” source linked by the 2026 defense page is checksum-registered and encoded as semantic-structure and Word-mechanics profiles. OOXML checks do not claim visual pagination; PDF/page-image inspection remains required when no rendering backend is available.
+HMU note: the master's source linked by the 2026 defense page is registered.
+Official acceptance additionally requires the actual applicable original;
+metadata alone is insufficient. CKII/BSNT presentation originals remain
+blocked. OOXML checks do not certify visual pagination.
 
 ## Install
 
@@ -46,7 +52,17 @@ Targets `codex`, `claude`, and `generic` install into local `.codex/skills`, `.c
 
 For Claude Cowork manual installation, run `python scripts/package_plugin.py`; it validates the skills, refuses to build while any version carrier disagrees with `.claude-plugin/plugin.json`, and writes `dist/medrs-cowork-<version>.zip` plus its `.sha256`. Upload that ZIP from the Claude organization plugin settings. The upload contains only the Cowork manifest, every canonical skill, shared coverage/profile/schema resources, public documentation, and the HMU Word style carrier.
 
-Word formatting in alpha.3 is style-driven and refresh-safe: built-in TOC/list/bibliography styles are defined explicitly, tables use bounded content-weighted widths, and bullets use deterministic OOXML numbering. On local Windows with Microsoft Word, `scripts/refresh_word_fields.ps1` refreshes all fields into a new DOCX and can export a PDF; Cowork keeps field refresh and pagination marked for author review when no rendering backend is available.
+Word formatting is style-driven: named TOC/list/bibliography styles, bounded
+content-weighted table columns and deterministic list numbering. New TOCs
+use importable complex fields, not an empty simple field. On local Windows,
+Word COM requires Word and its bridge. On an UNO-capable surface use
+`skills/dinh-dang-tai-lieu/scripts/refresh_uno.py` with that surface's UNO
+Python and LibreOffice executable. The helper saves to new files, reopens
+the saved index and records hashes; it does not certify appearance or
+protected-part fidelity. Post-refresh integrity and styles must pass
+separately. Local UNO smoke refreshed a two-page fixture, but post-refresh
+style/strict-preservation checks found unresolved drift; no final Word
+acceptance is claimed. Missing runtime/render evidence remains explicit.
 
 ## Zotero citations
 

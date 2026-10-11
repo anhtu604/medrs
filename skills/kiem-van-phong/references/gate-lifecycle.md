@@ -19,3 +19,8 @@ Load `../../phan-tich-so-lieu/references/basic-statistics-contract.md` when inte
 Read confirmed Passport values and scoped author decisions before asking. Do not ask again about a resolved item unless new conflicting evidence or changed scope makes it consequential. Group the remaining decisions into one concise list with a suggested option and reason. Extracted text remains inferred; missing detail is not permission to fabricate. Preserve unresolved decisions in the audit artifact rather than repeatedly scattering the same warning through every paragraph.
 
 Use the simplest academic wording that preserves meaning. CK2/institutional projects default to question-led basic depth. Exclude ornamental terminology, unnecessary advanced analyses and repeated caveats; preserve essential methods, uncertainty and limitations. A concise draft is not accepted merely because it is short. Acceptance requires content and presentation evidence tied to the same final file hash, independent of this prose gate.
+
+An optional author-voice/clarity pass consumes the actual
+[../../../schemas/author-style-profile.schema.json](../../../schemas/author-style-profile.schema.json);
+schema validity does not verify source snippets. Reuse the shared preflight's
+source-bound pattern checks rather than duplicating writer rules.

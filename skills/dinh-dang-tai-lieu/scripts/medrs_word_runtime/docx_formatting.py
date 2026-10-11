@@ -12,6 +12,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Inches, Pt, RGBColor
+from docx.text.paragraph import Paragraph
 
 from .structure_profiles import ROOT, _sha256, verify_profile_source
 
@@ -35,8 +36,7 @@ def zotero_guard(source: Path, output: Path) -> dict:
     return report
 
 
-def _field(paragraph, instruction: str):
-    run = paragraph.add_run()
+def _field(paragraph, instruction: str, cached_text: str = ""):
     begin = OxmlElement("w:fldChar")
     begin.set(qn("w:fldCharType"), "begin")
     instr = OxmlElement("w:instrText")
@@ -46,7 +46,12 @@ def _field(paragraph, instruction: str):
     separate.set(qn("w:fldCharType"), "separate")
     end = OxmlElement("w:fldChar")
     end.set(qn("w:fldCharType"), "end")
-    run._r.extend([begin, instr, separate, end])
+    paragraph.add_run()._r.append(begin)
+    paragraph.add_run()._r.append(instr)
+    paragraph.add_run()._r.append(separate)
+    if cached_text:
+        paragraph.add_run(cached_text)
+    paragraph.add_run()._r.append(end)
 
 
 def _contains_field(element, instruction_prefix: str) -> bool:
@@ -438,14 +443,14 @@ def format_docx(source_path: Path, output_path: Path, profile: dict, *, author_a
     toc_heading = next((p for p in document.paragraphs if p.text.casefold().strip() == "mục lục"), None)
     if toc_heading is not None and not _contains_field(document.element, "TOC"):
         toc_paragraph = OxmlElement("w:p")
-        toc = OxmlElement("w:fldSimple")
-        toc.set(qn("w:instr"), 'TOC \\o "1-4" \\h \\z \\u')
-        toc_paragraph.append(toc)
         ppr = toc_paragraph.get_or_add_pPr()
         pstyle = OxmlElement("w:pStyle")
         pstyle.set(qn("w:val"), document.styles["TOC 1"].style_id)
         ppr.append(pstyle)
         toc_heading._p.addnext(toc_paragraph)
+        toc_heading.style = document.styles["TOC Heading"]
+        _field(Paragraph(toc_paragraph, toc_heading._parent),
+               'TOC \\o "1-4" \\h \\z \\u', cached_text=" ")
 
     if not _add_introduction_section(document, profile["numbering"]["restart_section_heading"]):
         return {"status": "AUTHOR_INPUT_REQUIRED", "reason": "INTRODUCTION_HEADING_NOT_FOUND"}

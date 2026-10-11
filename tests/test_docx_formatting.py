@@ -92,6 +92,20 @@ def test_preserves_tracked_change_xml_and_creates_new_file(tmp_path):
     assert source.read_bytes() == before
 
 
+def test_new_toc_has_complex_instruction_and_cache_for_office_import(tmp_path):
+    source, output = tmp_path / "source.docx", tmp_path / "formatted.docx"
+    _fixture(source)
+    format_docx(source, output, load_structure_profile(PROFILE_PATH), author_approved=True)
+    generated = Document(output)
+    instructions = [n for n in generated.element.iter(qn("w:instrText"))
+                    if (n.text or "").strip().startswith("TOC")]
+    assert len(instructions) == 1
+    paragraph = instructions[0].getparent().getparent()
+    assert [n.get(qn("w:fldCharType")) for n in paragraph.iter(qn("w:fldChar"))] == ["begin", "separate", "end"]
+    assert list(paragraph.iter(qn("w:t")))
+    assert next(p for p in generated.paragraphs if p.text == "MỤC LỤC").style.name == "TOC Heading"
+
+
 def test_builds_refresh_safe_word_style_system(tmp_path):
     source = tmp_path / "source.docx"
     output = tmp_path / "formatted.docx"

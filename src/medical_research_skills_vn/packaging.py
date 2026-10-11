@@ -16,6 +16,7 @@ ROOT_FILES = {
 ROOT_DIRS = {
     ".claude-plugin",
     "config",
+    "coverage",
     "docs",
     "profiles",
     "schemas",
@@ -30,6 +31,7 @@ COWORK_ROOT_FILES = {
     "LICENSE",
     "ATTRIBUTION.md",
     "docs/medrs-3.1-upgrade.md",
+    "docs/source-gaps.md",
 }
 COWORK_ROOT_DIRS = {
     ".claude-plugin",
@@ -48,7 +50,7 @@ def _included(relative: Path) -> bool:
     text = relative.as_posix()
     if "__pycache__" in relative.parts or text.endswith((".pyc", ".pyo")):
         return False
-    if text.startswith("sources/hmu/snapshots/"):
+    if relative.parts[0] == "sources" and "snapshots" in relative.parts:
         return False
     return True
 
@@ -82,7 +84,7 @@ def build_cowork_package(root: Path, destination: Path) -> Path:
         text = relative.as_posix()
         if "__pycache__" in relative.parts or text.endswith((".pyc", ".pyo")):
             return False
-        return not text.startswith("sources/hmu/snapshots/")
+        return not (relative.parts[0] == "sources" and "snapshots" in relative.parts)
 
     files = [path for path in root.rglob("*") if path.is_file() and included(path.relative_to(root))]
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as bundle:
@@ -91,5 +93,7 @@ def build_cowork_package(root: Path, destination: Path) -> Path:
             info = zipfile.ZipInfo(relative, date_time=(1980, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
-            bundle.writestr(info, path.read_bytes(), compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
+            content = ((root / "docs/cowork-README.md").read_bytes()
+                       if relative == "README.md" else path.read_bytes())
+            bundle.writestr(info, content, compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
     return destination

@@ -100,6 +100,7 @@ def final_acceptance(artifact, tasks, evidence, *, source_preserved, propagation
         problems.append("PROPAGATION_INCOMPLETE")
     by_kind = {}
     for item in evidence:
+        problems.extend(status_receipt_issues(item, "artifact-check"))
         by_kind.setdefault(item.get("kind"), []).append(item)
     for kind in sorted(required):
         items = by_kind.get(kind, [])
@@ -132,3 +133,23 @@ def final_acceptance(artifact, tasks, evidence, *, source_preserved, propagation
 def receipt_is_current(receipt):
     path = Path(receipt["artifact"])
     return path.is_file() and sha256(path) == receipt["artifact_sha256"]
+
+
+def status_receipt_issues(receipt, context):
+    """Context/evidence presence validation; never substitutes for external review."""
+    registry_path = Path(__file__).resolve().parents[3] / "schemas/status-codes.json"
+    try:
+        codes = json.loads(registry_path.read_text(encoding="utf-8"))["codes"]
+    except (OSError, ValueError, KeyError):
+        return ["STATUS_REGISTRY_UNAVAILABLE"]
+    status = receipt.get("status")
+    definition = codes.get(status)
+    if definition is None:
+        return ["STATUS_UNKNOWN:" + str(status)]
+    issues = []
+    if context not in definition["contexts"]:
+        issues.append("STATUS_CONTEXT_INVALID:" + status)
+    for field in definition.get("required_evidence", []):
+        if not receipt.get(field):
+            issues.append("STATUS_EVIDENCE_MISSING:" + field)
+    return issues

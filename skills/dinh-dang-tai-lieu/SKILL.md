@@ -21,6 +21,7 @@ For a new HMU document, use [assets/hmu-word-styles.docx](assets/hmu-word-styles
 Verify the target profile's official source, version, freshness and checksum. Inspect the actual input DOCX. If the source is missing or stale, return `OFFICIAL_RULE_REQUIRED`; if a required mapping is ambiguous, return `AUTHOR_INPUT_REQUIRED`. Receive semantic order from `bo-cuc-tai-lieu`; do not move, split, merge or write sections here.
 
 Select a backend only after a capability probe. Word COM is valid only on local Windows with its bridge; LibreOffice UNO requires both UNO and its executable; otherwise use OOXML-only. Never claim fields updated, pagination correct, or visual layout passed from OOXML inspection alone.
+For an available UNO surface use [scripts/refresh_uno.py](scripts/refresh_uno.py) via UNO-capable Python; then run post-refresh integrity/style checks. REFRESHED_REVIEW_REQUIRED is not final acceptance.
 
 Use the author's request as authorization for reversible formatting within scope; ask only about unresolved choices affecting the product. Write a new DOCX, preserve unrecognized package parts and tracked changes, and never overwrite a source or existing output. Treat named styles as authoritative: repair and assign body, heading, TOC, table-of-figures, caption, bibliography, table-text and list styles; clear conflicting direct formatting without erasing semantic emphasis. Set fields to update, normalize automatic bullets through deterministic numbering, and allocate table columns from content demand with bounded widths.
 

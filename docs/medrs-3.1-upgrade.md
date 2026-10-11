@@ -1,5 +1,18 @@
 # MedRS 3.1 implementation and acceptance
 
+Comprehensive-upgrade checkpoint 2026-10-11: Tasks 1–8 and 10
+implementation-tested; Task 9 source gaps and Task 11 final acceptance
+remain open. This is not a new fully accepted release or installed update.
+See [source-gaps.md](source-gaps.md). Unit tests do not certify semantic
+authoring, native host routing or visual correctness.
+
+The branch adds dated README/history/final lifecycle, confirmed-data
+transitions, shared section/assembly/revision gates, scoped cross-AI handoff,
+portable Word integrity/style helpers, conditional official profiles and
+source-required appraisal/reporting maps. Cowork uses its dedicated README,
+skill-local runtimes and explicit evidence statuses. Retrieval retains failed
+attempts, per-source access ceilings and publication-status history.
+
 Scope: fixes derived from two author-supplied retrospective reports. They are reports of observed failures and preferences, not universal medical or institutional rules. No patient data or original reports are redistributed. The author confirmed basic question-led CK2/institutional defaults and prioritized avoiding repeated questions and unclear prose.
 
 ## Ownership

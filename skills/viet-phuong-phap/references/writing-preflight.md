@@ -31,6 +31,9 @@ Lấy phạm vi, độ sâu phân tích và ngân sách từ profile loại tài
 
 ## Giọng tác giả
 
+The actual schema is [../../../schemas/author-style-profile.schema.json](../../../schemas/author-style-profile.schema.json).
+Validate the profile against it before use; do not invent another schema.
+
 Nếu cạnh Research Passport có `author-style-profile.json`, soạn ngay theo giọng đó: độ dài câu và đoạn, từ nối, ngôi xưng, quy ước số và cách đặt trích dẫn trong `measured`, và các khuôn diễn đạt trong `patterns`. Hồ sơ quyết định lựa từ và nhịp câu; số liệu, trích dẫn và mức độ mệnh đề không đổi vì giọng văn.
 
-Chỉ dùng `patterns` sau khi xác minh với văn bản gốc bằng `scripts/style_profile.py --check-profile author-style-profile.json <các văn bản gốc>`. Nếu không có văn bản gốc hoặc kiểm tra không đạt, bỏ qua `patterns` chưa xác minh và chỉ dùng `measured`.
+Chỉ dùng `patterns` sau khi xác minh với văn bản gốc bằng [../../kiem-van-phong/scripts/style_profile.py](../../kiem-van-phong/scripts/style_profile.py) với `--check-profile author-style-profile.json <các văn bản gốc>`. Nếu không có văn bản gốc hoặc kiểm tra không đạt, bỏ qua `patterns` chưa xác minh và chỉ dùng `measured`.

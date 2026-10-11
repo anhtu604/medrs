@@ -1,4 +1,4 @@
-# Medical Research Skills VN 3.0
+# MedRS 3.1 — portable development core
 
 This repository is the portable core and Claude package for a medical-research assistant. Start with `skills/medrs/SKILL.md`. Canonical content lives only under `skills/<name>/`; host adapters must remain thin.
 
@@ -7,6 +7,14 @@ Every skill links `skills/medrs/references/working-principles.md`, which governs
 Never reconstruct a reporting checklist, appraisal instrument, regulatory rule, citation, result, or institutional requirement from memory. Retrieve primary material, record source/version/license/retrieval/freshness metadata, and implement exact item coverage. If primary material is unavailable, create `BLOCKED.md`, leave the implemented item list empty, and let validation fail.
 
 Research data and extracted draft fields are not verified by default. Use the Research Passport and preserve `DRAFT_INFERRED` or `UNRESOLVED` until the author confirms them.
+
+Begin/adopt every substantial project with README context/progress, one
+accepted final/ set, dated history and all execution logs/change notes.
+Use the leader's project-workspace helper. Never publish private source
+snapshots, reports or patient identifiers. Read docs/source-gaps.md and the
+status registry before claiming source compliance or release acceptance.
+The Cowork README is docs/cowork-README.md, mapped to archive root README.md.
+Tests/offline routes do not certify host-native routing or semantic writing.
 
 Run validation in this order:
 
