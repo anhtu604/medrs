@@ -26,9 +26,10 @@ Checkpoint 2026-10-11, comprehensive-upgrade branch, not full release acceptance
   synthetic fixture. Post-refresh style validation and strict protected
   field/relationship preservation failed. Render/refresh success alone does
   not satisfy final Word acceptance; these checks remain unresolved.
-- Independent whole-branch review and complete end-to-end artifact acceptance
-  remain outstanding at this checkpoint. Unit tests and offline routing do
-  not certify semantic writing quality or final visual appearance.
+- Independent whole-branch review completed; six Important code defects were
+  reproduced and corrected in one regression-tested pass. Complete end-to-end
+  semantic/visual artifact acceptance remains outstanding. Unit tests and offline
+  routing do not certify semantic writing quality or final visual appearance.
 
 Missing sources do not prevent conditional drafting; they prevent an
 unsupported official compliance or completed-release claim. Source texts

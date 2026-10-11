@@ -10,6 +10,43 @@ from docx.oxml.ns import qn
 from .structure_profiles import _sha256
 from .word_backends import validate_render_claim
 from .docx_formatting import REFRESH_SAFE_STYLES, _column_weights
+from .effective_formatting import story_paragraphs, effective_run_format, border_values, borders_match
+from .structure_profiles import table_border_policy
+
+
+def _effective_fonts_pass(document, profile):
+    for paragraph in story_paragraphs(document):
+        setting = profile.get("word_styles", {}).get(paragraph.style.name, {})
+        expected_font = setting.get("font", profile["body"]["font"])
+        allowed_sizes = set(profile["body"]["allowed_size_pt"])
+        if "size_pt" in setting:
+            allowed_sizes = {setting["size_pt"]}
+        for run in paragraph.runs:
+            if not run.text:
+                continue
+            fonts, sizes = effective_run_format(run, paragraph, document)
+            if not fonts or any(face != expected_font for face in fonts.values()):
+                return False
+            if not sizes or any(size not in allowed_sizes for size in sizes.values()):
+                return False
+    return True
+
+
+def _table_borders_check(document, profile):
+    if not document.tables:
+        return "NOT_APPLICABLE"
+    policy = table_border_policy(profile)
+    if policy == "AUTHOR_APPROVAL_REQUIRED":
+        return "UNPERFORMED"
+    for table in document.tables:
+        if not borders_match(table._tbl.tblPr.find(qn("w:tblBorders")), border_values(policy)):
+            return "FAIL"
+        for index, row in enumerate(table.rows):
+            for cell in row.cells:
+                expected = border_values(policy, row=index, rows=len(table.rows))
+                if not borders_match(cell._tc.get_or_add_tcPr().find(qn("w:tcBorders")), expected):
+                    return "FAIL"
+    return "PASS"
 
 
 def _near(actual, expected, tolerance=0.03):
@@ -96,12 +133,7 @@ def validate_docx(path: Path, profile: dict, *, rendered_artifacts: list, backen
     body = profile["body"]
     normal_override = profile.get("word_styles", {}).get("Normal", {})
     normal_pass = normal.font.name == normal_override.get("font", body["font"]) and normal.font.size is not None and round(normal.font.size.pt, 1) == normal_override.get("size_pt", body["size_pt"])
-    runs = [run for paragraph in document.paragraphs for run in paragraph.runs if run.text]
-    direct_formatting_pass = all(
-        (run.font.name in {None, body["font"]})
-        and (run.font.size is None or round(run.font.size.pt, 1) in body["allowed_size_pt"])
-        for run in runs
-    )
+    direct_formatting_pass = _effective_fonts_pass(document, profile)
     page = profile["page"]
     margins_pass = all(
         _near(section.top_margin, page["top_cm"])
@@ -157,6 +189,7 @@ def validate_docx(path: Path, profile: dict, *, rendered_artifacts: list, backen
             else "FAIL",
             "adaptive_table_widths": "PASS" if _adaptive_tables_pass(document) else "FAIL",
             "list_numbering": "PASS" if _list_numbering_pass(document, numbering_xml) else "FAIL",
+            "table_borders": _table_borders_check(document, profile),
         },
         "rendered_checks": {"pagination": pagination_check, "visual_layout": rendered_check},
     }

@@ -27,25 +27,24 @@ def _hash(path):
 
 
 def _safe_source(source):
+    from docx_integrity import audit_docx_integrity
+    integrity = audit_docx_integrity(source)
+    if integrity["status"] != "PASS":
+        raise ValueError("|".join(item["code"] for item in integrity["issues"]))
     with ZipFile(source) as archive:
         if sum(i.file_size for i in archive.infolist()) > 64 * 1024 * 1024:
             raise ValueError("DOCX_TOO_LARGE")
-        ns = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
         toc = False
         for name in archive.namelist():
             if name.endswith(".rels"):
                 for rel in ET.fromstring(archive.read(name)):
                     if rel.get("TargetMode") == "External" and not rel.get("Type", "").endswith("/hyperlink"):
                         raise ValueError("EXTERNAL_UPDATE_REQUIRES_SEPARATE_REVIEW")
-            if name.startswith("word/") and name.endswith(".xml"):
-                tree = ET.fromstring(archive.read(name))
-                codes = [n.text or "" for n in tree.findall(".//w:instrText", ns)]
-                codes += [n.get("{" + ns["w"] + "}instr", "") for n in tree.findall(".//w:fldSimple", ns)]
-                for code in codes:
-                    first = code.strip().upper().split()
-                    if first and first[0] in {"DDE","DDEAUTO","INCLUDETEXT","INCLUDEPICTURE","LINK","DATABASE"}:
-                        raise ValueError("EXTERNAL_UPDATE_REQUIRES_SEPARATE_REVIEW")
-                    toc |= bool(first and first[0] == "TOC")
+        for field in integrity["field_instructions"]:
+            first = field["instruction"].strip().upper().split()
+            if first and first[0] in {"DDE","DDEAUTO","INCLUDETEXT","INCLUDEPICTURE","LINK","DATABASE"}:
+                raise ValueError("EXTERNAL_UPDATE_REQUIRES_SEPARATE_REVIEW")
+            toc |= bool(first and first[0] == "TOC")
         return toc
 
 

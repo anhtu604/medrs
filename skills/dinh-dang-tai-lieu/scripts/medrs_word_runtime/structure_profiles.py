@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import re
 import unicodedata
+import sys
 from copy import deepcopy
 from datetime import date
 from pathlib import Path
@@ -17,6 +18,8 @@ from .freshness import verification_status
 
 
 ROOT = Path(__file__).parents[4]
+sys.path.insert(0, str(ROOT / "skills/bo-cuc-tai-lieu/scripts"))
+from profile_policy import adapt_source_profile, profile_readiness, table_border_policy
 
 
 def load_structure_profile(path: Path) -> dict:
@@ -32,8 +35,13 @@ def _sha256(path: Path) -> str:
 
 
 def verify_profile_source(root: Path, profile: dict) -> dict:
+    readiness = profile_readiness(adapt_source_profile(profile), date.today().isoformat())
+    if readiness != "READY":
+        return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "PROFILE_SCOPE_OR_SOURCE_POLICY", "readiness": readiness}
     if profile.get("verification_status") != "CURRENT" or verification_status(profile, date.today()) != "CURRENT":
         return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "PROFILE_STALE_OR_UNVERIFIED"}
+    if not profile.get("source_path"):
+        return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "SOURCE_MISSING"}
     source = Path(root) / profile["source_path"]
     if not source.is_file():
         return {
@@ -57,7 +65,23 @@ def verify_profile_source(root: Path, profile: dict) -> dict:
         document = None
     else:
         return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "SOURCE_FORMAT_UNSUPPORTED"}
-    for rule in profile.get("semantic_rules", []):
+    rules = profile.get("semantic_rules")
+    if rules is None:
+        rules = []
+        def collect(value, name="requirements"):
+            if isinstance(value, dict):
+                if value.get("source_locator"):
+                    rules.append({"id": name, "source_locator": value["source_locator"],
+                                  "summary": {k: v for k, v in value.items() if k != "source_locator"}})
+                for key, nested in value.items():
+                    collect(nested, key)
+            elif isinstance(value, list):
+                for nested in value:
+                    collect(nested, name)
+        collect(profile)
+    if not isinstance(rules, list) or not rules:
+        return {"status": "OFFICIAL_RULE_REQUIRED", "reason": "SOURCE_RULES_MISSING"}
+    for rule in rules:
         locator = str(rule.get("source_locator", ""))
         match = re.fullmatch(r"P(\d+)", locator)
         if document is not None:

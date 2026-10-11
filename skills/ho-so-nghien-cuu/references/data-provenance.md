@@ -21,6 +21,14 @@ Every permitted transition to real-data use triggers `author_recheck_required`. 
 
 ## Rename/reorder-resistant signal
 
+A repeated declaration does not resolve an identical-value conflict. Check
+simulated digests throughout retained history, including a historical version
+returned after a newer replacement. Clear a known conflict only with an explicit
+`author_decision.conflict_resolution` receipt containing `status: CONFIRMED`,
+`scope: dataset-replacement`, the exact replacement `digest`, `author`, `timestamp`
+and a substantive `reason`. Preserve that receipt in history and notify the author
+to recheck; this remains an author resolution, not independent authenticity proof.
+
 `fingerprint_records(rows, columns, key)` produces a keyed HMAC over versioned canonical selected records. It ignores row order, preserves duplicates, sorts column names and preserves value types; Unicode strings are NFC-normalized. It rejects missing columns, nonfinite numbers, empty inputs and short keys. Keep a randomly generated key of at least 32 bytes locally under the project's access control; never commit the key or row values. Store normalization version, selected variables, raw file SHA256, value fingerprint and source/version relationships in the private registry. Pseudonymous digests are still sensitive project metadata.
 
 Identical selected-value fingerprints after rename are a review signal, not a finding of misconduct: small datasets, aggregate outputs or unchanged selected columns may match legitimately. Fingerprints are comparable only under the same key/normalization/variable mapping; a changed key must not falsely imply changed data. Renamed variables require explicit codebook mapping before fingerprinting. A different digest proves difference, not authenticity or independence. Explain this distinction when the author needs to resolve a conflict.

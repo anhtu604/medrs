@@ -3,6 +3,22 @@ from datetime import date
 import re
 
 
+def adapt_source_profile(profile: dict) -> dict:
+    locators = []
+    def collect(value):
+        if isinstance(value, dict):
+            if value.get("source_locator"):
+                locators.append(value["source_locator"])
+            for nested in value.values():
+                collect(nested)
+        elif isinstance(value, list):
+            for nested in value:
+                collect(nested)
+    collect(profile)
+    return profile | {"source_hash": profile.get("source_sha256", profile.get("source_hash")),
+                      "requirements_locators": locators or profile.get("requirements_locators", [])}
+
+
 def profile_readiness(profile: dict, today: str) -> str:
     required = ("source_url", "source_version", "source_license", "last_verified")
     if profile.get("source_kind") != "presentation-rules":
@@ -33,7 +49,7 @@ def profile_readiness(profile: dict, today: str) -> str:
 
 def table_border_policy(profile: dict) -> str:
     exception = profile.get("institution_exception") or {}
-    value = profile.get("table_borders")
+    value = profile.get("table_borders", (profile.get("table") or {}).get("table_borders"))
     if (exception.get("scope") == "table-borders" and exception.get("approved_by")
             and exception.get("reason")):
         value = exception.get("value")

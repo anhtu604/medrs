@@ -110,8 +110,11 @@ def audit_docx_integrity(path: Path) -> dict:
                 protected["fields"].append({"part": part, "instruction": (node.get(_q("instr")) or "").strip()})
             for kind, reference, code in (("footnotes", "footnoteReference", "MISSING_FOOTNOTE_TARGET"),
                                           ("endnotes", "endnoteReference", "MISSING_ENDNOTE_TARGET")):
-                if node.tag == _q(reference) and node.get(_q("id")) not in targets[kind]:
-                    issue(code, part, node.get(_q("id"), ""))
+                if node.tag == _q(reference):
+                    identifier = node.get(_q("id"))
+                    protected[kind].append({"part": part, "kind": reference, "id": identifier})
+                    if identifier not in targets[kind]:
+                        issue(code, part, identifier or "")
             for tag in comment_marks:
                 if node.tag == _q(tag):
                     identifier = node.get(_q("id"))
@@ -132,6 +135,7 @@ def audit_docx_integrity(path: Path) -> dict:
     return {"status": "FAIL" if issues else "PASS", "issues": issues,
             "protected_fingerprints": {kind: _digest(records) for kind, records in protected.items()},
             "protected_items": {kind: [_digest([record]) for record in records] for kind, records in protected.items()},
+            "field_instructions": protected["fields"],
             "unperformed_checks": ["visual-layout", "field-refresh", "semantic-anchor-review"]}
 
 

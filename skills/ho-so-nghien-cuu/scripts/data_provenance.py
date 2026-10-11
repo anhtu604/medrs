@@ -21,6 +21,16 @@ def fingerprint_records(rows: list[dict], columns: list[str], key: bytes) -> str
 
 
 def transition_data_state(previous: dict, replacement: dict, author_decision: dict) -> dict:
+    simulated_digests = set()
+    for entry in [previous, *previous.get("history", [])]:
+        for state_key, digest_key in (("state", "digest"), ("previous_state", "previous_digest"),
+                                      ("new_state", "replacement_digest")):
+            if entry.get(state_key) == "SIMULATED" and entry.get(digest_key):
+                simulated_digests.add(entry[digest_key])
+    resolution = author_decision.get("conflict_resolution") or {}
+    resolved = (resolution.get("status") == "CONFIRMED" and resolution.get("scope") == "dataset-replacement"
+                and resolution.get("digest") == replacement.get("digest")
+                and bool(resolution.get("author") and resolution.get("reason") and resolution.get("timestamp")))
     result = {"state": previous.get("state", "UNRESOLVED"), "digest": previous.get("digest"),
               "remove_current_simulation_labels": False, "author_recheck_required": False,
               "history_preserved": True, "history": deepcopy(previous.get("history", [])),
@@ -34,7 +44,7 @@ def transition_data_state(previous: dict, replacement: dict, author_decision: di
             result.update(state="UNRESOLVED", qualifications=["REPLACEMENT_DIGEST_REQUIRED"])
         elif replacement.get("partial") is True:
             result.update(state="UNRESOLVED", qualifications=["PARTIAL_REPLACEMENT_REQUIRES_SCOPE"])
-        elif replacement["digest"] == previous.get("digest") and previous.get("state") == "SIMULATED":
+        elif replacement["digest"] in simulated_digests and not resolved:
             result.update(state="UNRESOLVED", qualifications=["SAME_VALUES_REQUIRE_REVIEW"])
         else:
             result.update(state="AUTHOR_DECLARED_REAL", digest=replacement["digest"], remove_current_simulation_labels=True)
@@ -48,5 +58,6 @@ def transition_data_state(previous: dict, replacement: dict, author_decision: di
     result["history"].append({"previous_state": previous.get("state", "UNRESOLVED"), "previous_digest": previous.get("digest"),
                               "new_state": result["state"], "replacement_digest": replacement.get("digest"),
                               "author": author_decision.get("author"), "timestamp": author_decision.get("timestamp"),
-                              "author_declaration": result["author_declaration"]})
+                              "author_declaration": result["author_declaration"],
+                              "conflict_resolution": deepcopy(resolution) if resolved else None})
     return result

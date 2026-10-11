@@ -14,7 +14,8 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Inches, Pt, RGBColor
 from docx.text.paragraph import Paragraph
 
-from .structure_profiles import ROOT, _sha256, verify_profile_source
+from .structure_profiles import ROOT, _sha256, verify_profile_source, table_border_policy
+from .effective_formatting import story_paragraphs, style_chain, clear_font_properties, border_values
 
 _ZOTERO_SCRIPTS = Path(__file__).parents[4] / "skills/quan-ly-trich-dan/scripts"
 if str(_ZOTERO_SCRIPTS) not in _sys.path:
@@ -89,6 +90,11 @@ def _set_style_font(style, font_name: str, size_pt: float):
     style.font.size = Pt(size_pt)
     style.font.color.rgb = RGBColor(0, 0, 0)
     rpr = style.element.get_or_add_rPr()
+    complex_size = rpr.find(qn("w:szCs"))
+    if complex_size is None:
+        complex_size = OxmlElement("w:szCs")
+        rpr.append(complex_size)
+    complex_size.set(qn("w:val"), str(int(round(size_pt * 2))))
     rfonts = rpr.get_or_add_rFonts()
     for attribute in ("ascii", "hAnsi", "eastAsia", "cs"):
         rfonts.set(qn(f"w:{attribute}"), font_name)
@@ -154,8 +160,23 @@ def _configure_style_system(document, profile: dict):
             style.unhide_when_used = False
             style.priority = gallery_order[name]
 
+    _normalize_story_fonts(document, profile)
+
+
+def _normalize_story_fonts(document, profile):
+    body = profile["body"]
+    paragraphs = list(story_paragraphs(document))
+    protected_styles = set()
     field_depth = 0
-    for paragraph in document.paragraphs:
+    for paragraph in paragraphs:
+        for run in paragraph.runs:
+            boundaries = [n.get(qn("w:fldCharType")) for n in run._r.iter(qn("w:fldChar"))]
+            if field_depth > 0 or boundaries or run._r.xpath(".//w:instrText"):
+                protected_styles.update(s.style_id for s in style_chain(run.style))
+            for boundary in boundaries:
+                field_depth += 1 if boundary == "begin" else -1 if boundary == "end" else 0
+    field_depth = 0
+    for paragraph in paragraphs:
         if paragraph.style and paragraph.style.name not in REFRESH_SAFE_STYLES:
             _set_style_font(paragraph.style, body["font"], body["size_pt"])
         # Reset only managed paragraph spacing. Keep author-specific indentation,
@@ -175,13 +196,20 @@ def _configure_style_system(document, profile: dict):
             if in_field:
                 continue
             # Keep semantic emphasis, but clear font/size drift so the paragraph style governs.
-            run.font.name = None
-            run.font.size = None
-            rpr = run._r.rPr
-            rfonts = rpr.rFonts if rpr is not None else None
-            if rfonts is not None:
-                for attribute in ("asciiTheme", "hAnsiTheme", "eastAsiaTheme", "cstheme", "csTheme", "eastAsia", "cs"):
-                    rfonts.attrib.pop(qn(f"w:{attribute}"), None)
+            clear_font_properties(run._r.rPr)
+            chain = list(style_chain(run.style))
+            for style in chain:
+                if style.style_id not in protected_styles:
+                    clear_font_properties(style.element.rPr)
+            if any(s.style_id in protected_styles and s.element.rPr is not None for s in chain):
+                setting = profile.get("word_styles", {}).get(paragraph.style.name, {})
+                run.font.name = setting.get("font", body["font"])
+                run.font.size = Pt(setting.get("size_pt", body["size_pt"]))
+                complex_size = OxmlElement("w:szCs")
+                complex_size.set(qn("w:val"), str(int(round(setting.get("size_pt", body["size_pt"]) * 2))))
+                run._r.get_or_add_rPr().append(complex_size)
+                for slot in ("ascii", "hAnsi", "eastAsia", "cs"):
+                    run._r.get_or_add_rPr().get_or_add_rFonts().set(qn("w:" + slot), run.font.name)
 
 
 def _enable_field_refresh(document):
@@ -363,11 +391,14 @@ def _format_tables(document, profile: dict):
             maximum_share=float(table_settings.get("maximum_column_share", 0.65)),
         )
         table.autofit = False
+        policy = table_border_policy(profile)
+        if policy != "AUTHOR_APPROVAL_REQUIRED":
+            _set_borders(table._tbl.tblPr, "w:tblBorders", border_values(policy))
         grid_columns = table._tbl.tblGrid.gridCol_lst
         for index, width in enumerate(widths):
             if index < len(grid_columns):
                 grid_columns[index].set(qn("w:w"), str(width))
-        for row in table.rows:
+        for row_index, row in enumerate(table.rows):
             grid_index = 0
             seen_cells = set()
             for cell in row.cells:
@@ -382,12 +413,28 @@ def _format_tables(document, profile: dict):
                 tcw = cell._tc.get_or_add_tcPr().get_or_add_tcW()
                 tcw.set(qn("w:type"), "dxa")
                 tcw.set(qn("w:w"), str(cell_twips))
+                if policy != "AUTHOR_APPROVAL_REQUIRED":
+                    _set_borders(cell._tc.get_or_add_tcPr(), "w:tcBorders",
+                                 border_values(policy, row=row_index, rows=len(table.rows)))
                 for paragraph in cell.paragraphs:
                     paragraph.style = table_style
-                    for run in paragraph.runs:
-                        run.font.name = None
-                        run.font.size = None
                 grid_index += span
+    _normalize_story_fonts(document, profile)
+
+
+def _set_borders(properties, tag, values):
+    existing = properties.find(qn(tag))
+    if existing is not None:
+        properties.remove(existing)
+    borders = OxmlElement(tag)
+    for side, value in values.items():
+        edge = OxmlElement("w:" + side)
+        edge.set(qn("w:val"), value)
+        if value == "single":
+            edge.set(qn("w:sz"), "4")
+            edge.set(qn("w:color"), "000000")
+        borders.append(edge)
+    properties.append(borders)
 
 
 def _add_introduction_section(document, heading: str):

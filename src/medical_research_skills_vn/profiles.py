@@ -24,23 +24,8 @@ def official_profile_readiness(profile: dict, as_of: date) -> str:
     """Adapt existing target profiles to the portable source/scope policy."""
     import sys
     sys.path.insert(0, str(Path(__file__).parents[2] / "skills/bo-cuc-tai-lieu/scripts"))
-    from profile_policy import profile_readiness
-    locators = []
-
-    def collect(value):
-        if isinstance(value, dict):
-            if value.get("source_locator"):
-                locators.append(value["source_locator"])
-            for nested in value.values():
-                collect(nested)
-        elif isinstance(value, list):
-            for nested in value:
-                collect(nested)
-    collect(profile)
-    adapted = profile | {"source_hash": profile.get("source_sha256"),
-                         "source_license": profile.get("source_license"),
-                         "requirements_locators": locators}
-    return profile_readiness(adapted, as_of.isoformat())
+    from profile_policy import profile_readiness, adapt_source_profile
+    return profile_readiness(adapt_source_profile(profile), as_of.isoformat())
 
 
 def validate_profiles(root: Path, as_of: date) -> list[ValidationIssue]:

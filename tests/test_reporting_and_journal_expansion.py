@@ -11,12 +11,19 @@ from medical_research_skills_vn.coverage import load_coverage_manifest, validate
 ROOT = Path(__file__).parents[1]
 
 
+def source_policy():
+    return {"source_kind": "presentation-rules", "source_url": "https://example.invalid/rules",
+            "source_version": "Synthetic fixture v1", "source_license": "Synthetic test only",
+            "document_type": "master-thesis", "applicable_document_types": ["master-thesis"]}
+
+
 def test_registered_metadata_without_source_cannot_certify_layout(tmp_path):
     profile = {
         "verification_status": "CURRENT", "last_verified": "2026-10-11", "expires_after_days": 180,
         "source_path": "missing.docx", "source_url": "https://example.invalid/rules",
         "source_sha256": "A" * 64,
     }
+    profile.update(source_policy(), semantic_rules=[{"id": "fixture", "source_locator": "P0", "summary": "synthetic"}])
     result = verify_profile_source(tmp_path, profile)
     assert result["status"] == "OFFICIAL_RULE_REQUIRED"
     assert result["reason"] == "SOURCE_MISSING"
@@ -33,6 +40,7 @@ def test_available_original_requires_hash_and_valid_locator(tmp_path):
         "source_path": source.name, "source_sha256": sha256(source.read_bytes()).hexdigest(),
         "semantic_rules": [{"id": "order", "source_locator": "P0", "summary": "fixture order"}],
     }
+    profile.update(source_policy())
     assert verify_profile_source(tmp_path, profile)["status"] == "VERIFIED"
     profile["semantic_rules"][0]["source_locator"] = "P9"
     assert verify_profile_source(tmp_path, profile)["reason"] == "SOURCE_LOCATOR_INVALID"
