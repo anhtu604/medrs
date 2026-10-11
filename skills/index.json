@@ -63,7 +63,7 @@
     },
     {
       "name": "danh-gia-chat-luong-bang-chung",
-      "purpose": "Đánh giá nguy cơ sai lệch và độ chắc chắn của bằng chứng bằng RoB 2, GRADE và GRADE-CERQual theo đúng từng mục của công cụ chính thức. Appraises bias and certainty of evidence.",
+      "purpose": "Đánh giá nguy cơ sai lệch/chất lượng bằng RoB 2, ROBINS, JBI, QUADAS, AMSTAR; độ chắc chắn bằng GRADE/CERQual. Appraises bias and certainty. Không thay kiểm chuẩn báo cáo.",
       "role": "leaf",
       "locale": [
         "vi",
@@ -80,8 +80,10 @@
       "reference_files": [
         "skills/danh-gia-chat-luong-bang-chung/references/appraisal-routing.md",
         "skills/danh-gia-chat-luong-bang-chung/references/cerqual-confidence.md",
+        "skills/danh-gia-chat-luong-bang-chung/references/exposure-and-review-tools.md",
         "skills/danh-gia-chat-luong-bang-chung/references/grade-certainty.md",
         "skills/danh-gia-chat-luong-bang-chung/references/jbi-use-contract.md",
+        "skills/danh-gia-chat-luong-bang-chung/references/observational-current-tools.md",
         "skills/danh-gia-chat-luong-bang-chung/references/rob2-use-contract.md"
       ]
     },

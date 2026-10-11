@@ -1,0 +1,34 @@
+instrument: AMSTAR 2
+version: '2017'
+source_version: '2017'
+implemented_version: '2017'
+source_url: https://www.amstar.ca/docs/AMSTAR-2.pdf
+source_sha256: 318ba4139ff590e8aacc84c7be4dc84ddaa3fcd52522e10f7508c52ead2d1f05
+license: Official site all rights reserved; independently written navigation only; original and guidance required at use
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/danh-gia-chat-luong-bang-chung/SKILL.md
+status: SOURCE_MAPPED
+official_tool_required_at_use: true
+numerical_total_score: false
+coverage_scope: sixteen-item-navigation-not-official-response-criteria
+expected_ids: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"]
+implemented_ids: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"]
+items:
+  - {id: '1', operational_prompt: "Check PICO question and eligibility.", source_locator: 'Official checklist item 1; PDF page 1'}
+  - {id: '2', operational_prompt: "Compare methods with prior protocol.", source_locator: 'Official checklist item 2; PDF page 1'}
+  - {id: '3', operational_prompt: "Assess included-design rationale.", source_locator: 'Official checklist item 3; PDF page 1'}
+  - {id: '4', operational_prompt: "Evaluate search comprehensiveness.", source_locator: 'Official checklist item 4; PDF page 1'}
+  - {id: '5', operational_prompt: "Assess duplicate study selection.", source_locator: 'Official checklist item 5; PDF page 1'}
+  - {id: '6', operational_prompt: "Assess duplicate data extraction.", source_locator: 'Official checklist item 6; PDF page 2'}
+  - {id: '7', operational_prompt: "Check excluded-study reasons.", source_locator: 'Official checklist item 7; PDF page 2'}
+  - {id: '8', operational_prompt: "Assess included-study descriptions.", source_locator: 'Official checklist item 8; PDF page 2'}
+  - {id: '9', operational_prompt: "Evaluate design-specific bias appraisal.", source_locator: 'Official checklist item 9; PDF page 2'}
+  - {id: '10', operational_prompt: "Check included-study funding reports.", source_locator: 'Official checklist item 10; PDF page 2'}
+  - {id: '11', operational_prompt: "Assess synthesis methods by design.", source_locator: 'Official checklist item 11; PDF page 3'}
+  - {id: '12', operational_prompt: "Assess bias-sensitive synthesis.", source_locator: 'Official checklist item 12; PDF page 3'}
+  - {id: '13', operational_prompt: "Assess bias-informed interpretation.", source_locator: 'Official checklist item 13; PDF page 3'}
+  - {id: '14', operational_prompt: "Evaluate heterogeneity explanations.", source_locator: 'Official checklist item 14; PDF page 3'}
+  - {id: '15', operational_prompt: "Assess small-study bias investigation.", source_locator: 'Official checklist item 15; PDF page 3'}
+  - {id: '16', operational_prompt: "Check review funding and conflicts.", source_locator: 'Official checklist item 16; PDF page 4'}

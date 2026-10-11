@@ -1,6 +1,7 @@
 from medical_research_skills_vn.coverage import validate_coverage_manifest
 from medical_research_skills_vn.coverage import load_coverage_manifest
 from pathlib import Path
+import pytest
 
 
 def manifest():
@@ -45,3 +46,53 @@ def test_jbi_current_analytical_and_prevalence_coverage():
         assert source["source_sha256"]
         assert source["official_tool_required_at_use"] is True
         assert validate_coverage_manifest(source) == []
+
+
+def test_robins_i_v2_keeps_both_confounding_variants():
+    root = Path(__file__).resolve().parents[1]
+    source = load_coverage_manifest(root / "coverage/robins-i-v2-draft-2025.yaml")
+    assert source["draft"] is True
+    assert source["version"] == "20 November 2025 draft"
+    assert source["expected_ids"] == ([f"1A.{i}" for i in range(1, 5)] + [f"1B.{i}" for i in range(1, 6)] +
+                                         [f"2.{i}" for i in range(1, 6)] + [f"3.{i}" for i in range(1, 9)] +
+                                         [f"4.{i}" for i in range(1, 12)] + [f"5.{i}" for i in range(1, 4)] +
+                                         [f"6.{i}" for i in range(1, 5)])
+    assert source["official_tool_required_at_use"] is True
+    assert source["coverage_scope"] == "domain-signalling-navigation-not-official-algorithms"
+    assert validate_coverage_manifest(source) == []
+
+
+def test_quadas3_does_not_reuse_quadas2_domain_structure():
+    root = Path(__file__).resolve().parents[1]
+    source = load_coverage_manifest(root / "coverage/quadas-3-1.2.yaml")
+    assert source["version"] == "1.2"
+    assert list(source["domains"]) == ["participants", "index-test", "target-condition", "analysis"]
+    assert len(source["expected_ids"]) == 20
+    assert len(source["phases"]) == 6
+    assert validate_coverage_manifest(source) == []
+
+
+def test_robins_e_preserves_three_exposure_variants():
+    root = Path(__file__).resolve().parents[1]
+    source = load_coverage_manifest(root / "coverage/robins-e-2024.yaml")
+    assert len(source["domains"]) == 7
+    assert len(source["expected_ids"]) == 48
+    for variant in ("A", "B", "C"):
+        assert all(f"2{variant}.{i}" in source["expected_ids"] for i in range(1, 5))
+    assert validate_coverage_manifest(source) == []
+
+
+def test_amstar2_has_all_sixteen_entries_not_a_total_score():
+    root = Path(__file__).resolve().parents[1]
+    source = load_coverage_manifest(root / "coverage/amstar-2-2017.yaml")
+    assert source["expected_ids"] == [str(i) for i in range(1, 17)]
+    assert source["numerical_total_score"] is False
+    assert source["official_tool_required_at_use"] is True
+    assert validate_coverage_manifest(source) == []
+
+
+@pytest.mark.parametrize("text", ["Đánh giá ROBINS-I V2", "Đánh giá ROBINS-E", "Appraise JBI prevalence", "Đánh giá QUADAS-3", "Appraise AMSTAR 2"])
+def test_named_appraisal_request_routes_to_appraisal_owner(text):
+    from medical_research_skills_vn.routing import RoutingRequest, route_request
+    result = route_request(RoutingRequest(text), {}, {"medrs", "danh-gia-chat-luong-bang-chung"})
+    assert result.canonical == "danh-gia-chat-luong-bang-chung"

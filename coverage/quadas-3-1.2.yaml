@@ -1,0 +1,39 @@
+instrument: QUADAS-3
+version: '1.2'
+source_version: '1.2'
+implemented_version: '1.2'
+source_url: https://www.bristol.ac.uk/media-library/sites/social-community-medicine/quadas/QUADAS-3%201.2.docx
+source_sha256: 2565bc17f2508f4d7564d199a12ded3837301487666a06b94eaa76204a6a0e13
+license: Copyright authors; independently written navigation; official original and E&E required at use; no redistribution permission inferred
+last_verified: '2026-10-11'
+source_cutoff: '2026-10-11'
+expires_after_days: 365
+caller: skills/danh-gia-chat-luong-bang-chung/SKILL.md
+status: SOURCE_MAPPED
+official_tool_required_at_use: true
+coverage_scope: phase5-signalling-navigation-with-six-phase-contract
+domains: {participants: D1, index-test: D2, target-condition: D3, analysis: D4}
+phases: [synthesis-question, ideal-test-accuracy-trial, participant-flow, accuracy-estimates, estimate-specific-appraisal, overall-judgment]
+expected_ids: ["1.1","1.2","1.3","1.4","2.1","2.2","2.3","2.4","3.1","3.2","3.3","3.4","3.5","3.6","3.7","3.8","4.1","4.2","4.3","4.4"]
+implemented_ids: ["1.1","1.2","1.3","1.4","2.1","2.2","2.3","2.4","3.1","3.2","3.3","3.4","3.5","3.6","3.7","3.8","4.1","4.2","4.3","4.4"]
+items:
+  - {id: '1.1', domain: participants, operational_prompt: "Assess single-gate recruitment.", source_locator: 'DOCX table 6 row 2'}
+  - {id: '1.2', domain: participants, operational_prompt: "Check prospective enrolment.", source_locator: 'DOCX table 6 row 3'}
+  - {id: '1.3', domain: participants, operational_prompt: "Assess consecutive or random selection.", source_locator: 'DOCX table 6 row 4'}
+  - {id: '1.4', domain: participants, operational_prompt: "Compare sample with intended-use population.", source_locator: 'DOCX table 6 row 5'}
+  - {id: '2.1', domain: index-test, operational_prompt: "Assess recommended test administration.", source_locator: 'DOCX table 7 row 2'}
+  - {id: '2.2', domain: index-test, operational_prompt: "Check reference-result blinding.", source_locator: 'DOCX table 7 row 3'}
+  - {id: '2.3', domain: index-test, operational_prompt: "Compare information with routine-use context.", source_locator: 'DOCX table 7 row 4'}
+  - {id: '2.4', domain: index-test, operational_prompt: "Verify threshold prespecification.", source_locator: 'DOCX table 7 row 5'}
+  - {id: '3.1', domain: target-condition, operational_prompt: "Assess reference-standard classification validity.", source_locator: 'DOCX table 8 row 2'}
+  - {id: '3.2', domain: target-condition, operational_prompt: "Check condition assessment for every participant.", source_locator: 'DOCX table 8 row 3'}
+  - {id: '3.3', domain: target-condition, operational_prompt: "Compare reference procedures across participants.", source_locator: 'DOCX table 8 row 4'}
+  - {id: '3.4', domain: target-condition, operational_prompt: "Check avoidance of index-test incorporation.", source_locator: 'DOCX table 8 row 5'}
+  - {id: '3.5', domain: target-condition, operational_prompt: "Assess recommended reference administration.", source_locator: 'DOCX table 8 row 6'}
+  - {id: '3.6', domain: target-condition, operational_prompt: "Check index-result blinding.", source_locator: 'DOCX table 8 row 7'}
+  - {id: '3.7', domain: target-condition, operational_prompt: "Verify reference-threshold prespecification.", source_locator: 'DOCX table 8 row 8'}
+  - {id: '3.8', domain: target-condition, operational_prompt: "Assess test-to-reference timing.", source_locator: 'DOCX table 8 row 9'}
+  - {id: '4.1', domain: analysis, operational_prompt: "Check inclusion of enrolled participants.", source_locator: 'DOCX table 9 row 2'}
+  - {id: '4.2', domain: analysis, operational_prompt: "Assess missing-data handling.", source_locator: 'DOCX table 9 row 3'}
+  - {id: '4.3', domain: analysis, operational_prompt: "Compare analysis unit with ideal trial.", source_locator: 'DOCX table 9 row 4'}
+  - {id: '4.4', domain: analysis, operational_prompt: "Verify sensitivity/specificity estimation.", source_locator: 'DOCX table 9 row 5'}

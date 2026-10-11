@@ -1,6 +1,6 @@
 ---
 name: danh-gia-chat-luong-bang-chung
-description: "Đánh giá nguy cơ sai lệch và độ chắc chắn của bằng chứng bằng RoB 2, GRADE và GRADE-CERQual theo đúng từng mục của công cụ chính thức. Appraises bias and certainty of evidence."
+description: "Đánh giá nguy cơ sai lệch/chất lượng bằng RoB 2, ROBINS, JBI, QUADAS, AMSTAR; độ chắc chắn bằng GRADE/CERQual. Appraises bias and certainty. Không thay kiểm chuẩn báo cáo."
 metadata:
   version: 3.1.0
   role: leaf
@@ -12,6 +12,8 @@ metadata:
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
 For analytical cross-sectional or prevalence targets read [references/jbi-use-contract.md](references/jbi-use-contract.md) and its exact coverage manifests; load the official tool at use time.
+For nonrandomized intervention or diagnostic accuracy targets read [references/observational-current-tools.md](references/observational-current-tools.md); distinguish draft ROBINS-I V2 and current QUADAS-3 from protocol-pinned legacy tools.
+For exposure effects or review methodology read [references/exposure-and-review-tools.md](references/exposure-and-review-tools.md). All expanded instruments use its hash-bound original loader, not memory-only checklists.
 
 Read [references/appraisal-routing.md](references/appraisal-routing.md) first. For RoB 2, also read [references/rob2-use-contract.md](references/rob2-use-contract.md) and `../../coverage/rob2-parallel-2019.yaml`. For certainty of quantitative intervention effects, read [references/grade-certainty.md](references/grade-certainty.md) and `../../coverage/grade-interventions-6.5.1.yaml`. For qualitative review findings, read [references/cerqual-confidence.md](references/cerqual-confidence.md) and `../../coverage/cerqual-2018.yaml`.
 

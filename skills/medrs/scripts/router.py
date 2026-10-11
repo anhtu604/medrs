@@ -247,6 +247,11 @@ def route_request(request, legacy_map, active_skills):
         return RoutingDecision("medrs", "tong-hop-bang-chung", "synthesize", availability)
 
     appraisal_routes = (
+        (("robins-i", "robins i"), "robins-i-version-required"),
+        (("robins-e", "robins e"), "robins-e"),
+        (("jbi prevalence", "jbi analytical", "jbi cross-sectional"), "jbi-design-required"),
+        (("quadas-3", "quadas 3", "quadas-2", "quadas 2"), "quadas-version-required"),
+        (("amstar 2", "amstar-2"), "amstar2"),
         (("rob 2", "rob2", "nguy cơ sai lệch rct"), "rob2"),
         (("grade certainty", "độ chắc chắn grade", "đánh giá grade"), "grade"),
         (("cerqual",), "cerqual"),
