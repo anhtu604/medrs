@@ -166,7 +166,8 @@
       "skill_path": "skills/ho-so-nghien-cuu/SKILL.md",
       "reference_files": [
         "skills/ho-so-nghien-cuu/references/adopt-existing-project.md",
-        "skills/ho-so-nghien-cuu/references/data-provenance.md"
+        "skills/ho-so-nghien-cuu/references/data-provenance.md",
+        "skills/ho-so-nghien-cuu/references/project-scope.md"
       ]
     },
     {
@@ -211,6 +212,7 @@
         "skills/kiem-van-phong/references/composition-en.md",
         "skills/kiem-van-phong/references/composition-vi.md",
         "skills/kiem-van-phong/references/formulaic-writing-audit.md",
+        "skills/kiem-van-phong/references/gate-lifecycle.md",
         "skills/kiem-van-phong/references/prose-rewriting.md",
         "skills/kiem-van-phong/references/scientific-integrity.md"
       ]

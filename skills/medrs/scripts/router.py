@@ -29,6 +29,15 @@ class RoutingDecision:
 
 def route_request(request, legacy_map, active_skills):
     text = _normalized(request.text)
+    colon = re.search(r"/medrs:([a-z][a-z0-9-]+)", text)
+    if colon:
+        name = colon.group(1)
+        target = legacy_map.get(name, {}).get("canonical", name)
+        if target in active_skills:
+            return RoutingDecision("medrs", target, "explicit", "AVAILABLE")
+        return RoutingDecision("medrs", "medrs", "unknown-explicit-skill", "UNAVAILABLE")
+    # Remove explicitly negated action clauses, not their remaining positive tasks.
+    text = re.sub(r"(?:^|[;,])\s*(?:không|don't|do not)\s+[^;,]+", "", text)
     # Explicit canonical invocations take precedence over incidental keywords.
     explicit = re.findall(r"(?:/|\$)([a-z][a-z0-9-]+)", text)
     for name in explicit:
@@ -295,4 +304,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     skills_dir = Path(__file__).resolve().parents[2]
     active = {path.parent.name for path in skills_dir.glob("*/SKILL.md")}
-    print(json.dumps(route_plan(RoutingRequest(args.text), {}, active), ensure_ascii=False, indent=2))
+    import yaml
+    mapping_path = skills_dir / "medrs/references/legacy-skill-map.yaml"
+    mapping = yaml.safe_load(mapping_path.read_text(encoding="utf-8"))["legacy"]
+    print(json.dumps(route_plan(RoutingRequest(args.text), mapping, active), ensure_ascii=False, indent=2))

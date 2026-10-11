@@ -13,6 +13,7 @@ metadata:
 Before starting or adopting a project, create its README and dated workspace following [../leader-nghien-cuu/references/project-workspace.md](../leader-nghien-cuu/references/project-workspace.md). Populate context from the Passport and current files, preserving author notes and unresolved fields; keep accepted finals separate from working drafts.
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+For adoption, child projects or conflicting drafts use [references/project-scope.md](references/project-scope.md).
 
 Own the Research Passport lifecycle. Use `new`, `adopt-existing-project`, `validate`, `confirm`, or `summarize` mode.
 

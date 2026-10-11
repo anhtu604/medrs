@@ -12,6 +12,20 @@ ROOT = Path(__file__).parents[2]
 SCHEMA_PATH = ROOT / "schemas/research-passport.schema.json"
 
 
+def create_child_passport(parent, project_id, document_type):
+    import sys
+    sys.path.insert(0, str(ROOT / "skills/ho-so-nghien-cuu/scripts"))
+    from project_scope import create_child_passport as portable
+    return portable(parent, project_id, document_type)
+
+
+def reconcile_project_evidence(passport, evidence):
+    import sys
+    sys.path.insert(0, str(ROOT / "skills/ho-so-nghien-cuu/scripts"))
+    from project_scope import reconcile_project_evidence as portable
+    return portable(passport, evidence)
+
+
 def unresolved_field(marker: str = "DATA_REQUIRED") -> dict:
     return {
         "value": None,

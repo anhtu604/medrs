@@ -13,6 +13,7 @@ metadata:
 Inherit the [basic-statistics interpretation ceilings](../phan-tich-so-lieu/references/basic-statistics-contract.md): post-hoc cutoffs/models, unaddressed multiplicity, failed PH or unverified linkage stay qualified locally. Strength-led writing cannot convert exploratory associations into confirmatory or causal claims.
 
 Follow the shared [working principles](../medrs/references/working-principles.md).
+Select standalone/assembled/revision scope using [the shared gate lifecycle](../kiem-van-phong/references/gate-lifecycle.md).
 When editing or writing into a Word file, follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
 Read [references/discussion-workflow.md](references/discussion-workflow.md), then read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once before delivery.

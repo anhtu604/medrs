@@ -24,6 +24,11 @@
     }
   },
   "properties": {
+    "workspace": {"type": "string", "minLength": 1},
+    "parent_project_id": {"type": "string", "minLength": 1},
+    "data_provenance": {"type": "object"},
+    "writing_policy": {"type": "object"},
+    "conflicts": {"type": "array", "items": {"type": "object", "required": ["field", "current", "proposed", "source", "status"], "properties": {"status": {"enum": ["UNRESOLVED", "AUTHOR_RESOLVED"]}}}},
     "schema_version": {"const": "2.0.0"},
     "project_id": {"type": "string", "minLength": 1},
     "document_type": {"type": "string", "minLength": 1},

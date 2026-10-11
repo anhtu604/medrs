@@ -33,6 +33,8 @@ Gate này đánh giá và nâng chất lượng, tính liêm chính của văn b
 
 ## Vòng đời
 
+Use [references/gate-lifecycle.md](references/gate-lifecycle.md) and its portable scope selector; no duplicated lifecycle policy.
+
 - Section độc lập: chạy một full gate trước khi giao.
 - Tài liệu nhiều phần: writer chỉ chạy shared preflight; full gate chạy sau lần ráp đầu tiên.
 - Sau sửa nội dung: tái kiểm phần có hash/dependency đổi và kiểm nhất quán toàn văn. Không đổi thì tái sử dụng kết quả cũ.

@@ -1,31 +1,31 @@
 version: "1.3.0-to-2.0.0"
 legacy:
   co-van: {canonical: medrs, mode: entry, note: Former entrypoint; use /medrs}
-  dieu-phoi-de-cuong-vn: {canonical: viet-ban-thao-y-hoc, mode: protocol, note: Route through /medrs}
+  dieu-phoi-de-cuong-vn: {canonical: de-cuong-va-thiet-ke, mode: protocol, note: Route through /medrs}
   dieu-phoi-luan-van: {canonical: viet-ban-thao-y-hoc, mode: thesis, note: Route through /medrs}
   dieu-phoi-luan-an: {canonical: viet-ban-thao-y-hoc, mode: dissertation, note: Route through /medrs}
-  dieu-phoi-bai-bao-vn: {canonical: viet-ban-thao-y-hoc, mode: manuscript-vi, note: Available in slice 2}
-  dieu-phoi-bai-bao-en: {canonical: viet-ban-thao-y-hoc, mode: manuscript-en, note: Available in slice 2}
-  dieu-phoi-tong-quan-he-thong: {canonical: tong-hop-bang-chung, mode: systematic-review, note: Available in slice 3}
+  dieu-phoi-bai-bao-vn: {canonical: viet-ban-thao-y-hoc, mode: manuscript-vi, note: Canonical skill; availability checked on host}
+  dieu-phoi-bai-bao-en: {canonical: viet-ban-thao-y-hoc, mode: manuscript-en, note: Canonical skill; availability checked on host}
+  dieu-phoi-tong-quan-he-thong: {canonical: tong-hop-bang-chung, mode: systematic-review, note: Canonical skill; availability checked on host}
   viet-phan-vn: {canonical: medrs, mode: section-vi, note: Route to the section-specific writer}
   viet-phan-en: {canonical: medrs, mode: section-en, note: Route to the section-specific writer}
   viet-dinh-tinh-vn: {canonical: medrs, mode: qualitative, note: Route by section and design profile}
-  viet-tom-tat: {canonical: viet-tom-tat, mode: abstract, note: Available in slice 2}
-  phan-tich-so-lieu: {canonical: phan-tich-so-lieu, mode: analysis, note: Available in slice 2}
-  phan-tich-r: {canonical: phan-tich-r, mode: r, note: Available in slice 2}
-  phan-tich-stata: {canonical: phan-tich-stata, mode: stata, note: Available in slice 2}
-  tim-tai-lieu: {canonical: tim-y-van, mode: literature, note: Available in slice 3}
+  viet-tom-tat: {canonical: viet-tom-tat, mode: abstract, note: Canonical skill; availability checked on host}
+  phan-tich-so-lieu: {canonical: phan-tich-so-lieu, mode: analysis, note: Canonical skill; availability checked on host}
+  phan-tich-r: {canonical: phan-tich-r, mode: r, note: Canonical skill; availability checked on host}
+  phan-tich-stata: {canonical: phan-tich-stata, mode: stata, note: Canonical skill; availability checked on host}
+  tim-tai-lieu: {canonical: tim-y-van, mode: literature, note: Canonical skill; availability checked on host}
   kiem-van-phong: {canonical: kiem-van-phong, mode: style, note: Canonical name retained}
   kiem-cau-van-en: {canonical: kiem-van-phong, mode: composition-en, note: English locale mode}
   kiem-trich-dan: {canonical: quan-ly-trich-dan, mode: verify-faithfulness, note: Citation checks moved to citation management}
   kiem-liem-chinh: {canonical: tu-phan-bien, mode: pre-submission-review, note: Integrity checks run in pre-submission review}
   kiem-chuan-bao-cao: {canonical: kiem-chuan-bao-cao, mode: guideline-compliance, note: Canonical name retained}
   kiem-chung-ban-thao: {canonical: tu-phan-bien, mode: pre-submission-review, note: Merged into pre-submission review in 3.0}
-  kiem-sai-lech: {canonical: danh-gia-chat-luong-bang-chung, mode: risk-of-bias, note: Available in slice 3}
-  kiem-dinh-dang: {canonical: bo-cuc-tai-lieu, mode: validate-structure, note: Available in slice 4}
-  dinh-dang-tai-lieu: {canonical: dinh-dang-tai-lieu, mode: word-format, note: Available in slice 4}
+  kiem-sai-lech: {canonical: danh-gia-chat-luong-bang-chung, mode: risk-of-bias, note: Canonical skill; availability checked on host}
+  kiem-dinh-dang: {canonical: bo-cuc-tai-lieu, mode: validate-structure, note: Canonical skill; availability checked on host}
+  dinh-dang-tai-lieu: {canonical: dinh-dang-tai-lieu, mode: word-format, note: Canonical skill; availability checked on host}
   dao-duc-vn: {canonical: dao-duc-va-quan-tri-du-lieu, mode: vietnam, note: Jurisdiction profile}
   dao-duc-en: {canonical: dao-duc-va-quan-tri-du-lieu, mode: international, note: Jurisdiction profile}
-  nhan-xet-luan-van-vn: {canonical: phan-bien-va-chinh-sua, mode: thesis-review, note: Available in slice 4}
-  nhan-xet-ban-thao-en: {canonical: phan-bien-va-chinh-sua, mode: peer-review, note: Available in slice 4}
-  tra-loi-phan-bien: {canonical: phan-bien-va-chinh-sua, mode: response, note: Available in slice 4}
+  nhan-xet-luan-van-vn: {canonical: phan-bien-va-chinh-sua, mode: thesis-review, note: Canonical skill; availability checked on host}
+  nhan-xet-ban-thao-en: {canonical: phan-bien-va-chinh-sua, mode: peer-review, note: Canonical skill; availability checked on host}
+  tra-loi-phan-bien: {canonical: phan-bien-va-chinh-sua, mode: response, note: Canonical skill; availability checked on host}

@@ -2,6 +2,8 @@
 
 Every section writer reads this reference by relative path before returning a draft. The rules live here only.
 
+Select audit scope through [the shared gate lifecycle](../../kiem-van-phong/references/gate-lifecycle.md). Import its `required_gate_scope` helper when automating; selecting scope never marks the audit PASS. Carry statistical qualifications and unresolved data status into every dependent claim.
+
 ## Inputs
 
 - Research Passport and active locale-profile version
