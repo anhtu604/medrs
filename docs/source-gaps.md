@@ -30,6 +30,11 @@ Checkpoint 2026-10-11, comprehensive-upgrade branch, not full release acceptance
   reproduced and corrected in one regression-tested pass. Complete end-to-end
   semantic/visual artifact acceptance remains outstanding. Unit tests and offline
   routing do not certify semantic writing quality or final visual appearance.
+- Local Word COM via PowerShell (16.0) also updated/reopened the synthetic TOC
+  and exported a two-page PDF. Both pages were inspected. Strict relationship,
+  style and border checks still fail after Word's name/inheritance/relationship
+  normalization; the diagnostic does not establish either a fully accepted
+  document or proven visible corruption. Conversion-aware evidence is pending.
 
 Missing sources do not prevent conditional drafting; they prevent an
 unsupported official compliance or completed-release claim. Source texts
