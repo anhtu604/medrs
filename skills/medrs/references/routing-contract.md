@@ -10,6 +10,8 @@ Use the complete skill index. Owners: adoption/Passport → ho-so-nghien-cuu; de
 
 Writing owners: manuscript assembly → viet-ban-thao-y-hoc; Introduction → viet-dat-van-de; review → viet-tong-quan; Methods/PPNC → viet-phuong-phap; Results → viet-ket-qua; Discussion → viet-ban-luan; conclusions/recommendations → viet-ket-luan-khuyen-nghi; abstract → viet-tom-tat. Prose audit/rewrite → kiem-van-phong; semantic order → bo-cuc-tai-lieu; Word styles/TOC/numbering/bullets/table layout → dinh-dang-tai-lieu; actual comments → phan-bien-va-chinh-sua; scientific independent self-review → tu-phan-bien; reporting checklist → kiem-chuan-bao-cao.
 
+Topic understanding before writing → tim-hieu-de-tai (`discover`; `discover-from-draft` when a protocol or draft is attached). The entrypoint, not the text router, decides from the workspace state that a first-time project needs it; the router only recognizes explicit requests.
+
 Planning, guidance, multi-domain revision and final artifact acceptance → leader-nghien-cuu. It does not replace scientific self-review or manuscript assembly. Split a compound assignment into actionable items with their original wording and owner. Dependency order normally is source/decisions, analysis/evidence, writing/revision, semantic structure, Word/citations refresh, independent content/presentation acceptance. Preserve author-specified order if it does not invalidate dependencies.
 
 For “shorten Discussion, repair Word and accept”, retain three tasks. For “correct p for T1–T2”, resolve the result identity through analysis before rewriting the observation. For “my old file has comments but keep my edits”, record source/version through leader and route comments to revision; do not overwrite or adopt an arbitrary draft.

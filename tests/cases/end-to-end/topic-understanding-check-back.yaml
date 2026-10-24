@@ -1,0 +1,6 @@
+name: topic-understanding-check-back
+workflow: topic-understanding
+request: Tôi muốn tìm hiểu đề tài trước khi viết
+active_skills: [medrs, tim-hieu-de-tai]
+steps: [[background, EXPLAINED], [background, DONE]]
+expect: {route: tim-hieu-de-tai, mode: discover, error: CHECK_BACK_REQUIRED, next_part: background}

@@ -49,6 +49,14 @@ def route_request(request, legacy_map, active_skills):
             availability = "AVAILABLE" if canonical in active_skills else "NOT_IN_ACTIVE_SLICE"
             return RoutingDecision("medrs", canonical, target["mode"], availability)
 
+    # Understanding the study comes before any writing work.
+    discovery_phrases = ("tìm hiểu đề tài", "trao đổi về đề tài", "bắt đầu đề tài mới", "hiểu rõ đề tài",
+                         "discuss my study", "onboard project", "understand my topic")
+    if any(_mentions(text, phrase) for phrase in discovery_phrases):
+        draft = any(name.casefold().endswith((".docx", ".md", ".txt")) for name in request.attachments)
+        return RoutingDecision("medrs", "tim-hieu-de-tai", "discover-from-draft" if draft else "discover",
+                               "AVAILABLE" if "tim-hieu-de-tai" in active_skills else "NOT_IN_ACTIVE_SLICE")
+
     # Specific requested actions outrank contextual nouns such as Methods/STROBE.
     action_routes = (
         (r"(?:tìm|search|find)\s+(?:tài liệu|nguồn|y văn|literature|sources)", "tim-y-van", "database-search"),

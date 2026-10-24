@@ -27,7 +27,7 @@ class ScenarioResult:
 def run_scenario(path: Path, root: Path) -> ScenarioResult:
     case = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
     active = set(case["active_skills"])
-    route = route_request(RoutingRequest(text=case["request"]), {}, active)
+    route = route_request(RoutingRequest(text=case["request"], attachments=tuple(case.get("attachments", ()))), {}, active)
     workflow = case.get("workflow", "protocol")
     expected = case.get("expect", {})
     if workflow != "protocol":
@@ -37,7 +37,12 @@ def run_scenario(path: Path, root: Path) -> ScenarioResult:
         if route.mode != expected.get("mode"):
             errors.append(f"mode: expected {expected.get('mode')}, got {route.mode}")
         artifacts = {"route": route}
-        if workflow == "systematic-empty":
+        if workflow == "topic-understanding":
+            artifacts["understanding"] = _run_understanding_steps(root, case.get("steps", []))
+            for key in ("next_part", "status", "error"):
+                if key in expected and artifacts["understanding"][key] != expected[key]:
+                    errors.append(f"understanding {key}: expected {expected[key]}, got {artifacts['understanding'][key]}")
+        elif workflow == "systematic-empty":
             synthesis = _empty_systematic_synthesis("systematic")
             artifacts["synthesis"] = synthesis
             if synthesis["systematic_completeness"] != expected["systematic_completeness"]:
@@ -129,6 +134,37 @@ def run_scenario(path: Path, root: Path) -> ScenarioResult:
         },
         errors=errors,
     )
+
+
+def _run_understanding_steps(root: Path, steps: list) -> dict:
+    """Replay conversation steps on a throwaway workspace; stop at the first refusal."""
+    import sys
+    import tempfile
+
+    for folder in ("skills/leader-nghien-cuu/scripts", "skills/tim-hieu-de-tai/scripts"):
+        if str(Path(root) / folder) not in sys.path:
+            sys.path.insert(0, str(Path(root) / folder))
+    from project_workspace import initialize_project, set_understanding
+    from topic_understanding import status
+
+    day = "2026-10-23"
+    with tempfile.TemporaryDirectory() as folder:
+        project = Path(folder)
+        initialize_project(project, "eval", day)
+        error = None
+        for kind, value in steps:
+            try:
+                if kind == "status":
+                    set_understanding(project, day, status=value)
+                elif kind == "confirm":
+                    set_understanding(project, day, status="CONFIRMED", confirmation=value)
+                else:
+                    set_understanding(project, day, part=kind, part_state=value)
+            except ValueError as exc:
+                error = str(exc)
+                break
+        current = status(project)
+    return {"next_part": current["next_part"], "status": current["state"], "error": error}
 
 
 def _empty_systematic_synthesis(mode: str) -> dict:

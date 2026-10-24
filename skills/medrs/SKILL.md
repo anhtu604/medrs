@@ -16,6 +16,8 @@ Treat `/medrs` as the single user-facing entrypoint. Classify every requested it
 
 At project start/adoption, hand off README, dated history/logs and accepted-final setup through [../leader-nghien-cuu/references/project-workspace.md](../leader-nghien-cuu/references/project-workspace.md) before substantive work. Reuse the existing workspace on later rounds.
 
+Before writing work, check topic understanding with [../tim-hieu-de-tai/scripts/topic_understanding.py](../tim-hieu-de-tai/scripts/topic_understanding.py) `status <project folder>` (chat-only host: read the README section "Hiểu đề tài"). No workspace, or a new project not `CONFIRMED` → route to `tim-hieu-de-tai` first. A 3.1 project without that section, or one mid-revision → offer it in one line only. `DEFERRED_BY_AUTHOR` → one-line reminder, then do the requested work.
+
 Read [references/routing-contract.md](references/routing-contract.md). Use [scripts/router.py](scripts/router.py) for reproducible candidate routing when Python exists; read the same contract and skill index on chat-only hosts. A candidate is not proof of execution.
 
 ## Routing

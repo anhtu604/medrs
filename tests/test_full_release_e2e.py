@@ -29,6 +29,10 @@ def test_release_exemplars_pass_offline():
         "meta-analysis-guard",
         "thesis-hmu",
         "discussion-strength-led",
+        "topic-understanding-new",
+        "topic-understanding-draft",
+        "topic-understanding-check-back",
+        "topic-understanding-resume",
     }
     results = [run_scenario(path, ROOT) for path in scenarios]
     assert {result.name for result in results} == {
@@ -39,5 +43,9 @@ def test_release_exemplars_pass_offline():
         "meta-analysis-guard",
         "thesis-hmu",
         "discussion-strength-led",
+        "topic-understanding-new",
+        "topic-understanding-draft",
+        "topic-understanding-check-back",
+        "topic-understanding-resume",
     }
     assert all(result.errors == [] for result in results)

@@ -10,6 +10,7 @@ Select audit scope through [the shared gate lifecycle](../../kiem-van-phong/refe
 - section draft and section hash
 - claim/evidence table
 - unresolved markers
+- confirmed project context from the README sections Kiến thức nền through Thuật ngữ và định nghĩa đã chốt; if topic understanding is not `CONFIRMED`, still write when asked and add one line offering to finish the conversation with `tim-hieu-de-tai` — never block
 
 ## Checks
 

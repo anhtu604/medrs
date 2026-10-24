@@ -14,7 +14,7 @@ Follow the shared [working principles](../medrs/references/working-principles.md
 Coordinate audit scope through [the shared gate lifecycle](../kiem-van-phong/references/gate-lifecycle.md).
 Read [references/revision-and-acceptance.md](references/revision-and-acceptance.md) for a revision, compound request or final delivery. For CK2/institutional projects read [references/basic-projects.md](references/basic-projects.md). When editing Word follow the [Zotero field contract](../quan-ly-trich-dan/references/zotero-field-contract.md).
 
-Receive the full route plan from `medrs`. Plan every requested item with its owner, input version, dependency and observable acceptance condition. Give concise practical guidance when requested. Execute specialist handoffs in dependency order; a handoff is not completed work.
+Receive the full route plan from `medrs`. Plan every requested item with its owner, input version, dependency and observable acceptance condition. Give concise practical guidance when requested. When giving the author a plan, break it into 20–30-minute tasks, each with one concrete product, and write them to the README section "Việc tiếp theo". Execute specialist handoffs in dependency order; a handoff is not completed work.
 
 Before starting/adopting a project, follow [references/project-workspace.md](references/project-workspace.md): create README context/progress, one accepted `final/` set and dated history with every run's logs and change notes. Use its portable helper for recoverable final promotion; never replace an author-modified final silently.
 

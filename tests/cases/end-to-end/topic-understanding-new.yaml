@@ -1,0 +1,6 @@
+name: topic-understanding-new
+workflow: topic-understanding
+request: Bắt đầu đề tài mới
+active_skills: [medrs, tim-hieu-de-tai]
+steps: []
+expect: {route: tim-hieu-de-tai, mode: discover, next_part: background, status: NOT_STARTED}

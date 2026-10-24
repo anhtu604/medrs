@@ -1,0 +1,7 @@
+name: topic-understanding-draft
+workflow: topic-understanding
+request: tìm hiểu đề tài từ đề cương này
+attachments: [de-cuong.docx]
+active_skills: [medrs, tim-hieu-de-tai, ho-so-nghien-cuu]
+steps: []
+expect: {route: tim-hieu-de-tai, mode: discover-from-draft, next_part: background}

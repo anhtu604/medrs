@@ -1,0 +1,6 @@
+name: topic-understanding-resume
+workflow: topic-understanding
+request: Trao đổi về đề tài giúp tôi
+active_skills: [medrs, tim-hieu-de-tai]
+steps: [[background, EXPLAINED], [background, CHECKED_BACK], [background, DONE], [question, EXPLAINED]]
+expect: {route: tim-hieu-de-tai, mode: discover, next_part: question, status: IN_PROGRESS}

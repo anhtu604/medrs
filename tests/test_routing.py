@@ -336,3 +336,30 @@ def test_prisma_checklist_request_routes_to_reporting_guideline_check():
     )
     assert decision.canonical == "kiem-chuan-bao-cao"
     assert decision.mode == "guideline-compliance"
+
+
+DISCOVERY_SKILLS = {"medrs", "tim-hieu-de-tai", "viet-ban-luan", "ho-so-nghien-cuu"}
+
+
+@pytest.mark.parametrize("prompt", [
+    "Bắt đầu đề tài mới về bệnh võng mạc trẻ sinh non",
+    "Tôi muốn tìm hiểu đề tài trước khi viết",
+    "Trao đổi về đề tài giúp tôi",
+    "Let's discuss my study before writing",
+])
+def test_topic_understanding_phrases_route_to_discovery(prompt):
+    decision = route_request(RoutingRequest(text=prompt), {}, active_skills=DISCOVERY_SKILLS)
+    assert decision.canonical == "tim-hieu-de-tai", prompt
+    assert decision.mode == "discover", prompt
+
+
+def test_topic_understanding_with_protocol_attachment():
+    decision = route_request(
+        RoutingRequest(text="tìm hiểu đề tài từ đề cương này", attachments=("de-cuong.docx",)),
+        {}, active_skills=DISCOVERY_SKILLS)
+    assert (decision.canonical, decision.mode) == ("tim-hieu-de-tai", "discover-from-draft")
+
+
+def test_write_discussion_still_routes_to_writer():
+    decision = route_request(RoutingRequest(text="Viết phần bàn luận"), {}, active_skills=DISCOVERY_SKILLS)
+    assert decision.canonical == "viet-ban-luan"
