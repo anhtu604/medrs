@@ -28,7 +28,7 @@ Gate này đánh giá và nâng chất lượng, tính liêm chính của văn b
 1. Nạp `references/scientific-integrity.md` để kiểm sự kiện, nguồn, kết quả, phê duyệt và trần suy luận.
 2. Nạp `references/argument-quality.md` để nối từng luận điểm với kết quả, nguồn, lý giải hoặc marker.
 3. Chỉ nạp `references/composition-vi.md` hoặc `references/composition-en.md` theo locale đang hoạt động.
-4. Nạp `references/formulaic-writing-audit.md` để tìm triệu chứng sáo rỗng và sửa vấn đề sâu hơn, không gán nhãn tác giả.
+4. Nạp `references/formulaic-writing-audit.md` để tìm triệu chứng sáo rỗng và sửa vấn đề sâu hơn, không gán nhãn tác giả. Với Kết quả, Bàn luận, Tóm tắt, nạp thêm [references/claims-and-openings.md](references/claims-and-openings.md) và chạy [scripts/prose_patterns.py](scripts/prose_patterns.py) để gợi ý sửa câu mở đoạn chỉ mô tả và câu diễn giải sai p/KTC.
 5. Khi tác giả yêu cầu viết lại chứ không chỉ chẩn đoán, nạp `references/prose-rewriting.md`; nếu có `author-style-profile.json`, viết theo hồ sơ đó. Dựng hồ sơ bằng `scripts/style_profile.py`.
 
 ## Vòng đời

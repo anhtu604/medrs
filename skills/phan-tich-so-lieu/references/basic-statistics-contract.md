@@ -28,6 +28,10 @@ Cox proportional-hazards checking includes the residual-based test/plots and cli
 
 Display p below chosen precision as an inequality, not zero; retain raw precision and do not infer extra digits from a screenshot. Confidence intervals, clinical magnitude and design limitations remain primary. The machine-readable qualifier belongs in a sidecar; the manuscript expresses its meaning in cautious academic prose.
 
+## Interpreting p and confidence intervals
+
+A p-value assumes no true difference and is not the probability that a result is due to chance or that an intervention works; a 95% CI is the range of values compatible with the data, not a 95% probability for the true value. A CI for RR/OR containing 1 (MD containing 0) means the data remain compatible with no difference, not proof of no effect. Report effect size and CI with every p. Wording rules: [claims and openings](../../kiem-van-phong/references/claims-and-openings.md).
+
 ## Primary-source register
 
 Checked 2026-10-11; `source_cutoff` 2026-10-11; reverify by 2027-10-11 or when installed versions/profile differ. These are paraphrased operational rules, not redistributed manuals.

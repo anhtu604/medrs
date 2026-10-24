@@ -27,6 +27,8 @@ One section, placed by the profile. Strengths first when supported. State actual
 
 Every comparison cites a verified source. When a source is missing, write `[CẦN TRÍCH DẪN: …]` / `[SOURCE NEEDED: …]` and continue; list it in the closing checklist. Observational designs use association language, stated with confidence.
 
+Each paragraph's first sentence states the interpretation, not a list of other studies; evidence and comparison follow.
+
 Prefer comparable original studies, including relevant verified local studies. Reviews support background/mechanisms rather than substitute for primary outcome comparisons. Abstract-only support must remain labeled in the source ledger and claims must stay within the abstract; full-text detail cannot be inferred. Check the direction of every explanation and the identity of every statistic. A higher baseline alone does not explain a lower final score. When shortening, retain the argument/source map and recommendation support; never add references merely to reach a quota.
 
 ## 6. Audit before delivery

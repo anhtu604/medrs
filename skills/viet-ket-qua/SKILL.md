@@ -20,6 +20,8 @@ When editing or writing into a Word file, follow the [Zotero field contract](../
 
 Read the shared [writing preflight](../viet-phuong-phap/references/writing-preflight.md) once. Require verified `AnalysisRun` artifacts or clearly labeled author-supplied output, the Passport, approved Results outline, target/locale profiles, depth, and budget.
 
+Open each finding paragraph with the main finding and a table/figure callout, and interpret p-values and confidence intervals as in [the claims and openings rules](../kiem-van-phong/references/claims-and-openings.md); certainty stays within the data.
+
 Report participant flow, denominators, missingness, descriptive results, primary and secondary estimates, confidence intervals, exact p-values where relevant, and table/figure callouts. Every number links to an artifact and locator. Missing numbers remain `[CẦN SỐ LIỆU]` / `[DATA REQUIRED]`; unverified supplied output remains visibly marked.
 
 Do not introduce mechanisms, causal explanations, value judgments, clinical recommendations, or numbers reconstructed from context. Return draft, result–artifact matrix, table/figure dependencies, discrepancies, markers, approvals, preflight, and gate state.
