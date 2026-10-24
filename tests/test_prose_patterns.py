@@ -75,3 +75,12 @@ def test_cli_outputs_json(tmp_path):
     assert result.returncode == 0, result.stderr
     findings = json.loads(result.stdout)
     assert [(item["pattern"], item["paragraph"]) for item in findings] == [("OPENING_DESCRIPTIVE", 1)]
+
+
+@pytest.mark.parametrize("paragraph, locale", [
+    ("Table 2 shows that mortality was lower in the intervention group.", "en"),
+    ("Table 3.2 shows the proportion of men was higher than that of women.", "en"),
+    ("Bảng 3.2 thể hiện tỷ lệ nam cao hơn nữ.", "vi"),
+])
+def test_finding_led_sentences_after_a_table_verb_are_not_flagged(paragraph, locale):
+    assert patterns(paragraph, locale) == []

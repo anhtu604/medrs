@@ -73,9 +73,18 @@ def _check_markers(text, begin, end):
         raise ValueError("README_MARKERS_AMBIGUOUS")
 
 
+def _read_note(path):
+    """Exact text, line endings untouched (the author may use CRLF or LF)."""
+    return path.read_bytes().decode("utf-8") if path.exists() else ""
+
+
+def _newline(text):
+    return "\r\n" if "\r\n" in text else "\n"
+
+
 def _write_text(path, text):
     temporary = path.with_name(f".{path.name}-{uuid.uuid4().hex}.tmp")
-    with temporary.open("x", encoding="utf-8") as stream:
+    with temporary.open("x", encoding="utf-8", newline="") as stream:
         stream.write(text)
         stream.flush()
         os.fsync(stream.fileno())
@@ -87,17 +96,18 @@ def _update_note(path, content, begin=BEGIN, end=END, anchor=None):
 
     A missing block goes directly under the `anchor` heading line when given, else at the end.
     """
-    existing = path.read_text(encoding="utf-8") if path.exists() else ""
-    block = f"{begin}\n{content.rstrip()}\n{end}"
+    existing = _read_note(path)
+    nl = _newline(existing)
+    block = f"{begin}\n{content.rstrip()}\n{end}".replace("\n", nl)
     _check_markers(existing, begin, end)
     if begin in existing:
         left, tail = existing.split(begin, 1)
         _, right = tail.split(end, 1)
         text = left + block + right
-    elif anchor and (match := re.search(rf"^## {re.escape(anchor)}[ \t]*\n", existing, re.MULTILINE)):
-        text = existing[:match.end()] + "\n" + block + "\n" + existing[match.end():]
+    elif anchor and (match := re.search(rf"^## {re.escape(anchor)}[ \t]*\r?\n", existing, re.MULTILINE)):
+        text = existing[:match.end()] + nl + block + nl + existing[match.end():]
     else:
-        text = existing.rstrip() + ("\n\n" if existing else "") + block + "\n"
+        text = existing.rstrip() + (nl * 2 if existing else "") + block + nl
     _write_text(path, text)
 
 
@@ -118,10 +128,11 @@ def _render_understanding(understanding):
 
 def _scaffold_context(path, title, understanding):
     """Add missing context sections before the progress block; never edit existing text."""
-    existing = path.read_text(encoding="utf-8") if path.exists() else ""
+    existing = _read_note(path)
+    nl = _newline(existing)
     _check_markers(existing, UNDERSTANDING_BEGIN, UNDERSTANDING_END)
     headings = CONTEXT_SECTIONS[understanding.get("locale", "vi")]
-    missing = [h for h in headings if not re.search(rf"^## {re.escape(h)}[ \t]*$", existing, re.MULTILINE)]
+    missing = [h for h in headings if not re.search(rf"^## {re.escape(h)}[ \t]*\r?$", existing, re.MULTILINE)]
     if not missing:
         return
     parts = []
@@ -130,15 +141,23 @@ def _scaffold_context(path, title, understanding):
         if heading == headings[1] and UNDERSTANDING_BEGIN not in existing:
             body = f"{UNDERSTANDING_BEGIN}\n{_render_understanding(understanding)}\n{UNDERSTANDING_END}\n\n"
         parts.append(f"## {heading}\n\n{body}")
-    sections = "".join(parts)
+    sections = "".join(parts).replace("\n", nl)
     if BEGIN in existing:
         left, right = existing.split(BEGIN, 1)
         text = left + sections + BEGIN + right
     elif existing:
-        text = existing + ("" if existing.endswith("\n") else "\n") + "\n" + sections
+        text = existing + ("" if existing.endswith("\n") else nl) + nl + sections
     else:
-        text = f"# {title}\n\n" + sections
+        text = f"# {title}{nl}{nl}" + sections
     _write_text(path, text)
+
+
+def _precheck_notes(root, date):
+    """Refuse before any write when a README's managed markers are ambiguous."""
+    note = _read_note(project_path(root, "README.md"))
+    _check_markers(note, BEGIN, END)
+    _check_markers(note, UNDERSTANDING_BEGIN, UNDERSTANDING_END)
+    _check_markers(_read_note(project_path(root, f"history/{_date(date)}/README.md")), BEGIN, END)
 
 
 def _ensure_day(root, date):
@@ -180,15 +199,20 @@ def initialize_project(root: Path, project_id: str, date: str, locale: str = "vi
     root.mkdir(parents=True, exist_ok=True)
     state_path = project_path(root, STATE_FILE)
     with output_lease(state_path, "project-init"):
+        _precheck_notes(root, date)
         if state_path.exists():
             state = _read_state(root)
             if state["project_id"] != project_id:
                 raise ValueError("PROJECT_ID_CONFLICT")
+            if "understanding" not in state:
+                # A 3.1 project: record the locale now so later renders keep its headings' language.
+                state.update({"schema_version": "1.1.0", "understanding": _default_understanding(locale)})
+                _atomic_json(state_path, state)
         else:
             state = {"schema_version": "1.1.0", "project_id": project_id, "status": "IN_PROGRESS", "final": {},
                      "last_event": None, "understanding": _default_understanding(locale)}
             _atomic_json(state_path, state)
-        understanding = state.get("understanding") or _default_understanding(locale)
+        understanding = state["understanding"]
         _scaffold_context(project_path(root, "README.md"), f"Project {project_id}", understanding)
         project_path(root, "final").mkdir(exist_ok=True)
         _ensure_day(root, date)
@@ -244,7 +268,7 @@ def set_understanding(root: Path, date: str, *, part: str | None = None, part_st
         if understanding["status"] != "CONFIRMED":
             understanding["confirmed_on"] = understanding["confirmation"] = None
         # Refuse before any write so an ambiguous README leaves state and notes untouched.
-        _check_markers(note.read_text(encoding="utf-8") if note.exists() else "", UNDERSTANDING_BEGIN, UNDERSTANDING_END)
+        _precheck_notes(root, date)
         action = {"CONFIRMED": "UNDERSTANDING_CONFIRMED",
                   "DEFERRED_BY_AUTHOR": "UNDERSTANDING_DEFERRED"}.get(status, "UNDERSTANDING_UPDATED")
         _, record = _append_event(root, date, {"action": action, "summary": "Topic understanding updated",

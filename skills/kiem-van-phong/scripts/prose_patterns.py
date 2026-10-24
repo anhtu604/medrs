@@ -39,6 +39,19 @@ PATTERNS = {
     },
 }
 OPENING = {"OPENING_DESCRIPTIVE", "OPENING_STUDY_LIST"}
+# A table verb followed by an actual finding ("shows that…", "…cao hơn…") is finding-led, not descriptive.
+_FINDING = {
+    "en": re.compile(r"^\s*that\b|\b(?:higher|lower|greater|smaller|more|fewer|less|increased|decreased|"
+                     r"associated with|longer|shorter)\b", re.IGNORECASE),
+    "vi": re.compile(r"(?:cao hơn|thấp hơn|nhiều hơn|ít hơn|lớn hơn|nhỏ hơn|dài hơn|ngắn hơn|tăng|giảm|"
+                     r"liên quan với|có liên quan)", re.IGNORECASE),
+}
+
+
+def _first_sentence_rest(text, end):
+    rest = text[end:]
+    stop = re.search(r"[.!?](?:\s|$)", rest)
+    return rest[:stop.start()] if stop else rest
 SUGGESTIONS = {
     "vi": {
         "OPENING_DESCRIPTIVE": "Mở đoạn bằng phát hiện chính rồi dẫn bảng/hình trong ngoặc; giữ đúng mức chắc chắn của dữ liệu.",
@@ -66,6 +79,8 @@ def scan_prose(paragraphs: list[str], locale: str) -> list[dict]:
         for name, regexes in _COMPILED[locale].items():
             for regex in regexes:
                 match = regex.match(text) if name in OPENING else regex.search(text)
+                if match and name == "OPENING_DESCRIPTIVE" and _FINDING[locale].search(_first_sentence_rest(text, match.end())):
+                    match = None
                 if match:
                     excerpt = text[:120] if name in OPENING else match.group(0)
                     findings.append({"pattern": name, "paragraph": index, "excerpt": excerpt,

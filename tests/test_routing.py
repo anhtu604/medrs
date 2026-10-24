@@ -363,3 +363,19 @@ def test_topic_understanding_with_protocol_attachment():
 def test_write_discussion_still_routes_to_writer():
     decision = route_request(RoutingRequest(text="Viết phần bàn luận"), {}, active_skills=DISCOVERY_SKILLS)
     assert decision.canonical == "viet-ban-luan"
+
+
+@pytest.mark.parametrize("prompt, skill", [
+    ("Viết phần đặt vấn đề giúp người đọc hiểu rõ đề tài", "viet-dat-van-de"),
+    ("Viết bàn luận sau khi đã trao đổi về đề tài với thầy", "viet-ban-luan"),
+    ("Tìm y văn cho đề tài, tôi muốn hiểu rõ đề tài hơn", "tim-y-van"),
+])
+def test_writing_requests_mentioning_the_topic_stay_with_writers(prompt, skill):
+    active = DISCOVERY_SKILLS | {"viet-dat-van-de", "tim-y-van"}
+    assert route_request(RoutingRequest(text=prompt), {}, active_skills=active).canonical == skill
+
+
+def test_discussing_limitations_is_not_a_topic_conversation():
+    decision = route_request(RoutingRequest(text="Help me discuss my study limitations in the Discussion"),
+                             {}, active_skills=DISCOVERY_SKILLS)
+    assert decision.canonical != "tim-hieu-de-tai"

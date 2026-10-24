@@ -172,3 +172,53 @@ def test_defer_is_recorded(tmp_path):
     assert result["open_items"] == 2
     with pytest.raises(ValueError, match="UNKNOWN_UNDERSTANDING_STATE"):
         ws.set_understanding(root, DAY, status="DONE")
+
+
+def test_duplicated_progress_markers_refuse_before_any_write(tmp_path):
+    ws = api()
+    root = tmp_path / "p"
+    ws.initialize_project(root, "p", DAY)
+    note = root / "README.md"
+    duplicated = note.read_text(encoding="utf-8") + f"\n{ws.BEGIN}\nx\n{ws.END}\n"
+    note.write_text(duplicated, encoding="utf-8")
+    before_state = (root / ".medrs-project.json").read_bytes()
+    events = root / f"history/{DAY}/events.jsonl"
+    before_events = events.read_bytes() if events.exists() else b""
+    with pytest.raises(ValueError, match="README_MARKERS_AMBIGUOUS"):
+        ws.set_understanding(root, DAY, part="background", part_state="EXPLAINED")
+    assert note.read_text(encoding="utf-8") == duplicated
+    assert (root / ".medrs-project.json").read_bytes() == before_state
+    assert (events.read_bytes() if events.exists() else b"") == before_events
+    with pytest.raises(ValueError, match="README_MARKERS_AMBIGUOUS"):
+        ws.initialize_project(root, "p", DAY)
+    assert note.read_text(encoding="utf-8") == duplicated
+
+
+def test_english_locale_persists_for_a_v1_project(tmp_path):
+    ws = api()
+    root = tmp_path / "rop"
+    write_v1_project(root)
+    ws.initialize_project(root, "rop", DAY, locale="en")
+    assert state_of(root)["understanding"]["locale"] == "en"
+    ws.set_understanding(root, DAY, part="background", part_state="EXPLAINED")
+    text = readme(root)
+    block = text[text.index(ws.UNDERSTANDING_BEGIN):text.index(ws.UNDERSTANDING_END)]
+    assert "Status:" in block and "Trạng thái" not in block
+    validate(state_of(root), SCHEMA)
+
+
+@pytest.mark.parametrize("newline", [b"\n", b"\r\n"])
+def test_readme_line_endings_are_preserved(tmp_path, newline):
+    ws = api()
+    root = tmp_path / "rop"
+    write_v1_project(root)
+    original = newline.join(["# Đề tài ROP".encode("utf-8"), b"", "Ghi chú tác giả.".encode("utf-8"), b""])
+    (root / "README.md").write_bytes(original)
+    ws.initialize_project(root, "rop", DAY)
+    ws.set_understanding(root, DAY, part="background", part_state="EXPLAINED")
+    data = (root / "README.md").read_bytes()
+    assert data.startswith(original)
+    if newline == b"\n":
+        assert b"\r\n" not in data
+    else:
+        assert data.count(b"\n") == data.count(b"\r\n")

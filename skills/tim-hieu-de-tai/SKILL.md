@@ -14,7 +14,7 @@ Follow the shared [working principles](../medrs/references/working-principles.md
 
 Read [references/conversation-contract.md](references/conversation-contract.md) before the first turn. Nhận việc qua `medrs` khi dự án chưa có gì rõ ràng hoặc khi tác giả muốn trao đổi về đề tài.
 
-Workspace và README theo [project workspace](../leader-nghien-cuu/references/project-workspace.md): `initialize_project` tạo các mục ngữ cảnh; không ghi đè chữ tác giả. Trạng thái cuộc trò chuyện đọc và ghi bằng [scripts/topic_understanding.py](scripts/topic_understanding.py):
+Workspace và README theo [project workspace](../leader-nghien-cuu/references/project-workspace.md): `initialize_project` tạo các mục ngữ cảnh; không ghi đè chữ tác giả. Dự án viết bằng tiếng Anh: gọi với `locale="en"` để tiêu đề và khối trạng thái dùng tiếng Anh. Trạng thái cuộc trò chuyện đọc và ghi bằng [scripts/topic_understanding.py](scripts/topic_understanding.py):
 
 ```
 python topic_understanding.py status <thư mục dự án>
