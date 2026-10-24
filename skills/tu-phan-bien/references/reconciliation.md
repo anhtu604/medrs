@@ -18,6 +18,8 @@ Số lượng phát hiện đồng thuận không phải là thước đo chất
 
 ## Mâu thuẫn
 
+Xem chỗ bất đồng trước, rồi mới tới chỗ đồng thuận. Phát hiện chỉ một vòng nêu là tín hiệu cần soi kỹ, không bị gạt vì thua số. Cần nhớ: đồng thuận không đồng nghĩa với đúng — các vòng có thể cùng sai một chỗ, nên không quy đồng thuận thành mức tin cậy hay tỷ lệ phần trăm. Vòng phản đối phải chỉ ra bằng chứng cụ thể tại vị trí trong bản thảo. Khi host có nhiều model hoặc agent, có thể chạy hai vòng độc lập trên các model khác nhau; không bắt buộc và không gọi API bên ngoài.
+
 Khi hai vòng nói ngược nhau, không tự chọn bên và không lấy trung bình. Trình bày: vị trí, lập luận của từng vòng, và thông tin nào sẽ giải quyết được bất đồng. Thường thì mâu thuẫn chỉ ra một chỗ bản thảo viết chưa rõ, chứ không phải một trong hai vòng sai.
 
 ## Danh mục sửa

@@ -490,7 +490,9 @@
       ],
       "skill_path": "skills/viet-ban-thao-y-hoc/SKILL.md",
       "reference_files": [
-        "skills/viet-ban-thao-y-hoc/references/assembly-workflow.md"
+        "skills/viet-ban-thao-y-hoc/references/assembly-workflow.md",
+        "skills/viet-ban-thao-y-hoc/references/journal-selection.md",
+        "skills/viet-ban-thao-y-hoc/references/thesis-to-article.md"
       ]
     },
     {
