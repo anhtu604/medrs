@@ -2,7 +2,7 @@
 name: viet-dat-van-de
 description: "Viết Đặt vấn đề hoặc Introduction: gánh nặng vấn đề, khoảng trống bằng chứng và mục tiêu nghiên cứu. Writes the Introduction."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, journal-article]

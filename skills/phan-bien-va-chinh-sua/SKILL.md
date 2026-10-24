@@ -2,7 +2,7 @@
 name: phan-bien-va-chinh-sua
 description: "Trả lời phản biện từng điểm, sửa bài sau phản biện và nhận xét luận văn, lan truyền mọi thay đổi số liệu. Handles real reviewer comments. Rà soát trước khi nộp thuộc skill tự phản biện."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review]

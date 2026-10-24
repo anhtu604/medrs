@@ -2,7 +2,7 @@
 name: viet-phuong-phap
 description: "Viết phần Đối tượng và phương pháp cho đề cương hoặc nghiên cứu đã hoàn thành, đúng thì của từng loại tài liệu. Writes the Methods section."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript]

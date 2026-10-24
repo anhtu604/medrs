@@ -2,7 +2,7 @@
 name: tim-hieu-de-tai
 description: "Trò chuyện cùng tác giả để hiểu thật kỹ đề tài trước khi viết: kiến thức nền có nguồn, câu hỏi và mục tiêu, phương pháp, kết quả mong đợi; hỏi ngược để kiểm tra và ghi vào README dự án. Guides the author to understand the study before writing."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, journal-article, project-ck2, project-institutional]

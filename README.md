@@ -1,4 +1,4 @@
-# MedRS 3.1
+# MedRS 3.2
 
 Comprehensive-upgrade branch: implementation and acceptance are in progress.
 This checkout is not a newly accepted release. See [source/capability gaps](docs/source-gaps.md).

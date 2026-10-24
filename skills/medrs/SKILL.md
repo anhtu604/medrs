@@ -2,7 +2,7 @@
 name: medrs
 description: "Điểm vào duy nhất `/medrs` cho dự án nghiên cứu y học: hiểu yêu cầu tiếng Việt hoặc tiếng Anh và chuyển đến đúng skill chuyên môn. Routes medical research requests to the right specialist skill. Dùng cho nghiên cứu, không dùng để tư vấn điều trị."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: entry-point
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript, evidence-synthesis]

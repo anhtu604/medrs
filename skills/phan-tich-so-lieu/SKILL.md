@@ -2,7 +2,7 @@
 name: phan-tich-so-lieu
 description: "Điều phối phân tích số liệu y học theo kế hoạch và diễn giải kết quả theo ý nghĩa lâm sàng và cỡ hiệu ứng, chạy qua R hoặc Stata. Coordinates analysis and interprets results clinically."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [analysis, thesis, dissertation, journal-article]

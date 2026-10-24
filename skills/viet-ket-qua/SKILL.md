@@ -2,7 +2,7 @@
 name: viet-ket-qua
 description: "Viết phần Kết quả từ bảng, hình và output thống kê với mẫu số, ước lượng và khoảng tin cậy; phần diễn giải thuộc Bàn luận. Writes the Results section."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

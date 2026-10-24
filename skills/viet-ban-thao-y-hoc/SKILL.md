@@ -2,7 +2,7 @@
 name: viet-ban-thao-y-hoc
 description: "Điều phối viết toàn bộ bài báo, luận văn hoặc luận án theo profile loại tài liệu, gọi từng skill viết phần rồi ráp bản thảo; chuyển luận văn thành bài báo. Orchestrates full manuscripts."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: orchestrator
   locale: [vi, en]
   document_types: [journal-article, thesis, dissertation]

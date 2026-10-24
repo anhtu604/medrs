@@ -2,7 +2,7 @@
 name: quan-ly-trich-dan
 description: "Quản lý trích dẫn Zotero trong Word: giữ nguyên trường trích dẫn khi sửa, gắn trích dẫn sống từ thư viện của tác giả và kiểm độ trung thực. Manages live Zotero citations."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review, evidence-synthesis]

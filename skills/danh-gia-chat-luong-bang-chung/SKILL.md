@@ -2,7 +2,7 @@
 name: danh-gia-chat-luong-bang-chung
 description: "Đánh giá nguy cơ sai lệch/chất lượng bằng RoB 2, ROBINS, JBI, QUADAS, AMSTAR; độ chắc chắn bằng GRADE/CERQual. Appraises bias and certainty. Không thay kiểm chuẩn báo cáo."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, journal-article, review]

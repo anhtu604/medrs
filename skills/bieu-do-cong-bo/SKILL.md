@@ -2,7 +2,7 @@
 name: bieu-do-cong-bo
 description: "Chọn, dựng và kiểm định biểu đồ và bảng chuẩn công bố cho nghiên cứu y học bằng R hoặc Stata. Designs publication-grade figures and tables."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review, evidence-synthesis]

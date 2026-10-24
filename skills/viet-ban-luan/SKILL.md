@@ -2,7 +2,7 @@
 name: viet-ban-luan
 description: "Viết phần Bàn luận làm nổi bật phát hiện và đóng góp của nghiên cứu, so sánh với y văn, gom điểm mạnh và hạn chế vào một mục riêng. Writes a strength-led Discussion."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article]

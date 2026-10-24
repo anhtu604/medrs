@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.2.0 — Topic understanding before writing
+
+- Added `tim-hieu-de-tai`: on a first-time project MedRS starts a conversation that builds the author's background knowledge, research question, planned methods and expected results, checks understanding by asking back, and ends only on the author's own confirmation.
+- Project README gains eleven fixed context sections (background literature table, agreed terms, open points, author decisions, 20–30-minute next steps); existing READMEs only receive missing sections, author text is never rewritten.
+- `/medrs` routes unclear projects to the conversation first; 3.1 projects mid-revision get a one-line offer, and writers remind rather than block.
+- Added paragraph-opening and p/CI phrasing suggestions (`kiem-van-phong/scripts/prose_patterns.py`) with shared rules for Results, Discussion and statistics.
+- Conclusions follow three ideas; abstracts pass a stand-alone reader check; new thesis-to-article and journal-selection guidance; two-round review looks at disagreement first; quick-seed PubMed search for orientation.
+
+
 ## 3.1.0 — Revision continuity and final-artifact acceptance
 
 - Added internal leader coordination, complete task plans, scoped author decisions, immutable output publishing and hash-bound content/presentation acceptance.

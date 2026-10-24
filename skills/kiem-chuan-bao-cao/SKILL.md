@@ -2,7 +2,7 @@
 name: kiem-chuan-bao-cao
 description: "Đối chiếu bản thảo với chuẩn báo cáo hợp thiết kế như CONSORT, STROBE, PRISMA, theo đúng từng mục của bản chính thức. Checks reporting-guideline compliance item by item."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review, evidence-synthesis]

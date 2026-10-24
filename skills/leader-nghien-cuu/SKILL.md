@@ -2,7 +2,7 @@
 name: leader-nghien-cuu
 description: "Lập kế hoạch, hướng dẫn và điều phối vòng sửa nghiên cứu; nghiệm thu nội dung và hình thức trên đúng file cuối. Plans research work and verifies final deliverables. Nhận việc qua medrs; chuyên môn do skill phụ trách."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: orchestrator
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, manuscript, project-ck2, project-institutional]

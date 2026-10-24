@@ -2,7 +2,7 @@
 name: tu-phan-bien
 description: "Rà soát bản thảo trước khi nộp qua hai vòng độc lập: nhất quán số liệu, trích dẫn, chuẩn báo cáo, rồi đọc như người phản biện, sau đó mới sửa. Runs two-round pre-submission review. Nhận xét phản biện thật thuộc skill phản biện và chỉnh sửa."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: gate
   locale: [vi, en]
   document_types: [thesis, dissertation, journal-article, review, evidence-synthesis]

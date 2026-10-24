@@ -2,7 +2,7 @@
 name: tim-y-van
 description: "Tìm y văn y học có ghi vết truy vấn, khử trùng lặp và mở rộng theo mạng trích dẫn xuôi và ngược. Retrieves medical literature reproducibly."
 metadata:
-  version: 3.1.0
+  version: 3.2.0
   role: leaf
   locale: [vi, en]
   document_types: [protocol, thesis, dissertation, journal-article, review]
