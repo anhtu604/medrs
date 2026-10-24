@@ -4,7 +4,7 @@
   "type": "object",
   "required": ["schema_version", "project_id", "status", "final", "last_event"],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"enum": ["1.0.0", "1.1.0"]},
     "project_id": {"type": "string", "minLength": 1},
     "status": {"type": "string"},
     "final": {
@@ -20,7 +20,25 @@
         "additionalProperties": false
       }
     },
-    "last_event": {"type": ["object", "null"]}
+    "last_event": {"type": ["object", "null"]},
+    "understanding": {
+      "type": "object",
+      "required": ["status", "parts", "open_items", "confirmed_on", "confirmation"],
+      "properties": {
+        "status": {"enum": ["NOT_STARTED", "IN_PROGRESS", "DEFERRED_BY_AUTHOR", "CONFIRMED"]},
+        "parts": {
+          "type": "object",
+          "required": ["background", "question", "methods", "expected"],
+          "additionalProperties": {"enum": ["NOT_STARTED", "EXPLAINED", "CHECKED_BACK", "DONE"]},
+          "propertyNames": {"enum": ["background", "question", "methods", "expected"]}
+        },
+        "open_items": {"type": "integer", "minimum": 0},
+        "confirmed_on": {"type": ["string", "null"], "format": "date"},
+        "confirmation": {"type": ["string", "null"]},
+        "locale": {"enum": ["vi", "en"]}
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }

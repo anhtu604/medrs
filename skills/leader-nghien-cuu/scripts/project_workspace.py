@@ -4,6 +4,7 @@ from datetime import date as calendar_date
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import uuid
 
@@ -13,7 +14,29 @@ from revision_guard import assert_unchanged, output_lease, sha256
 STATE_FILE = ".medrs-project.json"
 BEGIN = "<!-- medrs:progress:start -->"
 END = "<!-- medrs:progress:end -->"
+UNDERSTANDING_BEGIN = "<!-- medrs:understanding:start -->"
+UNDERSTANDING_END = "<!-- medrs:understanding:end -->"
 EVENT_FIELDS = {"action", "summary", "changes", "status", "task_id", "artifact", "sha256", "round"}
+
+PARTS = ("background", "question", "methods", "expected")
+PART_STATES = ("NOT_STARTED", "EXPLAINED", "CHECKED_BACK", "DONE")
+UNDERSTANDING_STATES = ("NOT_STARTED", "IN_PROGRESS", "DEFERRED_BY_AUTHOR", "CONFIRMED")
+CONTEXT_SECTIONS = {
+    "vi": ("Tổng quan dự án", "Hiểu đề tài", "Kiến thức nền", "Câu hỏi nghiên cứu và mục tiêu",
+           "Phương pháp dự kiến và lý do", "Kết quả mong đợi", "Bảng y văn nền",
+           "Thuật ngữ và định nghĩa đã chốt", "Điểm cần làm rõ", "Quyết định của tác giả", "Việc tiếp theo"),
+    "en": ("Project overview", "Topic understanding", "Background knowledge", "Research question and objectives",
+           "Planned methods and rationale", "Expected results", "Background literature",
+           "Agreed terms and definitions", "Open points", "Author decisions", "Next steps"),
+}
+_LABELS = {
+    "vi": {"status": "Trạng thái", "open": "Điểm cần làm rõ còn mở", "confirmed": "Tác giả xác nhận",
+           "background": "Kiến thức nền", "question": "Câu hỏi nghiên cứu và mục tiêu",
+           "methods": "Phương pháp dự kiến", "expected": "Kết quả mong đợi"},
+    "en": {"status": "Status", "open": "Open points", "confirmed": "Author confirmed",
+           "background": "Background knowledge", "question": "Research question and objectives",
+           "methods": "Planned methods", "expected": "Expected results"},
+}
 
 
 def _date(value):
@@ -45,24 +68,77 @@ def _atomic_json(path, value):
     os.replace(temporary, path)
 
 
-def _update_note(path, content):
-    """Replace only the managed block; keep all author text outside it."""
-    existing = path.read_text(encoding="utf-8") if path.exists() else ""
-    block = f"{BEGIN}\n{content.rstrip()}\n{END}"
-    if existing.count(BEGIN) != existing.count(END) or existing.count(BEGIN) > 1:
+def _check_markers(text, begin, end):
+    if text.count(begin) != text.count(end) or text.count(begin) > 1:
         raise ValueError("README_MARKERS_AMBIGUOUS")
-    if BEGIN in existing:
-        left, tail = existing.split(BEGIN, 1)
-        _, right = tail.split(END, 1)
-        text = left + block + right
-    else:
-        text = existing.rstrip() + ("\n\n" if existing else "") + block + "\n"
+
+
+def _write_text(path, text):
     temporary = path.with_name(f".{path.name}-{uuid.uuid4().hex}.tmp")
     with temporary.open("x", encoding="utf-8") as stream:
         stream.write(text)
         stream.flush()
         os.fsync(stream.fileno())
     os.replace(temporary, path)
+
+
+def _update_note(path, content, begin=BEGIN, end=END, anchor=None):
+    """Replace only the managed block; keep all author text outside it.
+
+    A missing block goes directly under the `anchor` heading line when given, else at the end.
+    """
+    existing = path.read_text(encoding="utf-8") if path.exists() else ""
+    block = f"{begin}\n{content.rstrip()}\n{end}"
+    _check_markers(existing, begin, end)
+    if begin in existing:
+        left, tail = existing.split(begin, 1)
+        _, right = tail.split(end, 1)
+        text = left + block + right
+    elif anchor and (match := re.search(rf"^## {re.escape(anchor)}[ \t]*\n", existing, re.MULTILINE)):
+        text = existing[:match.end()] + "\n" + block + "\n" + existing[match.end():]
+    else:
+        text = existing.rstrip() + ("\n\n" if existing else "") + block + "\n"
+    _write_text(path, text)
+
+
+def _default_understanding(locale="vi"):
+    return {"status": "NOT_STARTED", "parts": {part: "NOT_STARTED" for part in PARTS},
+            "open_items": 0, "confirmed_on": None, "confirmation": None, "locale": locale}
+
+
+def _render_understanding(understanding):
+    labels = _LABELS[understanding.get("locale", "vi")]
+    lines = [f"{labels['status']}: {understanding['status']}", ""]
+    lines += [f"- {labels[part]}: {understanding['parts'][part]}" for part in PARTS]
+    lines += ["", f"{labels['open']}: {understanding['open_items']}"]
+    if understanding["status"] == "CONFIRMED":
+        lines.append(f"{labels['confirmed']} ({understanding['confirmed_on']}): \"{understanding['confirmation']}\"")
+    return "\n".join(lines)
+
+
+def _scaffold_context(path, title, understanding):
+    """Add missing context sections before the progress block; never edit existing text."""
+    existing = path.read_text(encoding="utf-8") if path.exists() else ""
+    _check_markers(existing, UNDERSTANDING_BEGIN, UNDERSTANDING_END)
+    headings = CONTEXT_SECTIONS[understanding.get("locale", "vi")]
+    missing = [h for h in headings if not re.search(rf"^## {re.escape(h)}[ \t]*$", existing, re.MULTILINE)]
+    if not missing:
+        return
+    parts = []
+    for heading in missing:
+        body = ""
+        if heading == headings[1] and UNDERSTANDING_BEGIN not in existing:
+            body = f"{UNDERSTANDING_BEGIN}\n{_render_understanding(understanding)}\n{UNDERSTANDING_END}\n\n"
+        parts.append(f"## {heading}\n\n{body}")
+    sections = "".join(parts)
+    if BEGIN in existing:
+        left, right = existing.split(BEGIN, 1)
+        text = left + sections + BEGIN + right
+    elif existing:
+        text = existing + ("" if existing.endswith("\n") else "\n") + "\n" + sections
+    else:
+        text = f"# {title}\n\n" + sections
+    _write_text(path, text)
 
 
 def _ensure_day(root, date):
@@ -94,10 +170,12 @@ def _refresh_notes(root, state, date):
     _update_note(project_path(root, "README.md"), content)
 
 
-def initialize_project(root: Path, project_id: str, date: str) -> dict:
+def initialize_project(root: Path, project_id: str, date: str, locale: str = "vi") -> dict:
     _date(date)
     if not isinstance(project_id, str) or not project_id.strip() or any(char in project_id for char in "\r\n"):
         raise ValueError("PROJECT_ID_REQUIRED")
+    if locale not in CONTEXT_SECTIONS:
+        raise ValueError("UNKNOWN_LOCALE")
     root = Path(root).resolve()
     root.mkdir(parents=True, exist_ok=True)
     state_path = project_path(root, STATE_FILE)
@@ -107,12 +185,76 @@ def initialize_project(root: Path, project_id: str, date: str) -> dict:
             if state["project_id"] != project_id:
                 raise ValueError("PROJECT_ID_CONFLICT")
         else:
-            state = {"schema_version": "1.0.0", "project_id": project_id, "status": "IN_PROGRESS", "final": {}, "last_event": None}
+            state = {"schema_version": "1.1.0", "project_id": project_id, "status": "IN_PROGRESS", "final": {},
+                     "last_event": None, "understanding": _default_understanding(locale)}
             _atomic_json(state_path, state)
+        understanding = state.get("understanding") or _default_understanding(locale)
+        _scaffold_context(project_path(root, "README.md"), f"Project {project_id}", understanding)
         project_path(root, "final").mkdir(exist_ok=True)
         _ensure_day(root, date)
         _refresh_notes(root, state, date)
     return state
+
+
+def read_understanding(root: Path) -> dict:
+    """Topic-understanding state; a folder without a workspace reads as not started."""
+    root = Path(root).resolve()
+    if not project_path(root, STATE_FILE).exists():
+        return {"workspace": False, **_default_understanding()}
+    return {"workspace": True, **(_read_state(root).get("understanding") or _default_understanding())}
+
+
+def set_understanding(root: Path, date: str, *, part: str | None = None, part_state: str | None = None,
+                      status: str | None = None, open_items: int | None = None,
+                      confirmation: str | None = None) -> dict:
+    """Advance the conversation state. A part reaches DONE only after a check-back;
+    CONFIRMED needs every part DONE and the author's own words."""
+    _date(date)
+    root = Path(root).resolve()
+    state_path = project_path(root, STATE_FILE)
+    note = project_path(root, "README.md")
+    with output_lease(state_path, "project-understanding"):
+        state = _read_state(root)
+        understanding = json.loads(json.dumps(state.get("understanding") or _default_understanding()))
+        parts = understanding["parts"]
+        if part is not None:
+            if part not in PARTS:
+                raise ValueError("UNKNOWN_PART")
+            if part_state not in PART_STATES:
+                raise ValueError("UNKNOWN_PART_STATE")
+            if part_state == "DONE" and parts[part] not in ("CHECKED_BACK", "DONE"):
+                raise ValueError("CHECK_BACK_REQUIRED")
+            parts[part] = part_state
+            if understanding["status"] == "NOT_STARTED" or (understanding["status"] == "CONFIRMED" and part_state != "DONE"):
+                understanding["status"] = "IN_PROGRESS"
+        if open_items is not None:
+            if isinstance(open_items, bool) or not isinstance(open_items, int) or open_items < 0:
+                raise ValueError("OPEN_ITEMS_INVALID")
+            understanding["open_items"] = open_items
+        if status is not None:
+            if status not in UNDERSTANDING_STATES:
+                raise ValueError("UNKNOWN_UNDERSTANDING_STATE")
+            if status == "CONFIRMED":
+                if any(parts[name] != "DONE" for name in PARTS):
+                    raise ValueError("PARTS_NOT_DONE")
+                if not isinstance(confirmation, str) or not confirmation.strip():
+                    raise ValueError("AUTHOR_CONFIRMATION_REQUIRED")
+                understanding["confirmed_on"], understanding["confirmation"] = date, confirmation.strip()
+            understanding["status"] = status
+        if understanding["status"] != "CONFIRMED":
+            understanding["confirmed_on"] = understanding["confirmation"] = None
+        # Refuse before any write so an ambiguous README leaves state and notes untouched.
+        _check_markers(note.read_text(encoding="utf-8") if note.exists() else "", UNDERSTANDING_BEGIN, UNDERSTANDING_END)
+        action = {"CONFIRMED": "UNDERSTANDING_CONFIRMED",
+                  "DEFERRED_BY_AUTHOR": "UNDERSTANDING_DEFERRED"}.get(status, "UNDERSTANDING_UPDATED")
+        _, record = _append_event(root, date, {"action": action, "summary": "Topic understanding updated",
+                                               "status": understanding["status"]})
+        state.update({"schema_version": "1.1.0", "understanding": understanding, "last_event": record})
+        _atomic_json(state_path, state)
+        anchor = CONTEXT_SECTIONS[understanding.get("locale", "vi")][1]
+        _update_note(note, _render_understanding(understanding), UNDERSTANDING_BEGIN, UNDERSTANDING_END, anchor)
+        _refresh_notes(root, state, date)
+    return understanding
 
 
 def _append_event(root, date, event):
