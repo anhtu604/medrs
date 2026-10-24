@@ -1,15 +1,16 @@
-final_count: 28
+final_count: 29
 active_slice: 4
 description_limits:
   target_words: 45
   per_skill_words: 60
   per_skill_bytes: 640
-  aggregate_words: 1300
+  aggregate_words: 1400
   aggregate_bytes: 12288
   aggregate_frontmatter_bytes: 16384
 skills:
   - {name: medrs, slice: 1, status: accepted, description_target_words: 45}
   - {name: ho-so-nghien-cuu, slice: 1, status: accepted, description_target_words: 45}
+  - {name: tim-hieu-de-tai, slice: 1, status: accepted, description_target_words: 45}
   - {name: de-cuong-va-thiet-ke, slice: 1, status: accepted, description_target_words: 45}
   - {name: co-mau-va-ke-hoach-phan-tich, slice: 1, status: accepted, description_target_words: 45}
   - {name: dao-duc-va-quan-tri-du-lieu, slice: 1, status: accepted, description_target_words: 45}
