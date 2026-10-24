@@ -16,6 +16,7 @@ def test_inventory_lifecycle_matches_current_slice_four_progress():
     assert accepted == [
         "medrs",
         "ho-so-nghien-cuu",
+        "tim-hieu-de-tai",
         "de-cuong-va-thiet-ke",
         "co-mau-va-ke-hoach-phan-tich",
         "dao-duc-va-quan-tri-du-lieu",

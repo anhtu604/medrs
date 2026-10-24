@@ -3,9 +3,9 @@
 Comprehensive-upgrade branch: implementation and acceptance are in progress.
 This checkout is not a newly accepted release. See [source/capability gaps](docs/source-gaps.md).
 
-This release contains all 28 canonical medical-research skills, including an internal leader for complete task plans, revision continuity and final-artifact acceptance. It supports protocol design, R/Stata, writing, evidence work, Word/Zotero, two-round review, and basic question-led CK2 and institutional projects alongside theses, dissertations and articles.
+This release contains all 29 canonical medical-research skills, including an internal leader for complete task plans, revision continuity and final-artifact acceptance. It supports protocol design, R/Stata, writing, evidence work, Word/Zotero, two-round review, and basic question-led CK2 and institutional projects alongside theses, dissertations and articles.
 
-All 28 skills are indexed in `skills/index.json`. Old MedRS versions must remain uninstalled while this package is active. The license is CC BY-NC 4.0; commercial use may require separate permission and legal review.
+All 29 skills are indexed in `skills/index.json`. Old MedRS versions must remain uninstalled while this package is active. The license is CC BY-NC 4.0; commercial use may require separate permission and legal review.
 
 Start with `skills/medrs/SKILL.md`. Non-Claude agents can enumerate the present skills from the generated `skills/index.json`.
 
